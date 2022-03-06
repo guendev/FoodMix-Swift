@@ -13,6 +13,11 @@
 		1CB3490E27D4809F0061D9CD /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 1CB3490D27D4809F0061D9CD /* FirebaseDatabase */; };
 		1CB3491027D4A0420061D9CD /* PreviewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB3490F27D4A0420061D9CD /* PreviewWrapper.swift */; };
 		1CB3491227D4A6CE0061D9CD /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB3491127D4A6CE0061D9CD /* Firebase.swift */; };
+		1CB5B1A727D4C9A800AEFF30 /* QueryAuth.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 1CB5B1A627D4C9A800AEFF30 /* QueryAuth.graphql */; };
+		1CB5B1AA27D4CAC100AEFF30 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 1CB5B1A927D4CAC100AEFF30 /* schema.json */; };
+		1CB5B1AC27D4CB3D00AEFF30 /* QueryAuth.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB5B1AB27D4CB3D00AEFF30 /* QueryAuth.graphql.swift */; };
+		1CB5B1B027D4E41300AEFF30 /* QueryRecipes.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 1CB5B1AF27D4E41300AEFF30 /* QueryRecipes.graphql */; };
+		1CB5B1B227D4E44800AEFF30 /* QueryRecipes.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB5B1B127D4E44800AEFF30 /* QueryRecipes.graphql.swift */; };
 		1CCC8B9727D474F300B5D3B9 /* FoodMixApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC8B9627D474F300B5D3B9 /* FoodMixApp.swift */; };
 		1CCC8B9927D474F300B5D3B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC8B9827D474F300B5D3B9 /* ContentView.swift */; };
 		1CCC8B9B27D474F500B5D3B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CCC8B9A27D474F500B5D3B9 /* Assets.xcassets */; };
@@ -113,6 +118,11 @@
 		1CB3490827D47FB70061D9CD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1CB3490F27D4A0420061D9CD /* PreviewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewWrapper.swift; sourceTree = "<group>"; };
 		1CB3491127D4A6CE0061D9CD /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		1CB5B1A627D4C9A800AEFF30 /* QueryAuth.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = QueryAuth.graphql; sourceTree = "<group>"; };
+		1CB5B1A927D4CAC100AEFF30 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		1CB5B1AB27D4CB3D00AEFF30 /* QueryAuth.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryAuth.graphql.swift; sourceTree = "<group>"; };
+		1CB5B1AF27D4E41300AEFF30 /* QueryRecipes.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = QueryRecipes.graphql; sourceTree = "<group>"; };
+		1CB5B1B127D4E44800AEFF30 /* QueryRecipes.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryRecipes.graphql.swift; sourceTree = "<group>"; };
 		1CCC8B9327D474F300B5D3B9 /* FoodMix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodMix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CCC8B9627D474F300B5D3B9 /* FoodMixApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodMixApp.swift; sourceTree = "<group>"; };
 		1CCC8B9827D474F300B5D3B9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -260,6 +270,7 @@
 				1CB3490527D479310061D9CD /* FoodMix.xcdatamodeld */,
 				1CB3490827D47FB70061D9CD /* GoogleService-Info.plist */,
 				1CCC8BA427D474F500B5D3B9 /* Info.plist */,
+				1CB5B1A927D4CAC100AEFF30 /* schema.json */,
 			);
 			path = FoodMix;
 			sourceTree = "<group>";
@@ -497,9 +508,11 @@
 		1CCC8C5127D4755300B5D3B9 /* Codegen */ = {
 			isa = PBXGroup;
 			children = (
-				1CCC8C5227D4755300B5D3B9 /* Notify.graphql.swift */,
 				1CCC8C5327D4755300B5D3B9 /* AuthMutation.graphql.swift */,
+				1CCC8C5227D4755300B5D3B9 /* Notify.graphql.swift */,
+				1CB5B1AB27D4CB3D00AEFF30 /* QueryAuth.graphql.swift */,
 				1CCC8C5427D4755300B5D3B9 /* QueryCategories.graphql.swift */,
+				1CB5B1B127D4E44800AEFF30 /* QueryRecipes.graphql.swift */,
 				1CCC8C5527D4755300B5D3B9 /* Types.graphql.swift */,
 			);
 			path = Codegen;
@@ -517,6 +530,8 @@
 			isa = PBXGroup;
 			children = (
 				1CCC8C5B27D4755300B5D3B9 /* QueryCategories.graphql */,
+				1CB5B1A627D4C9A800AEFF30 /* QueryAuth.graphql */,
+				1CB5B1AF27D4E41300AEFF30 /* QueryRecipes.graphql */,
 			);
 			path = Query;
 			sourceTree = "<group>";
@@ -546,6 +561,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1CCC8BA727D474F500B5D3B9 /* Build configuration list for PBXNativeTarget "FoodMix" */;
 			buildPhases = (
+				1CB5B1A827D4C9B800AEFF30 /* Buil GraphQL */,
 				1CCC8B8F27D474F300B5D3B9 /* Sources */,
 				1CCC8B9027D474F300B5D3B9 /* Frameworks */,
 				1CCC8B9127D474F300B5D3B9 /* Resources */,
@@ -613,16 +629,41 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CCC8C6527D4755300B5D3B9 /* QueryCategories.graphql in Resources */,
+				1CB5B1AA27D4CAC100AEFF30 /* schema.json in Resources */,
 				1CCC8C5C27D4755300B5D3B9 /* AuthMutation.graphql in Resources */,
 				1CCC8C6227D4755300B5D3B9 /* Notify.graphql in Resources */,
 				1CCC8C0427D4753500B5D3B9 /* Nunito.ttf in Resources */,
 				1CCC8B9E27D474F500B5D3B9 /* Preview Assets.xcassets in Resources */,
 				1CCC8B9B27D474F500B5D3B9 /* Assets.xcassets in Resources */,
+				1CB5B1A727D4C9A800AEFF30 /* QueryAuth.graphql in Resources */,
+				1CB5B1B027D4E41300AEFF30 /* QueryRecipes.graphql in Resources */,
 				1CB3490927D47FB70061D9CD /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1CB5B1A827D4C9B800AEFF30 /* Buil GraphQL */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Buil GraphQL";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "
+";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1CCC8B8F27D474F300B5D3B9 /* Sources */ = {
@@ -646,6 +687,7 @@
 				1CCC8C2C27D4754800B5D3B9 /* CategoriesView.swift in Sources */,
 				1CCC8C0127D4752F00B5D3B9 /* StringExtension.swift in Sources */,
 				1CCC8BE227D4752700B5D3B9 /* ActivityBigTop.swift in Sources */,
+				1CB5B1B227D4E44800AEFF30 /* QueryRecipes.graphql.swift in Sources */,
 				1CCC8C1A27D4754100B5D3B9 /* History.swift in Sources */,
 				1CCC8C2E27D4754800B5D3B9 /* RecipeView.swift in Sources */,
 				1CCC8C0727D4753B00B5D3B9 /* OffsetPageTabView.swift in Sources */,
@@ -678,6 +720,7 @@
 				1CCC8BFA27D4752700B5D3B9 /* ProfileTabView.swift in Sources */,
 				1CCC8BDE27D4752700B5D3B9 /* CategoryAboutView.swift in Sources */,
 				1CCC8BF527D4752700B5D3B9 /* WelcomeAvatar.swift in Sources */,
+				1CB5B1AC27D4CB3D00AEFF30 /* QueryAuth.graphql.swift in Sources */,
 				1CCC8BF627D4752700B5D3B9 /* SearchHistoryView.swift in Sources */,
 				1CCC8C4227D4754D00B5D3B9 /* RecipeViewModel.swift in Sources */,
 				1CCC8BED27D4752700B5D3B9 /* AppBar.swift in Sources */,

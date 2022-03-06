@@ -6,16 +6,18 @@
 //
 
 import SwiftUI
-import Firebase
 
 struct PreviewWrapper<Content: View>: View {
     
+    @AppStorage("welcome") var welcome: Bool = true
+    
     let persistenceController = PersistenceController.shared
     let content: Content
+    
+    @StateObject private var viewModel: AppViewModel = AppViewModel()
         
     init(@ViewBuilder content: () -> Content) {
         self.content = content()
-        FirebaseApp.configure()
     }
     
     var body: some View {
@@ -25,8 +27,9 @@ struct PreviewWrapper<Content: View>: View {
             
         }
         .environment(\.managedObjectContext, persistenceController.container.viewContext)
-        .introspectNavigationController { navi in
-            navi.navigationBar.isHidden = true
+        .environmentObject(viewModel)
+        .introspectNavigationController { nav in
+            nav.navigationBar.isHidden = true
         }
     }
 }

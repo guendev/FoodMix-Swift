@@ -10,12 +10,67 @@ import Apollo
 
 class AppViewModel: ObservableObject {
     
+    @Published var user: User? {
+        
+        didSet {
+            
+            auth = user != nil
+            
+        }
+        
+    }
+    
+    @Published var auth: Bool = false
+    
     private var subNotify: Cancellable?
     
     init() {
         
         if UserDefaults.standard.string(forKey: "jsonwebtoken") != nil {
-            subNotifyAction()
+            queryUser()
+        }
+        
+    }
+    
+    func queryUser() -> Void {
+        
+        Network.shared.apollo.fetch(query: MeQuery()) { [weak self] result in
+            
+            guard let self = self else { return }
+            
+            switch result {
+            
+            case .success(let graphQLResult):
+                
+                if graphQLResult.errors != nil {
+                    break
+                }
+                
+                if let value = graphQLResult.data?.me {
+                    
+                    self.user = User(
+                        id: value.id!,
+                        name: value.name,
+                        email: value.email,
+                        slug: value.slug,
+                        role: value.role,
+                        avatar: value.avatar
+                    )
+                    
+                }
+                
+                if self.auth {
+                    
+                    self.subNotifyAction()
+                    
+                }
+                
+                
+            case .failure(_):
+                break
+            
+            }
+            
         }
         
     }

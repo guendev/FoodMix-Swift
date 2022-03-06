@@ -10,18 +10,13 @@ import SwiftUI
 extension View {
     
     func getScreenBounds() -> CGRect {
-        #if os(iOS)
-            return UIScreen.main.bounds
-        #endif
+        return UIScreen.main.bounds
     }
     
     
-    #if os(iOS)
-        func safeInsets() -> UIEdgeInsets? {
-            return UIApplication.shared.windows.first?.safeAreaInsets
-        }
-    #endif
-    
+    func safeInsets() -> UIEdgeInsets? {
+        return UIApplication.shared.windows.first?.safeAreaInsets
+    }
 }
 
 

@@ -15,6 +15,8 @@ struct HomeCategories: View {
     
     @State var showSheet: Bool = false
     
+    @State var ready: Bool = false
+    
     
     var body: some View {
         
@@ -87,7 +89,10 @@ struct HomeCategories: View {
             
         }
         .onAppear {
-            viewModel.getCategories()
+            if !ready {
+                ready = true
+                viewModel.getCategories()
+            }
         }
         
     }

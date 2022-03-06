@@ -75,28 +75,32 @@ struct IngredientView: View {
                         .opacity(show ? 1 : 0)
                         .animation(.spring().delay(0.4), value: show)
                     
-                    ForEach((0...ingredient.properties.count - 1), id: \.self) { index in
+                    if ingredient.properties.count > 0 {
                         
-                        HStack {
+                        ForEach((0...ingredient.properties.count - 1), id: \.self) { index in
                             
-                            Circle()
-                                .fill(getColor())
-                                .frame(width: 30, height: 30)
-                                .overlay(
-                                    
-                                    Text("\(index + 1)")
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(.white)
-                                )
-                                .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
-                            
-                            Text(ingredient.properties[index])
+                            HStack {
+                                
+                                Circle()
+                                    .fill(getColor())
+                                    .frame(width: 30, height: 30)
+                                    .overlay(
+                                        
+                                        Text("\(index + 1)")
+                                            .fontWeight(.semibold)
+                                            .foregroundColor(.white)
+                                    )
+                                    .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
+                                
+                                Text(ingredient.properties[index])
+                                
+                            }
+                            .padding(.top)
+                            .offset(x: 0, y: show ? 0 : 30)
+                            .opacity(show ? 1 : 0)
+                            .animation(.spring().delay(getDelay(index: index)), value: show)
                             
                         }
-                        .padding(.top)
-                        .offset(x: 0, y: show ? 0 : 30)
-                        .opacity(show ? 1 : 0)
-                        .animation(.spring().delay(getDelay(index: index)), value: show)
                         
                     }
                     

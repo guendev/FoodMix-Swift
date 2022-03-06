@@ -1,0 +1,17 @@
+query HomeUpdated($filter: SortOption!) {
+  getRecipes(filter: $filter) {
+	id
+	name
+	slug
+	avatar
+	content
+	totalRating
+	countRating
+	user {
+	  id
+	  name
+	  slug
+	  avatar
+	}
+  }
+}

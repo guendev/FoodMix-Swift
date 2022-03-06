@@ -23,6 +23,9 @@ class HomeViewModel: ObservableObject {
     @Published var currentIngredient: IngredientItem?
     
     @Published var updatedRecipes: [Recipe] = [Recipe]()
+    @Published var loadingUpdated: Bool = false
+    @Published var emptyUpdated: Bool = false
+    var page: Int = 0
     
     
     func getCategories() -> Void {
@@ -148,6 +151,72 @@ class HomeViewModel: ObservableObject {
                 
     }
     
-    func getUpdateRecipes() -> Void {}
+    func getUpdateRecipes() -> Void {
+        if loadingUpdated || emptyUpdated {
+            return
+        }
+        loadingUpdated = true
+        
+        print("❌ DEBUG: Loading \(page)")
+        
+        Network.shared.apollo.fetch(query: HomeUpdatedQuery(filter: SortOption(sort: "createdAt", page: "\(page)", limit: "10"))) { [weak self] result in
+            guard let self = self else {
+                  return
+            }
+            
+            switch result {
+            
+            case .success(let graphQLResult):
+                
+                if graphQLResult.errors != nil {
+                    break
+                }
+                                
+                guard let recipes = graphQLResult.data?.getRecipes else { break }
+                
+                if recipes.isEmpty {
+                    self.emptyUpdated = true
+                    self.loadingUpdated = false
+                    break
+                }
+                
+                recipes.forEach({ item in
+                    
+                    if let item = item {
+                        
+                        self.updatedRecipes.append(
+                            Recipe(
+                                id: item.id!,
+                                name: item.name,
+                                slug: item.slug,
+                                avatar: item.avatar,
+                                content: item.content,
+                                user: User(
+                                    id: item.user!.id!,
+                                    name: item.user!.name,
+                                    slug: item.user!.slug,
+                                    avatar: item.user!.avatar
+                                ),
+                                countRating: item.countRating,
+                                totalRating: item.totalRating
+                            )
+                        )
+                        
+                    }
+                    
+                })
+                
+                // tăng biến đếm
+                self.page += 1
+                self.loadingUpdated = false
+                
+            case .failure(_):
+                break
+            
+            }
+            
+        }
+        
+    }
     
 }

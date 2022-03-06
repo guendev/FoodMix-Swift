@@ -26,12 +26,43 @@ struct HomeUpdatedView: View {
                 
                 ForEach(viewModel.updatedRecipes, id:\.id) { item in
                     
-                    RecipeItemHorizontal(recipe: item)
-                        .padding()
-                        .background(Color.white)
-                        .cornerRadius(20)
-                        .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
+                    NavigationLink( destination: RecipeView()) {
+                        
+                        RecipeItemHorizontal(recipe: item)
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(20)
+                            .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
+                        
+                    }
+                    .buttonStyle(PlainButtonStyle())
                     
+                }
+                
+                if viewModel.loadingUpdated {
+                    
+                    ListPlaceholder()
+                    
+                }
+                
+                if !viewModel.emptyUpdated {
+                    Button {
+                        
+                        viewModel.getUpdateRecipes()
+                        
+                    } label: {
+                        
+                        Text("Xem Thêm".uppercased())
+                            .fontWeight(.semibold)
+                            .padding()
+                            .withLoading(active: $viewModel.loadingUpdated)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .background(Color("Persian Blue"))
+                            .cornerRadius(15)
+                        
+                    }
+                    .disabled(viewModel.loadingUpdated)
                 }
                 
             }
@@ -47,10 +78,30 @@ struct HomeUpdatedView: View {
             
         }
     }
+    
+    @ViewBuilder
+    private func ListPlaceholder() -> some View {
+        Group {
+            
+            ForEach(1...3, id: \.self) { _ in
+                
+                RecipeItemHorizontalPreview()
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(20)
+                    .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
+                
+            }
+            
+        }
+        .redacted(reason: .placeholder)
+    }
 }
 
 struct HomeUpdatedView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        PreviewWrapper {
+            HomeView()
+        }
     }
 }

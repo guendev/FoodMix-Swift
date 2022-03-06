@@ -44,6 +44,45 @@ struct RecipeItemHorizontal: View {
     }
 }
 
+
+struct RecipeItemHorizontalPreview: View {
+        
+    var body: some View {
+        
+        HStack(alignment: .top, spacing: 20) {
+            
+            Image("food")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 140, height: 100)
+                .clipped()
+                .cornerRadius(20)
+            
+            VStack(alignment: .leading, spacing: 10) {
+                
+                Text("Lợn Xào Sả Ớt")
+                    .font(.custom(.customFont, size: 17))
+                    .fontWeight(.semibold)
+                    .lineLimit(1)
+                
+                StarRating(rating: 3.4, size: 13)
+                
+                Text("It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ")
+                    .font(.custom(.customFont, size: 14))
+                    .lineSpacing(5)
+                    .lineLimit(2)
+                    .foregroundColor(.gray)
+                
+            }
+            .frame(maxWidth: .infinity, alignment: .topLeading)
+            
+        }
+        
+    }
+}
+
+
+
 struct RecipeItemHorizontal_Previews: PreviewProvider {
     static var previews: some View {
         RecipeItemHorizontal(recipe:
