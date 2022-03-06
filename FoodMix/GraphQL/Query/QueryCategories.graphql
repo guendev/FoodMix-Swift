@@ -1,0 +1,29 @@
+query GetAllCategories {
+  getAllCategories {
+	id
+	name
+	slug
+	avatar
+	content
+	icon
+  }
+}
+
+
+query GetRecipesBycategories($slug: String!, $filter: SortOption!) {
+  getRecipesBycategories(slug: $slug, filter: $filter) {
+	id
+	name
+	slug
+	avatar
+	countRating
+	totalRating
+	user {
+	  id
+	  name
+	  slug
+	  avatar
+	}
+  }
+}
+

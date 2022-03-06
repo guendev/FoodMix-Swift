@@ -1,0 +1,12 @@
+
+mutation Signin($input: SignInInput!) {
+  signin(input: $input) {
+	token
+  }
+}
+
+mutation Signup($input: SignUpInput!) {
+  signup(input: $input) {
+	token
+  }
+}
