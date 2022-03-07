@@ -12,17 +12,20 @@ struct WelcomeView: View {
     
     @StateObject var viewModel: WelcomeViewModel = WelcomeViewModel()
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @EnvironmentObject var app: AppViewModel
+    
     @State var rotation: Double = .zero
-        
     
     var body: some View {
         
-        NavigationView {
-            OffsetPageTabView(offset: $viewModel.offset) {
-                
-                WelcomeAvatar()
-            }
-            .background(
+        OffsetPageTabView(offset: $viewModel.offset) {
+            
+            WelcomeAvatar()
+        }
+        .background(
+            
+            VStack {
                 
                 RoundedRectangle(cornerRadius: 50)
                     .fill(Color.white)
@@ -32,22 +35,24 @@ struct WelcomeView: View {
                     .rotationEffect(.init(degrees: rotation))
                     .offset(x: -20,y: -getScreenBounds().width / 2)
                 
-                ,alignment: .top
-                
-            )
-            .background(
-                
-                boardingScreens[viewModel.currentIndex].color
-                    .ignoresSafeArea()
-            )
-            .overlay(
-                
-                WelcomeButtons()
-                
-                ,alignment: .bottom
+            }
+                .frame(maxWidth: getScreenBounds().width)
             
-            )
-        }
+            ,alignment: .top
+            
+        )
+        .background(
+            
+            boardingScreens[viewModel.currentIndex].color
+                .ignoresSafeArea()
+        )
+        .overlay(
+            
+            WelcomeButtons()
+            
+            ,alignment: .bottom
+        
+        )
         .onChange(of: viewModel.offset) { value in
             
             DispatchQueue.main.async {
@@ -61,8 +66,10 @@ struct WelcomeView: View {
             
         }
         .environmentObject(viewModel)
-        .introspectNavigationController { navi in
-            navi.navigationBar.isHidden = true
+        .onAppear {
+            if app.auth {
+                presentationMode.wrappedValue.dismiss()
+            }
         }
         
     }
@@ -70,6 +77,8 @@ struct WelcomeView: View {
 
 struct Welcome_Previews: PreviewProvider {
     static var previews: some View {
-        WelcomeView()
+        PreviewWrapper {
+            WelcomeView()
+        }
     }
 }

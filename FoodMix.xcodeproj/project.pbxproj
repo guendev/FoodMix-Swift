@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C1BD21D27D55C6C003DC2E4 /* NavigationExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1BD21C27D55C6C003DC2E4 /* NavigationExtention.swift */; };
 		1CB3490727D479310061D9CD /* FoodMix.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1CB3490527D479310061D9CD /* FoodMix.xcdatamodeld */; };
 		1CB3490927D47FB70061D9CD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1CB3490827D47FB70061D9CD /* GoogleService-Info.plist */; };
 		1CB3490C27D4809F0061D9CD /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1CB3490B27D4809F0061D9CD /* FirebaseAnalytics */; };
@@ -114,6 +115,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C1BD21C27D55C6C003DC2E4 /* NavigationExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationExtention.swift; sourceTree = "<group>"; };
 		1CB3490627D479310061D9CD /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		1CB3490827D47FB70061D9CD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1CB3490F27D4A0420061D9CD /* PreviewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewWrapper.swift; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 		1CCC8BFD27D4752F00B5D3B9 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				1C1BD21C27D55C6C003DC2E4 /* NavigationExtention.swift */,
 				1CCC8BFE27D4752F00B5D3B9 /* ViewExtension.swift */,
 				1CCC8BFF27D4752F00B5D3B9 /* StringExtension.swift */,
 			);
@@ -728,6 +731,7 @@
 				1CCC8BDD27D4752700B5D3B9 /* HomeSearch.swift in Sources */,
 				1CB3491027D4A0420061D9CD /* PreviewWrapper.swift in Sources */,
 				1CB3491227D4A6CE0061D9CD /* Firebase.swift in Sources */,
+				1C1BD21D27D55C6C003DC2E4 /* NavigationExtention.swift in Sources */,
 				1CCC8BF227D4752700B5D3B9 /* RecipeItemHorizontal.swift in Sources */,
 				1CCC8BF827D4752700B5D3B9 /* ProfileStretchView.swift in Sources */,
 				1CCC8BEF27D4752700B5D3B9 /* RecipeAvatar.swift in Sources */,

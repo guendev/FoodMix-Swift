@@ -10,6 +10,10 @@ import SwiftUI
 struct AuthFormView: View {
     
     @EnvironmentObject var viewModel: AuthViewModel
+    
+    @EnvironmentObject var app: AppViewModel
+    
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
         
     var body: some View {
         
@@ -120,9 +124,20 @@ struct AuthFormView: View {
             Button {
 
                 if viewModel.type == .SignIn {
-                    viewModel.signin()
+                    viewModel.signin {
+                        // thành công
+                        app.queryUser {
+                            app.subNotifyAction()
+                            presentationMode.wrappedValue.dismiss()
+                        }
+                    }
                 } else {
-                    viewModel.signup()
+                    viewModel.signup {
+                        app.queryUser {
+                            app.subNotifyAction()
+                            presentationMode.wrappedValue.dismiss()
+                        }
+                    }
                 }
                 
             } label: {
@@ -173,6 +188,10 @@ struct AuthFormView: View {
 
 struct AuthFormView_Previews: PreviewProvider {
     static var previews: some View {
-        AuthView()
+        PreviewWrapper {
+            
+            AuthView()
+            
+        }
     }
 }

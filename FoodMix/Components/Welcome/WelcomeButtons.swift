@@ -10,6 +10,7 @@ import SwiftUI
 struct WelcomeButtons: View {
     
     @EnvironmentObject var viewModel: WelcomeViewModel
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
         
@@ -50,7 +51,7 @@ struct WelcomeButtons: View {
                 
                 Button {
                     
-                    viewModel.skipWelcome()
+                    presentationMode.wrappedValue.dismiss()
                                             
                 } label: {
                                             

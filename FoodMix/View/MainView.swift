@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Introspect
 
 struct MainView: View {
     
@@ -20,88 +19,81 @@ struct MainView: View {
     
     var body: some View {
         
-        NavigationView {
+        VStack(spacing: 0) {
             
-            VStack(spacing: 0) {
+            TabView(selection: $viewModel.currentTab) {
                 
-                TabView(selection: $viewModel.currentTab) {
-                    
-                    HomeView()
-                        .tag(MainTab.Home)
-                    
-                    ActivityView()
-                        .tag(MainTab.Activity)
-                    
-                    NotificationView()
-                        .tag(MainTab.Notification)
-                    
-                    SettingView()
-                        .tag(MainTab.Profile)
-                    
-                    
-                }
-                .overlay(
-                    
-                    HStack {
-                        
-                        ForEach(MainTab.allCases, id: \.self) { value in
-                            
-                            
-                            Button {
-                                
-                                viewModel.currentTab = value
-                                
-                            } label: {
-                                
-                                Image(value.rawValue)
-                                    .renderingMode(.template)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .foregroundColor( viewModel.currentTab == value ? Color("Ultramarine Blue") : .gray)
-                                    .frame(width: 24)
-                                
-                            }
-                            .frame(maxWidth: .infinity)
-                            .overlay(
-                            
-                                Group {
-                                    
-                                    if viewModel.currentTab == value {
-                                        
-                                        Circle()
-                                            .fill(Color("Ultramarine Blue"))
-                                            .frame(width: 6, height: 6)
-                                            .offset(x: 0, y: 15)
-                                            .matchedGeometryEffect(id: "MAINTAB", in: animation)
-                                        
-                                    }
-                                    
-                                }
-                                
-                                ,alignment: .bottom
-                            )
-                            
-                        }
-                        
-                    }
-                    .padding(.top)
-                    .padding(.bottom, safeInsets()?.bottom ?? 10)
-                    .background(Color.white)
-                    .clipShape(MainTabShape())
-                    .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
-                    
-                    ,alignment: .bottom
-                    
-                )
+                HomeView()
+                    .tag(MainTab.Home)
+                
+                ActivityView()
+                    .tag(MainTab.Activity)
+                
+                NotificationView()
+                    .tag(MainTab.Notification)
+                
+                SettingView()
+                    .tag(MainTab.Profile)
                 
                 
             }
-            .ignoresSafeArea(.all, edges: .bottom)
+            .overlay(
+                
+                HStack {
+                    
+                    ForEach(MainTab.allCases, id: \.self) { value in
+                        
+                        
+                        Button {
+                            
+                            viewModel.currentTab = value
+                            
+                        } label: {
+                            
+                            Image(value.rawValue)
+                                .renderingMode(.template)
+                                .resizable()
+                                .scaledToFit()
+                                .foregroundColor( viewModel.currentTab == value ? Color("Ultramarine Blue") : .gray)
+                                .frame(width: 24)
+                            
+                        }
+                        .frame(maxWidth: .infinity)
+                        .overlay(
+                        
+                            Group {
+                                
+                                if viewModel.currentTab == value {
+                                    
+                                    Circle()
+                                        .fill(Color("Ultramarine Blue"))
+                                        .frame(width: 6, height: 6)
+                                        .offset(x: 0, y: 15)
+                                        .matchedGeometryEffect(id: "MAINTAB", in: animation)
+                                    
+                                }
+                                
+                            }
+                            
+                            ,alignment: .bottom
+                        )
+                        
+                    }
+                    
+                }
+                .padding(.top)
+                .padding(.bottom, safeInsets()?.bottom ?? 10)
+                .background(Color.white)
+                .clipShape(MainTabShape())
+                .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
+                
+                ,alignment: .bottom
+                
+            )
+            
             
         }
-        .introspectNavigationController { navi in
-            navi.navigationBar.isHidden = true
-        }
+        .ignoresSafeArea(.all, edges: .bottom)
         
     }
 }

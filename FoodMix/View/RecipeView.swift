@@ -9,6 +9,8 @@ import SwiftUI
 
 struct RecipeView: View {
     
+    var recipe: Recipe
+    
     @StateObject var viewModel: RecipeViewModel = RecipeViewModel()
         
     var body: some View {
@@ -47,10 +49,9 @@ struct RecipeView: View {
         )
         .onAppear {
             
-            viewModel.getRecipe("12345")
+            viewModel.getRecipe(recipe.slug)
             
         }
-        // .redacted(reason: /*@START_MENU_TOKEN@*/.placeholder/*@END_MENU_TOKEN@*/)
         .environmentObject(viewModel)
     }
     
@@ -58,6 +59,10 @@ struct RecipeView: View {
 
 struct RecipeView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeView()
+        PreviewWrapper {
+            
+            RecipeView(recipe: Recipe(id: "6211e6447d3b441181c395da", name: "Lê Thị Kim Ngân", slug: "le-thi-kim-ngan", avatar: "https://cdn.tgdd.vn/2021/03/CookProduct/bunmocchangio-1200x676.jpg"))
+            
+        }
     }
 }

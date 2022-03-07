@@ -10,7 +10,10 @@ import SwiftUI
 struct RecipeStretchAvatar: View {
     
     @EnvironmentObject var viewModel: RecipeViewModel
+    @EnvironmentObject var app: AppViewModel
     
+    @State var checked: Bool = false
+        
     var body: some View {
         GeometryReader { geo in
             
@@ -20,8 +23,22 @@ struct RecipeStretchAvatar: View {
                     
                     Color.clear
                         .overlay(
-                            RecipeAvatar(avatar: viewModel.recipe!.avatar)
-                                .scaledToFill()
+                            Group {
+                                
+                                if viewModel.loading || viewModel.recipe == nil {
+                                    
+                                    Image("food")
+                                        .resizable()
+                                        .scaledToFill()
+                                    
+                                } else {
+                                    
+                                    RecipeAvatar(avatar: viewModel.recipe!.avatar)
+                                        .scaledToFill()
+                                    
+                                }
+                                
+                            }
                         )
                         .clipShape(RecipeClip())
                 }
@@ -41,7 +58,6 @@ struct RecipeStretchAvatar: View {
             Button {
                 
             } label: {
-                
                 Image(systemName: "heart")
                     .resizable()
                     .scaledToFit()
@@ -53,22 +69,40 @@ struct RecipeStretchAvatar: View {
                     .shadow(color: Color("Flickr Pink"), radius: 2, x: 0, y: 0)
                 
             }
-            .offset(x: -30, y: -30)
+                .disabled(!viewModel.ready)
+                .offset(x: -30, y: -30)
+                .withAuth($app.auth)
             
             ,alignment: .bottomTrailing
             
         )
+        .redacted(reason: viewModel.ready ? [] : .placeholder)
+        .onReceive(viewModel.$recipe) { _ in
+            checkBookmarkHandle()
+        }
     }
     
     func scaleHeight(_ rect: CGRect) -> Void {
         viewModel.stretchHeight = rect.minY >= 0 ? rect.minY : 0
         viewModel.offset = rect.minY
     }
+    
+    func checkBookmarkHandle() -> Void {
+        if !checked && app.auth {
+            // chỉ check khi đã đăng nhập / chưa check
+            checked.toggle()
+            viewModel.getBookmark()
+        }
+    }
 }
 
 struct RecipeStretchAvatar_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeStretchAvatar()
+        PreviewWrapper {
+            
+            RecipeView(recipe: Recipe(id: "6211e6447d3b441181c395da", name: "Lê Thị Kim Ngân", slug: "le-thi-kim-ngan", avatar: "https://cdn.tgdd.vn/2021/03/CookProduct/bunmocchangio-1200x676.jpg"))
+            
+        }
     }
 }
 

@@ -35,6 +35,8 @@ class HomeViewModel: ObservableObject {
         }
         loadingCategories = true
         
+        Network.shared.apollo.fetch(query: GetAllCategoriesQuery())
+        
         Network.shared.apollo.fetch(query: GetAllCategoriesQuery()) { [weak self] result in
             guard let self = self else {
                   return
@@ -156,8 +158,6 @@ class HomeViewModel: ObservableObject {
             return
         }
         loadingUpdated = true
-        
-        print("❌ DEBUG: Loading \(page)")
         
         Network.shared.apollo.fetch(query: HomeUpdatedQuery(filter: SortOption(sort: "createdAt", page: "\(page)", limit: "10"))) { [weak self] result in
             guard let self = self else {

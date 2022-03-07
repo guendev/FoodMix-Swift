@@ -13,10 +13,6 @@ import SwiftUI
 class Network {
     
     static let shared = Network()
-    
-    static var token: String = {
-        return UserDefaults.standard.string(forKey: "jsonwebtoken") ?? ""
-    }()
 
     private(set) lazy var apollo: ApolloClient = {
     
@@ -24,7 +20,7 @@ class Network {
         /// An HTTP transport to use for queries and mutations
         let cache = InMemoryNormalizedCache()
         let store1 = ApolloStore(cache: cache)
-        let authPayloads = ["Authorization": "Bearer \(Network.token)"]
+        let authPayloads = ["Authorization": "Bearer \(getToken())"]
         let configuration = URLSessionConfiguration.default
         configuration.httpAdditionalHeaders = authPayloads
                 
@@ -69,7 +65,7 @@ class JsonWebTokenInterceptor: ApolloInterceptor {
         request: HTTPRequest<Operation>,
         response: HTTPResponse<Operation>?,
         completion: @escaping (Swift.Result<GraphQLResult<Operation.Data>, Error>) -> Void) {
-        request.addHeader(name: "Authorization", value: "Bearer \(Network.token)")
+        request.addHeader(name: "Authorization", value: "Bearer \(getToken())")
         
         print("\n☁️ GraphQL: \(request.operation.operationName)")
         chain.proceedAsync(request: request, response: response, completion: completion)
@@ -109,9 +105,7 @@ class ResponseLoggingInterceptor: ApolloInterceptor {
     if let error = graphQLResult.errors?.first {
         
         if let code = error.extensions?["code"] as? String {
-            
-            print("\n🔥 GraphQL Error: \(request.operation.operationName) - \(code) - \(error.message!)")
-            
+                        
             switch code {
             case "UNAUTHENTICATED":
                 // Không đăng nhập
@@ -126,4 +120,8 @@ class ResponseLoggingInterceptor: ApolloInterceptor {
     }
     
   }
+}
+
+fileprivate func getToken() -> String {
+    return UserDefaults.standard.string(forKey: "jsonwebtoken") ?? ""
 }

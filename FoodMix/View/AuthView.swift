@@ -11,6 +11,8 @@ struct AuthView: View {
     
     @StateObject var viewModel: AuthViewModel = AuthViewModel()
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     @State var animation: Bool = false
     
     var body: some View {
@@ -18,7 +20,15 @@ struct AuthView: View {
             
             HStack {
                 
-                Image(systemName: "arrow.left")
+                Button {
+                    
+                    presentationMode.wrappedValue.dismiss()
+                    
+                } label: {
+                    
+                    Image(systemName: "arrow.left")
+                    
+                }
                 
                 Spacer()
             }

@@ -59,8 +59,3 @@ struct RecipeIngredientsView: View {
     }
 }
 
-struct RecipeIngredientsView_Previews: PreviewProvider {
-    static var previews: some View {
-        RecipeView()
-    }
-}

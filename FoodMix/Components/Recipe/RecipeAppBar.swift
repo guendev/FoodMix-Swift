@@ -40,6 +40,7 @@ struct RecipeAppBar: View {
                 .scaledToFit()
                 .frame(width: 20)
                 .rotationEffect(Angle.init(degrees: 90))
+                .withAuth(.constant(false))
                 // .foregroundColor(.gray)
         }
         .padding(.vertical)
@@ -55,8 +56,3 @@ struct RecipeAppBar: View {
     }
 }
 
-struct RecipeAppBar_Previews: PreviewProvider {
-    static var previews: some View {
-        RecipeView()
-    }
-}

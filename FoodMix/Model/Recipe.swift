@@ -6,8 +6,9 @@
 //
 
 import SwiftUI
+import Apollo
 
-struct Recipe: Identifiable {
+struct Recipe: Identifiable, Codable {
     let id: String
     var name: String
     var slug: String
@@ -29,17 +30,21 @@ struct Recipe: Identifiable {
     var createdAt: Float?
 }
 
-struct Stepper {
+struct Stepper: Identifiable, Codable {
     var id = UUID().uuidString
     let name: String
     let content: String
-    let image: String
+    let image: String?
+    
+    enum CodingKeys : String, CodingKey { case name, content, image }
 }
 
 
-struct Ingredient {
+struct Ingredient: Codable, Identifiable {
     var id = UUID().uuidString
     let name: String
     let count: Int
     let unit: String
+    
+    enum CodingKeys : String, CodingKey { case name, count, unit }
 }

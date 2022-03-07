@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct Category: Identifiable {
+struct Category: Identifiable, Codable {
     
     let id: String
     let name: String
     let slug: String
-    let avatar: String?
-    let content: String?
-    let icon: String?
+    var avatar: String?
+    var content: String?
+    var icon: String?
     
 }

@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct User: Identifiable {
+struct User: Identifiable, Codable {
     let id: String
     var name: String
     var email: String?
     let slug: String
-    var role: String = "user"
+    var role: String? = "user"
     var avatar: String?
     var banner: String?
     var province: String?

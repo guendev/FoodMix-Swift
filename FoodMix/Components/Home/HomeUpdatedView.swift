@@ -26,7 +26,7 @@ struct HomeUpdatedView: View {
                 
                 ForEach(viewModel.updatedRecipes, id:\.id) { item in
                     
-                    NavigationLink( destination: RecipeView()) {
+                    NavigationLink( destination: RecipeView(recipe: item)) {
                         
                         RecipeItemHorizontal(recipe: item)
                             .padding()
@@ -44,6 +44,7 @@ struct HomeUpdatedView: View {
                     ListPlaceholder()
                     
                 }
+                
                 
                 if !viewModel.emptyUpdated {
                     Button {

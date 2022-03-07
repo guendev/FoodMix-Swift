@@ -8,11 +8,25 @@
 import SwiftUI
 
 class RecipeViewModel: ObservableObject {
+                
+    @Published var recipe: Recipe? {
+        
+        didSet {
+            ready = loading || recipe != nil
+        }
+        
+    }
     
-    @Published var slug: String?
+    @Published var loading: Bool = false {
+        
+        didSet {
+            ready = loading || recipe != nil
+        }
+        
+    }
     
-    @Published var recipe: Recipe?
-    
+    @Published var ready: Bool = false
+        
     @Published var offset: CGFloat = .zero
     
     @Published var stretchHeight: CGFloat = .zero
@@ -20,27 +34,49 @@ class RecipeViewModel: ObservableObject {
     
     func getRecipe(_ slug: String) -> Void {
         
-        recipe = Recipe(
-            id: "1",
-            name: "Lợn Xào Sả Ớt",
-            slug: "", avatar: "https://img.traveltriangle.com/blog/wp-content/uploads/2018/12/cover-for-street-food-in-sydney.jpg",
-            user: User(id: "1", name: "Kim Ngân", slug: "", avatar: "https://user-pic.webnovel.com/userheadimg/4307667847-10/200.jpg"),
-            ingredients: [
-                Ingredient(name: "Hành Lá", count: 200, unit: "gram"),
-                Ingredient(name: "Thịt Bò", count: 120, unit: "lit"),
-                Ingredient(name: "Hành Lá", count: 200, unit: "gram"),
-                Ingredient(name: "Thịt Bò", count: 120, unit: "lit"),
-                Ingredient(name: "Hành Lá", count: 200, unit: "gram"),
-                Ingredient(name: "Thịt Bò", count: 120, unit: "lit"),
-                Ingredient(name: "Hành Lá", count: 200, unit: "gram"),
-                Ingredient(name: "Thịt Bò", count: 120, unit: "lit")
-            ], stepper: [
-                Stepper(name: "Chuẩn Bị",content: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.", image: ""),
-                Stepper(name: "Luộc Thịt", content: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.", image: ""),
-                Stepper(name: "Hầm Xương", content: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.", image: ""),
-                Stepper(name: "Trang Trí", content: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.", image: "")
-            ]
-        )
+        if loading {
+            return
+        }
+        loading = true
+        
+        Network.shared.apollo.fetch(query: GetRecipeQuery(id: slug)) { [weak self] result in
+            
+            guard let self = self else {
+                  return
+            }
+            
+            switch result {
+            
+            case .success(let graphQLResult):
+                if graphQLResult.errors != nil {
+                    break
+                }
+                
+                guard let rawData = graphQLResult.data?.getRecipe else { break }
+                
+                guard let jsonData = try? JSONSerialization.data(withJSONObject: rawData.jsonObject) else { break }
+                
+                guard let recipe = try? JSONDecoder().decode(Recipe.self, from: jsonData) else { break }
+                
+                self.recipe = recipe
+                self.loading = false
+                
+                // sub recipe
+                
+                // getbookmark
+                self.getBookmark()
+                
+                
+            case .failure(_):
+                break
+            }
+            
+        }
+    }
+    
+    func getBookmark() -> Void { }
+    
+    func bookmarkAction() -> Void {
         
     }
     

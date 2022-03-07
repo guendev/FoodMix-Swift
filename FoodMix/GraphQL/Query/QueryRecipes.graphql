@@ -1,3 +1,42 @@
+query GetRecipe($id: String!) {
+  getRecipe(id: $id) {
+	id
+	name
+	slug
+	avatar
+	content
+	category {
+	  id
+	  name
+	  slug
+	  icon
+	}
+	user {
+	  id
+	  name
+	  email
+	  slug
+	  avatar
+	}
+	ingredients {
+	  name
+	  count
+	  unit
+	}
+	stepper {
+	  name
+	  content
+	  image
+	}
+	time
+	preparation
+	views
+	countRating
+	totalRating
+  }
+}
+
+
 query HomeUpdated($filter: SortOption!) {
   getRecipes(filter: $filter) {
 	id

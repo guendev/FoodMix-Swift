@@ -10,25 +10,24 @@ import SwiftValidators
 
 class AuthViewModel: ObservableObject {
     
-    @AppStorage("welcome") var welcome: Bool = true
     
     @Published var name: String = ""
     @Published var nameError: String = ""
     
-    @Published var email: String = ""
+    @Published var email: String = "dnstylish@gmail.com"
     @Published var emailError: String = ""
     
-    @Published var password: String = ""
+    @Published var password: String = "Khoi@025"
     @Published var passwordError: String = ""
     
     @Published var showPass: Bool = false
     
-    @Published var type: AuthPage = .SignUp
+    @Published var type: AuthPage = .SignIn
     
     @Published var loading: Bool = false
     
     
-    func signin() -> Void {
+    func signin(success: @escaping () -> Void) -> Void {
         
         validateForm {
             
@@ -44,8 +43,7 @@ class AuthViewModel: ObservableObject {
                 
                 case .success(let graphQLResult) :
                     
-                    if let errors = graphQLResult.errors {
-                        print("❌ DEBUG: \(errors)")
+                    if graphQLResult.errors != nil {
                         break
                     }
 
@@ -53,8 +51,8 @@ class AuthViewModel: ObservableObject {
                     UserDefaults.standard.set(graphQLResult.data?.signin.token, forKey: "jsonwebtoken")
                     
                     Toastify.show("Đăng Nhập Thành Công", image: "bell")
-                                        
-                    self.welcome = false
+                                      
+                    success()
                                     
                     break
                     
@@ -70,7 +68,7 @@ class AuthViewModel: ObservableObject {
         
     }
     
-    func signup() -> Void {
+    func signup(success: @escaping () -> Void) -> Void {
         validateForm {
             self.loading = true
             Network.shared.apollo.perform(mutation: SignupMutation(input: SignUpInput(name: self.name, email: self.email, password: self.password))) { [weak self] result in
@@ -94,8 +92,8 @@ class AuthViewModel: ObservableObject {
                     
                     Toastify.show("Đăng Ký Thành Công", image: "bell")
                     
-                    self.welcome = false
-                                    
+                    success()
+                                                        
                     break
                     
                 case .failure(_): break

@@ -217,7 +217,7 @@ struct HomeCategories: View {
             
             ForEach(viewModel.recipesBycategory, id: \.id) { recipe in
                 
-                NavigationLink(destination: RecipeView()) {
+                NavigationLink(destination: RecipeView(recipe: recipe)) {
                     
                     RecipeItemView(recipe: recipe)
                     

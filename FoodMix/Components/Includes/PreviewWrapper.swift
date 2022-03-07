@@ -9,27 +9,53 @@ import SwiftUI
 
 struct PreviewWrapper<Content: View>: View {
     
+    // welcome -> mở app lần đầu
     @AppStorage("welcome") var welcome: Bool = true
     
+    @StateObject private var viewModel: AppViewModel = AppViewModel()
+    
+    @State private var isActive: Bool = false
+        
     let persistenceController = PersistenceController.shared
     let content: Content
-    
-    @StateObject private var viewModel: AppViewModel = AppViewModel()
-        
+            
     init(@ViewBuilder content: () -> Content) {
         self.content = content()
     }
     
     var body: some View {
         NavigationView {
-            
             content
-            
+                .background(
+                    
+                    Group {
+                        // view ẩn
+                        NavigationLink(isActive: $isActive) {
+                            WelcomeView()
+                        } label: {
+                            EmptyView()
+                        }
+
+                        
+                    }
+                    .hidden()
+                    
+                )
+                .onAppear {
+                    
+                    // welcome = true
+                    
+                    if welcome {
+                        welcome = false
+                        isActive = true
+                    }
+                    
+                }
         }
-        .environment(\.managedObjectContext, persistenceController.container.viewContext)
         .environmentObject(viewModel)
         .introspectNavigationController { nav in
             nav.navigationBar.isHidden = true
         }
+        .environment(\.managedObjectContext, persistenceController.container.viewContext)
     }
 }

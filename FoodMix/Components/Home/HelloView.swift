@@ -14,6 +14,7 @@ struct HelloView: View {
     
     @State var navigationController: UINavigationController?
     
+    
     var body: some View {
         HStack {
             
@@ -35,25 +36,11 @@ struct HelloView: View {
                 .fill(Color("Ultramarine Blue").opacity(0.5))
                 .overlay(
                     
-                    Button {
-                        
-                        if app.auth {
-                            // vào profile
-                        } else {
-                            // welcome = true
-                        }
-                        
-                    } label: {
-                        
-                        if app.auth {
-                            RecipeAvatar(avatar: app.user?.avatar)
-                        } else {
-                            Image("avatar")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 50, height: 50)
-                        }
-                        
+                    NavigationLink(destination: Color.red) {
+                        Image("avatar")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 50, height: 50)
                     }
                     
                 )

@@ -6,30 +6,50 @@
 //
 
 import SwiftUI
+import Introspect
 
 struct ContentView: View {
     
+    // welcome -> mở app lần đầu
     @AppStorage("welcome") var welcome: Bool = true
     
     @StateObject private var viewModel: AppViewModel = AppViewModel()
     
+    @State private var isActive: Bool = false
+    
     var body: some View {
-        ZStack {
-            if welcome {
-                WelcomeView()
-            } else {
-                // SearchView()
-                MainView()
-                // AuthView()
-            }
-            
-        }
-        .transition(.slide)
-        .animation(.easeInOut)
-        .onAppear {
-             // welcome = true
+        NavigationView {
+            MainView()
+                .background(
+                    
+                    Group {
+                        // view ẩn
+                        NavigationLink(isActive: $isActive) {
+                            WelcomeView()
+                        } label: {
+                            EmptyView()
+                        }
+
+                        
+                    }
+                    .hidden()
+                    
+                )
+                .onAppear {
+                    
+                    // welcome = true
+                    
+                    if welcome {
+                        welcome = false
+                        isActive = true
+                    }
+                    
+                }
         }
         .environmentObject(viewModel)
+        .introspectNavigationController { nav in
+            nav.navigationBar.isHidden = true
+        }
     }
 }
 

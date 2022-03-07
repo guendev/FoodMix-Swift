@@ -9,13 +9,10 @@ import SwiftUI
 import Apollo
 
 class AppViewModel: ObservableObject {
-    
     @Published var user: User? {
         
         didSet {
-            
             auth = user != nil
-            
         }
         
     }
@@ -26,13 +23,17 @@ class AppViewModel: ObservableObject {
     
     init() {
         
+        UserDefaults.standard.removeObject(forKey: "jsonwebtoken")
+        
         if UserDefaults.standard.string(forKey: "jsonwebtoken") != nil {
-            queryUser()
+            queryUser {
+                self.subNotifyAction()
+            }
         }
         
     }
     
-    func queryUser() -> Void {
+    func queryUser(success: @escaping () -> Void) -> Void {
         
         Network.shared.apollo.fetch(query: MeQuery()) { [weak self] result in
             
@@ -46,24 +47,15 @@ class AppViewModel: ObservableObject {
                     break
                 }
                 
-                if let value = graphQLResult.data?.me {
-                    
-                    self.user = User(
-                        id: value.id!,
-                        name: value.name,
-                        email: value.email,
-                        slug: value.slug,
-                        role: value.role,
-                        avatar: value.avatar
-                    )
-                    
-                }
+                guard let rawData = graphQLResult.data?.me else { break }
                 
-                if self.auth {
-                    
-                    self.subNotifyAction()
-                    
-                }
+                guard let jsonData = try? JSONSerialization.data(withJSONObject: rawData.jsonObject) else { break }
+                
+                guard let user = try? JSONDecoder().decode(User.self, from: jsonData) else { break }
+                
+                self.user = user
+                                
+                success()
                 
                 
             case .failure(_):
@@ -87,6 +79,5 @@ class AppViewModel: ObservableObject {
         }
         
     }
-    
     
 }
