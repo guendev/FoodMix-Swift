@@ -70,11 +70,29 @@ class AppViewModel: ObservableObject {
     func subNotifyAction() -> Void {
         
         print("❌ DEBUG: Sub Notify start....")
-        subNotify =  Network.shared.apollo.subscribe(subscription: SubNotifySubscription()) { [weak self] result in
+        subNotify =  Network.shared.apollo.subscribe(subscription: SubNotifySubscription()) { result in
             
-            guard self != nil else { return }
+            switch result {
             
-            print("❌ DEBUG: \(result)")
+            case .success(let graphQLResult):
+                
+                if graphQLResult.errors != nil {
+                    break
+                }
+                
+                guard let rawData = graphQLResult.data?.subNotify else { break }
+                
+                guard let jsonData = try? JSONSerialization.data(withJSONObject: rawData.jsonObject) else { break }
+                
+                guard let notify = try? JSONDecoder().decode(Notify.self, from: jsonData) else { break }
+                
+                Toastify.show(notify.msg, image: "bell", background: notify.success() ? Color("Primary") : Color("Flickr Pink"))
+                
+                
+            case .failure(_):
+                break
+            
+            }
             
         }
         

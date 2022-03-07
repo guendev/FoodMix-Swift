@@ -28,6 +28,18 @@ struct Recipe: Identifiable, Codable {
     var views: Int?
     
     var createdAt: Float?
+    
+    func rating() -> Double {
+        
+        if countRating == nil || totalRating == nil || countRating == 0 || totalRating == 0 {
+            return 0.0
+        }
+        
+        let doubleValue = Double(totalRating!) / Double(countRating! * 5)
+        
+        return doubleValue.round(to: 1)
+        
+    }
 }
 
 struct Stepper: Identifiable, Codable {

@@ -35,7 +35,10 @@ class Network {
         
         let urlWs = URL(string: "ws://localhost:3000/graphql")!
         let webSocketClient = WebSocket(url: urlWs, protocol: .graphql_ws)
-        let wsTransport = WebSocketTransport(websocket: webSocketClient)
+        
+        let authPayload = ["Authorization": "Bearer \(getToken())"]
+        
+        let wsTransport = WebSocketTransport(websocket: webSocketClient, connectingPayload: authPayload)
         
         var splitNetworkTransport = SplitNetworkTransport(
             uploadingNetworkTransport: requestChainTransport,

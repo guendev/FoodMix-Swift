@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StarRating: View {
     
-    @State var rating: CGFloat
+    @State var rating: Double
     var size: CGFloat = 20
     var activeColor: Color = .yellow
     var disableColor: Color = .gray.opacity(0.3)

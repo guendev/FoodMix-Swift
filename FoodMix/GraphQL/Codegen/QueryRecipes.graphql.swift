@@ -30,6 +30,7 @@ public final class GetRecipeQuery: GraphQLQuery {
           email
           slug
           avatar
+          countRecipe
         }
         ingredients {
           __typename
@@ -340,6 +341,7 @@ public final class GetRecipeQuery: GraphQLQuery {
             GraphQLField("email", type: .nonNull(.scalar(String.self))),
             GraphQLField("slug", type: .nonNull(.scalar(String.self))),
             GraphQLField("avatar", type: .scalar(String.self)),
+            GraphQLField("countRecipe", type: .scalar(Int.self)),
           ]
         }
 
@@ -349,8 +351,8 @@ public final class GetRecipeQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(id: GraphQLID, name: String, email: String, slug: String, avatar: String? = nil) {
-          self.init(unsafeResultMap: ["__typename": "User", "id": id, "name": name, "email": email, "slug": slug, "avatar": avatar])
+        public init(id: GraphQLID, name: String, email: String, slug: String, avatar: String? = nil, countRecipe: Int? = nil) {
+          self.init(unsafeResultMap: ["__typename": "User", "id": id, "name": name, "email": email, "slug": slug, "avatar": avatar, "countRecipe": countRecipe])
         }
 
         public var __typename: String {
@@ -404,6 +406,15 @@ public final class GetRecipeQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue, forKey: "avatar")
+          }
+        }
+
+        public var countRecipe: Int? {
+          get {
+            return resultMap["countRecipe"] as? Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "countRecipe")
           }
         }
       }

@@ -10,7 +10,7 @@ import SwiftUI
 @available(iOS 13.0, *)
 struct Toastify {
     
-    static func show(_ title: String, image: String? = nil, foregroundColor: Color = Color("Primary"), background: Color = .white) -> Void {
+    static func show(_ title: String, image: String? = nil, foregroundColor: Color = .white, background: Color = Color("Primary")) -> Void {
         
         if getRootController().view.subviews.contains(where: { view in
             return view.tag == 1009

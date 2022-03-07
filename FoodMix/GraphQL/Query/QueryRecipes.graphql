@@ -17,6 +17,7 @@ query GetRecipe($id: String!) {
 	  email
 	  slug
 	  avatar
+	  countRecipe
 	}
 	ingredients {
 	  name
