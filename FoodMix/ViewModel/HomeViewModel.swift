@@ -53,7 +53,7 @@ class HomeViewModel: ObservableObject {
                     
                     guard let item = item else { return }
                     self.catgories.append(
-                        Category(id: item.id!, name: item.name, slug: item.slug, avatar: item.avatar, content: item.content, icon: item.icon)
+                        Category(id: item.id, name: item.name, slug: item.slug, avatar: item.avatar, content: item.content, icon: item.icon)
                     )
                 })
                                 
@@ -104,11 +104,11 @@ class HomeViewModel: ObservableObject {
                     
                     self.recipesBycategory.append(
                         Recipe(
-                            id: item.id!,
+                            id: item.id,
                             name: item.name,
                             slug: item.slug,
                             avatar: item.avatar,
-                            user: User(id: item.user!.id!, name: item.user!.name, slug: item.user!.slug),
+                            user: User(id: item.user!.id, name: item.user!.name, slug: item.user!.slug),
                             countRating: item.countRating,
                             totalRating: item.totalRating
                         )
@@ -186,13 +186,13 @@ class HomeViewModel: ObservableObject {
                         
                         self.updatedRecipes.append(
                             Recipe(
-                                id: item.id!,
+                                id: item.id,
                                 name: item.name,
                                 slug: item.slug,
                                 avatar: item.avatar,
                                 content: item.content,
                                 user: User(
-                                    id: item.user!.id!,
+                                    id: item.user!.id,
                                     name: item.user!.name,
                                     slug: item.user!.slug,
                                     avatar: item.user!.avatar

@@ -10,9 +10,10 @@ import SwiftUI
 struct RecipeStretchAvatar: View {
     
     @EnvironmentObject var viewModel: RecipeViewModel
-    @EnvironmentObject var app: AppViewModel
     
     @State var checked: Bool = false
+    
+    @Environment(\.authKey) var auth
         
     var body: some View {
         GeometryReader { geo in
@@ -56,43 +57,45 @@ struct RecipeStretchAvatar: View {
         .overlay(
             
             Button {
+        
+                viewModel.bookmarkAction()
                 
             } label: {
-                Image(systemName: "heart")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 25, height: 25)
-                    .foregroundColor(.white)
-                    .frame(width: 50, height: 50)
-                    .background(Color("Flickr Pink"))
-                    .clipShape(Circle())
-                    .shadow(color: Color("Flickr Pink"), radius: 2, x: 0, y: 0)
+                                                        
+                Group {
+                    if viewModel.bookmarked != nil {
+                        Image(systemName: "heart.fill")
+                            .resizable()
+                            .scaledToFit()
+                    } else {
+                        
+                        Image(systemName: "heart")
+                            .resizable()
+                            .scaledToFit()
+                        
+                    }
+                }
+                .frame(width: 25, height: 25)
+                .foregroundColor(.white)
+                .frame(width: 50, height: 50)
+                .background(Color("Flickr Pink"))
+                .clipShape(Circle())
+                .shadow(color: Color("Flickr Pink"), radius: 2, x: 0, y: 0)
                 
             }
                 .disabled(!viewModel.ready)
                 .offset(x: -30, y: -30)
-                .withAuth($app.auth)
+                .withAuth($viewModel.auth)
             
             ,alignment: .bottomTrailing
             
         )
         .redacted(reason: viewModel.ready ? [] : .placeholder)
-        .onReceive(viewModel.$recipe) { _ in
-            checkBookmarkHandle()
-        }
     }
     
     func scaleHeight(_ rect: CGRect) -> Void {
         viewModel.stretchHeight = rect.minY >= 0 ? rect.minY : 0
         viewModel.offset = rect.minY
-    }
-    
-    func checkBookmarkHandle() -> Void {
-        if !checked && app.auth {
-            // chỉ check khi đã đăng nhập / chưa check
-            checked.toggle()
-            viewModel.getBookmark()
-        }
     }
 }
 

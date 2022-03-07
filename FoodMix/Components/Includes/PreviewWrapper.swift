@@ -57,5 +57,7 @@ struct PreviewWrapper<Content: View>: View {
             nav.navigationBar.isHidden = true
         }
         .environment(\.managedObjectContext, persistenceController.container.viewContext)
+        .environment(\.authKey, viewModel.auth)
+        .environment(\.currentUserKey, viewModel.user)
     }
 }

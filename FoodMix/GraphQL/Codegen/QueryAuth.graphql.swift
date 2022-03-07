@@ -60,7 +60,7 @@ public final class MeQuery: GraphQLQuery {
       public static var selections: [GraphQLSelection] {
         return [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("id", type: .scalar(GraphQLID.self)),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
           GraphQLField("email", type: .nonNull(.scalar(String.self))),
           GraphQLField("slug", type: .nonNull(.scalar(String.self))),
@@ -75,7 +75,7 @@ public final class MeQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: GraphQLID? = nil, name: String, email: String, slug: String, avatar: String? = nil, role: String) {
+      public init(id: GraphQLID, name: String, email: String, slug: String, avatar: String? = nil, role: String) {
         self.init(unsafeResultMap: ["__typename": "User", "id": id, "name": name, "email": email, "slug": slug, "avatar": avatar, "role": role])
       }
 
@@ -88,9 +88,9 @@ public final class MeQuery: GraphQLQuery {
         }
       }
 
-      public var id: GraphQLID? {
+      public var id: GraphQLID {
         get {
-          return resultMap["id"] as? GraphQLID
+          return resultMap["id"]! as! GraphQLID
         }
         set {
           resultMap.updateValue(newValue, forKey: "id")

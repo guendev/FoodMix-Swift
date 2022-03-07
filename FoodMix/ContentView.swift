@@ -50,6 +50,8 @@ struct ContentView: View {
         .introspectNavigationController { nav in
             nav.navigationBar.isHidden = true
         }
+        .environment(\.authKey, viewModel.auth)
+        .environment(\.currentUserKey, viewModel.user)
     }
 }
 

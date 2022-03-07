@@ -54,3 +54,10 @@ query HomeUpdated($filter: SortOption!) {
 	}
   }
 }
+
+query CheckBookmark($id: String!) {
+  checkBookmark(id: $id) {
+	id
+	createdAt
+  }
+}

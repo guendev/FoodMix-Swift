@@ -52,6 +52,7 @@ struct RecipeView: View {
             viewModel.getRecipe(recipe.slug)
             
         }
+        .asyncAuthData(auth: $viewModel.auth, currentUser: $viewModel.currentUser)
         .environmentObject(viewModel)
     }
     

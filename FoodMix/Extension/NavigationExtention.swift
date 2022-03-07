@@ -23,27 +23,36 @@ struct WithAuth: ViewModifier {
     
     func body(content: Content) -> some View {
         
-        Button {
-            if !auth {
-                isActive = true
-            }
-        } label: {
-            content.disabled(true)
-        }
-        .background(
-            Group {
+        Group {
+            
+            if auth {
+                content
+            } else {
                 
-                if !auth {
-                    NavigationLink(isActive: $isActive) {
-                        WelcomeView()
-                    } label: {
-                        EmptyView()
-                    }
-                    .hidden()
+                Button {
+                    isActive = true
+                    
+                } label: {
+                    content.disabled(true)
                 }
+                .background(
+                    Group {
+                        
+                        if !auth {
+                            NavigationLink(isActive: $isActive) {
+                                WelcomeView()
+                            } label: {
+                                EmptyView()
+                            }
+                            .hidden()
+                        }
+                        
+                    }
+                )
                 
             }
-        )
+            
+        }
 
         
     }

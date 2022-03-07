@@ -60,7 +60,7 @@ public final class GetAllCategoriesQuery: GraphQLQuery {
       public static var selections: [GraphQLSelection] {
         return [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("id", type: .scalar(GraphQLID.self)),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
           GraphQLField("slug", type: .nonNull(.scalar(String.self))),
           GraphQLField("avatar", type: .nonNull(.scalar(String.self))),
@@ -75,7 +75,7 @@ public final class GetAllCategoriesQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: GraphQLID? = nil, name: String, slug: String, avatar: String, content: String, icon: String) {
+      public init(id: GraphQLID, name: String, slug: String, avatar: String, content: String, icon: String) {
         self.init(unsafeResultMap: ["__typename": "Category", "id": id, "name": name, "slug": slug, "avatar": avatar, "content": content, "icon": icon])
       }
 
@@ -88,9 +88,9 @@ public final class GetAllCategoriesQuery: GraphQLQuery {
         }
       }
 
-      public var id: GraphQLID? {
+      public var id: GraphQLID {
         get {
-          return resultMap["id"] as? GraphQLID
+          return resultMap["id"]! as! GraphQLID
         }
         set {
           resultMap.updateValue(newValue, forKey: "id")
@@ -217,7 +217,7 @@ public final class GetRecipesBycategoriesQuery: GraphQLQuery {
       public static var selections: [GraphQLSelection] {
         return [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("id", type: .scalar(GraphQLID.self)),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
           GraphQLField("slug", type: .nonNull(.scalar(String.self))),
           GraphQLField("avatar", type: .nonNull(.scalar(String.self))),
@@ -233,7 +233,7 @@ public final class GetRecipesBycategoriesQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: GraphQLID? = nil, name: String, slug: String, avatar: String, countRating: Int, totalRating: Int, user: User? = nil) {
+      public init(id: GraphQLID, name: String, slug: String, avatar: String, countRating: Int, totalRating: Int, user: User? = nil) {
         self.init(unsafeResultMap: ["__typename": "Recipe", "id": id, "name": name, "slug": slug, "avatar": avatar, "countRating": countRating, "totalRating": totalRating, "user": user.flatMap { (value: User) -> ResultMap in value.resultMap }])
       }
 
@@ -246,9 +246,9 @@ public final class GetRecipesBycategoriesQuery: GraphQLQuery {
         }
       }
 
-      public var id: GraphQLID? {
+      public var id: GraphQLID {
         get {
-          return resultMap["id"] as? GraphQLID
+          return resultMap["id"]! as! GraphQLID
         }
         set {
           resultMap.updateValue(newValue, forKey: "id")
@@ -315,7 +315,7 @@ public final class GetRecipesBycategoriesQuery: GraphQLQuery {
         public static var selections: [GraphQLSelection] {
           return [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("id", type: .scalar(GraphQLID.self)),
+            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("slug", type: .nonNull(.scalar(String.self))),
             GraphQLField("avatar", type: .scalar(String.self)),
@@ -328,7 +328,7 @@ public final class GetRecipesBycategoriesQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(id: GraphQLID? = nil, name: String, slug: String, avatar: String? = nil) {
+        public init(id: GraphQLID, name: String, slug: String, avatar: String? = nil) {
           self.init(unsafeResultMap: ["__typename": "User", "id": id, "name": name, "slug": slug, "avatar": avatar])
         }
 
@@ -341,9 +341,9 @@ public final class GetRecipesBycategoriesQuery: GraphQLQuery {
           }
         }
 
-        public var id: GraphQLID? {
+        public var id: GraphQLID {
           get {
-            return resultMap["id"] as? GraphQLID
+            return resultMap["id"]! as! GraphQLID
           }
           set {
             resultMap.updateValue(newValue, forKey: "id")

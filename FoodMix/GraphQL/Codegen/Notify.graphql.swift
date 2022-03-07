@@ -118,7 +118,7 @@ public final class SubNotifySubscription: GraphQLSubscription {
         public static var selections: [GraphQLSelection] {
           return [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("id", type: .scalar(GraphQLID.self)),
+            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           ]
         }
 
@@ -128,7 +128,7 @@ public final class SubNotifySubscription: GraphQLSubscription {
           self.resultMap = unsafeResultMap
         }
 
-        public init(id: GraphQLID? = nil) {
+        public init(id: GraphQLID) {
           self.init(unsafeResultMap: ["__typename": "User", "id": id])
         }
 
@@ -141,9 +141,9 @@ public final class SubNotifySubscription: GraphQLSubscription {
           }
         }
 
-        public var id: GraphQLID? {
+        public var id: GraphQLID {
           get {
-            return resultMap["id"] as? GraphQLID
+            return resultMap["id"]! as! GraphQLID
           }
           set {
             resultMap.updateValue(newValue, forKey: "id")

@@ -98,7 +98,7 @@ public final class GetRecipeQuery: GraphQLQuery {
       public static var selections: [GraphQLSelection] {
         return [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("id", type: .scalar(GraphQLID.self)),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
           GraphQLField("slug", type: .nonNull(.scalar(String.self))),
           GraphQLField("avatar", type: .nonNull(.scalar(String.self))),
@@ -121,7 +121,7 @@ public final class GetRecipeQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: GraphQLID? = nil, name: String, slug: String, avatar: String, content: String, category: Category? = nil, user: User? = nil, ingredients: [Ingredient?]? = nil, stepper: [Stepper?]? = nil, time: String, preparation: String, views: Int, countRating: Int, totalRating: Int) {
+      public init(id: GraphQLID, name: String, slug: String, avatar: String, content: String, category: Category? = nil, user: User? = nil, ingredients: [Ingredient?]? = nil, stepper: [Stepper?]? = nil, time: String, preparation: String, views: Int, countRating: Int, totalRating: Int) {
         self.init(unsafeResultMap: ["__typename": "Recipe", "id": id, "name": name, "slug": slug, "avatar": avatar, "content": content, "category": category.flatMap { (value: Category) -> ResultMap in value.resultMap }, "user": user.flatMap { (value: User) -> ResultMap in value.resultMap }, "ingredients": ingredients.flatMap { (value: [Ingredient?]) -> [ResultMap?] in value.map { (value: Ingredient?) -> ResultMap? in value.flatMap { (value: Ingredient) -> ResultMap in value.resultMap } } }, "stepper": stepper.flatMap { (value: [Stepper?]) -> [ResultMap?] in value.map { (value: Stepper?) -> ResultMap? in value.flatMap { (value: Stepper) -> ResultMap in value.resultMap } } }, "time": time, "preparation": preparation, "views": views, "countRating": countRating, "totalRating": totalRating])
       }
 
@@ -134,9 +134,9 @@ public final class GetRecipeQuery: GraphQLQuery {
         }
       }
 
-      public var id: GraphQLID? {
+      public var id: GraphQLID {
         get {
-          return resultMap["id"] as? GraphQLID
+          return resultMap["id"]! as! GraphQLID
         }
         set {
           resultMap.updateValue(newValue, forKey: "id")
@@ -266,7 +266,7 @@ public final class GetRecipeQuery: GraphQLQuery {
         public static var selections: [GraphQLSelection] {
           return [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("id", type: .scalar(GraphQLID.self)),
+            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("slug", type: .nonNull(.scalar(String.self))),
             GraphQLField("icon", type: .nonNull(.scalar(String.self))),
@@ -279,7 +279,7 @@ public final class GetRecipeQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(id: GraphQLID? = nil, name: String, slug: String, icon: String) {
+        public init(id: GraphQLID, name: String, slug: String, icon: String) {
           self.init(unsafeResultMap: ["__typename": "Category", "id": id, "name": name, "slug": slug, "icon": icon])
         }
 
@@ -292,9 +292,9 @@ public final class GetRecipeQuery: GraphQLQuery {
           }
         }
 
-        public var id: GraphQLID? {
+        public var id: GraphQLID {
           get {
-            return resultMap["id"] as? GraphQLID
+            return resultMap["id"]! as! GraphQLID
           }
           set {
             resultMap.updateValue(newValue, forKey: "id")
@@ -335,7 +335,7 @@ public final class GetRecipeQuery: GraphQLQuery {
         public static var selections: [GraphQLSelection] {
           return [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("id", type: .scalar(GraphQLID.self)),
+            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("email", type: .nonNull(.scalar(String.self))),
             GraphQLField("slug", type: .nonNull(.scalar(String.self))),
@@ -349,7 +349,7 @@ public final class GetRecipeQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(id: GraphQLID? = nil, name: String, email: String, slug: String, avatar: String? = nil) {
+        public init(id: GraphQLID, name: String, email: String, slug: String, avatar: String? = nil) {
           self.init(unsafeResultMap: ["__typename": "User", "id": id, "name": name, "email": email, "slug": slug, "avatar": avatar])
         }
 
@@ -362,9 +362,9 @@ public final class GetRecipeQuery: GraphQLQuery {
           }
         }
 
-        public var id: GraphQLID? {
+        public var id: GraphQLID {
           get {
-            return resultMap["id"] as? GraphQLID
+            return resultMap["id"]! as! GraphQLID
           }
           set {
             resultMap.updateValue(newValue, forKey: "id")
@@ -600,7 +600,7 @@ public final class HomeUpdatedQuery: GraphQLQuery {
       public static var selections: [GraphQLSelection] {
         return [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("id", type: .scalar(GraphQLID.self)),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
           GraphQLField("slug", type: .nonNull(.scalar(String.self))),
           GraphQLField("avatar", type: .nonNull(.scalar(String.self))),
@@ -617,7 +617,7 @@ public final class HomeUpdatedQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: GraphQLID? = nil, name: String, slug: String, avatar: String, content: String, totalRating: Int, countRating: Int, user: User? = nil) {
+      public init(id: GraphQLID, name: String, slug: String, avatar: String, content: String, totalRating: Int, countRating: Int, user: User? = nil) {
         self.init(unsafeResultMap: ["__typename": "Recipe", "id": id, "name": name, "slug": slug, "avatar": avatar, "content": content, "totalRating": totalRating, "countRating": countRating, "user": user.flatMap { (value: User) -> ResultMap in value.resultMap }])
       }
 
@@ -630,9 +630,9 @@ public final class HomeUpdatedQuery: GraphQLQuery {
         }
       }
 
-      public var id: GraphQLID? {
+      public var id: GraphQLID {
         get {
-          return resultMap["id"] as? GraphQLID
+          return resultMap["id"]! as! GraphQLID
         }
         set {
           resultMap.updateValue(newValue, forKey: "id")
@@ -708,7 +708,7 @@ public final class HomeUpdatedQuery: GraphQLQuery {
         public static var selections: [GraphQLSelection] {
           return [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("id", type: .scalar(GraphQLID.self)),
+            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("slug", type: .nonNull(.scalar(String.self))),
             GraphQLField("avatar", type: .scalar(String.self)),
@@ -721,7 +721,7 @@ public final class HomeUpdatedQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(id: GraphQLID? = nil, name: String, slug: String, avatar: String? = nil) {
+        public init(id: GraphQLID, name: String, slug: String, avatar: String? = nil) {
           self.init(unsafeResultMap: ["__typename": "User", "id": id, "name": name, "slug": slug, "avatar": avatar])
         }
 
@@ -734,9 +734,9 @@ public final class HomeUpdatedQuery: GraphQLQuery {
           }
         }
 
-        public var id: GraphQLID? {
+        public var id: GraphQLID {
           get {
-            return resultMap["id"] as? GraphQLID
+            return resultMap["id"]! as! GraphQLID
           }
           set {
             resultMap.updateValue(newValue, forKey: "id")
@@ -768,6 +768,110 @@ public final class HomeUpdatedQuery: GraphQLQuery {
           set {
             resultMap.updateValue(newValue, forKey: "avatar")
           }
+        }
+      }
+    }
+  }
+}
+
+public final class CheckBookmarkQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query CheckBookmark($id: String!) {
+      checkBookmark(id: $id) {
+        __typename
+        id
+        createdAt
+      }
+    }
+    """
+
+  public let operationName: String = "CheckBookmark"
+
+  public var id: String
+
+  public init(id: String) {
+    self.id = id
+  }
+
+  public var variables: GraphQLMap? {
+    return ["id": id]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Query"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("checkBookmark", arguments: ["id": GraphQLVariable("id")], type: .object(CheckBookmark.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(checkBookmark: CheckBookmark? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "checkBookmark": checkBookmark.flatMap { (value: CheckBookmark) -> ResultMap in value.resultMap }])
+    }
+
+    public var checkBookmark: CheckBookmark? {
+      get {
+        return (resultMap["checkBookmark"] as? ResultMap).flatMap { CheckBookmark(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "checkBookmark")
+      }
+    }
+
+    public struct CheckBookmark: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["Bookmark"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("createdAt", type: .scalar(Double.self)),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: GraphQLID, createdAt: Double? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Bookmark", "id": id, "createdAt": createdAt])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return resultMap["id"]! as! GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var createdAt: Double? {
+        get {
+          return resultMap["createdAt"] as? Double
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "createdAt")
         }
       }
     }

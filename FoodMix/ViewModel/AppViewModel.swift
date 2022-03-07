@@ -13,6 +13,7 @@ class AppViewModel: ObservableObject {
         
         didSet {
             auth = user != nil
+            print("🌈 Đăng nhập: \(auth)")
         }
         
     }
@@ -23,7 +24,6 @@ class AppViewModel: ObservableObject {
     
     init() {
         
-        UserDefaults.standard.removeObject(forKey: "jsonwebtoken")
         
         if UserDefaults.standard.string(forKey: "jsonwebtoken") != nil {
             queryUser {

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Bookmark: Identifiable {
+struct Bookmark: Identifiable, Codable {
     let id: String
     var recipe: Recipe?
     var user: User?
