@@ -79,6 +79,25 @@ struct RecipeItemHorizontalPreview: View {
         }
         
     }
+    
+    static func preview() -> some View {
+        
+        Group {
+            
+            ForEach(1...3, id: \.self) { _ in
+                
+                RecipeItemHorizontalPreview()
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(20)
+                    .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
+                
+            }
+            
+        }
+        .redacted(reason: .placeholder)
+        
+    }
 }
 
 

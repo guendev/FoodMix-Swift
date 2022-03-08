@@ -41,7 +41,7 @@ struct HomeUpdatedView: View {
                 
                 if viewModel.loadingUpdated {
                     
-                    ListPlaceholder()
+                    RecipeItemHorizontalPreview.preview()
                     
                 }
                 

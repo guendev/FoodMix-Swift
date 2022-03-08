@@ -110,3 +110,52 @@ public struct SortOption: GraphQLMapConvertible {
     }
   }
 }
+
+public struct SearchRecipeFilter: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  /// - Parameters:
+  ///   - keyword
+  ///   - category
+  ///   - page
+  ///   - limit
+  public init(keyword: Swift.Optional<String?> = nil, category: Swift.Optional<String?> = nil, page: String, limit: String) {
+    graphQLMap = ["keyword": keyword, "category": category, "page": page, "limit": limit]
+  }
+
+  public var keyword: Swift.Optional<String?> {
+    get {
+      return graphQLMap["keyword"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "keyword")
+    }
+  }
+
+  public var category: Swift.Optional<String?> {
+    get {
+      return graphQLMap["category"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "category")
+    }
+  }
+
+  public var page: String {
+    get {
+      return graphQLMap["page"] as! String
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "page")
+    }
+  }
+
+  public var limit: String {
+    get {
+      return graphQLMap["limit"] as! String
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "limit")
+    }
+  }
+}

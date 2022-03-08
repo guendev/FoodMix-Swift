@@ -62,3 +62,27 @@ query CheckBookmark($id: String!) {
 	createdAt
   }
 }
+
+
+query GetSearchRecipes($filter: SearchRecipeFilter!) {
+  getSearchRecipes(filter: $filter) {
+	id
+	name
+	slug
+	avatar
+	content
+	totalRating
+	countRating
+	user {
+	  id
+	  name
+	  slug
+	  avatar
+	}
+	category {
+	  id
+	  name
+	  slug
+	}
+  }
+}

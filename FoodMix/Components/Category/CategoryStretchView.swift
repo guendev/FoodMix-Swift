@@ -13,6 +13,8 @@ struct CategoryStretchView: View {
     
     @State private var show: Bool = false
     
+    var category: Category
+    
     
     var body: some View {
         VStack(spacing: 0) {
@@ -21,7 +23,7 @@ struct CategoryStretchView: View {
                 Color.clear
                     .overlay(
                         
-                        RecipeAvatar(avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFKYmf6jHItCbfL8txsSCFfsCW254JYLEeNQ&usqp=CAU")
+                        RecipeAvatar(avatar: category.avatar)
                             .scaledToFill()
                         
                     )
@@ -36,7 +38,7 @@ struct CategoryStretchView: View {
                         .frame(width: 120, height: 120, alignment: .center)
                         .overlay(
                             
-                            RecipeAvatar(avatar: "https://i.imgur.com/sJapZxD.png")
+                            RecipeAvatar(avatar: category.icon ?? "https://i.imgur.com/sJapZxD.png")
                                 .scaledToFit()
                                 .frame(width: 95, height: 95)
                                 .scaleEffect(show ? 1 : 0.5)
@@ -59,11 +61,5 @@ struct CategoryStretchView: View {
             }
             
         }
-    }
-}
-
-struct CategoryStretchView_Previews: PreviewProvider {
-    static var previews: some View {
-        CategoryView(category: Category(id: "1", name: "Gà Quay", slug: "ga-quay", avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFKYmf6jHItCbfL8txsSCFfsCW254JYLEeNQ&usqp=CAU", content: "", icon: ""))
     }
 }

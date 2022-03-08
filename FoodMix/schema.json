@@ -79,7 +79,7 @@
             "deprecationReason": null
           },
           {
-            "name": "getRecipesBycategories",
+            "name": "getRecipesByCategory",
             "description": null,
             "args": [
               {

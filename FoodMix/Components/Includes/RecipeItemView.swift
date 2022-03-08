@@ -26,11 +26,10 @@ struct RecipeItemView: View {
                         .frame(width: 50, height: 50)
                         .overlay(
                             
-                            Image(systemName: "heart")
-                                .resizable()
-                                .scaledToFit()
-                                .foregroundColor(Color("Flickr Pink"))
-                                .frame(width: 25, height: 25)
+                            RecipeAvatar(avatar: recipe.user?.avatar)
+                                .scaledToFill()
+                                .frame(width: 45, height: 45)
+                                .clipShape(Circle())
                             
                         )
                         .offset(x: -25, y: 25)

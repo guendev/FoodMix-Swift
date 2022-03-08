@@ -25,10 +25,10 @@ struct AuthFormView: View {
                     .keyboardType(.emailAddress)
                     .autocapitalization(.none)
                     .font(.custom(.customFont, size: 16))
-                    .foregroundColor(Color(#colorLiteral(red: 0.4352941176, green: 0.4352941176, blue: 0.4352941176, alpha: 1)))
+                    .foregroundColor(Color("InputText"))
                     .frame(height: 50)
                     .padding(.leading, 55)
-                    .background(Color(#colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 0.9391186773)))
+                    .background(Color("InputBackground"))
                     .cornerRadius(15)
                     .overlay(
                         

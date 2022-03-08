@@ -34,9 +34,7 @@ class HomeViewModel: ObservableObject {
             return
         }
         loadingCategories = true
-        
-        Network.shared.apollo.fetch(query: GetAllCategoriesQuery())
-        
+                
         Network.shared.apollo.fetch(query: GetAllCategoriesQuery()) { [weak self] result in
             guard let self = self else {
                   return
@@ -49,21 +47,24 @@ class HomeViewModel: ObservableObject {
                     break
                 }
                 
-                graphQLResult.data?.getAllCategories.forEach({ item in
+                guard let rawData = graphQLResult.data?.getAllCategories else { break }
+                
+                for item in rawData {
+                    guard let item = item else { continue }
+                    guard let jsonData = try? JSONSerialization.data(withJSONObject: item.jsonObject) else { continue }
+                    guard let category = try? JSONDecoder().decode(Category.self, from: jsonData) else { continue }
                     
-                    guard let item = item else { return }
-                    self.catgories.append(
-                        Category(id: item.id, name: item.name, slug: item.slug, avatar: item.avatar, content: item.content, icon: item.icon)
-                    )
-                })
-                                
-                if self.catgories.count > 0 {
-                                        
-                    self.loadingCategories = false
-                    
-                    self.getRecipesByCategory(category: self.catgories.first!)
-                    
+                    self.catgories.append(category)
                 }
+                
+                if self.catgories.count > 0 {
+                    
+                    self.loadingCategories = false
+                                    
+                    self.getRecipesByCategory(category: self.catgories.first!)
+                                    
+                }
+                                
                 
             case .failure(_):
                 break
@@ -86,7 +87,7 @@ class HomeViewModel: ObservableObject {
         // reset
         recipesBycategory = []
         
-        Network.shared.apollo.fetch(query: GetRecipesBycategoriesQuery(slug: currentCategory!.slug, filter: SortOption(sort: "views", page: "0", limit: "10"))) { [weak self] result in
+        Network.shared.apollo.fetch(query: GetRecipesByCategoryQuery(slug: currentCategory!.slug, filter: SortOption(sort: "views", page: "0", limit: "10"))) { [weak self] result in
             
             guard let self = self else {
                   return
@@ -99,22 +100,16 @@ class HomeViewModel: ObservableObject {
                     break
                 }
                 
-                graphQLResult.data?.getRecipesBycategories.forEach({ item in
-                    guard let item = item else { return }
+                guard let rawData = graphQLResult.data?.getRecipesByCategory else { break }
+                
+                for item in rawData {
+                    guard let item = item else { continue }
+                    guard let jsonData = try? JSONSerialization.data(withJSONObject: item.jsonObject) else { continue }
+                    guard let recipe = try? JSONDecoder().decode(Recipe.self, from: jsonData) else { continue }
                     
-                    self.recipesBycategory.append(
-                        Recipe(
-                            id: item.id,
-                            name: item.name,
-                            slug: item.slug,
-                            avatar: item.avatar,
-                            user: User(id: item.user!.id, name: item.user!.name, slug: item.user!.slug),
-                            countRating: item.countRating,
-                            totalRating: item.totalRating
-                        )
-                    )
-                    
-                })
+                    self.recipesBycategory.append(recipe)
+                }
+                
                 self.emtyRecipesByCategory = self.recipesBycategory.isEmpty
                 self.loadingRecipesByCategory = false
                 

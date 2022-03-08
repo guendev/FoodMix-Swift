@@ -10,8 +10,8 @@ query GetAllCategories {
 }
 
 
-query GetRecipesBycategories($slug: String!, $filter: SortOption!) {
-  getRecipesBycategories(slug: $slug, filter: $filter) {
+query GetRecipesByCategory($slug: String!, $filter: SortOption!) {
+  getRecipesByCategory(slug: $slug, filter: $filter) {
 	id
 	name
 	slug
@@ -24,6 +24,24 @@ query GetRecipesBycategories($slug: String!, $filter: SortOption!) {
 	  slug
 	  avatar
 	}
+  }
+}
+
+query CategoryToRecipes($slug: String!, $filter: SortOption!) {
+  getRecipesByCategory(slug: $slug, filter: $filter) {
+	  id
+	  name
+	  slug
+	  avatar
+	  content
+	  totalRating
+	  countRating
+	  user {
+		id
+		name
+		slug
+		avatar
+	  }
   }
 }
 

@@ -15,9 +15,7 @@ struct SearchBarView: View {
     @EnvironmentObject var viewModel: SearchViewModel
     
     @Environment(\.managedObjectContext) var viewContext
-    
-    @State var text: String?
-    
+        
     
     var body: some View {
         
@@ -30,60 +28,62 @@ struct SearchBarView: View {
             } label: {
                 
                 Image(systemName: "arrow.left")
-                    .foregroundColor(Color(#colorLiteral(red: 0.4352941176, green: 0.4352941176, blue: 0.4352941176, alpha: 1)))
+                    .foregroundColor(Color("InputText"))
                 
             }
             
             
-                TextField("Tìm kiếm", text: $viewModel.keyword) { _ in
+            TextField("Tìm kiếm", text: $viewModel.keyword) { _ in
                     
-                } onCommit: {
-                    text = "submit"
+            } onCommit: {
+                viewModel.searchDebounce {
                     saveHistory()
-                }.font(.custom(.customFont, size: 16))
-                .foregroundColor(Color(#colorLiteral(red: 0.4352941176, green: 0.4352941176, blue: 0.4352941176, alpha: 1)))
-                .frame(height: 45)
-                .padding(.leading, 25)
-                .padding(.trailing, 50)
-                .background(Color(#colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 0.9391186773)))
-                .cornerRadius(30)
-                .accentColor(Color(#colorLiteral(red: 0.4352941176, green: 0.4352941176, blue: 0.4352941176, alpha: 1)))
-                /**
-                .overlay(
+                }
+            }
+            .font(.custom(.customFont, size: 16))
+            .foregroundColor(Color("InputText"))
+            .frame(height: 45)
+            .padding(.leading, 25)
+            .padding(.trailing, 50)
+            .background(Color("InputBackground"))
+            .cornerRadius(30)
+            .accentColor(Color("InputText"))
+            .overlay(
                     
-                    Image(systemName: "magnifyingglass")
-                        .foregroundColor(Color(#colorLiteral(red: 0.4352941176, green: 0.4352941176, blue: 0.4352941176, alpha: 1)))
+                Button {
+                        
+                    viewModel.keyword = ""
+                        
+                } label: {
+                        
+                    Image(systemName: "xmark")
+                    .resizable()
+                    .foregroundColor(Color("InputText"))
+                    .frame(width: 12, height: 12)
                         .padding()
-                    
-                    ,alignment: .leading
-                    
-                )
-                 */
-                .overlay(
-                    
-                    Button {
                         
-                        viewModel.keyword = ""
-                        
-                    } label: {
-                        
-                        Image(systemName: "xmark")
-                            .resizable()
-                            .foregroundColor(Color(#colorLiteral(red: 0.4352941176, green: 0.4352941176, blue: 0.4352941176, alpha: 1)))
-                            .frame(width: 12, height: 12)
-                            .padding()
-                        
-                    }
-                    .scaleEffect(viewModel.keyword == "" ? 0 : 1)
-                    .animation(.spring())
+                }
+                .scaleEffect(viewModel.keyword == "" ? 0 : 1)
+                .animation(.spring())
                     
-                    ,alignment: .trailing
+                ,alignment: .trailing
                     
-                )
+            )
+            .onChange(of: viewModel.keyword) { _ in
+                viewModel.searchDebounce {
+                    // saveHistory()
+                }
+                DispatchQueue.main.asyncDeduped(target: SearchHistory.self, after: 5) {
+                    saveHistory()
+                }
+            }
             
             
         }
         .padding(.horizontal, 25)
+        .onAppear {
+            viewModel.keyword = "b"
+        }
         
     }
     
@@ -128,11 +128,12 @@ struct SearchBarView: View {
 }
 
 struct SearchBarView_Previews: PreviewProvider {
-    
-    let persistenceController = PersistenceController.shared
-    
+        
     static var previews: some View {
-        SearchView()
-            .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+        PreviewWrapper {
+            
+            SearchView()
+            
+        }
     }
 }

@@ -11,16 +11,17 @@ struct HomeSearch: View {
     var body: some View {
         NavigationLink(destination: SearchView()) {
             TextField("Tìm kiếm...", text: .constant(""))
+                .multilineTextAlignment(.leading)
                 .font(.custom(.customFont, size: 16))
-                .foregroundColor(Color(#colorLiteral(red: 0.08235294118, green: 0.1333333333, blue: 0.3098039216, alpha: 1)))
+                .foregroundColor(Color("Primary"))
                 .frame(height: 50)
                 .padding(.leading, 50)
-                .background(Color("Ultramarine Blue").opacity(0.08))
+                .background(Color("Primary").opacity(0.07))
                 .cornerRadius(30)
                 .overlay(
                     
                     Image(systemName: "magnifyingglass")
-                        .foregroundColor(Color(#colorLiteral(red: 0.4117647059, green: 0.3960784314, blue: 0.8156862745, alpha: 1)))
+                        .foregroundColor(Color("Primary"))
                         .padding()
                     
                     ,alignment: .leading
@@ -33,6 +34,10 @@ struct HomeSearch: View {
 
 struct HomeSearch_Previews: PreviewProvider {
     static var previews: some View {
-        HomeSearch()
+        PreviewWrapper {
+            
+            HomeView()
+            
+        }
     }
 }

@@ -41,7 +41,7 @@ struct ProfileTabView: View {
     }
     
     @ViewBuilder
-    private func TabActiveView( title: String,  tab: ProfileTab) -> some View {
+    private func TabActiveView(title: String,  tab: ProfileTab) -> some View {
         Button {
             
             withAnimation(.spring()) {
