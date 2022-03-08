@@ -144,3 +144,162 @@ public final class MeQuery: GraphQLQuery {
     }
   }
 }
+
+public final class GetUsersQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query GetUsers($filter: SortOption!) {
+      getUsers(filter: $filter) {
+        __typename
+        id
+        name
+        email
+        slug
+        role
+        avatar
+        countRecipe
+      }
+    }
+    """
+
+  public let operationName: String = "GetUsers"
+
+  public var filter: SortOption
+
+  public init(filter: SortOption) {
+    self.filter = filter
+  }
+
+  public var variables: GraphQLMap? {
+    return ["filter": filter]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Query"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("getUsers", arguments: ["filter": GraphQLVariable("filter")], type: .nonNull(.list(.object(GetUser.selections)))),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(getUsers: [GetUser?]) {
+      self.init(unsafeResultMap: ["__typename": "Query", "getUsers": getUsers.map { (value: GetUser?) -> ResultMap? in value.flatMap { (value: GetUser) -> ResultMap in value.resultMap } }])
+    }
+
+    public var getUsers: [GetUser?] {
+      get {
+        return (resultMap["getUsers"] as! [ResultMap?]).map { (value: ResultMap?) -> GetUser? in value.flatMap { (value: ResultMap) -> GetUser in GetUser(unsafeResultMap: value) } }
+      }
+      set {
+        resultMap.updateValue(newValue.map { (value: GetUser?) -> ResultMap? in value.flatMap { (value: GetUser) -> ResultMap in value.resultMap } }, forKey: "getUsers")
+      }
+    }
+
+    public struct GetUser: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["User"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("email", type: .nonNull(.scalar(String.self))),
+          GraphQLField("slug", type: .nonNull(.scalar(String.self))),
+          GraphQLField("role", type: .nonNull(.scalar(String.self))),
+          GraphQLField("avatar", type: .scalar(String.self)),
+          GraphQLField("countRecipe", type: .scalar(Int.self)),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: GraphQLID, name: String, email: String, slug: String, role: String, avatar: String? = nil, countRecipe: Int? = nil) {
+        self.init(unsafeResultMap: ["__typename": "User", "id": id, "name": name, "email": email, "slug": slug, "role": role, "avatar": avatar, "countRecipe": countRecipe])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return resultMap["id"]! as! GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var name: String {
+        get {
+          return resultMap["name"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "name")
+        }
+      }
+
+      public var email: String {
+        get {
+          return resultMap["email"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "email")
+        }
+      }
+
+      public var slug: String {
+        get {
+          return resultMap["slug"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "slug")
+        }
+      }
+
+      public var role: String {
+        get {
+          return resultMap["role"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "role")
+        }
+      }
+
+      public var avatar: String? {
+        get {
+          return resultMap["avatar"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "avatar")
+        }
+      }
+
+      public var countRecipe: Int? {
+        get {
+          return resultMap["countRecipe"] as? Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "countRecipe")
+        }
+      }
+    }
+  }
+}

@@ -99,11 +99,10 @@ struct CustomBottomSheet<Content: View>: View {
                 content
                 
             }
-            .padding(.horizontal, 50)
-            .frame(maxHeight: offset)
+            .frame(maxWidth: .infinity, maxHeight: offset)
             .background(Color.white)
             .clipShape(CustomSheetShape())
-            .shadow(color: .black.opacity(0.1), radius: 10, x: 0.0, y: -5)
+            .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: -5)
             .onAppear {
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -131,7 +130,11 @@ struct CustomBottomSheet<Content: View>: View {
 
 struct CustomBottomSheet_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        PreviewWrapper {
+            
+            ActivityListAuthor()
+            
+        }
     }
 }
 
@@ -141,14 +144,14 @@ fileprivate struct CustomSheetShape: Shape {
         var path = Path()
         
 
-        let radius = CGFloat(100)
+        let radius = CGFloat(40)
 
 
         path.move(to: CGPoint(x: rect.midX, y: rect.minY))
         
-        path.addLine(to: CGPoint(x: rect.minX + radius * 0.6, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.minX + radius, y: rect.minY))
         
-        path.addQuadCurve(to: CGPoint(x: rect.minX, y: rect.minY + radius * 3), control: CGPoint(x: rect.minX, y: rect.minY))
+        path.addQuadCurve(to: CGPoint(x: rect.minX, y: rect.minY + radius), control: CGPoint(x: rect.minX, y: rect.minY))
             
         
         path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
@@ -156,9 +159,9 @@ fileprivate struct CustomSheetShape: Shape {
         
         path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
         
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY + radius * 3))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY + radius))
         
-        path.addQuadCurve(to: CGPoint(x: rect.maxX - radius * 0.6, y: rect.minY), control: CGPoint(x: rect.maxX, y: rect.minY))
+        path.addQuadCurve(to: CGPoint(x: rect.maxX - radius, y: rect.minY), control: CGPoint(x: rect.maxX, y: rect.minY))
         
         
 

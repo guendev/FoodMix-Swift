@@ -72,11 +72,16 @@ struct CategoryView: View {
                                 
                                 ForEach(viewModel.recipes, id:\.id) { item in
                                     
-                                    RecipeItemHorizontal(recipe: item)
-                                        .padding()
-                                        .background(Color.white)
-                                        .cornerRadius(20)
-                                        .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
+                                    NavigationLink {
+                                        RecipeView(recipe: item)
+                                    } label: {
+                                        RecipeItemHorizontal(recipe: item)
+                                            .padding()
+                                            .background(Color.white)
+                                            .cornerRadius(20)
+                                            .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
+                                    }
+
                                     
                                 }
                                 

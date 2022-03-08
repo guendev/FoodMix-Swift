@@ -8,3 +8,16 @@ query Me {
 	role
   }
 }
+
+
+query GetUsers($filter: SortOption!) {
+  getUsers(filter: $filter) {
+	id
+	name
+	email
+	slug
+	role
+	avatar
+	countRecipe
+  }
+}
