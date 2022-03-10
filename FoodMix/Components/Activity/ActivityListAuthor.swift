@@ -57,7 +57,12 @@ struct ActivityListAuthor: View {
                                 
                                 ForEach((4...(viewModel.authors.count - 1)), id: \.self) { index in
                                     
-                                    AuthorItem(index: index, author: viewModel.authors[index - 1])
+                                    NavigationLink(destination: ProfileView(slug: viewModel.authors[index - 1].slug)) {
+                                        
+                                        AuthorItem(index: index, author: viewModel.authors[index - 1])
+                                        
+                                    }
+                                    .buttonStyle(PlainButtonStyle())
                                     
                                 }
                                 

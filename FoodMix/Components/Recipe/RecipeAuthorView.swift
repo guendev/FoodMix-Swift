@@ -18,15 +18,24 @@ struct RecipeAuthorView: View {
                 
                 HStack(spacing: 15) {
                     
-                    RecipeAvatar(avatar: viewModel.recipe?.user?.avatar)
-                        .scaledToFit()
-                        .frame(width: 60, height: 60)
-                        .clipShape(Circle())
+                    NavigationLink(destination: ProfileView(slug: viewModel.recipe!.user!.slug)) {
+                        
+                        RecipeAvatar(avatar: viewModel.recipe?.user?.avatar)
+                            .scaledToFit()
+                            .frame(width: 60, height: 60)
+                            .clipShape(Circle())
+                        
+                    }
                     
                     VStack(alignment: .leading, spacing: 4) {
                         
-                        Text(viewModel.recipe?.user?.name ?? "")
-                            .font(.custom(.customFont, size: 19))
+                        NavigationLink(destination: ProfileView(slug: viewModel.recipe!.user!.slug)) {
+                            
+                            Text(viewModel.recipe?.user?.name ?? "")
+                                .font(.custom(.customFont, size: 19))
+                            
+                        }
+                        .buttonStyle(PlainButtonStyle())
                         
                         if viewModel.recipe!.user!.countRecipe! > 0 {
                             

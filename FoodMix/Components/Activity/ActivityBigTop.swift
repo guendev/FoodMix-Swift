@@ -96,25 +96,33 @@ struct ActivityBigTop: View {
                 
                 Group {
                     
-                    BigRankItem(
-                        user: viewModel.authors[1],
-                        lines: [15, 16, 17, 18, 17, 16, 15],
-                        height: 160,
-                        colors: [Color(#colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)), Color(#colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)), Color(#colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1))],
-                        rank: 2,
-                        rankColor: Color("Dodger Blue")
-                    )
+                    NavigationLink(destination: ProfileView(slug: viewModel.authors[1].slug)) {
+                        
+                        BigRankItem(
+                            user: viewModel.authors[1],
+                            lines: [15, 16, 17, 18, 17, 16, 15],
+                            height: 160,
+                            colors: [Color(#colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)), Color(#colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)), Color(#colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1))],
+                            rank: 2,
+                            rankColor: Color("Dodger Blue")
+                        )
+                        
+                    }
                     .offset(x: 15, y: 0)
                     .zIndex(1)
                     
-                    BigRankItem(
-                        user: viewModel.authors[0],
-                        lines: [15, 16, 17, 18, 17, 16, 15],
-                        height: 160,
-                        colors: [Color(#colorLiteral(red: 0.6431372549, green: 0.4117647059, blue: 0.7882352941, alpha: 1)), Color(#colorLiteral(red: 0.8901960784, green: 0.5490196078, blue: 0.8274509804, alpha: 1)), Color(#colorLiteral(red: 0.9647058824, green: 0.7764705882, blue: 0.7960784314, alpha: 1))],
-                        rank: 1,
-                        rankColor: Color("Flickr Pink")
-                    )
+                    NavigationLink(destination: ProfileView(slug: viewModel.authors[0].slug)) {
+                        
+                        BigRankItem(
+                            user: viewModel.authors[0],
+                            lines: [15, 16, 17, 18, 17, 16, 15],
+                            height: 160,
+                            colors: [Color(#colorLiteral(red: 0.6431372549, green: 0.4117647059, blue: 0.7882352941, alpha: 1)), Color(#colorLiteral(red: 0.8901960784, green: 0.5490196078, blue: 0.8274509804, alpha: 1)), Color(#colorLiteral(red: 0.9647058824, green: 0.7764705882, blue: 0.7960784314, alpha: 1))],
+                            rank: 1,
+                            rankColor: Color("Flickr Pink")
+                        )
+                        
+                    }
                     .offset(x: 0, y: -50)
                     .overlay(
                         
@@ -155,14 +163,18 @@ struct ActivityBigTop: View {
                     
                     
                     
-                    BigRankItem(
-                        user: viewModel.authors[2],
-                        lines: [15, 16, 17, 18, 17, 16, 15],
-                        height: 160,
-                        colors: [Color(#colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)), Color(#colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)), Color(#colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1))],
-                        rank: 3,
-                        rankColor: Color("Purple 2")
-                    )
+                    NavigationLink(destination: ProfileView(slug: viewModel.authors[2].slug)) {
+                        
+                        BigRankItem(
+                            user: viewModel.authors[2],
+                            lines: [15, 16, 17, 18, 17, 16, 15],
+                            height: 160,
+                            colors: [Color(#colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)), Color(#colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)), Color(#colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1))],
+                            rank: 3,
+                            rankColor: Color("Purple 2")
+                        )
+                        
+                    }
                     .offset(x: -15, y: 0)
                     
                 }

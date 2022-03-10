@@ -13,6 +13,7 @@ struct User: Identifiable, Codable {
     var email: String?
     let slug: String
     var role: String? = "user"
+    var gender: Int?
     var avatar: String?
     var banner: String?
     var province: String?

@@ -9,9 +9,16 @@ import SwiftUI
 
 struct ProfileView: View {
     
+    var slug: String
+    
     @StateObject var viewModel: ProfileViewModel = ProfileViewModel()
     
-    var user: User
+    @State var getFirst: Bool = false
+    
+    let filters: [FilterItem] = [
+        FilterItem(name: "Món Ăn", value: "recipes"),
+        FilterItem(name: "Đánh Giá", value: "reviews")
+    ]
     
     var body: some View {
         ScrollView {
@@ -22,7 +29,21 @@ struct ProfileView: View {
                 
                 ProfileAboutView()
                 
-                ProfileTabView()
+                TitleView(title: "Hoạt Động") {
+                    
+                    TabFilterView<FilterItem>(
+                        filters: filters,
+                        current: $viewModel.current,
+                        title: { item in
+                            return item.name
+                        },
+                        isCurrent: { item, current in
+                            return item.value == current.value
+                        }
+                    )
+                        .disabled(!viewModel.ready || viewModel.loadingContent)
+                    
+                }
                 
             }
             .padding(.horizontal, 25)
@@ -39,17 +60,19 @@ struct ProfileView: View {
             .background(
                 Color("Primary")
                     .opacity(viewModel.offset < -150 ? 1 : 0)
+                    .animation(.easeIn)
                     .ignoresSafeArea()
             )
             .foregroundColor(.white)
-            .animation(.easeIn)
             
             ,alignment: .top
             
         )
         .onAppear {
             
-            viewModel.user = user
+            if getFirst { return }
+            getFirst = true
+            viewModel.getProfile(slug: slug)
             
         }
         .environmentObject(viewModel)
@@ -58,6 +81,12 @@ struct ProfileView: View {
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(user: User(id: "1", name: "Yuan", slug: "yuan", avatar: "https://user-pic.webnovel.com/userheadimg/4307667847-10/200.jp"))
+        
+        PreviewWrapper {
+            
+            ProfileView(slug: "igyuguyg")
+            
+        }
+        
     }
 }

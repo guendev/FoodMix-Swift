@@ -19,7 +19,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            MainView()
+            AccountView()
                 .background(
                     
                     Group {
@@ -37,7 +37,7 @@ struct ContentView: View {
                 )
                 .onAppear {
                     
-                    // welcome = true
+                    welcome = true
                     
                     if welcome {
                         welcome = false

@@ -21,3 +21,20 @@ query GetUsers($filter: SortOption!) {
 	countRecipe
   }
 }
+
+query GetProfile($id: String!) {
+  getProfile(id: $id) {
+	id
+	name
+	email
+	slug
+	avatar
+	banner
+	province
+	about
+	countRecipe
+	countRating
+	totalRating
+	createdAt
+  }
+}

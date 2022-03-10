@@ -17,7 +17,18 @@
 		1C0DB7AB27D746C500D6E97D /* TabFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0DB7AA27D746C500D6E97D /* TabFilterView.swift */; };
 		1C0DB7AD27D74A3A00D6E97D /* FilterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0DB7AC27D74A3900D6E97D /* FilterItem.swift */; };
 		1C0DB7B127D75D7800D6E97D /* ActivityListAuthor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0DB7B027D75D7700D6E97D /* ActivityListAuthor.swift */; };
+		1C12E9E127D9F193002AC29B /* provinces.json in Resources */ = {isa = PBXBuildFile; fileRef = 1C12E9E027D9F193002AC29B /* provinces.json */; };
+		1C12E9E327D9F2F6002AC29B /* JsonExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C12E9E227D9F2F6002AC29B /* JsonExtention.swift */; };
+		1C12E9E727D9FE7C002AC29B /* Province.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C12E9E627D9FE7C002AC29B /* Province.swift */; };
+		1C12E9E927DA275A002AC29B /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C12E9E827DA2759002AC29B /* AccountViewModel.swift */; };
+		1C12E9EB27DA2D5A002AC29B /* ProvinceFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C12E9EA27DA2D5A002AC29B /* ProvinceFormView.swift */; };
 		1C1BD21D27D55C6C003DC2E4 /* NavigationExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1BD21C27D55C6C003DC2E4 /* NavigationExtention.swift */; };
+		1C1F368027D86ADF00957046 /* SettingItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F367F27D86ADF00957046 /* SettingItemView.swift */; };
+		1C1F368227D86DC600957046 /* SettingColorSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F368127D86DC600957046 /* SettingColorSchema.swift */; };
+		1C1F368427D99EDB00957046 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F368327D99EDB00957046 /* AccountView.swift */; };
+		1C1F368727D9A20100957046 /* AlignExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F368627D9A20100957046 /* AlignExtention.swift */; };
+		1C1F368927D9C5A000957046 /* InputExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F368827D9C5A000957046 /* InputExtention.swift */; };
+		1C1F368B27D9CB1900957046 /* InfoFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F368A27D9CB1900957046 /* InfoFormView.swift */; };
 		1CB3490727D479310061D9CD /* FoodMix.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1CB3490527D479310061D9CD /* FoodMix.xcdatamodeld */; };
 		1CB3490927D47FB70061D9CD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1CB3490827D47FB70061D9CD /* GoogleService-Info.plist */; };
 		1CB3490C27D4809F0061D9CD /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1CB3490B27D4809F0061D9CD /* FirebaseAnalytics */; };
@@ -67,7 +78,6 @@
 		1CCC8BF727D4752700B5D3B9 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC8BD127D4752700B5D3B9 /* SearchBarView.swift */; };
 		1CCC8BF827D4752700B5D3B9 /* ProfileStretchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC8BD327D4752700B5D3B9 /* ProfileStretchView.swift */; };
 		1CCC8BF927D4752700B5D3B9 /* ProfileAboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC8BD427D4752700B5D3B9 /* ProfileAboutView.swift */; };
-		1CCC8BFA27D4752700B5D3B9 /* ProfileTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC8BD527D4752700B5D3B9 /* ProfileTabView.swift */; };
 		1CCC8BFB27D4752700B5D3B9 /* SettingAppBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC8BD727D4752700B5D3B9 /* SettingAppBar.swift */; };
 		1CCC8BFC27D4752700B5D3B9 /* UserCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC8BD827D4752700B5D3B9 /* UserCenter.swift */; };
 		1CCC8C0027D4752F00B5D3B9 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC8BFE27D4752F00B5D3B9 /* ViewExtension.swift */; };
@@ -135,7 +145,19 @@
 		1C0DB7AA27D746C500D6E97D /* TabFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabFilterView.swift; sourceTree = "<group>"; };
 		1C0DB7AC27D74A3900D6E97D /* FilterItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterItem.swift; sourceTree = "<group>"; };
 		1C0DB7B027D75D7700D6E97D /* ActivityListAuthor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListAuthor.swift; sourceTree = "<group>"; };
+		1C12E9E027D9F193002AC29B /* provinces.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = provinces.json; sourceTree = "<group>"; };
+		1C12E9E227D9F2F6002AC29B /* JsonExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonExtention.swift; sourceTree = "<group>"; };
+		1C12E9E527D9FDB9002AC29B /* LoadJson.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = LoadJson.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		1C12E9E627D9FE7C002AC29B /* Province.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Province.swift; sourceTree = "<group>"; };
+		1C12E9E827DA2759002AC29B /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
+		1C12E9EA27DA2D5A002AC29B /* ProvinceFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvinceFormView.swift; sourceTree = "<group>"; };
 		1C1BD21C27D55C6C003DC2E4 /* NavigationExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationExtention.swift; sourceTree = "<group>"; };
+		1C1F367F27D86ADF00957046 /* SettingItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemView.swift; sourceTree = "<group>"; };
+		1C1F368127D86DC600957046 /* SettingColorSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingColorSchema.swift; sourceTree = "<group>"; };
+		1C1F368327D99EDB00957046 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		1C1F368627D9A20100957046 /* AlignExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignExtention.swift; sourceTree = "<group>"; };
+		1C1F368827D9C5A000957046 /* InputExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputExtention.swift; sourceTree = "<group>"; };
+		1C1F368A27D9CB1900957046 /* InfoFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoFormView.swift; sourceTree = "<group>"; };
 		1CB3490627D479310061D9CD /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		1CB3490827D47FB70061D9CD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1CB3490F27D4A0420061D9CD /* PreviewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewWrapper.swift; sourceTree = "<group>"; };
@@ -185,7 +207,6 @@
 		1CCC8BD127D4752700B5D3B9 /* SearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		1CCC8BD327D4752700B5D3B9 /* ProfileStretchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileStretchView.swift; sourceTree = "<group>"; };
 		1CCC8BD427D4752700B5D3B9 /* ProfileAboutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileAboutView.swift; sourceTree = "<group>"; };
-		1CCC8BD527D4752700B5D3B9 /* ProfileTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTabView.swift; sourceTree = "<group>"; };
 		1CCC8BD727D4752700B5D3B9 /* SettingAppBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingAppBar.swift; sourceTree = "<group>"; };
 		1CCC8BD827D4752700B5D3B9 /* UserCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenter.swift; sourceTree = "<group>"; };
 		1CCC8BFE27D4752F00B5D3B9 /* ViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
@@ -255,6 +276,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C12E9DF27D9F16C002AC29B /* Json */ = {
+			isa = PBXGroup;
+			children = (
+				1C12E9E027D9F193002AC29B /* provinces.json */,
+				1CB5B1A927D4CAC100AEFF30 /* schema.json */,
+			);
+			path = Json;
+			sourceTree = "<group>";
+		};
+		1C12E9E427D9FD9D002AC29B /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				1C12E9E527D9FDB9002AC29B /* LoadJson.playground */,
+			);
+			path = Playground;
+			sourceTree = "<group>";
+		};
+		1C1F368527D9A0A100957046 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				1C1F368A27D9CB1900957046 /* InfoFormView.swift */,
+				1C12E9EA27DA2D5A002AC29B /* ProvinceFormView.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
 		1CCC8B8A27D474F300B5D3B9 = {
 			isa = PBXGroup;
 			children = (
@@ -279,8 +326,10 @@
 				1CCC8BFD27D4752F00B5D3B9 /* Extension */,
 				1CCC8C0227D4753500B5D3B9 /* Fonts */,
 				1CCC8C4D27D4755300B5D3B9 /* GraphQL */,
+				1C12E9DF27D9F16C002AC29B /* Json */,
 				1CCC8C0527D4753B00B5D3B9 /* Helper */,
 				1CCC8C0827D4754100B5D3B9 /* Model */,
+				1C12E9E427D9FD9D002AC29B /* Playground */,
 				1CCC8C6627D4755800B5D3B9 /* Services */,
 				1CCC8C1B27D4754800B5D3B9 /* View */,
 				1CCC8C3627D4754D00B5D3B9 /* ViewModel */,
@@ -292,7 +341,6 @@
 				1CB3490527D479310061D9CD /* FoodMix.xcdatamodeld */,
 				1CB3490827D47FB70061D9CD /* GoogleService-Info.plist */,
 				1CCC8BA427D474F500B5D3B9 /* Info.plist */,
-				1CB5B1A927D4CAC100AEFF30 /* schema.json */,
 			);
 			path = FoodMix;
 			sourceTree = "<group>";
@@ -308,6 +356,7 @@
 		1CCC8BAA27D4752700B5D3B9 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				1C1F368527D9A0A100957046 /* Account */,
 				1CCC8BB627D4752700B5D3B9 /* Activity */,
 				1CCC8BB427D4752700B5D3B9 /* Auth */,
 				1CCC8BB127D4752700B5D3B9 /* Category */,
@@ -418,7 +467,6 @@
 			children = (
 				1CCC8BD327D4752700B5D3B9 /* ProfileStretchView.swift */,
 				1CCC8BD427D4752700B5D3B9 /* ProfileAboutView.swift */,
-				1CCC8BD527D4752700B5D3B9 /* ProfileTabView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -428,6 +476,8 @@
 			children = (
 				1CCC8BD727D4752700B5D3B9 /* SettingAppBar.swift */,
 				1CCC8BD827D4752700B5D3B9 /* UserCenter.swift */,
+				1C1F367F27D86ADF00957046 /* SettingItemView.swift */,
+				1C1F368127D86DC600957046 /* SettingColorSchema.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -435,12 +485,15 @@
 		1CCC8BFD27D4752F00B5D3B9 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				1C1BD21C27D55C6C003DC2E4 /* NavigationExtention.swift */,
-				1CCC8BFE27D4752F00B5D3B9 /* ViewExtension.swift */,
-				1CCC8BFF27D4752F00B5D3B9 /* StringExtension.swift */,
-				1C0DB7A027D61F3300D6E97D /* EnvironmentExtention.swift */,
-				1C0DB7A227D63DD700D6E97D /* DoubleExtention.swift */,
+				1C1F368627D9A20100957046 /* AlignExtention.swift */,
 				1C0DB7A827D66C4900D6E97D /* DispatchQueueExtention.swift */,
+				1C0DB7A227D63DD700D6E97D /* DoubleExtention.swift */,
+				1C0DB7A027D61F3300D6E97D /* EnvironmentExtention.swift */,
+				1C1F368827D9C5A000957046 /* InputExtention.swift */,
+				1C12E9E227D9F2F6002AC29B /* JsonExtention.swift */,
+				1C1BD21C27D55C6C003DC2E4 /* NavigationExtention.swift */,
+				1CCC8BFF27D4752F00B5D3B9 /* StringExtension.swift */,
+				1CCC8BFE27D4752F00B5D3B9 /* ViewExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -464,17 +517,18 @@
 		1CCC8C0827D4754100B5D3B9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1CCC8C1027D4754100B5D3B9 /* BoardingScreen.swift */,
+				1CCC8C0C27D4754100B5D3B9 /* Bookmark.swift */,
+				1CCC8C0F27D4754100B5D3B9 /* Category.swift */,
+				1C0DB7AC27D74A3900D6E97D /* FilterItem.swift */,
+				1CCC8C1127D4754100B5D3B9 /* History.swift */,
+				1CCC8C0D27D4754100B5D3B9 /* Ingredient.swift */,
+				1CCC8C0E27D4754100B5D3B9 /* Notification.swift */,
+				1C0DB7A427D64DA000D6E97D /* Notify.swift */,
+				1C12E9E627D9FE7C002AC29B /* Province.swift */,
 				1CCC8C0927D4754100B5D3B9 /* Recipe.swift */,
 				1CCC8C0A27D4754100B5D3B9 /* Review.swift */,
 				1CCC8C0B27D4754100B5D3B9 /* User.swift */,
-				1CCC8C0C27D4754100B5D3B9 /* Bookmark.swift */,
-				1CCC8C0D27D4754100B5D3B9 /* Ingredient.swift */,
-				1CCC8C0E27D4754100B5D3B9 /* Notification.swift */,
-				1CCC8C0F27D4754100B5D3B9 /* Category.swift */,
-				1CCC8C1027D4754100B5D3B9 /* BoardingScreen.swift */,
-				1CCC8C1127D4754100B5D3B9 /* History.swift */,
-				1C0DB7A427D64DA000D6E97D /* Notify.swift */,
-				1C0DB7AC27D74A3900D6E97D /* FilterItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -495,6 +549,7 @@
 				1CCC8C1D27D4754800B5D3B9 /* SearchView.swift */,
 				1CCC8C2827D4754800B5D3B9 /* SettingView.swift */,
 				1CCC8C2227D4754800B5D3B9 /* WelcomeView.swift */,
+				1C1F368327D99EDB00957046 /* AccountView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -513,6 +568,7 @@
 				1CCC8C3727D4754D00B5D3B9 /* RecipeViewModel.swift */,
 				1CCC8C3C27D4754D00B5D3B9 /* SearchViewModel.swift */,
 				1CCC8C3D27D4754D00B5D3B9 /* WelcomeViewModel.swift */,
+				1C12E9E827DA2759002AC29B /* AccountViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -664,6 +720,7 @@
 				1C0DB79D27D6004D00D6E97D /* BookmarkMutation.graphql in Resources */,
 				1CCC8C6527D4755300B5D3B9 /* QueryCategories.graphql in Resources */,
 				1CB5B1AA27D4CAC100AEFF30 /* schema.json in Resources */,
+				1C12E9E127D9F193002AC29B /* provinces.json in Resources */,
 				1CCC8C5C27D4755300B5D3B9 /* AuthMutation.graphql in Resources */,
 				1CCC8C6227D4755300B5D3B9 /* Notify.graphql in Resources */,
 				1CCC8C0427D4753500B5D3B9 /* Nunito.ttf in Resources */,
@@ -705,6 +762,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C0DB7AD27D74A3A00D6E97D /* FilterItem.swift in Sources */,
+				1C12E9E927DA275A002AC29B /* AccountViewModel.swift in Sources */,
 				1CCC8C4727D4754D00B5D3B9 /* SearchViewModel.swift in Sources */,
 				1CCC8C4827D4754D00B5D3B9 /* WelcomeViewModel.swift in Sources */,
 				1C0DB79F27D6008500D6E97D /* BookmarkMutation.graphql.swift in Sources */,
@@ -712,6 +770,7 @@
 				1CCC8C3327D4754800B5D3B9 /* MainView.swift in Sources */,
 				1CCC8C3127D4754800B5D3B9 /* NotificationView.swift in Sources */,
 				1CCC8BA027D474F500B5D3B9 /* Persistence.swift in Sources */,
+				1C1F368B27D9CB1900957046 /* InfoFormView.swift in Sources */,
 				1CCC8BE627D4752700B5D3B9 /* RecipeIngredientsView.swift in Sources */,
 				1CCC8BF127D4752700B5D3B9 /* CustomBottomSheet.swift in Sources */,
 				1CCC8BDC27D4752700B5D3B9 /* HomeIngredient.swift in Sources */,
@@ -728,6 +787,7 @@
 				1CCC8C2E27D4754800B5D3B9 /* RecipeView.swift in Sources */,
 				1CCC8C0727D4753B00B5D3B9 /* OffsetPageTabView.swift in Sources */,
 				1CCC8B9927D474F300B5D3B9 /* ContentView.swift in Sources */,
+				1C1F368927D9C5A000957046 /* InputExtention.swift in Sources */,
 				1CCC8C5F27D4755300B5D3B9 /* AuthMutation.graphql.swift in Sources */,
 				1CCC8C4327D4754D00B5D3B9 /* HomeViewModel.swift in Sources */,
 				1CCC8BF727D4752700B5D3B9 /* SearchBarView.swift in Sources */,
@@ -740,6 +800,7 @@
 				1C0DB7A127D61F3300D6E97D /* EnvironmentExtention.swift in Sources */,
 				1CCC8C3527D4754800B5D3B9 /* SettingView.swift in Sources */,
 				1CCC8C3427D4754800B5D3B9 /* ActivityView.swift in Sources */,
+				1C1F368427D99EDB00957046 /* AccountView.swift in Sources */,
 				1CCC8C2D27D4754800B5D3B9 /* HomeView.swift in Sources */,
 				1CCC8C6127D4755300B5D3B9 /* Types.graphql.swift in Sources */,
 				1CCC8C4A27D4754D00B5D3B9 /* AppViewModel.swift in Sources */,
@@ -748,6 +809,7 @@
 				1CCC8C1527D4754100B5D3B9 /* Bookmark.swift in Sources */,
 				1CCC8C5E27D4755300B5D3B9 /* Notify.graphql.swift in Sources */,
 				1CCC8BE027D4752700B5D3B9 /* AuthFormView.swift in Sources */,
+				1C12E9E727D9FE7C002AC29B /* Province.swift in Sources */,
 				1CCC8C3227D4754800B5D3B9 /* IngredientView.swift in Sources */,
 				1CCC8C1627D4754100B5D3B9 /* Ingredient.swift in Sources */,
 				1CCC8BF327D4752700B5D3B9 /* NotificationItem.swift in Sources */,
@@ -756,7 +818,6 @@
 				1CCC8BE527D4752700B5D3B9 /* RecipeStepperView.swift in Sources */,
 				1CCC8C1727D4754100B5D3B9 /* Notification.swift in Sources */,
 				1CCC8C1427D4754100B5D3B9 /* User.swift in Sources */,
-				1CCC8BFA27D4752700B5D3B9 /* ProfileTabView.swift in Sources */,
 				1CCC8BDE27D4752700B5D3B9 /* CategoryAboutView.swift in Sources */,
 				1CCC8BF527D4752700B5D3B9 /* WelcomeAvatar.swift in Sources */,
 				1C0DB7A927D66C4900D6E97D /* DispatchQueueExtention.swift in Sources */,
@@ -767,6 +828,7 @@
 				1CCC8C4927D4754D00B5D3B9 /* MainViewModel.swift in Sources */,
 				1CCC8BDD27D4752700B5D3B9 /* HomeSearch.swift in Sources */,
 				1CB3491027D4A0420061D9CD /* PreviewWrapper.swift in Sources */,
+				1C12E9E327D9F2F6002AC29B /* JsonExtention.swift in Sources */,
 				1CB3491227D4A6CE0061D9CD /* Firebase.swift in Sources */,
 				1C1BD21D27D55C6C003DC2E4 /* NavigationExtention.swift in Sources */,
 				1CCC8BF227D4752700B5D3B9 /* RecipeItemHorizontal.swift in Sources */,
@@ -783,17 +845,21 @@
 				1CCC8C4C27D4754D00B5D3B9 /* ProfileViewModel.swift in Sources */,
 				1CCC8BEB27D4752700B5D3B9 /* TitleView.swift in Sources */,
 				1CCC8BEA27D4752700B5D3B9 /* RecipeAuthorView.swift in Sources */,
+				1C1F368227D86DC600957046 /* SettingColorSchema.swift in Sources */,
 				1CCC8C6927D4755800B5D3B9 /* Toastify.swift in Sources */,
 				1C0DB7A727D661F100D6E97D /* HomeCategoriesList.swift in Sources */,
 				1CCC8C2B27D4754800B5D3B9 /* ProfileView.swift in Sources */,
 				1CCC8BF927D4752700B5D3B9 /* ProfileAboutView.swift in Sources */,
+				1C1F368727D9A20100957046 /* AlignExtention.swift in Sources */,
 				1CCC8C1827D4754100B5D3B9 /* Category.swift in Sources */,
 				1CCC8BF027D4752700B5D3B9 /* RecipeItemView.swift in Sources */,
+				1C1F368027D86ADF00957046 /* SettingItemView.swift in Sources */,
 				1CCC8BE727D4752700B5D3B9 /* RecipeAbout.swift in Sources */,
 				1CCC8C2A27D4754800B5D3B9 /* SearchView.swift in Sources */,
 				1CCC8C6D27D4756000B5D3B9 /* SearchHistoryController.swift in Sources */,
 				1CCC8C4427D4754D00B5D3B9 /* CategoryViewModel.swift in Sources */,
 				1CCC8BDB27D4752700B5D3B9 /* HelloView.swift in Sources */,
+				1C12E9EB27DA2D5A002AC29B /* ProvinceFormView.swift in Sources */,
 				1CCC8B9727D474F300B5D3B9 /* FoodMixApp.swift in Sources */,
 				1CCC8BE127D4752700B5D3B9 /* ActivityAppBar.swift in Sources */,
 				1CCC8BDF27D4752700B5D3B9 /* CategoryStretchView.swift in Sources */,

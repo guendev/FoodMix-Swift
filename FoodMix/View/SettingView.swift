@@ -28,12 +28,14 @@ struct SettingView: View {
                             .padding(.bottom, 10)
                             .padding(.horizontal, 25)
                         
-                        SettingItemView(title: "Thông Báo") {
-                            Toggle("", isOn: .constant(true))
+                        SettingItemView(title: "Thư Viện") {
+                            Image(systemName: "arrow.right")
+                                .foregroundColor(Color("InputText"))
                         }
                         
-                        SettingItemView(title: "Giao Diện Tối") {
-                            Toggle("", isOn: .constant(true))
+                        SettingItemView(title: "Lịch Sử") {
+                            Image(systemName: "arrow.right")
+                                .foregroundColor(Color("InputText"))
                         }
     
                         
@@ -47,12 +49,16 @@ struct SettingView: View {
                             .padding(.bottom, 10)
                             .padding(.horizontal, 25)
                         
-                        SettingItemView(title: "Thông Báo") {
-                            Toggle("", isOn: .constant(true))
+                        SettingColorSchema()
+                        
+                        SettingItemView(title: "Trung Tâm Chính Sách") {
+                            Image(systemName: "arrow.right")
+                                .foregroundColor(Color("InputText"))
                         }
                         
-                        SettingItemView(title: "Giao Diện Tối") {
-                            Toggle("", isOn: .constant(true))
+                        SettingItemView(title: "Số Phiên Bản") {
+                            Image(systemName: "arrow.right")
+                                .foregroundColor(Color("InputText"))
                         }
     
                         
@@ -70,38 +76,10 @@ struct SettingView: View {
 
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
-    }
-}
-
-fileprivate struct SettingItemView<Content: View>: View {
-    
-    var title: String
-    
-    let content: Content
-        
-    init(title: String, @ViewBuilder content: () -> Content) {
-        self.title = title
-        self.content = content()
-    }
-    
-    var body: some View {
-        
-        HStack {
+        PreviewWrapper {
             
-            Text(title)
-                .font(.custom(.customFont, size: 16))
-                .foregroundColor(.black.opacity(0.8))
-            
-            Spacer()
-            
-            content
+            SettingView()
             
         }
-        .padding(.horizontal, 25)
-        .padding(.vertical)
-        .background(Color.white)
-        
     }
-    
 }

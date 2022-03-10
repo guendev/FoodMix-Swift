@@ -21,11 +21,25 @@ struct ProfileStretchView: View {
                 Color.clear
                     .overlay(
                         
-                        RecipeAvatar(avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFKYmf6jHItCbfL8txsSCFfsCW254JYLEeNQ&usqp=CAU")
+                        Group {
+                            
+                            if viewModel.ready {
+                                
+                                Image("food")
+                                    .resizable()
+                                
+                            } else {
+                                
+                                RecipeAvatar(avatar: viewModel.user?.banner)
+                                
+                            }
+                            
+                        }
                             .scaledToFill()
                         
                     )
                     .clipped()
+                    .redacted(reason: viewModel.ready ? [] : .placeholder)
                 
             }
             
@@ -40,11 +54,22 @@ struct ProfileStretchView: View {
                             .frame(width: 120, height: 120, alignment: .center)
                             .overlay(
                                 
-                                RecipeAvatar(avatar: "https://user-pic.webnovel.com/userheadimg/4307667847-10/200.jpg")
+                                Group {
+                                    
+                                    if viewModel.ready {
+                                        
+                                        RecipeAvatar(avatar: "https://user-pic.webnovel.com/userheadimg/4307667847-10/200.jpg")
+                                        
+                                    } else {
+                                        
+                                        Image("avatar")
+                                            .resizable()
+                                        
+                                    }
+                                    
+                                }
                                     .scaledToFit()
                                     .frame(width: 95, height: 95)
-                                    // .scaleEffect(show ? 1 : 0.5)
-                                    // .opacity(show ? 1 : 0)
                                     .clipShape(Circle())
                                     .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
                                 
@@ -85,11 +110,13 @@ struct ProfileStretchView: View {
                             
                         }
                         .offset(x: -25, y: 25)
+                        .disabled(!viewModel.ready)
                         
                     }
                     
                     , alignment: .bottom
                 )
+                .redacted(reason: viewModel.ready ? [] : .placeholder)
             
         }
         
@@ -98,6 +125,12 @@ struct ProfileStretchView: View {
 
 struct ProfileStretchView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(user: User(id: "1", name: "Yuan", slug: "yuan", avatar: "https://user-pic.webnovel.com/userheadimg/4307667847-10/200.jpg"))
+        
+        PreviewWrapper {
+            
+            ProfileView(slug: "igyuguyg")
+            
+        }
+        
     }
 }

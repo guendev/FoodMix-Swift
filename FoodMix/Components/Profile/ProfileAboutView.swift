@@ -8,10 +8,39 @@
 import SwiftUI
 
 struct ProfileAboutView: View {
+    
+    @EnvironmentObject var viewModel: ProfileViewModel
+    
     var body: some View {
+        
+        ZStack {
+            
+            if viewModel.ready {
+                
+                AboutTemplate(
+                    name: viewModel.user!.name,
+                    slug: viewModel.user!.slug,
+                    map: viewModel.user?.province ?? "Việt Nam",
+                    about: viewModel.user?.about ?? "Một đầu bếp lười biếng"
+                )
+                
+            } else {
+                
+                AboutTemplate(name: "Danny", slug: "yuan", map: "Đà Lạt", about: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour")
+                    .redacted(reason: .placeholder)
+                
+            }
+            
+        }
+        
+    }
+    
+    @ViewBuilder
+    private func AboutTemplate(name: String, slug: String, map: String, about: String) -> some View {
+        
         VStack(alignment: .leading, spacing: 12) {
             
-            Text("Thịt Kho")
+            Text(name)
                 .font(.title2)
                 .fontWeight(.semibold)
                 .foregroundColor(.black.opacity(0.8))
@@ -19,22 +48,19 @@ struct ProfileAboutView: View {
             
             HStack(spacing: 30) {
                 
-                Text("@yuan")
+                Text("@\(slug)")
+                    .font(.subheadline)
                     .lineLimit(1)
                 
                 HStack(spacing: 5) {
                     
                     Image(systemName: "mappin")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 15, height: 15)
                     
-                    Text("Huế")
-                    
-                }
-                
-                HStack {
-                    
-                    Image(systemName: "calendar")
-                    
-                    Text("20/20/2022")
+                    Text(map)
+                        .font(.subheadline)
                     
                 }
                 
@@ -42,17 +68,24 @@ struct ProfileAboutView: View {
             .font(.custom(.customFont, size: 17))
             .foregroundColor(.gray)
             
-            Text("I have a SwiftUI App which uses a public API to download cocktail data by name but I am not very familiar with SwiftUI and I cannot see a way of initialising my view model in my DetailsView file.")
+            Text(about)
                 .font(.custom(.customFont, size: 17))
                 .foregroundColor(.black.opacity(0.7))
                 .lineSpacing(7)
+                .fixedSize(horizontal: false, vertical: true)
             
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        
     }
 }
 
 struct ProfileAboutView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(user: User(id: "1", name: "Yuan", slug: "yuan", avatar: "https://user-pic.webnovel.com/userheadimg/4307667847-10/200.jpg"))
+        PreviewWrapper {
+            
+            ProfileView(slug: "igyuguyg")
+            
+        }
     }
 }

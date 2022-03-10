@@ -23,17 +23,11 @@ struct AuthFormView: View {
                 
                 TextField("Tên Người Dùng", text: $viewModel.name)
                     .keyboardType(.emailAddress)
-                    .autocapitalization(.none)
-                    .font(.custom(.customFont, size: 16))
-                    .foregroundColor(Color("InputText"))
-                    .frame(height: 50)
-                    .padding(.leading, 55)
-                    .background(Color("InputBackground"))
-                    .cornerRadius(15)
+                    .primaryButton()
                     .overlay(
                         
                         Image(systemName: "person")
-                            .foregroundColor(Color(#colorLiteral(red: 0.4352941176, green: 0.4352941176, blue: 0.4352941176, alpha: 1)))
+                            .foregroundColor(Color("InputText"))
                             .padding()
                             .offset(x: 5)
                         
@@ -46,17 +40,11 @@ struct AuthFormView: View {
                         
             TextField("Email ID", text: $viewModel.email)
                 .keyboardType(.emailAddress)
-                .autocapitalization(.none)
-                .font(.custom(.customFont, size: 16))
-                .foregroundColor(Color(#colorLiteral(red: 0.4352941176, green: 0.4352941176, blue: 0.4352941176, alpha: 1)))
-                .frame(height: 50)
-                .padding(.leading, 55)
-                .background(Color(#colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 0.9391186773)))
-                .cornerRadius(15)
+                .primaryButton()
                 .overlay(
                     
                     Image(systemName: "envelope")
-                        .foregroundColor(Color(#colorLiteral(red: 0.4352941176, green: 0.4352941176, blue: 0.4352941176, alpha: 1)))
+                        .foregroundColor(Color("InputText"))
                         .padding()
                         .offset(x: 5)
                     
@@ -68,15 +56,11 @@ struct AuthFormView: View {
             
             PasswordField()
                 .font(.custom(.customFont, size: 16))
-                .foregroundColor(Color(#colorLiteral(red: 0.4352941176, green: 0.4352941176, blue: 0.4352941176, alpha: 1)))
-                .frame(height: 50)
-                .padding(.horizontal, 55)
-                .background(Color(#colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 0.9391186773)))
-                .cornerRadius(15)
+                .primaryButton()
                 .overlay(
                     
                     Image(systemName: "lock.fill")
-                        .foregroundColor(Color(#colorLiteral(red: 0.4352941176, green: 0.4352941176, blue: 0.4352941176, alpha: 1)))
+                        .foregroundColor(Color("InputText"))
                         .padding()
                         .offset(x: 5)
                     
@@ -94,7 +78,7 @@ struct AuthFormView: View {
                     } label: {
                         
                         Image(systemName: viewModel.showPass ? "eye.slash" : "eye")
-                            .foregroundColor(Color(#colorLiteral(red: 0.4352941176, green: 0.4352941176, blue: 0.4352941176, alpha: 1)))
+                            .foregroundColor(Color("InputText"))
                             .padding()
                             .offset(x: -5)
                         
@@ -165,7 +149,6 @@ struct AuthFormView: View {
         if viewModel.showPass {
             
             TextField("********", text: $viewModel.password)
-                .autocapitalization(.none)
                         
             
         } else {
@@ -173,7 +156,6 @@ struct AuthFormView: View {
             SecureField("********", text: $viewModel.password) {
                 
             }
-            .autocapitalization(.none)
             
         }
     }
