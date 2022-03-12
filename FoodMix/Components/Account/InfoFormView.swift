@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct InfoFormView: View {
     
     @EnvironmentObject var viewModel: AccountViewModel
     
     @State var name: String = ""
+    
+    @State var openSheetAvatar: Bool = false
+    
+    @Environment(\.currentUserKey) private var currentUserData
     
     var body: some View {
         
@@ -23,11 +28,15 @@ struct InfoFormView: View {
                 
                 HStack(spacing: 20) {
                     
-                    Circle()
-                        .fill(Color("Primary").opacity(0.1))
+                    RecipeAvatar(avatar: viewModel.currentUser?.avatar)
+                        .scaledToFill()
                         .frame(width: 65, height: 65)
+                        .clipShape(Circle())
+                        .id(viewModel.currentUser?.avatar)
                     
                     Button {
+                        
+                        openSheetAvatar = true
                         
                     } label: {
                         
@@ -42,6 +51,15 @@ struct InfoFormView: View {
                                 RoundedRectangle(cornerRadius: 20)
                                     .stroke(Color("Primary"), lineWidth: 1)
                             )
+                        
+                    }
+                    .sheet(isPresented: $openSheetAvatar) {
+                        
+                        PhotoPicker(configuration: pickPhotosConfig(), isPresented: $openSheetAvatar) { results in
+                            
+                            viewModel.pickedAvatar(results)
+                            
+                        }
                         
                     }
                     
@@ -161,8 +179,19 @@ struct InfoFormView: View {
             
             viewModel.getProvinces()
             
+            viewModel.currentUser = currentUserData
+            
         }
         
+    }
+    
+    func pickPhotosConfig() -> PHPickerConfiguration {
+        
+        var configuration = PHPickerConfiguration()
+        configuration.selectionLimit = 1
+        configuration.filter = .images
+        
+        return configuration
     }
 }
 

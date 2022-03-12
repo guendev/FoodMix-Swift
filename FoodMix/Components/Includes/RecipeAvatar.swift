@@ -13,19 +13,30 @@ struct RecipeAvatar: View {
     @State var avatar: String?
     
     var body: some View {
-        WebImage(url: URL(string: avatar ?? ""))
+        WebImage(url: URL(string: avatarUrl()))
             // Supports options and context, like `.delayPlaceholder` to show placeholder only when error
             .onSuccess { image, data, cacheType in
                 // Success
                 // Note: Data exist only when queried from disk cache or network. Use `.queryMemoryData` if you really need data
+                debugPrint("load image : \(avatarUrl())")
+            }
+            .onFailure { _ in
+                debugPrint("load image fail : \(avatarUrl())")
             }
             .resizable() // Resizable like SwiftUI.Image, you must use this modifier or the view will use the image bitmap size
-            .placeholder(Image(systemName: "photo")) // Placeholder Image
-            // Supports ViewBuilder as well
             .placeholder {
                 Rectangle().foregroundColor(.gray)
-            }
-            .indicator(.activity) // Activity Indicator
+            } // Placeholder Image
+            // Supports ViewBuilder as well
             .transition(.fade(duration: 0.5)) // Fade Transition with duration
+    }
+    
+    func avatarUrl() -> String {
+        guard let avatar = avatar else { return "" }
+        
+        if avatar.hasPrefix("http") {
+            return avatar
+        }
+        return "http://localhost:3000" + avatar
     }
 }

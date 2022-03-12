@@ -17,6 +17,8 @@ struct AccountView: View {
     
     @Namespace var animation
     
+    @State var initScreen: Bool = true
+    
     var body: some View {
         
         VStack {
@@ -79,7 +81,6 @@ struct AccountView: View {
             
         }
         .padding(.horizontal, 25)
-        .asyncAuthData(auth: $viewModel.auth, currentUser: $viewModel.currentUser)
         .environmentObject(viewModel)
         
     }

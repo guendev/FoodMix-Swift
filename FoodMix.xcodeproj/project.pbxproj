@@ -17,11 +17,13 @@
 		1C0DB7AB27D746C500D6E97D /* TabFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0DB7AA27D746C500D6E97D /* TabFilterView.swift */; };
 		1C0DB7AD27D74A3A00D6E97D /* FilterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0DB7AC27D74A3900D6E97D /* FilterItem.swift */; };
 		1C0DB7B127D75D7800D6E97D /* ActivityListAuthor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0DB7B027D75D7700D6E97D /* ActivityListAuthor.swift */; };
+		1C0F8C1927DC463D0039E763 /* FoodMixServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0F8C1827DC463D0039E763 /* FoodMixServices.swift */; };
 		1C12E9E127D9F193002AC29B /* provinces.json in Resources */ = {isa = PBXBuildFile; fileRef = 1C12E9E027D9F193002AC29B /* provinces.json */; };
 		1C12E9E327D9F2F6002AC29B /* JsonExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C12E9E227D9F2F6002AC29B /* JsonExtention.swift */; };
 		1C12E9E727D9FE7C002AC29B /* Province.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C12E9E627D9FE7C002AC29B /* Province.swift */; };
 		1C12E9E927DA275A002AC29B /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C12E9E827DA2759002AC29B /* AccountViewModel.swift */; };
 		1C12E9EB27DA2D5A002AC29B /* ProvinceFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C12E9EA27DA2D5A002AC29B /* ProvinceFormView.swift */; };
+		1C12E9ED27DA4A9F002AC29B /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C12E9EC27DA4A9F002AC29B /* ImagePickerView.swift */; };
 		1C1BD21D27D55C6C003DC2E4 /* NavigationExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1BD21C27D55C6C003DC2E4 /* NavigationExtention.swift */; };
 		1C1F368027D86ADF00957046 /* SettingItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F367F27D86ADF00957046 /* SettingItemView.swift */; };
 		1C1F368227D86DC600957046 /* SettingColorSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F368127D86DC600957046 /* SettingColorSchema.swift */; };
@@ -29,6 +31,7 @@
 		1C1F368727D9A20100957046 /* AlignExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F368627D9A20100957046 /* AlignExtention.swift */; };
 		1C1F368927D9C5A000957046 /* InputExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F368827D9C5A000957046 /* InputExtention.swift */; };
 		1C1F368B27D9CB1900957046 /* InfoFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F368A27D9CB1900957046 /* InfoFormView.swift */; };
+		1C61E8C227DC4A8200A239CF /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 1C61E8C127DC4A8200A239CF /* Moya */; };
 		1CB3490727D479310061D9CD /* FoodMix.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1CB3490527D479310061D9CD /* FoodMix.xcdatamodeld */; };
 		1CB3490927D47FB70061D9CD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1CB3490827D47FB70061D9CD /* GoogleService-Info.plist */; };
 		1CB3490C27D4809F0061D9CD /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1CB3490B27D4809F0061D9CD /* FirebaseAnalytics */; };
@@ -145,12 +148,14 @@
 		1C0DB7AA27D746C500D6E97D /* TabFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabFilterView.swift; sourceTree = "<group>"; };
 		1C0DB7AC27D74A3900D6E97D /* FilterItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterItem.swift; sourceTree = "<group>"; };
 		1C0DB7B027D75D7700D6E97D /* ActivityListAuthor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListAuthor.swift; sourceTree = "<group>"; };
+		1C0F8C1827DC463D0039E763 /* FoodMixServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodMixServices.swift; sourceTree = "<group>"; };
 		1C12E9E027D9F193002AC29B /* provinces.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = provinces.json; sourceTree = "<group>"; };
 		1C12E9E227D9F2F6002AC29B /* JsonExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonExtention.swift; sourceTree = "<group>"; };
 		1C12E9E527D9FDB9002AC29B /* LoadJson.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = LoadJson.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		1C12E9E627D9FE7C002AC29B /* Province.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Province.swift; sourceTree = "<group>"; };
 		1C12E9E827DA2759002AC29B /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		1C12E9EA27DA2D5A002AC29B /* ProvinceFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvinceFormView.swift; sourceTree = "<group>"; };
+		1C12E9EC27DA4A9F002AC29B /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		1C1BD21C27D55C6C003DC2E4 /* NavigationExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationExtention.swift; sourceTree = "<group>"; };
 		1C1F367F27D86ADF00957046 /* SettingItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemView.swift; sourceTree = "<group>"; };
 		1C1F368127D86DC600957046 /* SettingColorSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingColorSchema.swift; sourceTree = "<group>"; };
@@ -265,6 +270,7 @@
 			files = (
 				1CCC8C7327D4765000B5D3B9 /* SDWebImageSwiftUI in Frameworks */,
 				1CCC8C7B27D4776A00B5D3B9 /* Introspect in Frameworks */,
+				1C61E8C227DC4A8200A239CF /* Moya in Frameworks */,
 				1CB3490C27D4809F0061D9CD /* FirebaseAnalytics in Frameworks */,
 				1CCC8C7E27D477A900B5D3B9 /* SwiftValidators in Frameworks */,
 				1CCC8C7827D476AF00B5D3B9 /* ApolloWebSocket in Frameworks */,
@@ -438,8 +444,8 @@
 				1CCC8BC827D4752700B5D3B9 /* RecipeItemView.swift */,
 				1CCC8BC627D4752700B5D3B9 /* StarRating.swift */,
 				1CCC8BC427D4752700B5D3B9 /* StretchHeader.swift */,
-				1CCC8BC327D4752700B5D3B9 /* TitleView.swift */,
 				1C0DB7AA27D746C500D6E97D /* TabFilterView.swift */,
+				1CCC8BC327D4752700B5D3B9 /* TitleView.swift */,
 			);
 			path = Includes;
 			sourceTree = "<group>";
@@ -509,6 +515,7 @@
 		1CCC8C0527D4753B00B5D3B9 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				1C12E9EC27DA4A9F002AC29B /* ImagePickerView.swift */,
 				1CCC8C0627D4753B00B5D3B9 /* OffsetPageTabView.swift */,
 			);
 			path = Helper;
@@ -536,6 +543,7 @@
 		1CCC8C1B27D4754800B5D3B9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1C1F368327D99EDB00957046 /* AccountView.swift */,
 				1CCC8C2727D4754800B5D3B9 /* ActivityView.swift */,
 				1CCC8C2327D4754800B5D3B9 /* AuthView.swift */,
 				1CCC8C1F27D4754800B5D3B9 /* CategoriesView.swift */,
@@ -549,7 +557,6 @@
 				1CCC8C1D27D4754800B5D3B9 /* SearchView.swift */,
 				1CCC8C2827D4754800B5D3B9 /* SettingView.swift */,
 				1CCC8C2227D4754800B5D3B9 /* WelcomeView.swift */,
-				1C1F368327D99EDB00957046 /* AccountView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -557,6 +564,7 @@
 		1CCC8C3627D4754D00B5D3B9 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				1C12E9E827DA2759002AC29B /* AccountViewModel.swift */,
 				1CCC8C3A27D4754D00B5D3B9 /* ActivityViewModel.swift */,
 				1CCC8C3F27D4754D00B5D3B9 /* AppViewModel.swift */,
 				1CCC8C3B27D4754D00B5D3B9 /* AuthViewModel.swift */,
@@ -568,7 +576,6 @@
 				1CCC8C3727D4754D00B5D3B9 /* RecipeViewModel.swift */,
 				1CCC8C3C27D4754D00B5D3B9 /* SearchViewModel.swift */,
 				1CCC8C3D27D4754D00B5D3B9 /* WelcomeViewModel.swift */,
-				1C12E9E827DA2759002AC29B /* AccountViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -631,6 +638,7 @@
 				1CCC8C6727D4755800B5D3B9 /* Toastify.swift */,
 				1CCC8C6827D4755800B5D3B9 /* Network.swift */,
 				1CB3491127D4A6CE0061D9CD /* Firebase.swift */,
+				1C0F8C1827DC463D0039E763 /* FoodMixServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -668,6 +676,7 @@
 				1CCC8C7D27D477A900B5D3B9 /* SwiftValidators */,
 				1CB3490B27D4809F0061D9CD /* FirebaseAnalytics */,
 				1CB3490D27D4809F0061D9CD /* FirebaseDatabase */,
+				1C61E8C127DC4A8200A239CF /* Moya */,
 			);
 			productName = FoodMix;
 			productReference = 1CCC8B9327D474F300B5D3B9 /* FoodMix.app */;
@@ -702,6 +711,7 @@
 				1CCC8C7927D4776A00B5D3B9 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				1CCC8C7C27D477A900B5D3B9 /* XCRemoteSwiftPackageReference "SwiftValidators" */,
 				1CB3490A27D4809F0061D9CD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				1C61E8C027DC4A8100A239CF /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			productRefGroup = 1CCC8B9427D474F300B5D3B9 /* Products */;
 			projectDirPath = "";
@@ -812,6 +822,7 @@
 				1C12E9E727D9FE7C002AC29B /* Province.swift in Sources */,
 				1CCC8C3227D4754800B5D3B9 /* IngredientView.swift in Sources */,
 				1CCC8C1627D4754100B5D3B9 /* Ingredient.swift in Sources */,
+				1C12E9ED27DA4A9F002AC29B /* ImagePickerView.swift in Sources */,
 				1CCC8BF327D4752700B5D3B9 /* NotificationItem.swift in Sources */,
 				1CCC8C3027D4754800B5D3B9 /* AuthView.swift in Sources */,
 				1CCC8C1327D4754100B5D3B9 /* Review.swift in Sources */,
@@ -835,6 +846,7 @@
 				1CCC8BF827D4752700B5D3B9 /* ProfileStretchView.swift in Sources */,
 				1CCC8BEF27D4752700B5D3B9 /* RecipeAvatar.swift in Sources */,
 				1CCC8BFC27D4752700B5D3B9 /* UserCenter.swift in Sources */,
+				1C0F8C1927DC463D0039E763 /* FoodMixServices.swift in Sources */,
 				1CB3490727D479310061D9CD /* FoodMix.xcdatamodeld in Sources */,
 				1CCC8BFB27D4752700B5D3B9 /* SettingAppBar.swift in Sources */,
 				1CCC8BE927D4752700B5D3B9 /* RecipeFirstStepper.swift in Sources */,
@@ -994,6 +1006,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"FoodMix/Preview Content\"";
 				DEVELOPMENT_TEAM = L94FRY6ZUZ;
@@ -1016,6 +1029,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"FoodMix/Preview Content\"";
 				DEVELOPMENT_TEAM = L94FRY6ZUZ;
@@ -1057,6 +1071,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1C61E8C027DC4A8100A239CF /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.0;
+			};
+		};
 		1CB3490A27D4809F0061D9CD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1100,6 +1122,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1C61E8C127DC4A8200A239CF /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C61E8C027DC4A8100A239CF /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
 		1CB3490B27D4809F0061D9CD /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1CB3490A27D4809F0061D9CD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
