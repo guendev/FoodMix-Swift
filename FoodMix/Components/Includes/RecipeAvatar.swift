@@ -11,7 +11,7 @@ import SDWebImageSwiftUI
 struct RecipeAvatar: View {
     
     @State var avatar: String?
-    
+        
     var body: some View {
         WebImage(url: URL(string: avatarUrl()))
             // Supports options and context, like `.delayPlaceholder` to show placeholder only when error
@@ -25,10 +25,14 @@ struct RecipeAvatar: View {
             }
             .resizable() // Resizable like SwiftUI.Image, you must use this modifier or the view will use the image bitmap size
             .placeholder {
-                Rectangle().foregroundColor(.gray)
+                
+                Color.gray
+                    .opacity(0.1)
+                        
+                
             } // Placeholder Image
             // Supports ViewBuilder as well
-            .transition(.fade(duration: 0.5)) // Fade Transition with duration
+            .transition(.fade(duration: 0.5))
     }
     
     func avatarUrl() -> String {
@@ -38,5 +42,15 @@ struct RecipeAvatar: View {
             return avatar
         }
         return "http://localhost:3000" + avatar
+    }
+}
+
+struct RecipeAvatar_Previews: PreviewProvider {
+    static var previews: some View {
+        
+        RecipeAvatar(avatar: "")
+            .scaledToFit()
+            .frame(width: 200, height: 200)
+        
     }
 }

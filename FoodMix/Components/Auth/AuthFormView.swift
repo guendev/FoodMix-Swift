@@ -23,7 +23,7 @@ struct AuthFormView: View {
                 
                 TextField("Tên Người Dùng", text: $viewModel.name)
                     .keyboardType(.emailAddress)
-                    .primaryButton()
+                    .primaryInput()
                     .overlay(
                         
                         Image(systemName: "person")
@@ -40,7 +40,7 @@ struct AuthFormView: View {
                         
             TextField("Email ID", text: $viewModel.email)
                 .keyboardType(.emailAddress)
-                .primaryButton()
+                .primaryInput()
                 .overlay(
                     
                     Image(systemName: "envelope")
@@ -56,7 +56,7 @@ struct AuthFormView: View {
             
             PasswordField()
                 .font(.custom(.customFont, size: 16))
-                .primaryButton()
+                .primaryInput()
                 .overlay(
                     
                     Image(systemName: "lock.fill")

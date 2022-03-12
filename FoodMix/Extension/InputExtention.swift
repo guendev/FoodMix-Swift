@@ -9,7 +9,7 @@ import SwiftUI
 
 extension View {
     
-    func primaryButton(icons: Edge.Set.ArrayLiteralElement = [], label: String? = nil) -> some View {
+    func primaryInput(icons: Edge.Set.ArrayLiteralElement = [], label: String? = nil) -> some View {
         self.modifier(PrimaryInput(icons: icons, label: label))
     }
     

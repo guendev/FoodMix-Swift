@@ -9,8 +9,9 @@ import SwiftUI
 
 struct ProvinceFormView: View {
     
+    @EnvironmentObject var viewModel: AccountViewModel
+    
     var provinces: [String] = ["Hà Nội", "Phú Yên"]
-    @State var currentProvince: String = "Hà Nội"
     
     var body: some View {
         
@@ -18,14 +19,14 @@ struct ProvinceFormView: View {
             
             PrimaryInputLabel(label: "Quê Quán")
             
-            Picker("Quê Quán Của Bạn", selection: $currentProvince) {
+            Picker("Quê Quán Của Bạn", selection: $viewModel.province) {
                 ForEach(provinces, id: \.self) { province in
                     Text("\(province)")
                 }
             }
             .accentColor(Color("InputText"))
             .withAlignment(alignment: .leading)
-            .primaryButton()
+            .primaryInput()
     
             
         }

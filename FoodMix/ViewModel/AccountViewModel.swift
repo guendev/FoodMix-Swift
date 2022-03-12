@@ -11,11 +11,20 @@ import PhotosUI
 
 class AccountViewModel: ObservableObject {
     
-    @Published var currentUser: User?
     
     @Published var provinces: [Province] = [Province]()
     
     @Published var loadingAvatar: Bool = false
+    @Published var loadingBanner: Bool = false
+    
+    // form Info
+    @Published var name: String = ""
+    @Published var avatar: String = "https://i.imgur.com/pqGLgGr.jpg"
+    @Published var banner: String = ""
+    @Published var email: String = ""
+    @Published var gender: UserGender = .UnKnown
+    @Published var province: String = ""
+    @Published var about: String = ""
     
     var provincesMap: [String] {
         get {
@@ -43,27 +52,35 @@ class AccountViewModel: ObservableObject {
         
     }
     
-    func pickedAvatar(_ results: [PHPickerResult]) -> Void {
+    func pickedAvatar(_ results: [PHPickerResult], endpoint: String) -> Void {
                 
         guard let image = results.first?.itemProvider else { return }
         
-        self.loadingAvatar = true
+        if endpoint == "user-avatar" {
+            self.loadingAvatar = true
+        } else {
+            self.loadingBanner = true
+        }
         
         if image.canLoadObject(ofClass: UIImage.self) {
             
-            image.loadObject(ofClass: UIImage.self) { [weak self] img, error in
-                
-                guard let self = self else { return }
-                
+            image.loadObject(ofClass: UIImage.self) { img, error in
+                                
                 if let typeCastedImage = img as? UIImage {
                     
-                    FoodMixNetworkManager.shared.uploadSingle(endpoint: "avatar", image: typeCastedImage) { [weak self] result in
+                    FoodMixNetworkManager.shared.uploadSingle(endpoint: endpoint, image: typeCastedImage) { [weak self] result in
                         
                         guard let self = self else { return }
                         
-                        self.currentUser?.avatar = result.data as? String
-                        
-                        self.loadingAvatar = false
+                        if endpoint == "user-avatar" {
+                            
+                            self.loadingAvatar = false
+                            self.avatar = result.data as? String ?? ""
+                            
+                        } else {
+                            self.loadingBanner = true
+                            self.banner = result.data as? String ?? ""
+                        }
                         
                         Toastify.show("Tải Lên Thành Công", image: "bell")
                                                 
@@ -76,6 +93,20 @@ class AccountViewModel: ObservableObject {
         }
         
         
+    }
+    
+    
+}
+
+extension AccountViewModel {
+    
+    func pickPhotosConfig() -> PHPickerConfiguration {
+        
+        var configuration = PHPickerConfiguration()
+        configuration.selectionLimit = 1
+        configuration.filter = .images
+        
+        return configuration
     }
     
 }

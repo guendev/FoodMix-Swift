@@ -59,10 +59,9 @@ struct UserCenter: View {
                 
                 if viewModel.auth {
                     
-                    Button {
-                        
+                    NavigationLink {
+                        AccountView()
                     } label: {
-                        
                         Text("Sửa")
                             .font(.custom(.customFont, size: 13))
                             .foregroundColor(.white)
@@ -70,8 +69,9 @@ struct UserCenter: View {
                             .padding(.vertical, 7)
                             .background(Color("Warning"))
                             .cornerRadius(20)
-                        
                     }
+                    .buttonStyle(PlainButtonStyle())
+
                     
                 }
                 

@@ -6,6 +6,7 @@ query Me {
 	slug
 	avatar
 	role
+	gender
   }
 }
 

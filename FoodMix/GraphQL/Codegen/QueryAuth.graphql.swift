@@ -17,6 +17,7 @@ public final class MeQuery: GraphQLQuery {
         slug
         avatar
         role
+        gender
       }
     }
     """
@@ -66,6 +67,7 @@ public final class MeQuery: GraphQLQuery {
           GraphQLField("slug", type: .nonNull(.scalar(String.self))),
           GraphQLField("avatar", type: .scalar(String.self)),
           GraphQLField("role", type: .nonNull(.scalar(String.self))),
+          GraphQLField("gender", type: .scalar(Int.self)),
         ]
       }
 
@@ -75,8 +77,8 @@ public final class MeQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: GraphQLID, name: String, email: String, slug: String, avatar: String? = nil, role: String) {
-        self.init(unsafeResultMap: ["__typename": "User", "id": id, "name": name, "email": email, "slug": slug, "avatar": avatar, "role": role])
+      public init(id: GraphQLID, name: String, email: String, slug: String, avatar: String? = nil, role: String, gender: Int? = nil) {
+        self.init(unsafeResultMap: ["__typename": "User", "id": id, "name": name, "email": email, "slug": slug, "avatar": avatar, "role": role, "gender": gender])
       }
 
       public var __typename: String {
@@ -139,6 +141,15 @@ public final class MeQuery: GraphQLQuery {
         }
         set {
           resultMap.updateValue(newValue, forKey: "role")
+        }
+      }
+
+      public var gender: Int? {
+        get {
+          return resultMap["gender"] as? Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "gender")
         }
       }
     }

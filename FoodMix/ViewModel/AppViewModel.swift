@@ -54,7 +54,6 @@ class AppViewModel: ObservableObject {
                 guard let user = try? JSONDecoder().decode(User.self, from: jsonData) else { break }
                 
                 self.user = user
-                                
                 success()
                 
                 

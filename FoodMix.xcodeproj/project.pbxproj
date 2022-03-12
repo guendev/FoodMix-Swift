@@ -31,6 +31,11 @@
 		1C1F368727D9A20100957046 /* AlignExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F368627D9A20100957046 /* AlignExtention.swift */; };
 		1C1F368927D9C5A000957046 /* InputExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F368827D9C5A000957046 /* InputExtention.swift */; };
 		1C1F368B27D9CB1900957046 /* InfoFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F368A27D9CB1900957046 /* InfoFormView.swift */; };
+		1C39B57B27DCDCBD00A346A2 /* AboutFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C39B57A27DCDCBA00A346A2 /* AboutFormView.swift */; };
+		1C39B57D27DD069700A346A2 /* GenderFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C39B57C27DD069700A346A2 /* GenderFormView.swift */; };
+		1C39B57F27DD1DC300A346A2 /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C39B57E27DD1DC300A346A2 /* CheckBoxView.swift */; };
+		1C39B58127DD245C00A346A2 /* AvatarFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C39B58027DD245C00A346A2 /* AvatarFormView.swift */; };
+		1C39B58327DD24FA00A346A2 /* BannerFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C39B58227DD24FA00A346A2 /* BannerFormView.swift */; };
 		1C61E8C227DC4A8200A239CF /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 1C61E8C127DC4A8200A239CF /* Moya */; };
 		1CB3490727D479310061D9CD /* FoodMix.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1CB3490527D479310061D9CD /* FoodMix.xcdatamodeld */; };
 		1CB3490927D47FB70061D9CD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1CB3490827D47FB70061D9CD /* GoogleService-Info.plist */; };
@@ -163,6 +168,11 @@
 		1C1F368627D9A20100957046 /* AlignExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignExtention.swift; sourceTree = "<group>"; };
 		1C1F368827D9C5A000957046 /* InputExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputExtention.swift; sourceTree = "<group>"; };
 		1C1F368A27D9CB1900957046 /* InfoFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoFormView.swift; sourceTree = "<group>"; };
+		1C39B57A27DCDCBA00A346A2 /* AboutFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutFormView.swift; sourceTree = "<group>"; };
+		1C39B57C27DD069700A346A2 /* GenderFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderFormView.swift; sourceTree = "<group>"; };
+		1C39B57E27DD1DC300A346A2 /* CheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
+		1C39B58027DD245C00A346A2 /* AvatarFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarFormView.swift; sourceTree = "<group>"; };
+		1C39B58227DD24FA00A346A2 /* BannerFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerFormView.swift; sourceTree = "<group>"; };
 		1CB3490627D479310061D9CD /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		1CB3490827D47FB70061D9CD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1CB3490F27D4A0420061D9CD /* PreviewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewWrapper.swift; sourceTree = "<group>"; };
@@ -302,6 +312,10 @@
 		1C1F368527D9A0A100957046 /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				1C39B57A27DCDCBA00A346A2 /* AboutFormView.swift */,
+				1C39B58027DD245C00A346A2 /* AvatarFormView.swift */,
+				1C39B58227DD24FA00A346A2 /* BannerFormView.swift */,
+				1C39B57C27DD069700A346A2 /* GenderFormView.swift */,
 				1C1F368A27D9CB1900957046 /* InfoFormView.swift */,
 				1C12E9EA27DA2D5A002AC29B /* ProvinceFormView.swift */,
 			);
@@ -436,6 +450,7 @@
 			isa = PBXGroup;
 			children = (
 				1CCC8BC527D4752700B5D3B9 /* AppBar.swift */,
+				1C39B57E27DD1DC300A346A2 /* CheckBoxView.swift */,
 				1CCC8BC927D4752700B5D3B9 /* CustomBottomSheet.swift */,
 				1CCC8BCB27D4752700B5D3B9 /* NotificationItem.swift */,
 				1CB3490F27D4A0420061D9CD /* PreviewWrapper.swift */,
@@ -804,6 +819,7 @@
 				1C0DB7B127D75D7800D6E97D /* ActivityListAuthor.swift in Sources */,
 				1CCC8BF427D4752700B5D3B9 /* WelcomeButtons.swift in Sources */,
 				1C0DB7AB27D746C500D6E97D /* TabFilterView.swift in Sources */,
+				1C39B57B27DCDCBD00A346A2 /* AboutFormView.swift in Sources */,
 				1CCC8C4527D4754D00B5D3B9 /* ActivityViewModel.swift in Sources */,
 				1CCC8BDA27D4752700B5D3B9 /* HomeUpdatedView.swift in Sources */,
 				1CCC8C0027D4752F00B5D3B9 /* ViewExtension.swift in Sources */,
@@ -812,6 +828,7 @@
 				1CCC8C3427D4754800B5D3B9 /* ActivityView.swift in Sources */,
 				1C1F368427D99EDB00957046 /* AccountView.swift in Sources */,
 				1CCC8C2D27D4754800B5D3B9 /* HomeView.swift in Sources */,
+				1C39B57F27DD1DC300A346A2 /* CheckBoxView.swift in Sources */,
 				1CCC8C6127D4755300B5D3B9 /* Types.graphql.swift in Sources */,
 				1CCC8C4A27D4754D00B5D3B9 /* AppViewModel.swift in Sources */,
 				1CCC8BE427D4752700B5D3B9 /* RecipeStretchAvatar.swift in Sources */,
@@ -820,6 +837,7 @@
 				1CCC8C5E27D4755300B5D3B9 /* Notify.graphql.swift in Sources */,
 				1CCC8BE027D4752700B5D3B9 /* AuthFormView.swift in Sources */,
 				1C12E9E727D9FE7C002AC29B /* Province.swift in Sources */,
+				1C39B58327DD24FA00A346A2 /* BannerFormView.swift in Sources */,
 				1CCC8C3227D4754800B5D3B9 /* IngredientView.swift in Sources */,
 				1CCC8C1627D4754100B5D3B9 /* Ingredient.swift in Sources */,
 				1C12E9ED27DA4A9F002AC29B /* ImagePickerView.swift in Sources */,
@@ -841,10 +859,12 @@
 				1CB3491027D4A0420061D9CD /* PreviewWrapper.swift in Sources */,
 				1C12E9E327D9F2F6002AC29B /* JsonExtention.swift in Sources */,
 				1CB3491227D4A6CE0061D9CD /* Firebase.swift in Sources */,
+				1C39B57D27DD069700A346A2 /* GenderFormView.swift in Sources */,
 				1C1BD21D27D55C6C003DC2E4 /* NavigationExtention.swift in Sources */,
 				1CCC8BF227D4752700B5D3B9 /* RecipeItemHorizontal.swift in Sources */,
 				1CCC8BF827D4752700B5D3B9 /* ProfileStretchView.swift in Sources */,
 				1CCC8BEF27D4752700B5D3B9 /* RecipeAvatar.swift in Sources */,
+				1C39B58127DD245C00A346A2 /* AvatarFormView.swift in Sources */,
 				1CCC8BFC27D4752700B5D3B9 /* UserCenter.swift in Sources */,
 				1C0F8C1927DC463D0039E763 /* FoodMixServices.swift in Sources */,
 				1CB3490727D479310061D9CD /* FoodMix.xcdatamodeld in Sources */,

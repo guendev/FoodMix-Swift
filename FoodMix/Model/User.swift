@@ -13,7 +13,7 @@ struct User: Identifiable, Codable {
     var email: String?
     let slug: String
     var role: String? = "user"
-    var gender: Int?
+    var gender: UserGender?
     var avatar: String?
     var banner: String?
     var province: String?
@@ -23,4 +23,10 @@ struct User: Identifiable, Codable {
     var totalRating: Int?
     
     var createdAt: Float?
+}
+
+enum UserGender: Int, CaseIterable, Codable {
+    case Boy = 1
+    case Girl = 2
+    case UnKnown = 3
 }
