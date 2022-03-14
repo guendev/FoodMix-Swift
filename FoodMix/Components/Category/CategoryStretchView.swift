@@ -34,7 +34,7 @@ struct CategoryStretchView: View {
                 .overlay(
                     
                     Circle()
-                        .fill(Color("Background2"))
+                        .fill(Color("AvatarHeader"))
                         .frame(width: 120, height: 120, alignment: .center)
                         .overlay(
                             

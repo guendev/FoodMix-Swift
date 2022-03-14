@@ -13,7 +13,7 @@ class RecipeViewModel: ObservableObject {
     @Published var loading: Bool = false
     
     var ready: Bool {
-        get { recipe != nil && !loading }
+        get { recipe != nil }
     }
         
     @Published var offset: CGFloat = .zero

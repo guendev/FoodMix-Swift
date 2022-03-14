@@ -23,7 +23,7 @@ struct WelcomeButtons: View {
                     
                     Text("Đăng Nhập")
                         .fontWeight(.semibold)
-                        .foregroundColor(Color("Text"))
+                        .foregroundColor(Color("TextTitle"))
                         .padding(.vertical, 20)
                         .frame(maxWidth: .infinity)
                         .background(Color("Background"))
@@ -37,7 +37,7 @@ struct WelcomeButtons: View {
                     
                     Text("Đăng Ký")
                         .fontWeight(.semibold)
-                        .foregroundColor(Color("Text"))
+                        .foregroundColor(Color("TextTitle"))
                         .padding(.vertical, 20)
                         .frame(maxWidth: .infinity)
                         .background(Color("Background"))

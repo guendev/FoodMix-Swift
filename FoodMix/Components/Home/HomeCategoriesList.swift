@@ -40,7 +40,7 @@ struct HomeCategoriesList: View {
                 
                 ZStack {
                     
-                    if viewModel.catgories.count < 0 {
+                    if viewModel.catgories.count > 0 {
                         
                         CategoriesList()
                         
@@ -86,7 +86,7 @@ struct HomeCategoriesList: View {
                     Text(item.name)
                         .font(.custom(.customFont, size: 14))
                         .fontWeight(.semibold)
-                        .foregroundColor(current(category: item) ? .white : Color("Text"))
+                        .foregroundColor(current(category: item) ? .white : Color("TextContent"))
                         .padding(.horizontal, 20)
                         .padding(.leading, 20)
                         .padding(.vertical, 10)
@@ -138,7 +138,7 @@ struct HomeCategoriesList: View {
                 Text("Kem Lạnh")
                     .font(.custom(.customFont, size: 16))
                     .fontWeight(.semibold)
-                    .foregroundColor(Color("Text"))
+                    .foregroundColor(Color("TextContent"))
                     .padding(.horizontal, 20)
                     .padding(.leading, 20)
                     .padding(.vertical, 10)

@@ -141,6 +141,35 @@ public struct UserUpdateInput: GraphQLMapConvertible {
   }
 }
 
+public struct UserUpdatePasswordInput: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  /// - Parameters:
+  ///   - currentPassword
+  ///   - newPassword
+  public init(currentPassword: String, newPassword: String) {
+    graphQLMap = ["currentPassword": currentPassword, "newPassword": newPassword]
+  }
+
+  public var currentPassword: String {
+    get {
+      return graphQLMap["currentPassword"] as! String
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "currentPassword")
+    }
+  }
+
+  public var newPassword: String {
+    get {
+      return graphQLMap["newPassword"] as! String
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "newPassword")
+    }
+  }
+}
+
 public struct SortOption: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 

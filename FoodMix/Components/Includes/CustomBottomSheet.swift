@@ -30,7 +30,7 @@ struct CustomBottomSheet<Content: View>: View {
     
     var body: some View {
         
-        ZStack(alignment: .bottom) {
+        ZStack(alignment: .top) {
             
             if overlay && offset > minHeight {
                 
@@ -99,7 +99,7 @@ struct CustomBottomSheet<Content: View>: View {
                 content
                 
             }
-            .frame(maxWidth: .infinity, maxHeight: offset)
+            .frame(maxHeight: offset)
             .onAppear {
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {

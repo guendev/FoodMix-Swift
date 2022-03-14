@@ -59,9 +59,6 @@ class AuthViewModel: ObservableObject {
                 case .failure(_): break
                     // Lỗi mạng
                 }
-                
-                self.loading = false
-                
             }
             
         }
@@ -99,9 +96,6 @@ class AuthViewModel: ObservableObject {
                 case .failure(_): break
                     // Lỗi mạng
                 }
-                
-                self.loading = false
-                
             }
         }
     }

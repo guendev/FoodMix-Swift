@@ -25,12 +25,12 @@ struct PrimaryInput: ViewModifier {
         return content
             .autocapitalization(.none)
             .font(.subheadline)
-            .foregroundColor(Color("InputText"))
+            .foregroundColor(Color("TextContent"))
             .frame(height: 45)
             .padding(icons, 25)
             .padding(.horizontal, 20)
             .frame(maxWidth: .infinity)
-            .background(Color("InputBackground"))
+            .background(Color("Background2"))
             .cornerRadius(radius ?? 15)
             .padding(.top, label != nil ? 30 : 0)
             .overlay(

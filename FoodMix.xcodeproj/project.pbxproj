@@ -37,6 +37,8 @@
 		1C39B58127DD245C00A346A2 /* AvatarFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C39B58027DD245C00A346A2 /* AvatarFormView.swift */; };
 		1C39B58327DD24FA00A346A2 /* BannerFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C39B58227DD24FA00A346A2 /* BannerFormView.swift */; };
 		1C61E8C227DC4A8200A239CF /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 1C61E8C127DC4A8200A239CF /* Moya */; };
+		1CB110DB27DF504D00F36F7B /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB110DA27DF504D00F36F7B /* PrimaryButton.swift */; };
+		1CB110DD27DF534300F36F7B /* PasswordFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB110DC27DF534200F36F7B /* PasswordFormView.swift */; };
 		1CB3490727D479310061D9CD /* FoodMix.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1CB3490527D479310061D9CD /* FoodMix.xcdatamodeld */; };
 		1CB3490927D47FB70061D9CD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1CB3490827D47FB70061D9CD /* GoogleService-Info.plist */; };
 		1CB3490C27D4809F0061D9CD /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1CB3490B27D4809F0061D9CD /* FirebaseAnalytics */; };
@@ -173,6 +175,8 @@
 		1C39B57E27DD1DC300A346A2 /* CheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
 		1C39B58027DD245C00A346A2 /* AvatarFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarFormView.swift; sourceTree = "<group>"; };
 		1C39B58227DD24FA00A346A2 /* BannerFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerFormView.swift; sourceTree = "<group>"; };
+		1CB110DA27DF504D00F36F7B /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		1CB110DC27DF534200F36F7B /* PasswordFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordFormView.swift; sourceTree = "<group>"; };
 		1CB3490627D479310061D9CD /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		1CB3490827D47FB70061D9CD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1CB3490F27D4A0420061D9CD /* PreviewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewWrapper.swift; sourceTree = "<group>"; };
@@ -317,6 +321,7 @@
 				1C39B58227DD24FA00A346A2 /* BannerFormView.swift */,
 				1C39B57C27DD069700A346A2 /* GenderFormView.swift */,
 				1C1F368A27D9CB1900957046 /* InfoFormView.swift */,
+				1CB110DC27DF534200F36F7B /* PasswordFormView.swift */,
 				1C12E9EA27DA2D5A002AC29B /* ProvinceFormView.swift */,
 			);
 			path = Account;
@@ -461,6 +466,7 @@
 				1CCC8BC427D4752700B5D3B9 /* StretchHeader.swift */,
 				1C0DB7AA27D746C500D6E97D /* TabFilterView.swift */,
 				1CCC8BC327D4752700B5D3B9 /* TitleView.swift */,
+				1CB110DA27DF504D00F36F7B /* PrimaryButton.swift */,
 			);
 			path = Includes;
 			sourceTree = "<group>";
@@ -840,6 +846,7 @@
 				1C39B58327DD24FA00A346A2 /* BannerFormView.swift in Sources */,
 				1CCC8C3227D4754800B5D3B9 /* IngredientView.swift in Sources */,
 				1CCC8C1627D4754100B5D3B9 /* Ingredient.swift in Sources */,
+				1CB110DB27DF504D00F36F7B /* PrimaryButton.swift in Sources */,
 				1C12E9ED27DA4A9F002AC29B /* ImagePickerView.swift in Sources */,
 				1CCC8BF327D4752700B5D3B9 /* NotificationItem.swift in Sources */,
 				1CCC8C3027D4754800B5D3B9 /* AuthView.swift in Sources */,
@@ -876,6 +883,7 @@
 				1CCC8C2F27D4754800B5D3B9 /* WelcomeView.swift in Sources */,
 				1CCC8C4C27D4754D00B5D3B9 /* ProfileViewModel.swift in Sources */,
 				1CCC8BEB27D4752700B5D3B9 /* TitleView.swift in Sources */,
+				1CB110DD27DF534300F36F7B /* PasswordFormView.swift in Sources */,
 				1CCC8BEA27D4752700B5D3B9 /* RecipeAuthorView.swift in Sources */,
 				1C1F368227D86DC600957046 /* SettingColorSchema.swift in Sources */,
 				1CCC8C6927D4755800B5D3B9 /* Toastify.swift in Sources */,

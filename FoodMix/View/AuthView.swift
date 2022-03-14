@@ -27,6 +27,7 @@ struct AuthView: View {
                 } label: {
                     
                     Image(systemName: "arrow.left")
+                        .foregroundColor(Color("TextTitle"))
                     
                 }
                 
@@ -57,13 +58,13 @@ struct AuthView: View {
                 
                 HStack {
                     
-                    Rectangle().fill(Color("TextContent").opacity(0.5)).frame(height: 1)
+                    Rectangle().fill(Color("TextContent").opacity(0.3)).frame(height: 1)
                     
                     Text("TIẾP TỤC VỚI")
-                        .foregroundColor(Color("TextContent"))
+                        .foregroundColor(Color("TextContent").opacity(0.4))
                         .font(.caption)
                     
-                    Rectangle().fill(Color("TextContent").opacity(0.5)).frame(height: 1)
+                    Rectangle().fill(Color("TextContent").opacity(0.3)).frame(height: 1)
                     
                 }
                 .padding(.vertical, 25)
@@ -137,6 +138,10 @@ struct AuthView: View {
 
 struct AuthView_Previews: PreviewProvider {
     static var previews: some View {
-        AuthView()
+        PreviewWrapper {
+            
+            AuthView()
+            
+        }
     }
 }

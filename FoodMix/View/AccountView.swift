@@ -13,7 +13,7 @@ struct AccountView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State var currentTab: AccountTab = .Info
+    @State var currentTab: AccountTab = .Password
     
     @Namespace var animation
     
@@ -44,7 +44,7 @@ struct AccountView: View {
                 Spacer()
                 
             }
-            .foregroundColor(Color("Text"))
+            .foregroundColor(Color("TextTitle"))
             .padding(.vertical)
             
             HStack(spacing: 15) {
@@ -72,7 +72,13 @@ struct AccountView: View {
                 
                 Group {
                     
-                    InfoFormView()
+                    if currentTab == .Info {
+                        InfoFormView()
+                    } else {
+                        
+                        PasswordFormView()
+                        
+                    }
                     
                 }
                 .padding(.vertical, 40)
@@ -99,9 +105,8 @@ struct AccountView: View {
             
             Text(tab.rawValue)
                 .font(.callout)
-                .foregroundColor( currentTab == tab ? Color("Text") : Color("Secondary"))
+                .foregroundColor( currentTab == tab ? Color("TextTitle") : Color("TextTitle").opacity(0.5))
                 .fontWeight(currentTab == tab ? .semibold :.regular)
-                .animation(.none, value: currentTab)
                 .padding(.bottom, 14)
                 .padding(.horizontal, 3)
                 .padding(.trailing, 5)

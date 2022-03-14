@@ -27,30 +27,28 @@ struct RecipeIngredientsView: View {
                 
             }
             
-            if viewModel.recipe != nil {
+            VStack(spacing: 15){
                 
-                LazyVStack(spacing: 15){
+                if viewModel.ready {
                     
                     ForEach(viewModel.recipe!.ingredients!.prefix(5), id:\.id) { item in
                         
-                        HStack {
-                            
-                            Text(item.name)
-                                .lineLimit(1)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            
-                            Text("\(item.count) \(item.unit)")
-                            
-                        }
-                        .font(.subheadline)
-                        .foregroundColor(Color("TextContent"))
-                        .padding(.horizontal, 15)
-                        .padding(.vertical, 12)
-                        .frame(maxWidth: .infinity)
-                        .background(Color("Background2"))
-                        .cornerRadius(5)
+                        RecipeIngredientItem(ingredient: item)
                         
                     }
+                    
+                } else {
+                    
+                    Group {
+                        
+                        ForEach(0...3, id: \.self) { _ in
+                            
+                            RecipeIngredientItem(ingredient: Ingredient(name: "Hanh La", count: 200, unit: "gram"))
+                            
+                        }
+                        
+                    }
+                    .redacted(reason: .placeholder)
                     
                 }
                 
@@ -58,6 +56,33 @@ struct RecipeIngredientsView: View {
             
         }
     }
+}
+
+struct RecipeIngredientItem: View {
+    
+    var ingredient: Ingredient
+    
+    var body: some View {
+        
+        HStack {
+            
+            Text(ingredient.name)
+                .lineLimit(1)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            
+            Text("\(ingredient.count) \(ingredient.unit)")
+            
+        }
+        .font(.subheadline)
+        .foregroundColor(Color("TextContent"))
+        .padding(.horizontal, 15)
+        .padding(.vertical, 12)
+        .frame(maxWidth: .infinity)
+        .background(Color("Background2"))
+        .cornerRadius(5)
+        
+    }
+    
 }
 
 struct RecipeIngredientsView_Previews: PreviewProvider {

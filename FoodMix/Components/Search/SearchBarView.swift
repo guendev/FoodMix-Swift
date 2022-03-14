@@ -40,14 +40,7 @@ struct SearchBarView: View {
                     saveHistory()
                 }
             }
-            .font(.subheadline)
-            .foregroundColor(Color("TextContent"))
-            .frame(height: 40)
-            .padding(.leading, 25)
-            .padding(.trailing, 50)
-            .background(Color("Background2"))
-            .cornerRadius(30)
-            .accentColor(Color("TextContent"))
+            .primaryInput(icons: [.trailing], radius: 20)
             .overlay(
                     
                 Button {

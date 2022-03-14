@@ -17,11 +17,8 @@ class ActivityViewModel: ObservableObject {
     
     @Published var current: FilterItem = FilterItem(name: "Công Thức", value: "countRecipe")
     
-    func getFirstAuthors() -> Void {
-        if loadingFirst { return }
-        loadingFirst = true
+    init() {
         getAuthors()
-        
     }
     
     func getAuthors() -> Void {

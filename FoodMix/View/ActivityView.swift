@@ -15,32 +15,26 @@ struct ActivityView: View {
             
     var body: some View {
         
-        VStack(spacing: 0) {
-            
+        VStack() {
             ActivityAppBar()
                 .padding(.horizontal, 25)
             
-            // top 3
             ActivityBigTop()
             
+            Spacer()
+            
+            
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .overlay(
             
             ActivityListAuthor()
+                .frame(width: getScreenBounds().width)
+                .background(Color.white)
+                .clipShape(CustomSheetShape())
             
             ,alignment: .bottom
             
         )
-        .onAppear {
-            
-            if viewModel.loadingFirst {
-                return
-            }
-            getFirst = false
-            viewModel.getFirstAuthors()
-            
-        }
         .background(Color("Background").ignoresSafeArea())
         .environmentObject(viewModel)
     }

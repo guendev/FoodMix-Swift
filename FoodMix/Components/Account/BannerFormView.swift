@@ -18,9 +18,11 @@ struct BannerFormView: View {
             
             PrimaryInputLabel(label: "Ảnh Bìa")
             
-            RoundedRectangle(cornerRadius: 20)
-                .fill(Color("Primary").opacity(0.1))
+            RecipeAvatar(avatar: viewModel.banner)
+                .frame(maxWidth: .infinity)
                 .frame(height: 180)
+                .clipShape(RoundedRectangle(cornerRadius: 20))
+            
             
             HStack(spacing: 20) {
                 

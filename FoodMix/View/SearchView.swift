@@ -35,7 +35,7 @@ struct SearchView: View {
                             
                             Text("Chẳng có món ăn nào ở đây cả")
                                 .font(.subheadline)
-                                .foregroundColor(.gray)
+                                .foregroundColor(Color("TextContent"))
                             
                         }
                         

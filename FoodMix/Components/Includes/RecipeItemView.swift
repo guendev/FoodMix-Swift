@@ -22,7 +22,7 @@ struct RecipeItemView: View {
                 .overlay(
                 
                     Circle()
-                        .fill(Color.white)
+                        .fill(Color("AvavtarBackground"))
                         .frame(width: 50, height: 50)
                         .overlay(
                             
@@ -46,7 +46,7 @@ struct RecipeItemView: View {
                 Text(recipe.name)
                     .font(.custom(.customFont, size: 16))
                     .fontWeight(.bold)
-                    .foregroundColor(Color("Trypan Blue"))
+                    .foregroundColor(Color("TextTitle"))
                     .lineLimit(2)
                 
             }
@@ -78,14 +78,14 @@ struct RecipeItemPreview: View {
                 .overlay(
                 
                     Circle()
-                        .fill(Color("RecipeAvatarBackground"))
+                        .fill(Color("AvavtarBackground"))
                         .frame(width: 50, height: 50)
                         .overlay(
                             
                             Image(systemName: "heart")
                                 .resizable()
                                 .scaledToFit()
-                                .foregroundColor(Color("Flickr Pink"))
+                                .foregroundColor(Color("Rose"))
                                 .frame(width: 25, height: 25)
                             
                         )

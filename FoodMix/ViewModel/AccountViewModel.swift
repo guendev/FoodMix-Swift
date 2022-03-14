@@ -17,6 +17,7 @@ class AccountViewModel: ObservableObject {
     @Published var loadingAvatar: Bool = false
     @Published var loadingBanner: Bool = false
     @Published var loadingUpdateInfo: Bool = false
+    @Published var loadingUpdatePassword: Bool = false
     
     // form Info
     @Published var name: String = ""
@@ -26,6 +27,11 @@ class AccountViewModel: ObservableObject {
     @Published var gender: UserGender = .UnKnown
     @Published var province: String = ""
     @Published var about: String = ""
+    
+    // Form password
+    @Published var currentPassword: String = ""
+    @Published var newPassword: String = ""
+    @Published var rePassword: String = ""
     
     var provincesMap: [String] {
         get {
@@ -141,6 +147,32 @@ class AccountViewModel: ObservableObject {
         }
         
         
+    }
+    
+    func updatePassword(success: @escaping () -> Void) -> Void {
+        
+        loadingUpdatePassword = true
+        
+        Network.shared.apollo.perform(mutation: UpdateUserPasswordMutation(input: UserUpdatePasswordInput(currentPassword: currentPassword, newPassword: newPassword))) { [weak self] result in
+            guard let self = self else {
+                  return
+            }
+            
+            switch result {
+            case .success(let graphQLResult) :
+                                
+                if graphQLResult.errors != nil {
+                    break
+                }
+                success()
+                break
+                
+            case .failure(_):
+                break                // Lỗi mạng
+            }
+            
+            self.loadingUpdatePassword = false
+        }
     }
     
     

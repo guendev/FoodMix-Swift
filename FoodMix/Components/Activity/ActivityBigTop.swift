@@ -14,7 +14,7 @@ struct ActivityBigTop: View {
     var body: some View {
         HStack(spacing: 0) {
             
-            if viewModel.loadingFirst || viewModel.authors.count < 3 {
+            if viewModel.authors.count < 3 {
                 
                 Group {
                     

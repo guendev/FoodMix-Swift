@@ -24,3 +24,9 @@ mutation UpdateUser($input: UserUpdateInput!) {
 	gender
   }
 }
+
+mutation UpdateUserPassword($input: UserUpdatePasswordInput!) {
+  updateUserPassword(input: $input) {
+	id
+  }
+}

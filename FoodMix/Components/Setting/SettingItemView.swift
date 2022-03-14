@@ -24,7 +24,7 @@ struct SettingItemView<Content: View>: View {
             
             Text(title)
                 .font(.subheadline)
-                .foregroundColor(Color("InputText"))
+                .foregroundColor(Color("TextContent"))
             
             Spacer()
             
@@ -33,7 +33,7 @@ struct SettingItemView<Content: View>: View {
         }
         .padding(.horizontal, 25)
         .frame(height: 50)
-        .background(Color("InputBackground"))
+        .background(Color("Background2"))
         
     }
     

@@ -25,7 +25,7 @@ struct HomeView: View {
                     Text("Khám phá ngay")
                         .font(.custom(.customFont, size: 22))
                         .fontWeight(.semibold)
-                        .foregroundColor(Color("Text"))
+                        .foregroundColor(Color("TextContent"))
                         .padding(.top, 16)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     

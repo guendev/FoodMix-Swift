@@ -359,3 +359,96 @@ public final class UpdateUserMutation: GraphQLMutation {
     }
   }
 }
+
+public final class UpdateUserPasswordMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    mutation UpdateUserPassword($input: UserUpdatePasswordInput!) {
+      updateUserPassword(input: $input) {
+        __typename
+        id
+      }
+    }
+    """
+
+  public let operationName: String = "UpdateUserPassword"
+
+  public var input: UserUpdatePasswordInput
+
+  public init(input: UserUpdatePasswordInput) {
+    self.input = input
+  }
+
+  public var variables: GraphQLMap? {
+    return ["input": input]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Mutation"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("updateUserPassword", arguments: ["input": GraphQLVariable("input")], type: .nonNull(.object(UpdateUserPassword.selections))),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(updateUserPassword: UpdateUserPassword) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "updateUserPassword": updateUserPassword.resultMap])
+    }
+
+    public var updateUserPassword: UpdateUserPassword {
+      get {
+        return UpdateUserPassword(unsafeResultMap: resultMap["updateUserPassword"]! as! ResultMap)
+      }
+      set {
+        resultMap.updateValue(newValue.resultMap, forKey: "updateUserPassword")
+      }
+    }
+
+    public struct UpdateUserPassword: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["User"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: GraphQLID) {
+        self.init(unsafeResultMap: ["__typename": "User", "id": id])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return resultMap["id"]! as! GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+    }
+  }
+}

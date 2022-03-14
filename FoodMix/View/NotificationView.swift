@@ -20,7 +20,6 @@ struct NotificationView: View {
             .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: -5)
             .foregroundColor(.black.opacity(0.8))
             
-            // HomeSearch()
             
             ScrollView(.vertical, showsIndicators: false) {
                 
@@ -30,6 +29,10 @@ struct NotificationView: View {
                         
                         NotificationItem(notify: item)
                         
+                    }
+                    
+                    if viewModel.loading {
+                        NotificationItem.previews()
                     }
                     
                 }

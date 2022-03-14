@@ -50,9 +50,9 @@ struct RecipeAppBar: View {
             Color("Primary")
                 .opacity(viewModel.offset < -300 ? 1 : 0)
                 .ignoresSafeArea()
+                .animation(.easeIn)
         )
         .shadow(color: .black.opacity(viewModel.offset < -300 ? 0.05 : 0), radius: 10, x: 0.0, y: 0.0)
-        .animation(.easeIn)
     }
 }
 

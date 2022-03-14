@@ -112,39 +112,32 @@ struct AuthFormView: View {
                 }
                 
             }
-                        
-            Button {
-
-                if viewModel.type == .SignIn {
-                    viewModel.signin {
-                        // thành công
-                        app.queryUser {
-                            app.subNotifyAction()
-                            presentationMode.wrappedValue.dismiss()
+            
+            PrimaryButtonView(
+                title: "\(viewModel.type == .SignIn ? "Đăng Nhập" : "Đăng Ký")".uppercased(),
+                active: $viewModel.loading
+            ) {
+                    
+                    if viewModel.type == .SignIn {
+                        viewModel.signin {
+                            // thành công
+                            app.queryUser {
+                                app.subNotifyAction()
+                                viewModel.loading = false
+                                presentationMode.wrappedValue.dismiss()
+                            }
+                        }
+                    } else {
+                        viewModel.signup {
+                            app.queryUser {
+                                app.subNotifyAction()
+                                viewModel.loading = false
+                                presentationMode.wrappedValue.dismiss()
+                            }
                         }
                     }
-                } else {
-                    viewModel.signup {
-                        app.queryUser {
-                            app.subNotifyAction()
-                            presentationMode.wrappedValue.dismiss()
-                        }
-                    }
+                    
                 }
-                
-            } label: {
-                
-                Text("\(viewModel.type == .SignIn ? "Đăng Nhập" : "Đăng Ký")".uppercased())
-                    .fontWeight(.semibold)
-                    .font(.caption)
-                    .frame(height: 45)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .background(Color("Primary"))
-                    .cornerRadius(15)
-                
-            }
-            .disabled(viewModel.loading)
             
             
         }

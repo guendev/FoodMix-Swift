@@ -38,11 +38,11 @@ struct ActivityListAuthor: View {
                         .disabled(viewModel.loadingFirst || viewModel.loading)
                         .onChange(of: viewModel.current.value) { _ in
                             
-                            viewModel.loadingFirst = false
-                            viewModel.page = 0
                             viewModel.authors.removeAll()
-                            viewModel.getFirstAuthors()
                             
+                            viewModel.page = 0
+                            
+                            viewModel.getAuthors()
                         }
                     
                 }
@@ -70,7 +70,7 @@ struct ActivityListAuthor: View {
                             
                         }
                         
-                        if viewModel.loading {
+                        if viewModel.loading || viewModel.authors.count < 3 {
                             
                             Group {
                                 
@@ -89,10 +89,7 @@ struct ActivityListAuthor: View {
                 
             }
             .padding(.horizontal, 25)
-            .frame(maxWidth: .infinity)
         }
-        .background(Color("Sheet"))
-        .clipShape(CustomSheetShape())
     }
     
     @ViewBuilder

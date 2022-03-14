@@ -26,8 +26,7 @@ struct RecipeAvatar: View {
             .resizable() // Resizable like SwiftUI.Image, you must use this modifier or the view will use the image bitmap size
             .placeholder {
                 
-                Color.gray
-                    .opacity(0.1)
+                Color("AvavtarBackground")
                         
                 
             } // Placeholder Image

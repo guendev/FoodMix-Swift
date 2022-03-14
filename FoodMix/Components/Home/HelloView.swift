@@ -31,20 +31,14 @@ struct HelloView: View {
             
             Spacer()
             
-            Circle()
-                .fill(Color("Ultramarine Blue").opacity(0.5))
-                .overlay(
-                    
-                    NavigationLink(destination: Color.red) {
-                        Image("avatar")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 45, height: 45)
-                    }
-                    
-                )
-                .frame(width: 45, height: 45)
-                .clipShape(Circle())
+            NavigationLink(destination: Color.red) {
+                Image("avatar")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 45, height: 45)
+            }
+            .frame(width: 45, height: 45)
+            .clipShape(Circle())
             
             
         }

@@ -35,7 +35,7 @@ struct HomeUpdatedView: View {
                     
                 }
                 
-                if !viewModel.loadingUpdated {
+                if viewModel.loadingUpdated {
                     
                     RecipeItemHorizontalPreview.preview()
                     
@@ -52,10 +52,9 @@ struct HomeUpdatedView: View {
                         Text("Xem Thêm".uppercased())
                             .fontWeight(.semibold)
                             .padding()
-                            .withLoading(active: $viewModel.loadingUpdated)
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
-                            .background(Color("Persian Blue"))
+                            .background(Color("Primary"))
                             .cornerRadius(15)
                         
                     }

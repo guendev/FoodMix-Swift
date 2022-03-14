@@ -11,6 +11,8 @@ class NotificationViewModel: ObservableObject {
     
     @Published var noties: [Notification] = []
     
+    @Published var loading: Bool = false
+    
     func getNotifies() -> Void {
         
         noties.append(

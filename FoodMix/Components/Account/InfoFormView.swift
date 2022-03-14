@@ -55,12 +55,10 @@ struct InfoFormView: View {
             Group {
                 
                 Button {
+                    
+                    // Todo: Validate
                     viewModel.updateUser { user in
                         appViewModel.user = user
-                        
-                        debugPrint("12345678")
-                        
-                        debugPrint(appViewModel.user)
                     }
                     
                 } label: {

@@ -38,17 +38,10 @@ struct CategoriesView: View {
                 
                 Spacer()
                 
-                Image(systemName: "ellipsis")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 20)
-                    .rotationEffect(Angle.init(degrees: 90))
-                
             }
             .foregroundColor(.black.opacity(0.7))
             .padding(.vertical)
             .padding(.horizontal, 25)
-            .background(Color.white)
             
             ScrollView(.vertical, showsIndicators: false) {
                 
@@ -72,6 +65,7 @@ struct CategoriesView: View {
             .padding(.horizontal, 25)
             
         }
+        .background(Color("Background").ignoresSafeArea())
         .onAppear {
             
             DispatchQueue.main.async {
@@ -95,13 +89,13 @@ struct CategoriesView: View {
             VStack(alignment: .leading, spacing: 10) {
                 
                 Text("\(item.name)")
-                    .foregroundColor(.black.opacity(0.8))
+                    .foregroundColor(Color("TextTitle"))
                     .font(.title2)
                 
                 Text("Để có một chế độ ăn hợp lý bạn đừng quên 5 nhóm thực phẩm cần thiết phải có trong các bữa ăn hàng ngày.")
                     .multilineTextAlignment(.leading)
                     .lineSpacing(6)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color("TextContent"))
                 
                 
                 
@@ -109,9 +103,9 @@ struct CategoriesView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             
             Text("12")
-                .padding(8)
-                .background(Color("InputBackground"))
-                .foregroundColor(Color("InputText"))
+                .padding(5)
+                .background(Color("Background2"))
+                .foregroundColor(Color("TextContent"))
                 .cornerRadius(10)
             
         }
@@ -130,7 +124,7 @@ struct CategoriesView: View {
         .overlay(
             
             Rectangle()
-                .fill(Color("InputBackground"))
+                .fill(Color("TextContent").opacity(0.1))
                 .frame(height: 2)
                 .frame(maxWidth: getScreenBounds().width - 20 * 2 - 60 - 5)
                 .offset(y: 20)

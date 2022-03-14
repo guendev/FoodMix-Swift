@@ -20,29 +20,26 @@ struct RecipeStretchAvatar: View {
             
             ZStack(alignment: .bottom) {
                 
-                if viewModel.recipe != nil {
-                    
-                    Color.clear
-                        .overlay(
-                            Group {
+                Color("AvavtarBackground")
+                    .overlay(
+                        Group {
+                            
+                            if !viewModel.ready {
                                 
-                                if viewModel.loading || viewModel.recipe == nil {
-                                    
-                                    Image("food")
-                                        .resizable()
-                                        .scaledToFill()
-                                    
-                                } else {
-                                    
-                                    RecipeAvatar(avatar: viewModel.recipe!.avatar)
-                                        .scaledToFill()
-                                    
-                                }
+                                Image("food")
+                                    .resizable()
+                                    .scaledToFill()
+                                
+                            } else {
+                                
+                                RecipeAvatar(avatar: viewModel.recipe!.avatar)
+                                    .scaledToFill()
                                 
                             }
-                        )
-                        .clipShape(RecipeClip())
-                }
+                            
+                        }
+                    )
+                    .clipShape(RecipeClip())
                 
             }
             .frame(width: geo.frame(in: .global).width)

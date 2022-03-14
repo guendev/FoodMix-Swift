@@ -50,7 +50,6 @@ struct RecipeView: View {
         .onAppear {
             
             viewModel.getRecipe(recipe.slug)
-            
         }
         .asyncAuthData(auth: $viewModel.auth, currentUser: $viewModel.currentUser)
         .environmentObject(viewModel)

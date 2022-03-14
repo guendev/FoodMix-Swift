@@ -18,7 +18,7 @@ struct ProfileStretchView: View {
             
             StretchHeader(height: 250, offset: $viewModel.offset) {
                 
-                Color.clear
+                Color("AvavtarBackground")
                     .overlay(
                         
                         Group {
@@ -50,7 +50,7 @@ struct ProfileStretchView: View {
                     HStack {
                         
                         Circle()
-                            .fill(Color("Background2"))
+                            .fill(Color("AvatarHeader"))
                             .frame(width: 100, height: 100, alignment: .center)
                             .overlay(
                                 
@@ -83,7 +83,7 @@ struct ProfileStretchView: View {
                                     .foregroundColor(Color("Primary"))
                                     .frame(width: 15, height: 15)
                                     .padding(10)
-                                    .background(Color("Background2"))
+                                    .background(Color("AvatarHeader"))
                                     .clipShape(Circle())
                                     .offset(x: 4, y: 1)
                                     .shadow(color: .black.opacity(0.03), radius: 10, x: 0.0, y: 0.0)
