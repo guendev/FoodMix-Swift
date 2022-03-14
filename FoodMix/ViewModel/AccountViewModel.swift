@@ -130,9 +130,6 @@ class AccountViewModel: ObservableObject {
                 guard let user = try? JSONDecoder().decode(User.self, from: jsonData)  else { break }
                                 
                 success(user)
-                
-                print("❌ DEBUG: \("ok")")
-                
                 break
                 
             case .failure(_):
