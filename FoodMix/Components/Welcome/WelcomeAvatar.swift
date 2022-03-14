@@ -25,11 +25,11 @@ struct WelcomeAvatar: View {
                                                 
                         Text(screen.title)
                             .font(.largeTitle.bold())
-                            .foregroundColor(.white)
+                            .foregroundColor(.white.opacity(0.7))
                                                 
                         Text(screen.description)
                             .fontWeight(.semibold)
-                            .foregroundColor(.white)
+                            .foregroundColor(.white.opacity(0.7))
                                                 
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)

@@ -23,10 +23,10 @@ struct WelcomeButtons: View {
                     
                     Text("Đăng Nhập")
                         .fontWeight(.semibold)
-                        .foregroundColor(.black)
+                        .foregroundColor(Color("Text"))
                         .padding(.vertical, 20)
                         .frame(maxWidth: .infinity)
-                        .background(Color.white)
+                        .background(Color("Background"))
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
                 
@@ -37,10 +37,10 @@ struct WelcomeButtons: View {
                     
                     Text("Đăng Ký")
                         .fontWeight(.semibold)
-                        .foregroundColor(.black)
+                        .foregroundColor(Color("Text"))
                         .padding(.vertical, 20)
                         .frame(maxWidth: .infinity)
-                        .background(Color.white)
+                        .background(Color("Background"))
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                     
                 }
@@ -57,7 +57,7 @@ struct WelcomeButtons: View {
                                             
                     Text("Skip")
                         .fontWeight(.semibold)
-                        .foregroundColor(.white)
+                        .foregroundColor(.white.opacity(0.7))
                                             
                 }
                 
@@ -88,7 +88,7 @@ struct WelcomeButtons: View {
                                             
                     Text("Next")
                         .fontWeight(.semibold)
-                        .foregroundColor(.white)
+                        .foregroundColor(.white.opacity(0.7))
                                             
                 }
                 .opacity( viewModel.currentIndex == boardingScreens.count - 1 ? 0.6 : 1)
@@ -104,6 +104,11 @@ struct WelcomeButtons: View {
 
 struct WelcomeButtons_Previews: PreviewProvider {
     static var previews: some View {
-        WelcomeView()
+        
+        
+        PreviewWrapper {
+            WelcomeView()
+        }
+        
     }
 }

@@ -28,7 +28,7 @@ struct WelcomeView: View {
             VStack {
                 
                 RoundedRectangle(cornerRadius: 50)
-                    .fill(Color.white)
+                    .fill(Color("Background"))
                     .frame(width: getScreenBounds().width - 100, height: getScreenBounds().width - 100)
                     .scaleEffect(2)
                     .rotationEffect(.init(degrees: 25))
@@ -80,5 +80,6 @@ struct Welcome_Previews: PreviewProvider {
         PreviewWrapper {
             WelcomeView()
         }
+        // .environment(\.colorScheme, .dark)
     }
 }

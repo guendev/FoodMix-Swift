@@ -23,13 +23,15 @@ struct AuthFormView: View {
                 
                 TextField("Tên Người Dùng", text: $viewModel.name)
                     .keyboardType(.emailAddress)
-                    .primaryInput()
+                    .primaryInput(icons: [.leading])
                     .overlay(
                         
                         Image(systemName: "person")
-                            .foregroundColor(Color("InputText"))
-                            .padding()
-                            .offset(x: 5)
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundColor(Color("TextContent"))
+                            .frame(width: 15, height: 15)
+                            .offset(x: 17)
                         
                         ,alignment: .leading
                         
@@ -40,13 +42,15 @@ struct AuthFormView: View {
                         
             TextField("Email ID", text: $viewModel.email)
                 .keyboardType(.emailAddress)
-                .primaryInput()
+                .primaryInput(icons: [.leading])
                 .overlay(
                     
                     Image(systemName: "envelope")
-                        .foregroundColor(Color("InputText"))
-                        .padding()
-                        .offset(x: 5)
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundColor(Color("TextContent"))
+                        .frame(width: 15, height: 15)
+                        .offset(x: 17)
                     
                     ,alignment: .leading
                     
@@ -56,13 +60,15 @@ struct AuthFormView: View {
             
             PasswordField()
                 .font(.custom(.customFont, size: 16))
-                .primaryInput()
+                .primaryInput(icons: [.leading, .trailing])
                 .overlay(
                     
                     Image(systemName: "lock.fill")
-                        .foregroundColor(Color("InputText"))
-                        .padding()
-                        .offset(x: 5)
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundColor(Color("TextContent"))
+                        .frame(width: 15, height: 15)
+                        .offset(x: 17)
                     
                     ,alignment: .leading
                     
@@ -78,9 +84,11 @@ struct AuthFormView: View {
                     } label: {
                         
                         Image(systemName: viewModel.showPass ? "eye.slash" : "eye")
-                            .foregroundColor(Color("InputText"))
-                            .padding()
-                            .offset(x: -5)
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundColor(Color("TextContent"))
+                            .frame(width: 15, height: 15)
+                            .offset(x: -17)
                         
                     }
                     
@@ -98,8 +106,8 @@ struct AuthFormView: View {
                 } label: {
                     
                     Text("Quên mật khẩu?")
-                        .font(.subheadline)
-                        .foregroundColor(Color("Persian Blue"))
+                        .font(.caption)
+                        .foregroundColor(Color("TextContent"))
                     
                 }
                 
@@ -128,11 +136,11 @@ struct AuthFormView: View {
                 
                 Text("\(viewModel.type == .SignIn ? "Đăng Nhập" : "Đăng Ký")".uppercased())
                     .fontWeight(.semibold)
-                    .padding()
-                    .withLoading(active: $viewModel.loading)
+                    .font(.caption)
+                    .frame(height: 45)
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
-                    .background(Color("Persian Blue"))
+                    .background(Color("Primary"))
                     .cornerRadius(15)
                 
             }

@@ -60,7 +60,7 @@ struct AccountView: View {
             .background(
                 
                 Rectangle()
-                    .fill(Color("InputText").opacity(0.1))
+                    .fill(Color("TextContent").opacity(0.1))
                     .frame(height: 1.5)
                 
                 ,alignment: .bottom
@@ -81,6 +81,7 @@ struct AccountView: View {
             
         }
         .padding(.horizontal, 25)
+        .background(Color("Background").ignoresSafeArea())
         .environmentObject(viewModel)
         
     }
@@ -97,6 +98,7 @@ struct AccountView: View {
         } label: {
             
             Text(tab.rawValue)
+                .font(.callout)
                 .foregroundColor( currentTab == tab ? Color("Text") : Color("Secondary"))
                 .fontWeight(currentTab == tab ? .semibold :.regular)
                 .animation(.none, value: currentTab)

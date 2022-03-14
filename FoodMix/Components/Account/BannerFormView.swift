@@ -26,6 +26,8 @@ struct BannerFormView: View {
                 
                 Button {
                     
+                    openSheetBanner = true
+                    
                 } label: {
                     
                     Text("Chọn Ảnh")

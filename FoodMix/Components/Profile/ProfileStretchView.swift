@@ -50,8 +50,8 @@ struct ProfileStretchView: View {
                     HStack {
                         
                         Circle()
-                            .fill(Color.white)
-                            .frame(width: 120, height: 120, alignment: .center)
+                            .fill(Color("Background2"))
+                            .frame(width: 100, height: 100, alignment: .center)
                             .overlay(
                                 
                                 Group {
@@ -69,7 +69,7 @@ struct ProfileStretchView: View {
                                     
                                 }
                                     .scaledToFit()
-                                    .frame(width: 95, height: 95)
+                                    .frame(width: 90, height: 90)
                                     .clipShape(Circle())
                                     .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
                                 
@@ -80,12 +80,12 @@ struct ProfileStretchView: View {
                                     .renderingMode(.template)
                                     .resizable()
                                     .scaledToFit()
-                                    .foregroundColor(Color("Persian Blue"))
+                                    .foregroundColor(Color("Primary"))
                                     .frame(width: 15, height: 15)
                                     .padding(10)
-                                    .background(Color.white)
+                                    .background(Color("Background2"))
                                     .clipShape(Circle())
-                                    .offset(x: -7, y: -7)
+                                    .offset(x: 4, y: 1)
                                     .shadow(color: .black.opacity(0.03), radius: 10, x: 0.0, y: 0.0)
                                 
                                 ,alignment: .bottomTrailing
@@ -105,7 +105,7 @@ struct ProfileStretchView: View {
                                 .padding(.horizontal, 15)
                                 .padding(.vertical, 8)
                                 .foregroundColor(.white)
-                                .background(Color("Persian Blue"))
+                                .background(Color("Primary"))
                                 .cornerRadius(15)
                             
                         }

@@ -54,7 +54,7 @@ struct MainView: View {
                                 .renderingMode(.template)
                                 .resizable()
                                 .scaledToFit()
-                                .foregroundColor( viewModel.currentTab == value ? Color("Ultramarine Blue") : .gray)
+                                .foregroundColor( viewModel.currentTab == value ? Color("Primary"): .gray)
                                 .frame(width: 24)
                             
                         }
@@ -66,7 +66,7 @@ struct MainView: View {
                                 if viewModel.currentTab == value {
                                     
                                     Circle()
-                                        .fill(Color("Ultramarine Blue"))
+                                        .fill(Color("Primary"))
                                         .frame(width: 6, height: 6)
                                         .offset(x: 0, y: 15)
                                         .matchedGeometryEffect(id: "MAINTAB", in: animation)
@@ -83,7 +83,7 @@ struct MainView: View {
                 }
                 .padding(.top)
                 .padding(.bottom, safeInsets()?.bottom ?? 10)
-                .background(Color.white)
+                .background(Color("Background"))
                 .clipShape(MainTabShape())
                 .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
                 
@@ -100,7 +100,11 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        Group {
+            PreviewWrapper {
+                MainView()
+            }
+        }
     }
 }
 

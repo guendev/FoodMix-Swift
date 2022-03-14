@@ -40,7 +40,7 @@ struct RecipeStepperView: View {
                                 HStack {
                                     
                                     Text(getStepper(index).name)
-                                        .font(.title3)
+                                        .font(.callout)
                                         .fontWeight(.semibold)
                                         .foregroundColor(current > index ?  .black.opacity(0.7) : current == index ? Color("Primary") : .gray)
                                         .lineLimit(1)
@@ -50,7 +50,7 @@ struct RecipeStepperView: View {
                                     if current >= index {
                                         
                                         Text(current == index ? "Đang Làm" : "Đã Làm")
-                                            .font(.custom(.customFont, size: 13))
+                                            .font(.caption)
                                             .padding(.horizontal, 15)
                                             .padding(.vertical, 7)
                                             .background( current != index ? Color("Success") : Color("Warning"))
@@ -66,10 +66,10 @@ struct RecipeStepperView: View {
                             if current == index {
                                 
                                 
-                                Text(getStepper(index).content)
-                                    .font(.custom(.customFont, size: 16))
+                                Text("Tailwind includes an expertly-crafted default color palette out-of-the-box that is a great starting point if you don’t have your own specific branding in mind.")
+                                    .font(.custom(.customFont, size: 14))
                                     .lineSpacing(6)
-                                    .foregroundColor(.gray)
+                                    .foregroundColor(Color("TextContent"))
                                     .fixedSize(horizontal: false, vertical: true)
                                 
                             }
@@ -91,11 +91,6 @@ struct RecipeStepperView: View {
             }
             
         }
-        .onAppear {
-            
-            viewModel.getRecipe("")
-            
-        }
         
     }
     
@@ -106,15 +101,11 @@ struct RecipeStepperView: View {
 }
 
 struct RecipeStepperView_Previews: PreviewProvider {
-    
-    
     static var previews: some View {
-        Group {
+        PreviewWrapper {
             
-            RecipeStepperView()
+            RecipeView(recipe: Recipe(id: "6211e6447d3b441181c395da", name: "Lê Thị Kim Ngân", slug: "le-thi-kim-ngan", avatar: "https://cdn.tgdd.vn/2021/03/CookProduct/bunmocchangio-1200x676.jpg"))
             
         }
-        .padding(.horizontal, 25)
-        .environmentObject(RecipeViewModel())
     }
 }

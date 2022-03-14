@@ -9,8 +9,8 @@ import SwiftUI
 
 extension View {
     
-    func primaryInput(icons: Edge.Set.ArrayLiteralElement = [], label: String? = nil) -> some View {
-        self.modifier(PrimaryInput(icons: icons, label: label))
+    func primaryInput(icons: Edge.Set.ArrayLiteralElement = [], label: String? = nil, radius: Double? = nil) -> some View {
+        self.modifier(PrimaryInput(icons: icons, label: label, radius: radius))
     }
     
 }
@@ -19,17 +19,19 @@ struct PrimaryInput: ViewModifier {
     
     var icons: Edge.Set.ArrayLiteralElement = []
     var label: String?
+    var radius: Double?
     
     func body(content: Content) -> some View {
         return content
             .autocapitalization(.none)
+            .font(.subheadline)
             .foregroundColor(Color("InputText"))
-            .frame(height: 50)
+            .frame(height: 45)
             .padding(icons, 25)
             .padding(.horizontal, 20)
             .frame(maxWidth: .infinity)
             .background(Color("InputBackground"))
-            .cornerRadius(15)
+            .cornerRadius(radius ?? 15)
             .padding(.top, label != nil ? 30 : 0)
             .overlay(
                 
@@ -45,6 +47,7 @@ struct PrimaryInput: ViewModifier {
                 
                 ,alignment: .topLeading
             )
+            .accentColor(Color("TextContent"))
     }
 }
 
@@ -55,8 +58,8 @@ struct PrimaryInputLabel: View {
     var body: some View {
         
         Text(label)
-            .font(.subheadline)
-            .foregroundColor(Color("InputText"))
+            .font(.caption)
+            .foregroundColor(Color("TextContent"))
         
     }
     

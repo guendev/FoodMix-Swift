@@ -39,8 +39,8 @@ struct ErrorFormMessage: ViewModifier {
             if !msg.isEmpty {
                 
                 Text(msg)
-                    .font(.subheadline)
-                    .foregroundColor(Color("Flickr Pink"))
+                    .font(.caption)
+                    .foregroundColor(Color("Rose"))
                     .onAppear {
                         
                         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {

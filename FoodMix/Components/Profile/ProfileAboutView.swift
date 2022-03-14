@@ -21,7 +21,7 @@ struct ProfileAboutView: View {
                     name: viewModel.user!.name,
                     slug: viewModel.user!.slug,
                     map: viewModel.user?.province ?? "Việt Nam",
-                    about: viewModel.user?.about ?? "Một đầu bếp lười biếng"
+                    about: viewModel.user?.about ?? "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour"
                 )
                 
             } else {
@@ -43,7 +43,7 @@ struct ProfileAboutView: View {
             Text(name)
                 .font(.title2)
                 .fontWeight(.semibold)
-                .foregroundColor(.black.opacity(0.8))
+                .foregroundColor(Color("TextTitle"))
                 .frame(maxWidth: getScreenBounds().width - 170, alignment: .leading)
             
             HStack(spacing: 30) {
@@ -57,7 +57,7 @@ struct ProfileAboutView: View {
                     Image(systemName: "mappin")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 15, height: 15)
+                        .frame(width: 13, height: 13)
                     
                     Text(map)
                         .font(.subheadline)
@@ -66,12 +66,12 @@ struct ProfileAboutView: View {
                 
             }
             .font(.custom(.customFont, size: 17))
-            .foregroundColor(.gray)
+            .foregroundColor(Color("TextContent"))
             
             Text(about)
-                .font(.custom(.customFont, size: 17))
-                .foregroundColor(.black.opacity(0.7))
-                .lineSpacing(7)
+                .font(.subheadline)
+                .lineSpacing(6)
+                .foregroundColor(Color("TextContent"))
                 .fixedSize(horizontal: false, vertical: true)
             
         }

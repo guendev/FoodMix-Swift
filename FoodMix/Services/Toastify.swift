@@ -69,10 +69,11 @@ struct ToastifyView: View {
             if image != nil {
                 
                 Image(systemName: image!)
-                    .font(.system(size: 20))
+                    .font(.system(size: 17))
             }
             
             Text(title)
+                .font(.subheadline)
             
         }
         .foregroundColor(foregroundColor ?? .primary)

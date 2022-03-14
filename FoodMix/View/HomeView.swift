@@ -22,10 +22,10 @@ struct HomeView: View {
                 
                 VStack(alignment: .leading, spacing: 25) {
                     
-                    Text("Khám phá ngay!")
-                        .font(.custom(.customFont, size: 24))
+                    Text("Khám phá ngay")
+                        .font(.custom(.customFont, size: 22))
                         .fontWeight(.semibold)
-                        .foregroundColor(Color(#colorLiteral(red: 0.08235294118, green: 0.1333333333, blue: 0.3098039216, alpha: 1)))
+                        .foregroundColor(Color("Text"))
                         .padding(.top, 16)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     

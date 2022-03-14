@@ -50,7 +50,7 @@ struct TabFilterView<T: AnyObject>: View {
             
             Text(title)
                 .font(.caption)
-                .foregroundColor(isCurrent(tab, current) ? .black.opacity(0.8) : .gray)
+                .foregroundColor(isCurrent(tab, current) ? Color("TextContent").opacity(0.8) : Color("TextContent"))
                 .overlay(
                     
                     Group {
@@ -58,6 +58,7 @@ struct TabFilterView<T: AnyObject>: View {
                         if isCurrent(tab, current) {
                             
                             RoundedRectangle(cornerRadius: 10)
+                                .fill(Color("Primary"))
                                 .frame(height: 3)
                                 .offset(y: 6)
                                 .matchedGeometryEffect(id: "FILTER_TAB", in: animetion)

@@ -23,8 +23,8 @@ struct SettingItemView<Content: View>: View {
         HStack {
             
             Text(title)
-                .font(.custom(.customFont, size: 16))
-                .foregroundColor(Color("Text"))
+                .font(.subheadline)
+                .foregroundColor(Color("InputText"))
             
             Spacer()
             
@@ -32,9 +32,19 @@ struct SettingItemView<Content: View>: View {
             
         }
         .padding(.horizontal, 25)
-        .frame(height: 55)
-        .background(Color.white)
+        .frame(height: 50)
+        .background(Color("InputBackground"))
         
     }
     
+}
+
+struct SettingItemView_Previews: PreviewProvider {
+    static var previews: some View {
+        PreviewWrapper {
+            
+            SettingView()
+            
+        }
+    }
 }

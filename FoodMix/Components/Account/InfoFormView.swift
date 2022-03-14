@@ -11,6 +11,7 @@ import PhotosUI
 struct InfoFormView: View {
     
     @EnvironmentObject var viewModel: AccountViewModel
+    @EnvironmentObject var appViewModel: AppViewModel
     
     @Environment(\.currentUserKey) private var currentUserData
     
@@ -54,11 +55,19 @@ struct InfoFormView: View {
             Group {
                 
                 Button {
+                    viewModel.updateUser { user in
+                        appViewModel.user = user
+                        
+                        debugPrint("12345678")
+                        
+                        debugPrint(appViewModel.user)
+                    }
                     
                 } label: {
                     
                     Text("Cập Nhật")
-                        .font(.subheadline)
+                        .font(.caption)
+                        .fontWeight(.semibold)
                         .padding(.horizontal, 20)
                         .frame(height: 40)
                         .background(Color("Primary"))
@@ -66,6 +75,7 @@ struct InfoFormView: View {
                         .cornerRadius(20)
                     
                 }
+                .disabled(viewModel.loadingAvatar || viewModel.loadingBanner || viewModel.loadingUpdateInfo || !isChangeForm())
                 
             }
             .withAlignment(alignment: .leading)
@@ -79,6 +89,12 @@ struct InfoFormView: View {
             resetForm()
             
         }
+        
+    }
+    
+    func isChangeForm() -> Bool {
+        
+        return viewModel.name != currentUserData?.name || viewModel.avatar != currentUserData?.avatar || viewModel.banner != currentUserData?.banner || viewModel.gender != currentUserData?.gender || viewModel.province != currentUserData?.province || viewModel.about != currentUserData?.about
         
     }
     

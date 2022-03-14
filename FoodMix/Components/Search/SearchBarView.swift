@@ -28,7 +28,7 @@ struct SearchBarView: View {
             } label: {
                 
                 Image(systemName: "arrow.left")
-                    .foregroundColor(Color("InputText"))
+                    .foregroundColor(Color("TextContent"))
                 
             }
             
@@ -40,14 +40,14 @@ struct SearchBarView: View {
                     saveHistory()
                 }
             }
-            .font(.custom(.customFont, size: 16))
-            .foregroundColor(Color("InputText"))
-            .frame(height: 45)
+            .font(.subheadline)
+            .foregroundColor(Color("TextContent"))
+            .frame(height: 40)
             .padding(.leading, 25)
             .padding(.trailing, 50)
-            .background(Color("InputBackground"))
+            .background(Color("Background2"))
             .cornerRadius(30)
-            .accentColor(Color("InputText"))
+            .accentColor(Color("TextContent"))
             .overlay(
                     
                 Button {
@@ -58,8 +58,8 @@ struct SearchBarView: View {
                         
                     Image(systemName: "xmark")
                     .resizable()
-                    .foregroundColor(Color("InputText"))
-                    .frame(width: 12, height: 12)
+                    .foregroundColor(Color("TextContent"))
+                    .frame(width: 10, height: 10)
                         .padding()
                         
                 }

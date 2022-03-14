@@ -18,15 +18,17 @@ struct RecipeFirstStepper: View {
                 Image(systemName: "plus.magnifyingglass")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 28)
+                    .frame(width: 20)
+                    .offset(x: 5)
                 
-                Text("Hãy theo dõi và hoàn thành món ăn của mình")
+                Text("Hãy theo dõi và hoàn thành món ăn của mình bạn nhé. Chúc bạn thành công ^^")
+                    .font(.caption)
                     .fixedSize(horizontal: false, vertical: true)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
             }
             .foregroundColor(.white)
-            .padding(25)
+            .padding(15)
             .padding(.trailing, 25)
             .background(Color("Primary"))
             .overlay(
@@ -58,6 +60,12 @@ struct RecipeFirstStepper: View {
 
 struct RecipeFirstStepper_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeFirstStepper()
+        ScrollView {
+            
+            RecipeFirstStepper()
+            
+        }
+        .padding(25)
+        .background(Color("Background").ignoresSafeArea())
     }
 }

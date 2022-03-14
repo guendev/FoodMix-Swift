@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingView: View {
     var body: some View {
+        
         VStack {
             
             SettingAppBar()
@@ -23,19 +24,25 @@ struct SettingView: View {
                     VStack(alignment: .leading) {
                         
                         Text("Cài Đặt Chung")
-                            .font(.custom(.customFont, size: 18))
-                            .foregroundColor(Color("Text"))
+                            .font(.callout)
+                            .foregroundColor(Color("TextTitle"))
                             .padding(.bottom, 10)
                             .padding(.horizontal, 25)
                         
                         SettingItemView(title: "Thư Viện") {
                             Image(systemName: "arrow.right")
-                                .foregroundColor(Color("InputText"))
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 12, height: 12)
+                                .foregroundColor(Color("TextContent"))
                         }
                         
                         SettingItemView(title: "Lịch Sử") {
                             Image(systemName: "arrow.right")
-                                .foregroundColor(Color("InputText"))
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 12, height: 12)
+                                .foregroundColor(Color("TextContent"))
                         }
     
                         
@@ -44,8 +51,8 @@ struct SettingView: View {
                     VStack(alignment: .leading) {
                         
                         Text("Cài Đặt Chung")
-                            .font(.custom(.customFont, size: 18))
-                            .foregroundColor(Color("Text"))
+                            .font(.callout)
+                            .foregroundColor(Color("TextTitle"))
                             .padding(.bottom, 10)
                             .padding(.horizontal, 25)
                         
@@ -53,12 +60,18 @@ struct SettingView: View {
                         
                         SettingItemView(title: "Trung Tâm Chính Sách") {
                             Image(systemName: "arrow.right")
-                                .foregroundColor(Color("InputText"))
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 12, height: 12)
+                                .foregroundColor(Color("TextContent"))
                         }
                         
                         SettingItemView(title: "Số Phiên Bản") {
                             Image(systemName: "arrow.right")
-                                .foregroundColor(Color("InputText"))
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 12, height: 12)
+                                .foregroundColor(Color("TextContent"))
                         }
     
                         

@@ -54,7 +54,8 @@ struct SearchHistoryView: View {
                             } label: {
                                 
                                 Text(student.keyword ?? "Unknown")
-                                    .foregroundColor(.black.opacity(0.7))
+                                    .font(.subheadline)
+                                    .foregroundColor(Color("TextContent"))
                                     .lineLimit(1)
                                 
                                 
@@ -102,7 +103,7 @@ struct SearchHistoryView: View {
                     
                     Text("Mọi thứ sẽ được lưu lại")
                         .font(.subheadline)
-                        .foregroundColor(.gray)
+                        .foregroundColor(Color("TextContent"))
                     
                 }
                 

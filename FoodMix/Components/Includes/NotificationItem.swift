@@ -30,10 +30,10 @@ struct NotificationItem: View {
                         .scaledToFit()
                         .frame(width: 10, height: 10)
                         .padding(6)
-                        .background(Color("Persian Blue"))
+                        .background(Color("Primary"))
                         .cornerRadius(20)
                         .offset(x: 5, y: -3)
-                        .shadow(color: .black.opacity(0.03), radius: 10, x: 0.0, y: 0.0)
+                        .shadow(color: Color("Primary"), radius: 10, x: 0.0, y: 0.0)
                     
                     ,alignment: .topTrailing
                 )
@@ -52,6 +52,7 @@ struct NotificationItem: View {
                         
                         Text("\(notify.from!.name)")
                             .fontWeight(.medium)
+                            .foregroundColor(Color("TextTitle"))
                             .lineLimit(1)
                             .frame(maxWidth: .infinity, alignment: .leading)
                         
@@ -59,19 +60,20 @@ struct NotificationItem: View {
                             
                             Text("1m ago")
                                 .font(.caption)
-                                .foregroundColor(.gray)
+                                .foregroundColor(Color("TextContent"))
                             
                         } else {
                             
                             Text("Đã đọc")
                                 .font(.caption)
-                                .foregroundColor(.gray)
+                                .foregroundColor(Color("TextContent"))
                         }
                         
                         
                     }
                     
                     Text("\(notify.content!)")
+                        .foregroundColor(Color("TextContent"))
                         .font(.subheadline)
                         .lineSpacing(5)
                         .fixedSize(horizontal: false, vertical: true)

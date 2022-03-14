@@ -75,6 +75,7 @@ struct ProfileView: View {
             viewModel.getProfile(slug: slug)
             
         }
+        .background(Color("Background").ignoresSafeArea())
         .environmentObject(viewModel)
     }
 }

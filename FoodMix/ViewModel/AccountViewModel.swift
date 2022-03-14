@@ -16,6 +16,7 @@ class AccountViewModel: ObservableObject {
     
     @Published var loadingAvatar: Bool = false
     @Published var loadingBanner: Bool = false
+    @Published var loadingUpdateInfo: Bool = false
     
     // form Info
     @Published var name: String = ""
@@ -89,6 +90,56 @@ class AccountViewModel: ObservableObject {
                 }
                                 
             }
+            
+        }
+        
+        
+    }
+    
+    func updateUser(success: @escaping (_ user: User) -> Void) -> Void {
+        
+        loadingUpdateInfo = true
+                
+        let input: UserUpdateInput = UserUpdateInput(
+            name: name,
+            avatar: avatar,
+            banner: banner,
+            about: about,
+            province: province,
+            gender: "\(gender.rawValue)"
+        )
+            
+        Network.shared.apollo.perform(mutation: UpdateUserMutation(input: input)) { [weak self] result in
+            
+            guard let self = self else {
+                  return
+            }
+            
+            switch result {
+            case .success(let graphQLResult) :
+                                
+                if graphQLResult.errors != nil {
+                    break
+                }
+
+                // lưu data
+                let rawData = graphQLResult.data?.updateUser
+                
+                guard let jsonData = try? JSONSerialization.data(withJSONObject: rawData!.jsonObject) else { break }
+                
+                guard let user = try? JSONDecoder().decode(User.self, from: jsonData)  else { break }
+                                
+                success(user)
+                
+                print("❌ DEBUG: \("ok")")
+                
+                break
+                
+            case .failure(_):
+                break                // Lỗi mạng
+            }
+            
+            self.loadingUpdateInfo = false
             
         }
         

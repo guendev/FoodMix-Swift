@@ -23,7 +23,7 @@ let description = "Small business can receive device \npayment super fast and su
 // Sample Model SCreens....
 var boardingScreens: [BoardingScreen] = [
 
-    BoardingScreen(image: "cute2", title: title, description: description, color: Color("Persian Blue")),
-    BoardingScreen(image: "cute1", title: title, description: description, color: Color("Purple 2")),
-    BoardingScreen(image: "cute3", title: title, description: description, color: Color("Trypan Blue")),
+    BoardingScreen(image: "cute2", title: title, description: description, color: Color("Screen1")),
+    BoardingScreen(image: "cute1", title: title, description: description, color: Color("Screen2")),
+    BoardingScreen(image: "cute3", title: title, description: description, color: Color("Screen3")),
 ]

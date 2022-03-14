@@ -17,13 +17,22 @@ struct CategoryAboutView: View {
             Text("\(category.name)")
                 .font(.title2)
                 .fontWeight(.semibold)
-                .foregroundColor(.black.opacity(0.8))
+                .foregroundColor(Color("TextTitle"))
                 .frame(maxWidth: getScreenBounds().width - 170, alignment: .leading)
             
             Text(category.content ?? "")
-                .foregroundColor(.gray)
+                .font(.subheadline)
+                .foregroundColor(Color("TextContent"))
                 .lineSpacing(7)
             
         }
+    }
+}
+
+
+
+struct CategoryAboutView_Previews: PreviewProvider {
+    static var previews: some View {
+        CategoryView(category: Category(id: "1", name: "Gà Quay", slug: "ga-quay", avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFKYmf6jHItCbfL8txsSCFfsCW254JYLEeNQ&usqp=CAU", content: "You can change your ContentView body in this way, and when you dismiss the sheet view, it will navigate to DashboardView", icon: "https://i.imgur.com/sJapZxD.png"))
     }
 }

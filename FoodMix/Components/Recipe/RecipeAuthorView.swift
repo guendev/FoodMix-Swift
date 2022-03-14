@@ -22,7 +22,7 @@ struct RecipeAuthorView: View {
                         
                         RecipeAvatar(avatar: viewModel.recipe?.user?.avatar)
                             .scaledToFit()
-                            .frame(width: 60, height: 60)
+                            .frame(width: 48, height: 48)
                             .clipShape(Circle())
                         
                     }
@@ -32,7 +32,8 @@ struct RecipeAuthorView: View {
                         NavigationLink(destination: ProfileView(slug: viewModel.recipe!.user!.slug)) {
                             
                             Text(viewModel.recipe?.user?.name ?? "")
-                                .font(.custom(.customFont, size: 19))
+                                .foregroundColor(Color("TextTitle"))
+                                .font(.custom(.customFont, size: 16))
                             
                         }
                         .buttonStyle(PlainButtonStyle())
@@ -61,7 +62,8 @@ struct RecipeAuthorView: View {
                         HStack {
                             
                             Text(String(format: "%.1f", viewModel.recipe!.rating()))
-                                .foregroundColor(.black.opacity(0.7))
+                                .font(.caption)
+                                .foregroundColor(Color("TextContent"))
                             
                             
                             StarRating(rating: viewModel.recipe!.rating(), size: 13, spacing: 3)
@@ -71,13 +73,13 @@ struct RecipeAuthorView: View {
                         if viewModel.recipe!.countRating! > 0 {
                             
                             Text("\(viewModel.recipe!.countRating!) Đánh giá")
-                                .font(.subheadline)
-                                .foregroundColor(.gray)
+                                .font(.caption)
+                                .foregroundColor(Color("TextContent"))
                             
                         } else {
                             Text("Đánh giá đầu")
-                                .font(.subheadline)
-                                .foregroundColor(.gray)
+                                .font(.caption)
+                                .foregroundColor(Color("TextContent"))
                         }
                         
                     }

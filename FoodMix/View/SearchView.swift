@@ -50,10 +50,6 @@ struct SearchView: View {
                                 NavigationLink( destination: RecipeView(recipe: item)) {
                                     
                                     RecipeItemHorizontal(recipe: item)
-                                        .padding()
-                                        .background(Color.white)
-                                        .cornerRadius(20)
-                                        .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
                                     
                                 }
                                 .buttonStyle(PlainButtonStyle())
@@ -62,7 +58,7 @@ struct SearchView: View {
                             
                             if viewModel.loading {
                                 
-                                ListPlaceholder()
+                                RecipeItemHorizontalPreview.preview()
                                 
                             }
                             
@@ -76,26 +72,9 @@ struct SearchView: View {
             .padding(.horizontal, 25)
             
         }
+        .background(Color("Background").ignoresSafeArea())
         .environmentObject(viewModel)
         
-    }
-    
-    @ViewBuilder
-    private func ListPlaceholder() -> some View {
-        Group {
-            
-            ForEach(1...3, id: \.self) { _ in
-                
-                RecipeItemHorizontalPreview()
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(20)
-                    .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
-                
-            }
-            
-        }
-        .redacted(reason: .placeholder)
     }
     
 }

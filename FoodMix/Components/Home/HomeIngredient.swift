@@ -38,15 +38,16 @@ struct HomeIngredient: View {
                             
                         } label: {
                             
-                            VStack(spacing: 13) {
+                            VStack(spacing: 15) {
                                 
                                 RecipeAvatar(avatar: item.image)
                                     .scaledToFit()
-                                    .frame(height: 60)
+                                    .frame(height: 50)
                                 
                                 Text(item.name)
-                                    .font(.custom(.customFont, size: 15))
-                                    .foregroundColor(.gray)
+                                    .font(.caption)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(Color("TextContent"))
                                 
                             }
                             
@@ -72,6 +73,10 @@ struct HomeIngredient: View {
 
 struct HomeIngredient_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        PreviewWrapper {
+            
+            HomeView()
+            
+        }
     }
 }

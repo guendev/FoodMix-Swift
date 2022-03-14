@@ -34,7 +34,7 @@ struct CategoryStretchView: View {
                 .overlay(
                     
                     Circle()
-                        .fill(Color.white)
+                        .fill(Color("Background2"))
                         .frame(width: 120, height: 120, alignment: .center)
                         .overlay(
                             
@@ -61,5 +61,18 @@ struct CategoryStretchView: View {
             }
             
         }
+    }
+}
+
+struct CategoryStretchView_Previews: PreviewProvider {
+    static var previews: some View {
+        CategoryView(category: Category(
+            id: "1",
+            name: "Gà Quay",
+            slug: "ga-quay",
+            avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFKYmf6jHItCbfL8txsSCFfsCW254JYLEeNQ&usqp=CAU",
+            content: "You can change your ContentView body in this way, and when you dismiss the sheet view, it will navigate to DashboardView",
+            icon: "https://i.imgur.com/sJapZxD.png"
+        ))
     }
 }

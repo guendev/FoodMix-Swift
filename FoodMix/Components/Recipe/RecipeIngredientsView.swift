@@ -42,11 +42,12 @@ struct RecipeIngredientsView: View {
                             Text("\(item.count) \(item.unit)")
                             
                         }
-                        .foregroundColor(.black.opacity(0.7))
-                        .padding(.horizontal, 20)
-                        .padding(.vertical, 15)
+                        .font(.subheadline)
+                        .foregroundColor(Color("TextContent"))
+                        .padding(.horizontal, 15)
+                        .padding(.vertical, 12)
                         .frame(maxWidth: .infinity)
-                        .background(Color(#colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 0.9391186773)))
+                        .background(Color("Background2"))
                         .cornerRadius(5)
                         
                     }
@@ -54,6 +55,16 @@ struct RecipeIngredientsView: View {
                 }
                 
             }
+            
+        }
+    }
+}
+
+struct RecipeIngredientsView_Previews: PreviewProvider {
+    static var previews: some View {
+        PreviewWrapper {
+            
+            RecipeView(recipe: Recipe(id: "6211e6447d3b441181c395da", name: "Lê Thị Kim Ngân", slug: "le-thi-kim-ngan", avatar: "https://cdn.tgdd.vn/2021/03/CookProduct/bunmocchangio-1200x676.jpg"))
             
         }
     }

@@ -20,7 +20,7 @@ struct NotificationView: View {
             .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: -5)
             .foregroundColor(.black.opacity(0.8))
             
-            HomeSearch()
+            // HomeSearch()
             
             ScrollView(.vertical, showsIndicators: false) {
                 

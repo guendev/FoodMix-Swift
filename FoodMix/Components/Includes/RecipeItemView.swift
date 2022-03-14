@@ -78,7 +78,7 @@ struct RecipeItemPreview: View {
                 .overlay(
                 
                     Circle()
-                        .fill(Color.white)
+                        .fill(Color("RecipeAvatarBackground"))
                         .frame(width: 50, height: 50)
                         .overlay(
                             
@@ -103,7 +103,7 @@ struct RecipeItemPreview: View {
                 Text("Lợn Xào Sả Ớt")
                     .font(.custom(.customFont, size: 16))
                     .fontWeight(.bold)
-                    .foregroundColor(Color("Trypan Blue"))
+                    .foregroundColor(Color("TextTitle"))
                     .lineLimit(2)
                 
             }
@@ -112,7 +112,7 @@ struct RecipeItemPreview: View {
             .padding(.top, 10)
             
         }
-        .background(Color.white)
+        .background(Color("RecipeBackground"))
         .frame(width: 250)
         .cornerRadius(20)
         .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
@@ -123,6 +123,8 @@ struct RecipeItemPreview: View {
 
 struct RecipeItemView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeItemPreview()
+        PreviewWrapper {
+            HomeView()
+        }
     }
 }

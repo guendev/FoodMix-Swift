@@ -48,7 +48,7 @@ struct CustomBottomSheet<Content: View>: View {
                 
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color.gray.opacity(0.4))
-                    .frame(width: 60, height: 10)
+                    .frame(width: 40, height: 5)
                     .padding(.top)
                     .gesture(
                         
@@ -100,9 +100,6 @@ struct CustomBottomSheet<Content: View>: View {
                 
             }
             .frame(maxWidth: .infinity, maxHeight: offset)
-            .background(Color.white)
-            .clipShape(CustomSheetShape())
-            .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: -5)
             .onAppear {
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -132,14 +129,14 @@ struct CustomBottomSheet_Previews: PreviewProvider {
     static var previews: some View {
         PreviewWrapper {
             
-            ActivityListAuthor()
+            ActivityView()
             
         }
     }
 }
 
 
-fileprivate struct CustomSheetShape: Shape {
+struct CustomSheetShape: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
         

@@ -22,24 +22,20 @@ struct HomeUpdatedView: View {
                     .foregroundColor(.gray)
             }
             
-            VStack(spacing: 25) {
+            VStack(spacing: 30) {
                 
                 ForEach(viewModel.updatedRecipes, id:\.id) { item in
                     
                     NavigationLink( destination: RecipeView(recipe: item)) {
                         
                         RecipeItemHorizontal(recipe: item)
-                            .padding()
-                            .background(Color.white)
-                            .cornerRadius(20)
-                            .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
                         
                     }
                     .buttonStyle(PlainButtonStyle())
                     
                 }
                 
-                if viewModel.loadingUpdated {
+                if !viewModel.loadingUpdated {
                     
                     RecipeItemHorizontalPreview.preview()
                     

@@ -75,12 +75,11 @@ struct RecipeStretchAvatar: View {
                         
                     }
                 }
-                .frame(width: 25, height: 25)
+                .frame(width: 20, height: 20)
                 .foregroundColor(.white)
-                .frame(width: 50, height: 50)
-                .background(Color("Flickr Pink"))
+                .frame(width: 45, height: 45)
+                .background(Color("Rose"))
                 .clipShape(Circle())
-                .shadow(color: Color("Flickr Pink"), radius: 2, x: 0, y: 0)
                 
             }
                 .disabled(!viewModel.ready)

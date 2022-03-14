@@ -30,9 +30,9 @@ struct RecipeStepperLine: View {
                     if current <= index {
                         
                         Text("\(index + 1)")
-                            .font(.custom(.customFont, size: 15))
+                            .font(.custom(.customFont, size: 13))
                             .foregroundColor(current == index ? Color("Primary") : .gray)
-                            .frame(width: 25, height: 25)
+                            .frame(width: 20, height: 20)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 6)
                                     .stroke(current == index ? Color("Primary") : .gray, lineWidth: 2)
@@ -43,9 +43,9 @@ struct RecipeStepperLine: View {
                         Image(systemName: "checkmark")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 12)
+                            .frame(width: 11)
                             .foregroundColor(.white)
-                            .frame(width: 25, height: 25)
+                            .frame(width: 20, height: 20)
                             .background(Color("Success"))
                             .clipShape(RoundedRectangle(cornerRadius: 6))
                         

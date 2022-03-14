@@ -24,7 +24,7 @@ struct ActivityBigTop: View {
                         height: 160,
                         colors: [Color(#colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)), Color(#colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)), Color(#colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1))],
                         rank: 2,
-                        rankColor: Color("Dodger Blue")
+                        rankColor: Color("Rose")
                     )
                         .redacted(reason: .placeholder)
                     .offset(x: 15, y: 0)
@@ -104,7 +104,7 @@ struct ActivityBigTop: View {
                             height: 160,
                             colors: [Color(#colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)), Color(#colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)), Color(#colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1))],
                             rank: 2,
-                            rankColor: Color("Dodger Blue")
+                            rankColor: Color("Rose")
                         )
                         
                     }
@@ -119,7 +119,7 @@ struct ActivityBigTop: View {
                             height: 160,
                             colors: [Color(#colorLiteral(red: 0.6431372549, green: 0.4117647059, blue: 0.7882352941, alpha: 1)), Color(#colorLiteral(red: 0.8901960784, green: 0.5490196078, blue: 0.8274509804, alpha: 1)), Color(#colorLiteral(red: 0.9647058824, green: 0.7764705882, blue: 0.7960784314, alpha: 1))],
                             rank: 1,
-                            rankColor: Color("Flickr Pink")
+                            rankColor: Color("Primary")
                         )
                         
                     }
@@ -171,7 +171,7 @@ struct ActivityBigTop: View {
                             height: 160,
                             colors: [Color(#colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)), Color(#colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)), Color(#colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1))],
                             rank: 3,
-                            rankColor: Color("Purple 2")
+                            rankColor: Color("Success")
                         )
                         
                     }
@@ -263,20 +263,20 @@ fileprivate struct BigRankItem: View {
             
             RecipeAvatar(avatar: user.avatar)
                 .scaledToFit()
-                .frame(width: 80, height: 80)
+                .frame(width: 70, height: 70)
                 .clipShape(Circle())
                 .clipped()
                 .overlay(
                     
                     Text("\(rank)")
-                        .fontWeight(.bold)
-                        .font(.system(size: 16))
+                        .fontWeight(.semibold)
+                        .font(.caption)
                         .foregroundColor(.white)
-                        .frame(width: 28, height: 28)
+                        .frame(width: 20, height: 20)
                         .background(rankColor)
                         .clipShape(Circle())
                         .offset(x: -5, y: -5)
-                        .shadow(color: .black.opacity(0.1), radius: 10, x: 0.0, y: 0.0)
+                        .shadow(color: rankColor, radius: 5, x: 0.0, y: 0.0)
                     
                     
                     ,alignment: .bottomLeading
@@ -284,10 +284,10 @@ fileprivate struct BigRankItem: View {
                 )
             
             Text(user.name)
-                .font(.system(size: 14))
+                .font(.caption)
                 .fontWeight(.semibold)
-                .foregroundColor(.black.opacity(0.8))
-                .padding(.top, 10)
+                .foregroundColor(Color("TextTitle"))
+                .padding(.top, 5)
                 .frame(maxWidth: 80)
                 .lineLimit(2)
 
@@ -306,7 +306,7 @@ fileprivate struct BigRankItem: View {
             .overlay(
                 
                 Ellipse()
-                    .fill(Color.white)
+                    .fill(Color("Background2"))
                     .frame(height: 25)
                     .offset(x: 0, y: -25/2)
                 

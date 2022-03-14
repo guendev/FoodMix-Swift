@@ -46,7 +46,7 @@ struct AuthView: View {
                 
                 
                 Text("\(viewModel.type == .SignIn ? "Đăng Nhập" : "Đăng Ký")")
-                    .font(.system(size: 30))
+                    .font(.title)
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.top, 40)
@@ -57,12 +57,13 @@ struct AuthView: View {
                 
                 HStack {
                     
-                    Rectangle().fill(Color(#colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 0.9391186773))).frame(height: 1)
+                    Rectangle().fill(Color("TextContent").opacity(0.5)).frame(height: 1)
                     
                     Text("TIẾP TỤC VỚI")
-                        .foregroundColor(Color(#colorLiteral(red: 0.4352941176, green: 0.4352941176, blue: 0.4352941176, alpha: 1)))
+                        .foregroundColor(Color("TextContent"))
+                        .font(.caption)
                     
-                    Rectangle().fill(Color(#colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 0.9391186773))).frame(height: 1)
+                    Rectangle().fill(Color("TextContent").opacity(0.5)).frame(height: 1)
                     
                 }
                 .padding(.vertical, 25)
@@ -77,11 +78,11 @@ struct AuthView: View {
                         Image("google")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 30, height: 30)
+                            .frame(width: 28, height: 28)
                         
                         Text("Tiếp Tục Bằng Google")
-                            .font(.subheadline)
-                            .foregroundColor(Color(#colorLiteral(red: 0.4352941176, green: 0.4352941176, blue: 0.4352941176, alpha: 1)))
+                            .font(.caption)
+                            .foregroundColor(Color("TextContent"))
                             .frame(maxWidth: .infinity)
 
                     }
@@ -90,14 +91,14 @@ struct AuthView: View {
                 .frame(maxWidth: .infinity)
                 .padding(.horizontal, 20)
                 .padding(.vertical, 10)
-                .background(Color(#colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 0.9391186773)))
+                .background(Color("Background2"))
                 .cornerRadius(15)
                 
                 
                 HStack {
                     
                     Text("\(viewModel.type == .SignIn ? "Chưa" : "Đã") có tài khoản?")
-                        .foregroundColor(Color(#colorLiteral(red: 0.4352941176, green: 0.4352941176, blue: 0.4352941176, alpha: 1)))
+                        .foregroundColor(Color("TextContent"))
                     
                     Button {
                         
@@ -109,16 +110,18 @@ struct AuthView: View {
                         
                         Text("Đăng \(viewModel.type == .SignIn ? "ký" : "nhập") ngay!")
                             .font(.subheadline)
-                            .foregroundColor(Color("Persian Blue"))
+                            .foregroundColor(Color("Primary"))
                         
                     }
                     
                 }
+                .font(.caption)
                 .padding(.vertical, 25)
                 
             }
         }
         .padding(.horizontal, 25)
+        .background(Color("Background").ignoresSafeArea())
         .environmentObject(viewModel)
         .onAppear {
             

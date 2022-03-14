@@ -21,12 +21,11 @@ struct HelloView: View {
             VStack(alignment: .leading) {
                 Text("Xin Chào")
                     .font(.custom(.customFont, size: 14))
-                    .foregroundColor(.gray)
-                    .padding(.bottom, 1)
+                    .foregroundColor(Color("TextTitle"))
                                     
                 Text("\(app.user?.name ?? "Đầu Bếp")")
                     .font(.custom(.customFont, size: 20))
-                    .foregroundColor(Color(#colorLiteral(red: 0.08235294118, green: 0.1333333333, blue: 0.3098039216, alpha: 1)))
+                    .foregroundColor(Color("TextTitle"))
                     .fontWeight(.semibold)
             }
             
@@ -40,11 +39,11 @@ struct HelloView: View {
                         Image("avatar")
                             .resizable()
                             .scaledToFill()
-                            .frame(width: 50, height: 50)
+                            .frame(width: 45, height: 45)
                     }
                     
                 )
-                .frame(width: 50, height: 50)
+                .frame(width: 45, height: 45)
                 .clipShape(Circle())
             
             
@@ -57,17 +56,12 @@ struct HelloView: View {
 
 struct HelloView_Previews: PreviewProvider {
     static var previews: some View {
+        
         PreviewWrapper {
             
-            ScrollView {
-                
-                HelloView()
-                    .padding(.horizontal, 25)
-                
-            }
-            
-            
+            HomeView()
             
         }
+        
     }
 }

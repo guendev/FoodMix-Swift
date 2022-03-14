@@ -105,7 +105,7 @@ struct CategoryView: View {
             
         }
         .ignoresSafeArea(.container, edges: .top)
-        .background(Color.white.ignoresSafeArea())
+        .background(Color("Background").ignoresSafeArea())
         .overlay(
             
             AppBar(title: "\(category.name)", back: true, animation: viewModel.offset < -150) {

@@ -23,7 +23,7 @@ struct ActivityListAuthor: View {
         
             VStack(spacing: 20) {
                 
-                TitleView(title: "Đầu Bếp Nổi Bật") {
+                TitleView(title: "Đầu Bếp Nổi Bật ") {
                     
                     TabFilterView<FilterItem>(
                         filters: filters,
@@ -91,6 +91,8 @@ struct ActivityListAuthor: View {
             .padding(.horizontal, 25)
             .frame(maxWidth: .infinity)
         }
+        .background(Color("Sheet"))
+        .clipShape(CustomSheetShape())
     }
     
     @ViewBuilder
@@ -99,22 +101,27 @@ struct ActivityListAuthor: View {
         HStack(spacing: 15) {
             
             Text("\(index)")
+                .fontWeight(.semibold)
+                .font(.subheadline)
+                .foregroundColor(Color("TextTitle"))
             
             RecipeAvatar(avatar: author.avatar)
                 .scaledToFit()
-                .frame(width: 60, height: 60)
-                .cornerRadius(60)
+                .frame(width: 50, height: 50)
+                .cornerRadius(50)
                 .shadow(color: .black.opacity(0.1), radius: 10, x: 0.0, y: 0)
             
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: 0) {
                 
                 Text(author.name)
-                    .font(.custom(.customFont, size: 18))
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
+                    .foregroundColor(Color("TextTitle"))
                     .lineLimit(1)
                 
                 Text("@\(author.slug)")
-                    .font(.custom(.customFont, size: 14))
-                    .foregroundColor(.gray)
+                    .font(.caption)
+                    .foregroundColor(Color("TextContent"))
                 
             }
             
@@ -138,11 +145,11 @@ struct ActivityListAuthor: View {
     private func AuthorBadge(text: String) -> some View {
         
         Text(text)
-            .font(.system(size: 14))
+            .font(.caption)
             .fontWeight(.semibold)
             .foregroundColor(.white)
-            .padding(.vertical, 10)
-            .padding(.horizontal, 15)
+            .padding(.vertical, 5)
+            .padding(.horizontal, 10)
             .background(Color("Warning"))
             .cornerRadius(10)
             .shadow(color: .black.opacity(0.1), radius: 10, x: 0.0, y: 0)

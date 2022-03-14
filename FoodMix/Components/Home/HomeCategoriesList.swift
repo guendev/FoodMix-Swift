@@ -40,7 +40,7 @@ struct HomeCategoriesList: View {
                 
                 ZStack {
                     
-                    if viewModel.catgories.count > 0 {
+                    if viewModel.catgories.count < 0 {
                         
                         CategoriesList()
                         
@@ -84,9 +84,9 @@ struct HomeCategoriesList: View {
                 } label: {
                     
                     Text(item.name)
-                        .font(.custom(.customFont, size: 16))
+                        .font(.custom(.customFont, size: 14))
                         .fontWeight(.semibold)
-                        .foregroundColor(current(category: item) ? .white : .black.opacity(0.6))
+                        .foregroundColor(current(category: item) ? .white : Color("Text"))
                         .padding(.horizontal, 20)
                         .padding(.leading, 20)
                         .padding(.vertical, 10)
@@ -111,7 +111,7 @@ struct HomeCategoriesList: View {
                             
                             RecipeAvatar(avatar: item.icon)
                                 .scaledToFit()
-                                .frame(width: 30)
+                                .frame(width: 28)
                                 .offset(x: 5)
                                 .scaleEffect(current(category: item) ? 1.2 : 1)
                                 .animation(.spring())
@@ -138,33 +138,16 @@ struct HomeCategoriesList: View {
                 Text("Kem Lạnh")
                     .font(.custom(.customFont, size: 16))
                     .fontWeight(.semibold)
-                    .foregroundColor(index == 1 ? .white : .black.opacity(0.6))
+                    .foregroundColor(Color("Text"))
                     .padding(.horizontal, 20)
                     .padding(.leading, 20)
                     .padding(.vertical, 10)
-                    .background(
-                        
-                        Group {
-                            
-                            if index == 1 {
-                                
-                                LinearGradient(gradient: Gradient(colors: [Color("Primary").opacity(0.7), Color("Primary")]), startPoint: .leading, endPoint: .trailing)
-                                    .opacity(0.9)
-                                    .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
-                                
-                            }
-                            
-                        }
-                        
-                    )
                     .overlay(
                         
                         RecipeAvatar(avatar: "https://i.imgur.com/sJapZxD.png")
                             .scaledToFit()
                             .frame(width: 30)
                             .offset(x: 5)
-                            .scaleEffect(index == 1 ? 1.2 : 1)
-                            .animation(.spring())
                         
                         ,alignment: .leading
                         
@@ -178,3 +161,15 @@ struct HomeCategoriesList: View {
         
     }
 }
+
+
+struct HomeCategoriesList_Previews: PreviewProvider {
+    static var previews: some View {
+        PreviewWrapper {
+            
+            HomeView()
+            
+        }
+    }
+}
+

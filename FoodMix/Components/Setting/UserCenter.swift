@@ -25,6 +25,7 @@ struct UserCenter: View {
                             if viewModel.auth {
                                 
                                 RecipeAvatar(avatar: viewModel.user?.avatar)
+                                    .id(viewModel.user?.avatar)
                                 
                             } else {
                                 
@@ -36,19 +37,20 @@ struct UserCenter: View {
                         }
                     )
                     .frame(width: 56, height: 56)
+                    .clipShape(Circle())
                 
-                VStack(alignment:  .leading, spacing: 8) {
+                VStack(alignment:  .leading, spacing: 0) {
                     
                     Text(viewModel.user?.name ?? "--")
-                        .font(.system(size: 18))
+                        .font(.title3)
                         .fontWeight(.semibold)
-                        .foregroundColor(.black.opacity(0.7))
+                        .foregroundColor(Color("TextTitle"))
                         .lineLimit(1)
                     
                     if viewModel.auth {
                         
                         Text("dnstylish@gmail.com")
-                            .font(.subheadline)
+                            .font(.caption)
                             .foregroundColor(.gray)
                         
                     }
@@ -63,10 +65,10 @@ struct UserCenter: View {
                         AccountView()
                     } label: {
                         Text("Sửa")
-                            .font(.custom(.customFont, size: 13))
+                            .font(.caption)
                             .foregroundColor(.white)
                             .padding(.horizontal, 15)
-                            .padding(.vertical, 7)
+                            .padding(.vertical, 5)
                             .background(Color("Warning"))
                             .cornerRadius(20)
                     }
@@ -87,7 +89,7 @@ struct UserCenter_Previews: PreviewProvider {
         
         PreviewWrapper {
             
-            UserCenter()
+            SettingView()
             
         }
         

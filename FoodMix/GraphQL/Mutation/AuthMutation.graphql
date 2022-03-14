@@ -10,3 +10,17 @@ mutation Signup($input: SignUpInput!) {
 	token
   }
 }
+
+
+mutation UpdateUser($input: UserUpdateInput!) {
+  updateUser(input: $input) {
+	id
+	name
+	email
+	slug
+	avatar
+	about
+	province
+	gender
+  }
+}

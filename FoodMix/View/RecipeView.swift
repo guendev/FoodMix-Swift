@@ -15,7 +15,7 @@ struct RecipeView: View {
         
     var body: some View {
         
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             
             VStack(spacing: 0) {
                 
@@ -41,7 +41,7 @@ struct RecipeView: View {
             
         }
         .ignoresSafeArea(.container, edges: .top)
-        .background(Color.white.ignoresSafeArea())
+        .background(Color("Background").ignoresSafeArea())
         .overlay(
             RecipeAppBar()
             

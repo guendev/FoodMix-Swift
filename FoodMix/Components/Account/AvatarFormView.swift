@@ -69,13 +69,6 @@ struct AvatarFormView: View {
                 Spacer()
                 
             }
-            .padding(20)
-            .padding(.horizontal, 5)
-            .frame(maxWidth: .infinity)
-            .overlay(
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(Color("InputBackground"), lineWidth: 2)
-            )
             
         }
         .padding(.horizontal, 1)

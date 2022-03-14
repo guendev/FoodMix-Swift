@@ -19,13 +19,13 @@ struct RecipeItemHorizontal: View {
                 .scaledToFill()
                 .frame(width: 140, height: 100)
                 .clipped()
-                .cornerRadius(20)
+                .cornerRadius(10)
             
             VStack(alignment: .leading, spacing: 10) {
                 
                 Text(recipe.name)
                     .font(.custom(.customFont, size: 17))
-                    .fontWeight(.semibold)
+                    .foregroundColor(Color("TextTitle"))
                     .lineLimit(1)
                 
                 StarRating(rating: 3.4, size: 13)
@@ -34,7 +34,7 @@ struct RecipeItemHorizontal: View {
                     .font(.custom(.customFont, size: 14))
                     .lineSpacing(5)
                     .lineLimit(2)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color("TextContent"))
                 
             }
             .frame(maxWidth: .infinity, alignment: .topLeading)
@@ -56,11 +56,12 @@ struct RecipeItemHorizontalPreview: View {
                 .scaledToFill()
                 .frame(width: 140, height: 100)
                 .clipped()
-                .cornerRadius(20)
+                .cornerRadius(10)
             
             VStack(alignment: .leading, spacing: 10) {
                 
                 Text("Lợn Xào Sả Ớt")
+                    .foregroundColor(Color("TextTitle"))
                     .font(.custom(.customFont, size: 17))
                     .fontWeight(.semibold)
                     .lineLimit(1)
@@ -71,7 +72,7 @@ struct RecipeItemHorizontalPreview: View {
                     .font(.custom(.customFont, size: 14))
                     .lineSpacing(5)
                     .lineLimit(2)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color("TextContent"))
                 
             }
             .frame(maxWidth: .infinity, alignment: .topLeading)
@@ -87,10 +88,6 @@ struct RecipeItemHorizontalPreview: View {
             ForEach(1...3, id: \.self) { _ in
                 
                 RecipeItemHorizontalPreview()
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(20)
-                    .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
                 
             }
             
@@ -104,16 +101,18 @@ struct RecipeItemHorizontalPreview: View {
 
 struct RecipeItemHorizontal_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeItemHorizontal(recipe:
-                                Recipe(
-                                    id: "1",
-                                    name: "Lợn Xào Sả Ớt",
-                                    slug: "", avatar: "https://img.traveltriangle.com/blog/wp-content/uploads/2018/12/cover-for-street-food-in-sydney.jpg"
-                                )
-        )
-            .previewLayout(.sizeThatFits)
-        .padding()
-        .frame(maxWidth: .infinity)
-        .background(Color("Background"))
+        
+        PreviewWrapper {
+            
+            VStack(spacing: 25) {
+                
+                RecipeItemHorizontalPreview.preview()
+                
+            }
+            .padding(25)
+            
+        }
+        .background(Color("Background").ignoresSafeArea())
+        
     }
 }

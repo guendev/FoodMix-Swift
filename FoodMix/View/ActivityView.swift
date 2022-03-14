@@ -25,7 +25,6 @@ struct ActivityView: View {
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-        .background(Color.blue.opacity(0.03).ignoresSafeArea())
         .overlay(
             
             ActivityListAuthor()
@@ -42,6 +41,7 @@ struct ActivityView: View {
             viewModel.getFirstAuthors()
             
         }
+        .background(Color("Background").ignoresSafeArea())
         .environmentObject(viewModel)
     }
 
@@ -51,7 +51,7 @@ struct ActivityView_Previews: PreviewProvider {
     static var previews: some View {
         PreviewWrapper {
             
-            MainView()
+            ActivityView()
             
         }
     }

@@ -11,6 +11,11 @@ struct AboutFormView: View {
     
     @EnvironmentObject var viewModel: AccountViewModel
     
+    init() {
+        UITextView.appearance().backgroundColor = UIColor(Color("InputBackground"))
+        UITextView.appearance().textContainerInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+    }
+    
     
     var body: some View {
         
@@ -19,13 +24,10 @@ struct AboutFormView: View {
             PrimaryInputLabel(label: "Giới Thiệu")
     
             TextEditor(text: $viewModel.about)
-                .introspectTextView { textView in
-                    textView.backgroundColor = UIColor(Color("InputBackground"))
-                    textView.layer.cornerRadius = 15
-                    textView.textContainerInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-                    textView.textColor = UIColor(Color("InputText"))
-                }
-                .accentColor(Color("InputText"))
+                .font(.subheadline)
+                .foregroundColor(Color("TextContent"))
+                .accentColor(Color("TextContent"))
+                .background(Color("Background2"))
                 .lineSpacing(8)
                 .overlay(
                     Text("Giới thiệu của bạn")
@@ -36,6 +38,7 @@ struct AboutFormView: View {
                     
                     ,alignment: .topLeading
                 )
+                .cornerRadius(15)
             
         }
         
