@@ -9,51 +9,42 @@ import SwiftUI
 
 extension View {
     
-    func withAuth(_ auth: Binding<Bool>) -> some View {
-        return self.modifier(WithAuth(auth: auth))
+    func withAuth() -> some View {
+        return self.modifier(WithAuth())
     }
-    
 }
 
 struct WithAuth: ViewModifier {
     
-    @Binding var auth: Bool
-    
     @State private var isActive: Bool = false
+    
+    @Environment(\.authKey) private var authKey
     
     func body(content: Content) -> some View {
         
         Group {
             
-            if auth {
+            if authKey {
                 content
             } else {
                 
                 Button {
-                    isActive = true
+                    
+                    print("❌ DEBUG: \("134")")
+
+                    isActive.toggle()
+                    
                     
                 } label: {
                     content.disabled(true)
                 }
-                .background(
-                    Group {
-                        
-                        if !auth {
-                            NavigationLink(isActive: $isActive) {
-                                WelcomeView()
-                            } label: {
-                                EmptyView()
-                            }
-                            .hidden()
-                        }
-                        
-                    }
-                )
+                .fullScreenCover(isPresented: $isActive) {
+                    WelcomeView()
+                }
                 
             }
             
         }
-
         
     }
 }

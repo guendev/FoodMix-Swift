@@ -12,7 +12,7 @@ struct AboutFormView: View {
     @EnvironmentObject var viewModel: AccountViewModel
     
     init() {
-        UITextView.appearance().backgroundColor = UIColor(Color("InputBackground"))
+        UITextView.appearance().backgroundColor = UIColor(Color("Background2"))
         UITextView.appearance().textContainerInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
     }
     

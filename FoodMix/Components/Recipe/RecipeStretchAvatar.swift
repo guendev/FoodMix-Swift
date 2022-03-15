@@ -81,7 +81,7 @@ struct RecipeStretchAvatar: View {
             }
                 .disabled(!viewModel.ready)
                 .offset(x: -30, y: -30)
-                .withAuth($viewModel.auth)
+                .withAuth()
             
             ,alignment: .bottomTrailing
             

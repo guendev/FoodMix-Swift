@@ -58,11 +58,9 @@ struct PasswordFormView: View {
         }
         
         if currentPasswordError != "" || newPasswordError != "" || rePasswordError != "" {
-            debugPrint("error")
             // Validate thất bại
             return
         }
-        debugPrint("updated begin")
         viewModel.updatePassword {
             // Nothing
         }

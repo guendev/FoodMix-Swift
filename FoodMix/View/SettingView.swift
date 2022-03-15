@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct SettingView: View {
+    
+    @EnvironmentObject var app: AppViewModel
+    
+    @Environment(\.currentUserKey) private var userData
+    @Environment(\.authKey) private var authKey
+    
+    
     var body: some View {
         
         VStack {
@@ -76,6 +83,18 @@ struct SettingView: View {
     
                         
                     }
+                    
+                    PrimaryButtonView(
+                        title: authKey ? "Đăng Xuất" : "Đăng Nhập",
+                        active: .constant(false),
+                        background: authKey ? Color("Warning") : Color("Primary")
+                    ) {
+                        
+                        app.onLogout()
+                        
+                    }
+                    .withAuth()
+                    .padding(.horizontal, 25)
                     
                 }
                 .padding(.top, 25)

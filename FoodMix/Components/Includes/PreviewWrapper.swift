@@ -26,36 +26,12 @@ struct PreviewWrapper<Content: View>: View {
     var body: some View {
         NavigationView {
             content
-                .background(
-                    
-                    Group {
-                        // view ẩn
-                        NavigationLink(isActive: $isActive) {
-                            WelcomeView()
-                        } label: {
-                            EmptyView()
-                        }
-
-                        
-                    }
-                    .hidden()
-                    
-                )
-                .onAppear {
-                    
-                    // welcome = true
-                    
-                    if welcome {
-                        welcome = false
-                        isActive = true
-                    }
-                    
+                .introspectNavigationController { nav in
+                    nav.navigationBar.isHidden = true
                 }
+                
         }
         .environmentObject(viewModel)
-        .introspectNavigationController { nav in
-            nav.navigationBar.isHidden = true
-        }
         .environment(\.managedObjectContext, persistenceController.container.viewContext)
         .environment(\.authKey, viewModel.auth)
         .environment(\.currentUserKey, viewModel.user)

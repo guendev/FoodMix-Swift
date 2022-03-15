@@ -315,17 +315,18 @@ public final class GetUsersQuery: GraphQLQuery {
   }
 }
 
-public final class GetProfileQuery: GraphQLQuery {
+public final class SubAccountSubscription: GraphQLSubscription {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    query GetProfile($id: String!) {
-      getProfile(id: $id) {
+    subscription SubAccount {
+      subAccount {
         __typename
         id
         name
-        email
         slug
+        gender
+        role
         avatar
         banner
         province
@@ -333,29 +334,21 @@ public final class GetProfileQuery: GraphQLQuery {
         countRecipe
         countRating
         totalRating
-        createdAt
       }
     }
     """
 
-  public let operationName: String = "GetProfile"
+  public let operationName: String = "SubAccount"
 
-  public var id: String
-
-  public init(id: String) {
-    self.id = id
-  }
-
-  public var variables: GraphQLMap? {
-    return ["id": id]
+  public init() {
   }
 
   public struct Data: GraphQLSelectionSet {
-    public static let possibleTypes: [String] = ["Query"]
+    public static let possibleTypes: [String] = ["Subscription"]
 
     public static var selections: [GraphQLSelection] {
       return [
-        GraphQLField("getProfile", arguments: ["id": GraphQLVariable("id")], type: .nonNull(.object(GetProfile.selections))),
+        GraphQLField("subAccount", type: .nonNull(.object(SubAccount.selections))),
       ]
     }
 
@@ -365,20 +358,20 @@ public final class GetProfileQuery: GraphQLQuery {
       self.resultMap = unsafeResultMap
     }
 
-    public init(getProfile: GetProfile) {
-      self.init(unsafeResultMap: ["__typename": "Query", "getProfile": getProfile.resultMap])
+    public init(subAccount: SubAccount) {
+      self.init(unsafeResultMap: ["__typename": "Subscription", "subAccount": subAccount.resultMap])
     }
 
-    public var getProfile: GetProfile {
+    public var subAccount: SubAccount {
       get {
-        return GetProfile(unsafeResultMap: resultMap["getProfile"]! as! ResultMap)
+        return SubAccount(unsafeResultMap: resultMap["subAccount"]! as! ResultMap)
       }
       set {
-        resultMap.updateValue(newValue.resultMap, forKey: "getProfile")
+        resultMap.updateValue(newValue.resultMap, forKey: "subAccount")
       }
     }
 
-    public struct GetProfile: GraphQLSelectionSet {
+    public struct SubAccount: GraphQLSelectionSet {
       public static let possibleTypes: [String] = ["User"]
 
       public static var selections: [GraphQLSelection] {
@@ -386,8 +379,9 @@ public final class GetProfileQuery: GraphQLQuery {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
-          GraphQLField("email", type: .nonNull(.scalar(String.self))),
           GraphQLField("slug", type: .nonNull(.scalar(String.self))),
+          GraphQLField("gender", type: .scalar(Int.self)),
+          GraphQLField("role", type: .nonNull(.scalar(String.self))),
           GraphQLField("avatar", type: .scalar(String.self)),
           GraphQLField("banner", type: .scalar(String.self)),
           GraphQLField("province", type: .scalar(String.self)),
@@ -395,7 +389,6 @@ public final class GetProfileQuery: GraphQLQuery {
           GraphQLField("countRecipe", type: .scalar(Int.self)),
           GraphQLField("countRating", type: .scalar(Int.self)),
           GraphQLField("totalRating", type: .scalar(Int.self)),
-          GraphQLField("createdAt", type: .nonNull(.scalar(Double.self))),
         ]
       }
 
@@ -405,8 +398,8 @@ public final class GetProfileQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: GraphQLID, name: String, email: String, slug: String, avatar: String? = nil, banner: String? = nil, province: String? = nil, about: String? = nil, countRecipe: Int? = nil, countRating: Int? = nil, totalRating: Int? = nil, createdAt: Double) {
-        self.init(unsafeResultMap: ["__typename": "User", "id": id, "name": name, "email": email, "slug": slug, "avatar": avatar, "banner": banner, "province": province, "about": about, "countRecipe": countRecipe, "countRating": countRating, "totalRating": totalRating, "createdAt": createdAt])
+      public init(id: GraphQLID, name: String, slug: String, gender: Int? = nil, role: String, avatar: String? = nil, banner: String? = nil, province: String? = nil, about: String? = nil, countRecipe: Int? = nil, countRating: Int? = nil, totalRating: Int? = nil) {
+        self.init(unsafeResultMap: ["__typename": "User", "id": id, "name": name, "slug": slug, "gender": gender, "role": role, "avatar": avatar, "banner": banner, "province": province, "about": about, "countRecipe": countRecipe, "countRating": countRating, "totalRating": totalRating])
       }
 
       public var __typename: String {
@@ -436,21 +429,30 @@ public final class GetProfileQuery: GraphQLQuery {
         }
       }
 
-      public var email: String {
-        get {
-          return resultMap["email"]! as! String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "email")
-        }
-      }
-
       public var slug: String {
         get {
           return resultMap["slug"]! as! String
         }
         set {
           resultMap.updateValue(newValue, forKey: "slug")
+        }
+      }
+
+      public var gender: Int? {
+        get {
+          return resultMap["gender"] as? Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "gender")
+        }
+      }
+
+      public var role: String {
+        get {
+          return resultMap["role"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "role")
         }
       }
 
@@ -514,15 +516,6 @@ public final class GetProfileQuery: GraphQLQuery {
         }
         set {
           resultMap.updateValue(newValue, forKey: "totalRating")
-        }
-      }
-
-      public var createdAt: Double {
-        get {
-          return resultMap["createdAt"]! as! Double
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "createdAt")
         }
       }
     }

@@ -33,11 +33,7 @@ class AuthViewModel: ObservableObject {
             
             self.loading = true
             
-            Network.shared.apollo.perform(mutation: SigninMutation(input: SignInInput(email: self.email, password: self.password))) { [weak self] result in
-                
-                guard let self = self else {
-                      return
-                }
+            Network.shared.apollo.perform(mutation: SigninMutation(input: SignInInput(email: self.email, password: self.password))) { result in
                 
                 switch result {
                 
@@ -68,11 +64,7 @@ class AuthViewModel: ObservableObject {
     func signup(success: @escaping () -> Void) -> Void {
         validateForm {
             self.loading = true
-            Network.shared.apollo.perform(mutation: SignupMutation(input: SignUpInput(name: self.name, email: self.email, password: self.password))) { [weak self] result in
-                
-                guard let self = self else {
-                      return
-                }
+            Network.shared.apollo.perform(mutation: SignupMutation(input: SignUpInput(name: self.name, email: self.email, password: self.password))) { result in
                 
                 switch result {
                 

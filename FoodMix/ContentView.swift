@@ -20,36 +20,11 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             MainView()
-                .background(
-                    
-                    Group {
-                        // view ẩn
-                        NavigationLink(isActive: $isActive) {
-                            WelcomeView()
-                        } label: {
-                            EmptyView()
-                        }
-
-                        
-                    }
-                    .hidden()
-                    
-                )
-                .onAppear {
-                    
-                    welcome = true
-                    
-                    if welcome {
-                        welcome = false
-                        isActive = true
-                    }
-                    
+                .introspectNavigationController { navi in
+                    navi.navigationBar.isHidden = true
                 }
         }
         .environmentObject(viewModel)
-        .introspectNavigationController { nav in
-            nav.navigationBar.isHidden = true
-        }
         .environment(\.authKey, viewModel.auth)
         .environment(\.currentUserKey, viewModel.user)
     }

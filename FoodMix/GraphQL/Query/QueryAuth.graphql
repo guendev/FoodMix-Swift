@@ -23,12 +23,13 @@ query GetUsers($filter: SortOption!) {
   }
 }
 
-query GetProfile($id: String!) {
-  getProfile(id: $id) {
+subscription SubAccount {
+  subAccount {
 	id
 	name
-	email
 	slug
+	gender
+	role
 	avatar
 	banner
 	province
@@ -36,6 +37,5 @@ query GetProfile($id: String!) {
 	countRecipe
 	countRating
 	totalRating
-	createdAt
   }
 }

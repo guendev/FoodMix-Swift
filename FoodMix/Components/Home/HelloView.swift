@@ -10,10 +10,8 @@ import SwiftUI
 struct HelloView: View {
     
     @EnvironmentObject var app: AppViewModel
+    
     @AppStorage("welcome") var welcome: Bool = true
-    
-    @State var navigationController: UINavigationController?
-    
     
     var body: some View {
         HStack {
@@ -32,18 +30,20 @@ struct HelloView: View {
             Spacer()
             
             NavigationLink(destination: Color.red) {
-                Image("avatar")
-                    .resizable()
+                Group {
+                    if app.auth {
+                        RecipeAvatar(avatar: app.user?.avatar)
+                    } else {
+                        Image("avatar")
+                            .resizable()
+                    }
+                }
                     .scaledToFill()
                     .frame(width: 45, height: 45)
+                    .clipShape(Circle())
             }
-            .frame(width: 45, height: 45)
-            .clipShape(Circle())
+            .withAuth()
             
-            
-        }
-        .introspectNavigationController { nav in
-            navigationController = nav
         }
     }
 }

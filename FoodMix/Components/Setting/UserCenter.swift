@@ -9,7 +9,8 @@ import SwiftUI
 
 struct UserCenter: View {
     
-    @EnvironmentObject var viewModel: AppViewModel
+    @Environment(\.currentUserKey) private var currentUser
+    @Environment(\.authKey) private var authKey
     
     var body: some View {
        
@@ -22,10 +23,10 @@ struct UserCenter: View {
                     .overlay(
                         Group {
                             
-                            if viewModel.auth {
+                            if authKey {
                                 
-                                RecipeAvatar(avatar: viewModel.user?.avatar)
-                                    .id(viewModel.user?.avatar)
+                                RecipeAvatar(avatar: currentUser?.avatar)
+                                    .id(currentUser?.avatar)
                                 
                             } else {
                                 
@@ -35,19 +36,21 @@ struct UserCenter: View {
                             }
                             
                         }
+                            .scaledToFill()
+                            .withAuth()
                     )
                     .frame(width: 56, height: 56)
                     .clipShape(Circle())
                 
                 VStack(alignment:  .leading, spacing: 0) {
                     
-                    Text(viewModel.user?.name ?? "--")
+                    Text(currentUser?.name ?? "--")
                         .font(.title3)
                         .fontWeight(.semibold)
                         .foregroundColor(Color("TextTitle"))
                         .lineLimit(1)
                     
-                    if viewModel.auth {
+                    if authKey {
                         
                         Text("dnstylish@gmail.com")
                             .font(.caption)
@@ -59,7 +62,7 @@ struct UserCenter: View {
                 
                 Spacer()
                 
-                if viewModel.auth {
+                if authKey {
                     
                     NavigationLink {
                         AccountView()

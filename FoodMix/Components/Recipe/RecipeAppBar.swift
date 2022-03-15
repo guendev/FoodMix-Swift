@@ -40,7 +40,7 @@ struct RecipeAppBar: View {
                 .scaledToFit()
                 .frame(width: 20)
                 .rotationEffect(Angle.init(degrees: 90))
-                .withAuth(.constant(false))
+                .withAuth()
                 // .foregroundColor(.gray)
         }
         .padding(.vertical)

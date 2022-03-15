@@ -62,7 +62,7 @@ fileprivate struct ToggleView: View {
             ZStack {
                 
                 RoundedRectangle(cornerRadius: 20)
-                    .fill(Color("InputBackground"))
+                    .fill(Color("Background2"))
                     .frame(width: 35, height: 15)
                 
                 Image(value ? onImage : offImage)

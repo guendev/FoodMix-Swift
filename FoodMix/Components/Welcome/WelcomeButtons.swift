@@ -107,7 +107,7 @@ struct WelcomeButtons_Previews: PreviewProvider {
         
         
         PreviewWrapper {
-            WelcomeView()
+            // WelcomeView(, showSheet: <#Binding<Bool>#>)
         }
         
     }

@@ -37,6 +37,10 @@
 		1C39B58127DD245C00A346A2 /* AvatarFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C39B58027DD245C00A346A2 /* AvatarFormView.swift */; };
 		1C39B58327DD24FA00A346A2 /* BannerFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C39B58227DD24FA00A346A2 /* BannerFormView.swift */; };
 		1C61E8C227DC4A8200A239CF /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 1C61E8C127DC4A8200A239CF /* Moya */; };
+		1CA41B4D27E03A8400006F71 /* QueryProfile.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 1CA41B4C27E03A8400006F71 /* QueryProfile.graphql */; };
+		1CA41B5127E03B1000006F71 /* QueryReviews.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 1CA41B5027E03B1000006F71 /* QueryReviews.graphql */; };
+		1CA41B5327E03BF000006F71 /* QueryProfile.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA41B5227E03BF000006F71 /* QueryProfile.graphql.swift */; };
+		1CA41B5527E03BF800006F71 /* QueryReviews.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA41B5427E03BF800006F71 /* QueryReviews.graphql.swift */; };
 		1CB110DB27DF504D00F36F7B /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB110DA27DF504D00F36F7B /* PrimaryButton.swift */; };
 		1CB110DD27DF534300F36F7B /* PasswordFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB110DC27DF534200F36F7B /* PasswordFormView.swift */; };
 		1CB3490727D479310061D9CD /* FoodMix.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1CB3490527D479310061D9CD /* FoodMix.xcdatamodeld */; };
@@ -175,6 +179,10 @@
 		1C39B57E27DD1DC300A346A2 /* CheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
 		1C39B58027DD245C00A346A2 /* AvatarFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarFormView.swift; sourceTree = "<group>"; };
 		1C39B58227DD24FA00A346A2 /* BannerFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerFormView.swift; sourceTree = "<group>"; };
+		1CA41B4C27E03A8400006F71 /* QueryProfile.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = QueryProfile.graphql; sourceTree = "<group>"; };
+		1CA41B5027E03B1000006F71 /* QueryReviews.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = QueryReviews.graphql; sourceTree = "<group>"; };
+		1CA41B5227E03BF000006F71 /* QueryProfile.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryProfile.graphql.swift; sourceTree = "<group>"; };
+		1CA41B5427E03BF800006F71 /* QueryReviews.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryReviews.graphql.swift; sourceTree = "<group>"; };
 		1CB110DA27DF504D00F36F7B /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		1CB110DC27DF534200F36F7B /* PasswordFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordFormView.swift; sourceTree = "<group>"; };
 		1CB3490627D479310061D9CD /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -629,7 +637,9 @@
 				1CCC8C5227D4755300B5D3B9 /* Notify.graphql.swift */,
 				1CB5B1AB27D4CB3D00AEFF30 /* QueryAuth.graphql.swift */,
 				1CCC8C5427D4755300B5D3B9 /* QueryCategories.graphql.swift */,
+				1CA41B5227E03BF000006F71 /* QueryProfile.graphql.swift */,
 				1CB5B1B127D4E44800AEFF30 /* QueryRecipes.graphql.swift */,
+				1CA41B5427E03BF800006F71 /* QueryReviews.graphql.swift */,
 				1CCC8C5527D4755300B5D3B9 /* Types.graphql.swift */,
 			);
 			path = Codegen;
@@ -649,6 +659,8 @@
 				1CCC8C5B27D4755300B5D3B9 /* QueryCategories.graphql */,
 				1CB5B1A627D4C9A800AEFF30 /* QueryAuth.graphql */,
 				1CB5B1AF27D4E41300AEFF30 /* QueryRecipes.graphql */,
+				1CA41B4C27E03A8400006F71 /* QueryProfile.graphql */,
+				1CA41B5027E03B1000006F71 /* QueryReviews.graphql */,
 			);
 			path = Query;
 			sourceTree = "<group>";
@@ -752,10 +764,12 @@
 				1CCC8C6527D4755300B5D3B9 /* QueryCategories.graphql in Resources */,
 				1CB5B1AA27D4CAC100AEFF30 /* schema.json in Resources */,
 				1C12E9E127D9F193002AC29B /* provinces.json in Resources */,
+				1CA41B5127E03B1000006F71 /* QueryReviews.graphql in Resources */,
 				1CCC8C5C27D4755300B5D3B9 /* AuthMutation.graphql in Resources */,
 				1CCC8C6227D4755300B5D3B9 /* Notify.graphql in Resources */,
 				1CCC8C0427D4753500B5D3B9 /* Nunito.ttf in Resources */,
 				1CCC8B9E27D474F500B5D3B9 /* Preview Assets.xcassets in Resources */,
+				1CA41B4D27E03A8400006F71 /* QueryProfile.graphql in Resources */,
 				1CCC8B9B27D474F500B5D3B9 /* Assets.xcassets in Resources */,
 				1CB5B1A727D4C9A800AEFF30 /* QueryAuth.graphql in Resources */,
 				1CB5B1B027D4E41300AEFF30 /* QueryRecipes.graphql in Resources */,
@@ -782,8 +796,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "
-";
+			shellScript = "npx apollo schema:download --endpoint=http://localhost:3000/graphql FoodMix/Json/schema.json\n\n\n# Don't run this during index builds\nif [ $ACTION = \"indexbuild\" ]; then exit 0; fi\n\n# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"Json/schema.json\" GraphQL/Codegen\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -834,6 +847,7 @@
 				1CCC8C3427D4754800B5D3B9 /* ActivityView.swift in Sources */,
 				1C1F368427D99EDB00957046 /* AccountView.swift in Sources */,
 				1CCC8C2D27D4754800B5D3B9 /* HomeView.swift in Sources */,
+				1CA41B5527E03BF800006F71 /* QueryReviews.graphql.swift in Sources */,
 				1C39B57F27DD1DC300A346A2 /* CheckBoxView.swift in Sources */,
 				1CCC8C6127D4755300B5D3B9 /* Types.graphql.swift in Sources */,
 				1CCC8C4A27D4754D00B5D3B9 /* AppViewModel.swift in Sources */,
@@ -841,6 +855,7 @@
 				1CCC8C6027D4755300B5D3B9 /* QueryCategories.graphql.swift in Sources */,
 				1CCC8C1527D4754100B5D3B9 /* Bookmark.swift in Sources */,
 				1CCC8C5E27D4755300B5D3B9 /* Notify.graphql.swift in Sources */,
+				1CA41B5327E03BF000006F71 /* QueryProfile.graphql.swift in Sources */,
 				1CCC8BE027D4752700B5D3B9 /* AuthFormView.swift in Sources */,
 				1C12E9E727D9FE7C002AC29B /* Province.swift in Sources */,
 				1C39B58327DD24FA00A346A2 /* BannerFormView.swift in Sources */,

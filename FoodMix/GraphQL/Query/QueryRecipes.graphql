@@ -86,3 +86,21 @@ query GetSearchRecipes($filter: SearchRecipeFilter!) {
 	}
   }
 }
+
+query GetSearchRecipesByIngredient($name: String!, $filter: SortOption!) {
+  getSearchRecipesByIngredient(name: $name, filter: $filter) {
+	  id
+	  name
+	  slug
+	  avatar
+	  content
+	  totalRating
+	  countRating
+	  user {
+		id
+		name
+		slug
+		avatar
+	  }
+  }
+}

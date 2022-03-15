@@ -85,7 +85,6 @@ struct PrimaryButtonView: View {
         .background(background)
         .cornerRadius(15)
         .opacity(active ? 0.7 : 1)
-        .animation(.easeInOut)
         .buttonStyle(PlainButtonStyle())
         .disabled(active)
         

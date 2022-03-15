@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Introspect
 
 struct AuthView: View {
     
@@ -133,6 +134,7 @@ struct AuthView: View {
             }
             
         }
+        .navigationBarHidden(true)
     }
 }
 

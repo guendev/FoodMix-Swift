@@ -9,7 +9,7 @@ import SwiftUI
 
 class MainViewModel: ObservableObject {
     
-    @Published var currentTab: MainTab = .Profile
+    @Published var currentTab: MainTab = .Home
     
 }
 
