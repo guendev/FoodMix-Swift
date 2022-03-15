@@ -74,9 +74,11 @@ struct AccountView: View {
                     
                     if currentTab == .Info {
                         InfoFormView()
+                            .transition(.slide)
                     } else {
                         
                         PasswordFormView()
+                            .transition(.slide)
                         
                     }
                     

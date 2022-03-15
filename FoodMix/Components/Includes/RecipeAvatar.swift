@@ -18,10 +18,8 @@ struct RecipeAvatar: View {
             .onSuccess { image, data, cacheType in
                 // Success
                 // Note: Data exist only when queried from disk cache or network. Use `.queryMemoryData` if you really need data
-                debugPrint("load image : \(avatarUrl())")
             }
             .onFailure { _ in
-                debugPrint("load image fail : \(avatarUrl())")
             }
             .resizable() // Resizable like SwiftUI.Image, you must use this modifier or the view will use the image bitmap size
             .placeholder {

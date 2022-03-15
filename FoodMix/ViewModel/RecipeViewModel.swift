@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Apollo
 
 class RecipeViewModel: ObservableObject {
                 
@@ -27,7 +28,10 @@ class RecipeViewModel: ObservableObject {
     @Published var auth: Bool = false
     @Published var currentUser: User?
     
-    func getRecipe(_ slug: String) -> Void {
+    // Sub data
+    private var subRecipe: Cancellable?
+    
+    func getRecipe(_ slug: String, completion: @escaping () -> Void) -> Void {
         
         if loading {
             return
@@ -56,13 +60,47 @@ class RecipeViewModel: ObservableObject {
                 self.recipe = recipe
                 self.loading = false
                 
+                completion()
+                
                 // sub recipe
-                
-                self.getBookmark()
-                
             case .failure(_):
                 break
             }
+            
+        }
+    }
+    
+    func subRecipeAction() -> Void {
+        subRecipe = Network.shared.apollo.subscribe(subscription: SubRecipeSubscription(id: recipe!.slug)) { result in
+            
+            switch result {
+            
+            case .success(let graphQLResult):
+                
+                                
+                if graphQLResult.errors != nil {
+                    break
+                }
+                                
+                guard let rawData = graphQLResult.data?.subRecipe else { break }
+                
+                
+                guard let jsonData = try? JSONSerialization.data(withJSONObject: rawData.jsonObject) else { break }
+                
+                guard let recipe = try? JSONDecoder().decode(Recipe.self, from: jsonData) else { break }
+                
+                self.recipe?.name = recipe.name
+                self.recipe?.avatar = recipe.avatar
+                self.recipe?.content = recipe.content
+                self.recipe?.totalRating = recipe.totalRating
+                self.recipe?.countRating = recipe.countRating
+                
+                
+            case .failure(_):
+                break
+            
+            }
+
             
         }
     }
@@ -136,15 +174,30 @@ class RecipeViewModel: ObservableObject {
                 
                 self.loadingBookmark = false
                 
-            case .failure(_):
+            case .failure(let error):
+                print("❌ DEBUG: \(error)")
                 break
             }
         }
     }
     
+    func reListenRecipe() -> Void {
+        if recipe != nil && subRecipe != nil {
+            debugPrint("Re sub recipe")
+            subRecipeAction()
+        }
+    }
+    
+    func stopListenRecipe() -> Void {
+        debugPrint("stop sub recipe")
+        subRecipe?.cancel()
+    }
+    
+}
+
+extension RecipeViewModel {
     func setOffset(_ rect: CGRect) -> CGFloat {
         offset = rect.minY
         return .zero
     }
-    
 }

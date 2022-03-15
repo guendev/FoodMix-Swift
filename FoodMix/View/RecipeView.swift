@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RecipeView: View {
     
-    var recipe: Recipe
+    var slug: String
     
     @StateObject var viewModel: RecipeViewModel = RecipeViewModel()
         
@@ -48,8 +48,16 @@ struct RecipeView: View {
             ,alignment: .top
         )
         .onAppear {
-            
-            viewModel.getRecipe(recipe.slug)
+            viewModel.reListenRecipe()
+        }
+        .onDisappear {
+            viewModel.stopListenRecipe()
+        }
+        .initView {
+            viewModel.getRecipe(slug) {
+                viewModel.getBookmark()
+                viewModel.subRecipeAction()
+            }
         }
         .asyncAuthData(auth: $viewModel.auth, currentUser: $viewModel.currentUser)
         .environmentObject(viewModel)
@@ -61,7 +69,7 @@ struct RecipeView_Previews: PreviewProvider {
     static var previews: some View {
         PreviewWrapper {
             
-            RecipeView(recipe: Recipe(id: "6211e6447d3b441181c395da", name: "Lê Thị Kim Ngân", slug: "le-thi-kim-ngan", avatar: "https://cdn.tgdd.vn/2021/03/CookProduct/bunmocchangio-1200x676.jpg"))
+            RecipeView(slug: "le-thi-kim-ngan")
             
         }
     }

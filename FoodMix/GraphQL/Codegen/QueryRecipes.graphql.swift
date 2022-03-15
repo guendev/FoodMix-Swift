@@ -1456,3 +1456,163 @@ public final class GetSearchRecipesByIngredientQuery: GraphQLQuery {
     }
   }
 }
+
+public final class SubRecipeSubscription: GraphQLSubscription {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    subscription SubRecipe($id: String!) {
+      subRecipe(id: $id) {
+        __typename
+        id
+        name
+        slug
+        avatar
+        content
+        totalRating
+        countRating
+      }
+    }
+    """
+
+  public let operationName: String = "SubRecipe"
+
+  public var id: String
+
+  public init(id: String) {
+    self.id = id
+  }
+
+  public var variables: GraphQLMap? {
+    return ["id": id]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Subscription"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("subRecipe", arguments: ["id": GraphQLVariable("id")], type: .nonNull(.object(SubRecipe.selections))),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(subRecipe: SubRecipe) {
+      self.init(unsafeResultMap: ["__typename": "Subscription", "subRecipe": subRecipe.resultMap])
+    }
+
+    /// Slug món ăn
+    public var subRecipe: SubRecipe {
+      get {
+        return SubRecipe(unsafeResultMap: resultMap["subRecipe"]! as! ResultMap)
+      }
+      set {
+        resultMap.updateValue(newValue.resultMap, forKey: "subRecipe")
+      }
+    }
+
+    public struct SubRecipe: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["Recipe"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("slug", type: .nonNull(.scalar(String.self))),
+          GraphQLField("avatar", type: .nonNull(.scalar(String.self))),
+          GraphQLField("content", type: .nonNull(.scalar(String.self))),
+          GraphQLField("totalRating", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("countRating", type: .nonNull(.scalar(Int.self))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: GraphQLID, name: String, slug: String, avatar: String, content: String, totalRating: Int, countRating: Int) {
+        self.init(unsafeResultMap: ["__typename": "Recipe", "id": id, "name": name, "slug": slug, "avatar": avatar, "content": content, "totalRating": totalRating, "countRating": countRating])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return resultMap["id"]! as! GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var name: String {
+        get {
+          return resultMap["name"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "name")
+        }
+      }
+
+      public var slug: String {
+        get {
+          return resultMap["slug"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "slug")
+        }
+      }
+
+      public var avatar: String {
+        get {
+          return resultMap["avatar"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "avatar")
+        }
+      }
+
+      public var content: String {
+        get {
+          return resultMap["content"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "content")
+        }
+      }
+
+      public var totalRating: Int {
+        get {
+          return resultMap["totalRating"]! as! Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "totalRating")
+        }
+      }
+
+      public var countRating: Int {
+        get {
+          return resultMap["countRating"]! as! Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "countRating")
+        }
+      }
+    }
+  }
+}

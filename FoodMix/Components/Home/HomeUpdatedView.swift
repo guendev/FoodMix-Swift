@@ -16,17 +16,13 @@ struct HomeUpdatedView: View {
     var body: some View {
         VStack(spacing: 25) {
             
-            TitleView(title: "Công Thức Mới") {
-                Text("Xem thêm")
-                    .font(.custom(.customFont, size: 14))
-                    .foregroundColor(.gray)
-            }
+            TitleView(title: "Công Thức Mới") {}
             
             VStack(spacing: 30) {
                 
                 ForEach(viewModel.updatedRecipes, id:\.id) { item in
                     
-                    NavigationLink( destination: RecipeView(recipe: item)) {
+                    NavigationLink( destination: RecipeView(slug: item.slug)) {
                         
                         RecipeItemHorizontal(recipe: item)
                         
@@ -59,6 +55,10 @@ struct HomeUpdatedView: View {
                         
                     }
                     .disabled(viewModel.loadingUpdated)
+                } else {
+                    
+                    EmptyContent()
+                    
                 }
                 
             }

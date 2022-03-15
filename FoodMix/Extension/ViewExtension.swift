@@ -25,6 +25,10 @@ extension View {
     func withErrorForm(msg: Binding<String>) -> some View {
         return self.modifier(ErrorFormMessage(msg: msg))
     }
+    
+    func initView(perform: @escaping () -> Void) -> some View {
+        return self.modifier(InitView(perform: perform))
+    }
 }
 
 struct ErrorFormMessage: ViewModifier {
@@ -54,5 +58,26 @@ struct ErrorFormMessage: ViewModifier {
             }
             
         }
+    }
+}
+
+
+
+struct InitView: ViewModifier {
+    
+    @State private var ready: Bool = false
+    
+    var perform: () -> Void
+    
+    func body(content: Content) -> some View {
+        return content
+            .onAppear {
+                
+                // dừng task nếu đã hoạt động
+                if ready { return }
+                ready = true
+                perform()
+                
+            }
     }
 }

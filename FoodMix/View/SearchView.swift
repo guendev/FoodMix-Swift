@@ -22,32 +22,18 @@ struct SearchView: View {
                 ZStack {
                     
                     if viewModel.keyword.isEmpty {
-                        SearchHistoryView()
-                    } else if !viewModel.loading && viewModel.recipes.isEmpty {
                         
-                        // trống ko có công thức
-                        VStack {
-                            
-                            Image("empty")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 280, height: 280)
-                            
-                            Text("Chẳng có món ăn nào ở đây cả")
-                                .font(.subheadline)
-                                .foregroundColor(Color("TextContent"))
-                            
-                        }
+                        SearchHistoryView()
                         
                     } else {
-                        // dg tải || show
+                        
                         VStack(spacing: 25) {
                             
                             TitleView(title: "Kết Quả") {}
                             
                             ForEach(viewModel.recipes, id:\.id) { item in
                                 
-                                NavigationLink( destination: RecipeView(recipe: item)) {
+                                NavigationLink( destination: RecipeView(slug: item.slug)) {
                                     
                                     RecipeItemHorizontal(recipe: item)
                                     
@@ -62,7 +48,24 @@ struct SearchView: View {
                                 
                             }
                             
+                            if viewModel.emptyRecipes {
+                                
+                                EmptyContent()
+                                
+                            } else {
+                                
+                                PrimaryButtonView(title: "Xem Thêm", active: $viewModel.loading) {
+                                    
+                                    viewModel.searchRecipes {
+                                        
+                                    }
+                                    
+                                }
+                                
+                            }
+                            
                         }
+                        
                     }
                     
                 }

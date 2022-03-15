@@ -41,7 +41,39 @@ struct ProfileView: View {
                             return item.value == current.value
                         }
                     )
-                        .disabled(!viewModel.ready || viewModel.loadingContent)
+                    .disabled(!viewModel.ready || viewModel.loadingContent)
+                    
+                }
+                
+                ZStack {
+                    
+                    if viewModel.current.value == "recipes" {
+                        
+                        ProfileRecipes()
+                            .transition(.fade)
+                        
+                    } else {
+                        
+                        ProfileReviewsView()
+                            .transition(.fade)
+                        
+                    }
+                    
+                }
+                
+                if viewModel.emptyContent {
+                    
+                    EmptyContent()
+                    
+                } else {
+                    
+                    PrimaryButtonView(title: "Xem Thêm", active: $viewModel.loadingContent) {
+                        
+                        
+                        viewModel.getContent()
+                        
+                    }
+                    .disabled(viewModel.loadingContent)
                     
                 }
                 
@@ -68,14 +100,16 @@ struct ProfileView: View {
             ,alignment: .top
             
         )
-        .onAppear {
+        .background(Color("Background").ignoresSafeArea())
+        .initView {
             
-            if getFirst { return }
-            getFirst = true
-            viewModel.getProfile(slug: slug)
+            viewModel.getProfile(slug: slug) {
+                
+                viewModel.getContent()
+                
+            }
             
         }
-        .background(Color("Background").ignoresSafeArea())
         .environmentObject(viewModel)
     }
 }
@@ -85,7 +119,7 @@ struct ProfileView_Previews: PreviewProvider {
         
         PreviewWrapper {
             
-            ProfileView(slug: "igyuguyg")
+            ProfileView(slug: "nguyen")
             
         }
         

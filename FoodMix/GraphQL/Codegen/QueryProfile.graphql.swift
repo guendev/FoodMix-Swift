@@ -21,22 +21,17 @@ public final class GetReviewsProfileQuery: GraphQLQuery {
           avatar
         }
         content
+        totalRating
+        createdAt
         recipe {
           __typename
           id
           name
           slug
           avatar
-          views
-          category {
-            __typename
-            id
-            name
-            slug
-            avatar
-          }
+          countRating
+          totalRating
         }
-        totalRating
       }
     }
     """
@@ -92,8 +87,9 @@ public final class GetReviewsProfileQuery: GraphQLQuery {
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("user", type: .object(User.selections)),
           GraphQLField("content", type: .nonNull(.scalar(String.self))),
-          GraphQLField("recipe", type: .object(Recipe.selections)),
           GraphQLField("totalRating", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("createdAt", type: .nonNull(.scalar(Double.self))),
+          GraphQLField("recipe", type: .object(Recipe.selections)),
         ]
       }
 
@@ -103,8 +99,8 @@ public final class GetReviewsProfileQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: GraphQLID, user: User? = nil, content: String, recipe: Recipe? = nil, totalRating: Int) {
-        self.init(unsafeResultMap: ["__typename": "Review", "id": id, "user": user.flatMap { (value: User) -> ResultMap in value.resultMap }, "content": content, "recipe": recipe.flatMap { (value: Recipe) -> ResultMap in value.resultMap }, "totalRating": totalRating])
+      public init(id: GraphQLID, user: User? = nil, content: String, totalRating: Int, createdAt: Double, recipe: Recipe? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Review", "id": id, "user": user.flatMap { (value: User) -> ResultMap in value.resultMap }, "content": content, "totalRating": totalRating, "createdAt": createdAt, "recipe": recipe.flatMap { (value: Recipe) -> ResultMap in value.resultMap }])
       }
 
       public var __typename: String {
@@ -143,21 +139,30 @@ public final class GetReviewsProfileQuery: GraphQLQuery {
         }
       }
 
-      public var recipe: Recipe? {
-        get {
-          return (resultMap["recipe"] as? ResultMap).flatMap { Recipe(unsafeResultMap: $0) }
-        }
-        set {
-          resultMap.updateValue(newValue?.resultMap, forKey: "recipe")
-        }
-      }
-
       public var totalRating: Int {
         get {
           return resultMap["totalRating"]! as! Int
         }
         set {
           resultMap.updateValue(newValue, forKey: "totalRating")
+        }
+      }
+
+      public var createdAt: Double {
+        get {
+          return resultMap["createdAt"]! as! Double
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "createdAt")
+        }
+      }
+
+      public var recipe: Recipe? {
+        get {
+          return (resultMap["recipe"] as? ResultMap).flatMap { Recipe(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "recipe")
         }
       }
 
@@ -250,8 +255,8 @@ public final class GetReviewsProfileQuery: GraphQLQuery {
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("slug", type: .nonNull(.scalar(String.self))),
             GraphQLField("avatar", type: .nonNull(.scalar(String.self))),
-            GraphQLField("views", type: .nonNull(.scalar(Int.self))),
-            GraphQLField("category", type: .object(Category.selections)),
+            GraphQLField("countRating", type: .nonNull(.scalar(Int.self))),
+            GraphQLField("totalRating", type: .nonNull(.scalar(Int.self))),
           ]
         }
 
@@ -261,8 +266,8 @@ public final class GetReviewsProfileQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(id: GraphQLID, name: String, slug: String, avatar: String, views: Int, category: Category? = nil) {
-          self.init(unsafeResultMap: ["__typename": "Recipe", "id": id, "name": name, "slug": slug, "avatar": avatar, "views": views, "category": category.flatMap { (value: Category) -> ResultMap in value.resultMap }])
+        public init(id: GraphQLID, name: String, slug: String, avatar: String, countRating: Int, totalRating: Int) {
+          self.init(unsafeResultMap: ["__typename": "Recipe", "id": id, "name": name, "slug": slug, "avatar": avatar, "countRating": countRating, "totalRating": totalRating])
         }
 
         public var __typename: String {
@@ -310,90 +315,21 @@ public final class GetReviewsProfileQuery: GraphQLQuery {
           }
         }
 
-        public var views: Int {
+        public var countRating: Int {
           get {
-            return resultMap["views"]! as! Int
+            return resultMap["countRating"]! as! Int
           }
           set {
-            resultMap.updateValue(newValue, forKey: "views")
+            resultMap.updateValue(newValue, forKey: "countRating")
           }
         }
 
-        public var category: Category? {
+        public var totalRating: Int {
           get {
-            return (resultMap["category"] as? ResultMap).flatMap { Category(unsafeResultMap: $0) }
+            return resultMap["totalRating"]! as! Int
           }
           set {
-            resultMap.updateValue(newValue?.resultMap, forKey: "category")
-          }
-        }
-
-        public struct Category: GraphQLSelectionSet {
-          public static let possibleTypes: [String] = ["Category"]
-
-          public static var selections: [GraphQLSelection] {
-            return [
-              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
-              GraphQLField("name", type: .nonNull(.scalar(String.self))),
-              GraphQLField("slug", type: .nonNull(.scalar(String.self))),
-              GraphQLField("avatar", type: .nonNull(.scalar(String.self))),
-            ]
-          }
-
-          public private(set) var resultMap: ResultMap
-
-          public init(unsafeResultMap: ResultMap) {
-            self.resultMap = unsafeResultMap
-          }
-
-          public init(id: GraphQLID, name: String, slug: String, avatar: String) {
-            self.init(unsafeResultMap: ["__typename": "Category", "id": id, "name": name, "slug": slug, "avatar": avatar])
-          }
-
-          public var __typename: String {
-            get {
-              return resultMap["__typename"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "__typename")
-            }
-          }
-
-          public var id: GraphQLID {
-            get {
-              return resultMap["id"]! as! GraphQLID
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "id")
-            }
-          }
-
-          public var name: String {
-            get {
-              return resultMap["name"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "name")
-            }
-          }
-
-          public var slug: String {
-            get {
-              return resultMap["slug"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "slug")
-            }
-          }
-
-          public var avatar: String {
-            get {
-              return resultMap["avatar"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "avatar")
-            }
+            resultMap.updateValue(newValue, forKey: "totalRating")
           }
         }
       }

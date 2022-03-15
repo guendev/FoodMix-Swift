@@ -73,7 +73,7 @@ struct CategoryView: View {
                                 ForEach(viewModel.recipes, id:\.id) { item in
                                     
                                     NavigationLink {
-                                        RecipeView(recipe: item)
+                                        RecipeView(slug: item.slug)
                                     } label: {
                                         RecipeItemHorizontal(recipe: item)
                                             .padding()

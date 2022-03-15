@@ -9,20 +9,16 @@ query GetReviewsProfile($id: String!, $filter: SortOption!) {
 	  avatar
 	}
 	content
+	totalRating
+	createdAt
 	recipe {
 	  id
 	  name
 	  slug
 	  avatar
-	  views
-	  category {
-		id
-		name
-		slug
-		avatar
-	  }
+	  countRating
+	  totalRating
 	}
-	totalRating
   }
 }
 

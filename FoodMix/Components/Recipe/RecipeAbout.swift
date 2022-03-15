@@ -47,7 +47,7 @@ struct RecipeAbout_Previews: PreviewProvider {
     static var previews: some View {
         PreviewWrapper {
             
-            RecipeView(recipe: Recipe(id: "6211e6447d3b441181c395da", name: "Lê Thị Kim Ngân", slug: "le-thi-kim-ngan", avatar: "https://cdn.tgdd.vn/2021/03/CookProduct/bunmocchangio-1200x676.jpg"))
+            RecipeView(slug: "le-thi-kim-ngan")
             
         }
     }

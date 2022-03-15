@@ -104,3 +104,17 @@ query GetSearchRecipesByIngredient($name: String!, $filter: SortOption!) {
 	  }
   }
 }
+
+subscription SubRecipe($id: String!) {
+	  subRecipe(id: $id) {
+		__typename
+		id
+		name
+		slug
+		avatar
+		content
+		totalRating
+		countRating
+	  }
+	
+}

@@ -17,11 +17,7 @@ struct HomeIngredient: View {
         
         VStack(spacing: 20) {
             
-            TitleView(title: "Nguyên Liệu") {
-                Text("Xem thêm")
-                    .font(.custom(.customFont, size: 14))
-                    .foregroundColor(.gray)
-            }
+            TitleView(title: "Nguyên Liệu") {}
             
             ScrollView(.horizontal, showsIndicators: false) {
                 

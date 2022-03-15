@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct Review: Identifiable {
+struct Review: Identifiable, Codable {
     
     var id: String
     var user: User?
     var recipe: Recipe?
     var content: String
-    var totalRating: String
-    var createdAt: Float
+    var totalRating: Int
+    var createdAt: Double
     
 }

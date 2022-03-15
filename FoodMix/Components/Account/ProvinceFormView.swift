@@ -24,7 +24,7 @@ struct ProvinceFormView: View {
                     Text("\(province)")
                 }
             }
-            .accentColor(Color("InputText"))
+            .accentColor(Color("TextContent"))
             .withAlignment(alignment: .leading)
             .primaryInput()
     
@@ -33,10 +33,4 @@ struct ProvinceFormView: View {
         
     }
     
-}
-
-struct ProvinceFormView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProvinceFormView()
-    }
 }

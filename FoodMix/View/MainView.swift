@@ -9,19 +9,15 @@ import SwiftUI
 
 struct MainView: View {
     
-    @ObservedObject var viewModel: MainViewModel = MainViewModel()
+    @State var currentTab: MainTab = .Home
     
     @Namespace var animation
-    
-    init() {
-        UITabBar.appearance().isHidden = true
-    }
     
     var body: some View {
         
         VStack(spacing: 0) {
             
-            TabView(selection: $viewModel.currentTab) {
+            TabView(selection: $currentTab) {
                 
                 HomeView()
                     .tag(MainTab.Home)
@@ -46,7 +42,7 @@ struct MainView: View {
                         
                         Button {
                             
-                            viewModel.currentTab = value
+                            currentTab = value
                             
                         } label: {
                             
@@ -54,7 +50,7 @@ struct MainView: View {
                                 .renderingMode(.template)
                                 .resizable()
                                 .scaledToFit()
-                                .foregroundColor( viewModel.currentTab == value ? Color("Primary"): .gray)
+                                .foregroundColor( currentTab == value ? Color("Primary"): .gray)
                                 .frame(width: 24)
                             
                         }
@@ -63,7 +59,7 @@ struct MainView: View {
                         
                             Group {
                                 
-                                if viewModel.currentTab == value {
+                                if currentTab == value {
                                     
                                     Circle()
                                         .fill(Color("Primary"))
@@ -83,7 +79,7 @@ struct MainView: View {
                 }
                 .padding(.top)
                 .padding(.bottom, safeInsets()?.bottom ?? 10)
-                .background(Color("Background"))
+                .background(Color("TabViewBackground"))
                 .clipShape(MainTabShape())
                 .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
                 
@@ -134,3 +130,12 @@ struct MainTabShape: Shape {
         return path
     }
 }
+
+
+enum MainTab: String, CaseIterable {
+    case Home = "Home"
+    case Activity = "Activity"
+    case Notification = "Notification"
+    case Profile = "Profile"
+}
+
