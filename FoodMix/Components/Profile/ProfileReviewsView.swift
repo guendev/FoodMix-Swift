@@ -21,6 +21,8 @@ struct ProfileReviewsView: View {
                 
             }
             
+            ProfileReviewItem.previews()
+            
         }
         
     }
@@ -116,6 +118,89 @@ struct ProfileReviewItem: View {
         .padding(20)
         .background(Color("Background2"))
         .cornerRadius(20)
+        
+    }
+    
+    @ViewBuilder
+    static func previews(_ count: Int = 4) -> some View {
+        
+        Group {
+            
+            ForEach(0...count, id: \.self) { _ in
+                
+                VStack(alignment: .leading, spacing: 10) {
+                    
+                    HStack(alignment: .top,spacing: 15) {
+                        
+                        Image("avatar")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 50, height: 50)
+                            .cornerRadius(50)
+                        
+                        VStack(alignment: .leading, spacing: 3) {
+                            
+                            Text("Nguyên Trần")
+                                .foregroundColor(Color("TextTitle"))
+                                .font(.callout)
+                                .lineLimit(1)
+                            
+                            StarRating(rating: 4.5, size: 13)
+                            
+                        }
+                        
+                    }
+                    
+                    Text("SwiftUI helps you build great-looking apps across all Apple platforms with the power of Swift — and as little code as possible. With SwiftUI, you can bring even better experiences to all users, on any Apple device, using just one set of tools and APIs.")
+                        .font(.subheadline)
+                        .lineSpacing(5)
+                        .lineLimit(3)
+                        .foregroundColor(Color("TextContent"))
+                    
+                    Divider()
+                    
+                    Image("food")
+                        .resizable()
+                        .scaledToFit()
+                        .clipped()
+                        .cornerRadius(10)
+
+                    
+                    
+                    HStack {
+                        
+                        
+                        Image(systemName: "message")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 16, height: 16)
+                        
+                        
+                        Text("Chạm Vào Giai Điệu")
+                            .font(.callout)
+                            .lineLimit(1)
+                        
+                        Spacer()
+                        
+                        Text("20/20/2021")
+                            .font(.subheadline)
+                            .lineSpacing(5)
+                            .lineLimit(3)
+                            .opacity(0.8)
+                    }
+                    .foregroundColor(Color("TextContent"))
+                    .padding(.top, 5)
+                    
+                }
+                .withAlignment(alignment: .leading)
+                .padding(20)
+                .background(Color("Background2"))
+                .cornerRadius(20)
+                
+            }
+            
+        }
+        .redacted(reason: .placeholder)
         
     }
 

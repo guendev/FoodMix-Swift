@@ -21,7 +21,7 @@ struct ProfileAboutView: View {
                     name: viewModel.user!.name,
                     slug: viewModel.user!.slug,
                     map: viewModel.user?.province ?? "Việt Nam",
-                    about: viewModel.user?.about ?? "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour"
+                    about: viewModel.user?.about ?? "Lười quá"
                 )
                 
             } else {

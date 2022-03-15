@@ -73,7 +73,8 @@ struct ProfileView: View {
                         viewModel.getContent()
                         
                     }
-                    .disabled(viewModel.loadingContent)
+                    .disabled(viewModel.loadingContent || !viewModel.ready)
+                    .redacted(reason: viewModel.ready ? [] : .placeholder)
                     
                 }
                 
@@ -85,7 +86,7 @@ struct ProfileView: View {
         .edgesIgnoringSafeArea(.top)
         .overlay(
             
-            AppBar(title: "Kim Ngân", back: true, animation: viewModel.offset < -150) {
+            AppBar(title: "\(viewModel.user?.name ?? "")", back: true, animation: viewModel.offset < -150) {
                 
             }
             .padding(.horizontal, 25)
@@ -119,7 +120,7 @@ struct ProfileView_Previews: PreviewProvider {
         
         PreviewWrapper {
             
-            ProfileView(slug: "nguyen")
+            ProfileView(slug: "yuan")
             
         }
         
