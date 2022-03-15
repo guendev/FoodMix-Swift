@@ -38,6 +38,7 @@ struct HomeView: View {
                     HomeUpdatedView()
                     
                 }
+                .padding(.bottom, 100)
                 
             }
             
@@ -54,7 +55,7 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         PreviewWrapper {
             
-            HomeView()
+            MainView()
             
         }
     }

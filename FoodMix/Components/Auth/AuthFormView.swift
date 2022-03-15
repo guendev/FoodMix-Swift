@@ -116,28 +116,7 @@ struct AuthFormView: View {
             PrimaryButtonView(
                 title: "\(viewModel.type == .SignIn ? "Đăng Nhập" : "Đăng Ký")".uppercased(),
                 active: $viewModel.loading
-            ) {
-                    
-                    if viewModel.type == .SignIn {
-                        viewModel.signin {
-                            // thành công
-                            app.queryUser {
-                                app.subNotifyAction()
-                                viewModel.loading = false
-                                presentationMode.wrappedValue.dismiss()
-                            }
-                        }
-                    } else {
-                        viewModel.signup {
-                            app.queryUser {
-                                app.subNotifyAction()
-                                viewModel.loading = false
-                                presentationMode.wrappedValue.dismiss()
-                            }
-                        }
-                    }
-                    
-                }
+            ) { authAction() }
             
             
         }
@@ -166,6 +145,26 @@ struct AuthFormView: View {
         Text("Email không hợp lệ")
             .font(.subheadline)
             .foregroundColor(Color("Flickr Pink"))
+    }
+    
+    func authAction() -> Void {
+        
+        if viewModel.type == .SignIn {
+            viewModel.signin { token in
+                app.onLogin(token: token) {
+                    viewModel.loading = false
+                    presentationMode.wrappedValue.dismiss()
+                }
+            }
+        } else {
+            viewModel.signup { token in
+                app.onLogin(token: token) {
+                    viewModel.loading = false
+                    presentationMode.wrappedValue.dismiss()
+                }
+            }
+        }
+        
     }
 }
 

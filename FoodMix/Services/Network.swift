@@ -69,7 +69,7 @@ class JsonWebTokenInterceptor: ApolloInterceptor {
         response: HTTPResponse<Operation>?,
         completion: @escaping (Swift.Result<GraphQLResult<Operation.Data>, Error>) -> Void) {
         request.addHeader(name: "Authorization", value: "Bearer \(getToken())")
-        
+                    
         print("\n☁️ GraphQL: \(request.operation.operationName)")
         chain.proceedAsync(request: request, response: response, completion: completion)
         

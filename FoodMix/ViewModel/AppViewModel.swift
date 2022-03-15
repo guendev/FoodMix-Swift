@@ -127,13 +127,24 @@ class AppViewModel: ObservableObject {
         }
     }
     
-    func onLogout() -> Void {
+    func onLogout(completion: @escaping () -> Void) -> Void {
         user = nil
         // tắt sub Notify
         subNotify?.cancel()
         subAccount?.cancel()
         // Xoá token
         UserDefaults.standard.removeObject(forKey: "jsonwebtoken")
+        
+        completion()
+    }
+    
+    func onLogin(token: String, completion: @escaping () -> Void) -> Void {
+        UserDefaults.standard.set(token, forKey: "jsonwebtoken")
+        queryUser {
+            self.subNotifyAction()
+            self.subAccountAction()
+            completion()
+        }
     }
     
 }

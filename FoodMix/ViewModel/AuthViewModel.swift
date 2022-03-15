@@ -27,7 +27,7 @@ class AuthViewModel: ObservableObject {
     @Published var loading: Bool = false
     
     
-    func signin(success: @escaping () -> Void) -> Void {
+    func signin(success: @escaping (_ token: String) -> Void) -> Void {
         
         validateForm {
             
@@ -42,13 +42,13 @@ class AuthViewModel: ObservableObject {
                     if graphQLResult.errors != nil {
                         break
                     }
+                    
+                    guard let token = graphQLResult.data?.signin.token else { break }
 
                     // lưu data
-                    UserDefaults.standard.set(graphQLResult.data?.signin.token, forKey: "jsonwebtoken")
-                    
                     Toastify.show("Đăng Nhập Thành Công", image: "bell")
                                       
-                    success()
+                    success(token)
                                     
                     break
                     
@@ -61,7 +61,7 @@ class AuthViewModel: ObservableObject {
         
     }
     
-    func signup(success: @escaping () -> Void) -> Void {
+    func signup(success: @escaping (_ token: String) -> Void) -> Void {
         validateForm {
             self.loading = true
             Network.shared.apollo.perform(mutation: SignupMutation(input: SignUpInput(name: self.name, email: self.email, password: self.password))) { result in
@@ -75,13 +75,12 @@ class AuthViewModel: ObservableObject {
                         print("❌ DEBUG: \(String(describing: errors.first?.message))")
                         break
                     }
-
-                    // lưu data
-                    UserDefaults.standard.set(graphQLResult.data?.signup.token, forKey: "jsonwebtoken")
+                    
+                    guard let token = graphQLResult.data?.signup.token else { break }
                     
                     Toastify.show("Đăng Ký Thành Công", image: "bell")
                     
-                    success()
+                    success(token)
                                                         
                     break
                     

@@ -90,7 +90,9 @@ struct SettingView: View {
                         background: authKey ? Color("Warning") : Color("Primary")
                     ) {
                         
-                        app.onLogout()
+                        app.onLogout {
+                            
+                        }
                         
                     }
                     .withAuth()
