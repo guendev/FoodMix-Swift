@@ -47,51 +47,38 @@ struct CategoryView: View {
                     }
                     .disabled(!ready || viewModel.loading)
                     
-                    if ready {
+                    VStack(spacing: 25) {
+                        
+                        ForEach(viewModel.recipes, id:\.id) { item in
+                            
+                            NavigationLink {
+                                RecipeView(slug: item.slug)
+                            } label: {
+                                RecipeItemHorizontal(recipe: item)
+                            }
+
+                            
+                        }
+                        
+                        if viewModel.loading {
+                            
+                            RecipeItemHorizontalPreview.preview()
+                            
+                        }
                         
                         if viewModel.emptyRecipe {
                             
-                            // trống ko có công thức
-                            VStack {
-                                
-                                Image("empty")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 280, height: 280)
-                                
-                                Text("Chẳng có món ăn nào ở đây cả")
-                                    .font(.subheadline)
-                                    .foregroundColor(.gray)
-                                
-                            }
-                            .frame(maxWidth: .infinity)
+                            EmptyContent()
+                                .withAlignment(alignment: .center)
                             
                         } else {
                             
-                            VStack(spacing: 10) {
-                                
-                                ForEach(viewModel.recipes, id:\.id) { item in
-                                    
-                                    NavigationLink {
-                                        RecipeView(slug: item.slug)
-                                    } label: {
-                                        RecipeItemHorizontal(recipe: item)
-                                            .padding()
-                                            .background(Color.white)
-                                            .cornerRadius(20)
-                                            .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
-                                    }
-
-                                    
-                                }
-                                
-                                if viewModel.loading {
-                                    
-                                    RecipeItemHorizontalPreview.preview()
-                                    
-                                }
+                            PrimaryButtonView(title: "Xem Thêm", active: $viewModel.loading) {
+                                viewModel.getRecipes()
                                 
                             }
+                            .disabled(viewModel.loading)
+                            .redacted(reason: viewModel.loading ? .placeholder : [])
                             
                         }
                         
@@ -124,21 +111,14 @@ struct CategoryView: View {
             ,alignment: .top
             
         )
-        .onAppear {
-            
-            if !ready {
+        .initView {
+            DispatchQueue.main.async {
+                viewModel.category = category
                 
-                DispatchQueue.main.async {
-                    viewModel.category = category
-                    
-                    ready = true
-                    
-                    viewModel.getRecipes()
-                }
+                ready = true
                 
+                viewModel.getRecipes()
             }
-            
-            
         }
         .environmentObject(viewModel)
         
@@ -147,6 +127,20 @@ struct CategoryView: View {
 
 struct CategoryView_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryView(category: Category(id: "1", name: "Gà Quay", slug: "ga-quay", avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFKYmf6jHItCbfL8txsSCFfsCW254JYLEeNQ&usqp=CAU", content: "You can change your ContentView body in this way, and when you dismiss the sheet view, it will navigate to DashboardView", icon: "https://i.imgur.com/sJapZxD.png"))
+        
+        Group {
+            PreviewWrapper {
+                
+                CategoryView(category: Category(id: "1", name: "Gà Quay", slug: "kem-lanh-p-z16rtpv", avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFKYmf6jHItCbfL8txsSCFfsCW254JYLEeNQ&usqp=CAU", content: "You can change your ContentView body in this way, and when you dismiss the sheet view, it will navigate to DashboardView", icon: "https://i.imgur.com/sJapZxD.png"))
+                
+            }
+            PreviewWrapper {
+                
+                CategoryView(category: Category(id: "1", name: "Gà Quay", slug: "kem-lanh-p-z16rtpv", avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFKYmf6jHItCbfL8txsSCFfsCW254JYLEeNQ&usqp=CAU", content: "You can change your ContentView body in this way, and when you dismiss the sheet view, it will navigate to DashboardView", icon: "https://i.imgur.com/sJapZxD.png"))
+                
+            }
+            .environment(\.colorScheme, .dark)
+        }
+        
     }
 }

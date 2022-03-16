@@ -9,16 +9,19 @@ import SwiftUI
 
 struct IngredientView: View {
     
+    @StateObject var viewModel: IngredientViewModel = IngredientViewModel()
+    
     @State private var show: Bool = false
     
     var ingredient: IngredientItem
     
-    var colors: [Color] = [Color("Byzantine"), Color("Dodger Blue"), Color("Flickr Pink"), Color("Persian Blue"), Color("Purple")]
+    var colors: [Color] = [.red, .blue, .green, .orange]
     
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        ScrollView {
+        
+        VStack(spacing: 20) {
             
             VStack(alignment: .leading, spacing: 15){
                 
@@ -26,7 +29,7 @@ struct IngredientView: View {
                     
                     Text(ingredient.name)
                         .font(.system(size: 30))
-                        .foregroundColor(Color(#colorLiteral(red: 0.08235294118, green: 0.1333333333, blue: 0.3098039216, alpha: 1)))
+                        .foregroundColor(Color("TextTitle"))
                         .offset(x: 0, y: show ? 0 : 30)
                         .opacity(show ? 1 : 0)
                         .animation(.spring(), value: show)
@@ -57,87 +60,144 @@ struct IngredientView: View {
                 Text(ingredient.content)
                     .lineSpacing(6)
                     .lineLimit(2)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color("TextContent"))
                     .offset(x: 0, y: show ? 0 : 30)
                     .opacity(show ? 1 : 0)
                     .animation(.spring().delay(0.2), value: show)
             }
-            .frame(maxWidth: .infinity, alignment: .topLeading)
+            .padding(.horizontal, 25)
+            .withAlignment(alignment: .leading)
+            .padding(.top)
             
-            HStack(alignment: .top) {
+            ScrollView(showsIndicators: false) {
                 
-                VStack(alignment: .leading) {
+                VStack(spacing: 30) {
                     
-                    Text("Đặc Tính")
-                        .font(.custom(.customFont, size: 22))
-                        .foregroundColor(Color(#colorLiteral(red: 0.08235294118, green: 0.1333333333, blue: 0.3098039216, alpha: 1)))
-                        .offset(x: 0, y: show ? 0 : 30)
-                        .opacity(show ? 1 : 0)
-                        .animation(.spring().delay(0.4), value: show)
-                    
-                    if ingredient.properties.count > 0 {
+                    HStack(alignment: .top) {
                         
-                        ForEach((0...ingredient.properties.count - 1), id: \.self) { index in
+                        VStack(alignment: .leading) {
                             
-                            HStack {
+                            Text("Đặc Tính")
+                                .font(.custom(.customFont, size: 22))
+                                .foregroundColor(Color("TextTitle"))
+                                .offset(x: 0, y: show ? 0 : 30)
+                                .opacity(show ? 1 : 0)
+                                .animation(.spring().delay(0.4), value: show)
+                            
+                            if ingredient.properties.count > 0 {
                                 
-                                Circle()
-                                    .fill(getColor())
-                                    .frame(width: 30, height: 30)
-                                    .overlay(
+                                ForEach((0...ingredient.properties.count - 1), id: \.self) { index in
+                                    
+                                    HStack {
                                         
-                                        Text("\(index + 1)")
-                                            .fontWeight(.semibold)
-                                            .foregroundColor(.white)
-                                    )
-                                    .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
-                                
-                                Text(ingredient.properties[index])
+                                        Circle()
+                                            .fill(getColor())
+                                            .frame(width: 30, height: 30)
+                                            .overlay(
+                                                
+                                                Text("\(index + 1)")
+                                                    .fontWeight(.semibold)
+                                                    .foregroundColor(.white)
+                                            )
+                                            .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
+                                        
+                                        Text(ingredient.properties[index])
+                                        
+                                    }
+                                    .padding(.top)
+                                    .offset(x: 0, y: show ? 0 : 30)
+                                    .opacity(show ? 1 : 0)
+                                    .animation(.spring().delay(getDelay(index: index)), value: show)
+                                    
+                                }
                                 
                             }
-                            .padding(.top)
-                            .offset(x: 0, y: show ? 0 : 30)
+                            
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        
+                        RecipeAvatar(avatar: ingredient.image)
+                            .scaledToFit()
+                            .frame(width: 150, height: 150)
+                            .scaleEffect(show ? 1 : 0.5)
                             .opacity(show ? 1 : 0)
-                            .animation(.spring().delay(getDelay(index: index)), value: show)
+                            .animation(.spring().delay(0.6), value: show)
+                            .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        
+                    }
+                    
+                    TitleView(title: "Món Ăn Sử Dụng") {
+                        Text("Xem thêm")
+                            .font(.custom(.customFont, size: 14))
+                            .foregroundColor(.gray)
+                    }
+                    .offset(x: 0, y: show ? 0 : 30)
+                    .opacity(show ? 1 : 0)
+                    .animation(.spring().delay(getDelay(index: ingredient.properties.count)), value: show)
+                    
+                    // Danh sách mon ăn
+                    
+                    VStack(spacing: 25) {
+                        
+                        ForEach(viewModel.recipes) { item in
+                            
+                            NavigationLink {
+                                
+                                RecipeView(slug: item.slug)
+                                
+                            } label: {
+                                
+                                RecipeItemHorizontal(recipe: item)
+                                
+                            }
+
+                            
+                        }
+                        
+                        if viewModel.loading {
+                            
+                            RecipeItemHorizontalPreview.preview()
+                            
+                        }
+                        
+                        if viewModel.empty {
+                            
+                            EmptyContent()
+                            
+                        } else {
+                            
+                            PrimaryButtonView(title: "Xem Thêm", active: $viewModel.loading) {
+                                
+                                viewModel.getRecipes()
+                                
+                            }
                             
                         }
                         
                     }
-                    
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                
-                RecipeAvatar(avatar: ingredient.image)
-                    .scaledToFit()
-                    .frame(width: 150, height: 150)
-                    .scaleEffect(show ? 1 : 0.5)
+                    .offset(x: 0, y: show ? 0 : 30)
                     .opacity(show ? 1 : 0)
                     .animation(.spring().delay(0.6), value: show)
-                    .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    
+                }
                 
             }
-            .padding(.top)
-            
-            TitleView(title: "Công Thức Sử Dụng") {
-                Text("Xem thêm")
-                    .font(.custom(.customFont, size: 14))
-                    .foregroundColor(.gray)
-            }
-            .padding(.top, 20)
-            .offset(x: 0, y: show ? 0 : 30)
-            .opacity(show ? 1 : 0)
-            .animation(.spring().delay(getDelay(index: ingredient.properties.count)), value: show)
+            .padding([.horizontal], 25)
             
         }
-        .padding([.horizontal, .top], 25)
         .onAppear {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                show = true
+               show = true
             }
             
         }
+        .initView {
+            viewModel.ingredient = ingredient
+            viewModel.getRecipes()
+        }
+        .background(Color("Background").ignoresSafeArea())
     }
     
     func getColor() -> Color {
@@ -153,10 +213,11 @@ struct IngredientView_Previews: PreviewProvider {
     static var previews: some View {
         IngredientView(ingredient: IngredientItem(
                         id: "3",
-                        name: "Rau Mùi",
+                        name: "Ngò",
                         image: "https://i.imgur.com/GvqcfUs.png",
                         content: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.",
                         properties: ["Rau Mùi Vị", "Dễ Sử Dụng", "Giá Rẻ"]
         ))
+            .environment(\.colorScheme, .dark)
     }
 }

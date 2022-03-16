@@ -28,9 +28,11 @@ struct RecipeView: View {
                     
                     RecipeAbout()
                                         
-                    RecipeIngredientsView()
+                    // RecipeIngredientsView()
                     
-                    RecipeStepperView()
+                    // RecipeStepperView()
+                    
+                    RecipeReviews()
                     
                 }
                 .offset(y: -20)

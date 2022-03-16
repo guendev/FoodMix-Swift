@@ -17,7 +17,7 @@ struct SearchView: View {
             
             SearchBarView()
             
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 
                 ZStack {
                     
@@ -84,10 +84,18 @@ struct SearchView: View {
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        PreviewWrapper {
-            
-            SearchView()
-            
+        Group {
+            PreviewWrapper {
+                
+                SearchView()
+                
+            }
+            PreviewWrapper {
+                
+                SearchView()
+                
+            }
+            .environment(\.colorScheme, .dark)
         }
     }
 }

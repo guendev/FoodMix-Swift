@@ -28,19 +28,12 @@ struct WithAuth: ViewModifier {
                 content
             } else {
                 
-                Button {
-                    
-                    print("❌ DEBUG: \("134")")
-
-                    isActive.toggle()
-                    
-                    
+                NavigationLink {
+                    WelcomeView()
                 } label: {
                     content.disabled(true)
                 }
-                .fullScreenCover(isPresented: $isActive) {
-                    WelcomeView()
-                }
+                .buttonStyle(PlainButtonStyle())
                 
             }
             

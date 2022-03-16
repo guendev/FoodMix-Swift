@@ -145,10 +145,18 @@ enum AccountTab: String, CaseIterable {
 struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
         
-        PreviewWrapper {
-            
-            AccountView()
-            
+        Group {
+            PreviewWrapper {
+                
+                AccountView()
+                
+            }
+            PreviewWrapper {
+                
+                AccountView()
+                
+            }
+            .environment(\.colorScheme, .dark)
         }
         
     }

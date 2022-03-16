@@ -14,52 +14,47 @@ struct WelcomeView: View {
     @State var rotation: Double = .zero
     
     var body: some View {
-        NavigationView {
+        OffsetPageTabView(offset: $viewModel.offset) {
             
-            OffsetPageTabView(offset: $viewModel.offset) {
+            WelcomeAvatar()
+        }
+        .background(
+            
+            VStack {
                 
-                WelcomeAvatar()
+                RoundedRectangle(cornerRadius: 50)
+                    .fill(Color("Background"))
+                    .frame(width: getScreenBounds().width - 100, height: getScreenBounds().width - 100)
+                    .scaleEffect(2)
+                    .rotationEffect(.init(degrees: 25))
+                    .rotationEffect(.init(degrees: rotation))
+                    .offset(x: -20,y: -getScreenBounds().width / 2)
+                
             }
-            .navigationBarHidden(true)
-            .background(
-                
-                VStack {
-                    
-                    RoundedRectangle(cornerRadius: 50)
-                        .fill(Color("Background"))
-                        .frame(width: getScreenBounds().width - 100, height: getScreenBounds().width - 100)
-                        .scaleEffect(2)
-                        .rotationEffect(.init(degrees: 25))
-                        .rotationEffect(.init(degrees: rotation))
-                        .offset(x: -20,y: -getScreenBounds().width / 2)
-                    
-                }
-                
-                ,alignment: .top
-                
-            )
-            .background(
-                
-                boardingScreens[viewModel.currentIndex].color
-                    .ignoresSafeArea()
-            )
-            .overlay(
-                
-                WelcomeButtons()
-                
-                ,alignment: .bottom
             
-            )
-            .onChange(of: viewModel.offset) { value in
+            ,alignment: .top
+            
+        )
+        .background(
+            
+            boardingScreens[viewModel.currentIndex].color
+                .ignoresSafeArea()
+        )
+        .overlay(
+            
+            WelcomeButtons()
+            
+            ,alignment: .bottom
+        
+        )
+        .onChange(of: viewModel.offset) { value in
+            
+            DispatchQueue.main.async {
                 
-                DispatchQueue.main.async {
-                    
-                    let process = viewModel.offset / getScreenBounds().width
-                    
-                    viewModel.currentIndex = Int(process)
-                    rotation = Double(process) * 180
-                    
-                }
+                let process = viewModel.offset / getScreenBounds().width
+                
+                viewModel.currentIndex = Int(process)
+                rotation = Double(process) * 180
                 
             }
             
@@ -73,7 +68,7 @@ struct WelcomeView: View {
 struct Welcome_Previews: PreviewProvider {
     static var previews: some View {
         PreviewWrapper {
-            HomeView()
+            MainView()
         }
         .environment(\.colorScheme, .dark)
     }

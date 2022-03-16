@@ -41,7 +41,7 @@ struct RecipeItemView: View {
             
             VStack(alignment: .leading, spacing: 10) {
                 
-                StarRating(rating: 3.5, size: 18)
+                StarRating(rating: 3.5, size: 16)
                 
                 Text(recipe.name)
                     .font(.custom(.customFont, size: 16))
@@ -55,7 +55,7 @@ struct RecipeItemView: View {
             .padding(.top, 10)
             
         }
-        .background(Color.white)
+        .background(Color("WhiteBackground"))
         .frame(width: 250)
         .cornerRadius(20)
         .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
@@ -98,7 +98,7 @@ struct RecipeItemPreview: View {
             
             VStack(alignment: .leading, spacing: 10) {
                 
-                StarRating(rating: 3.5, size: 18)
+                StarRating(rating: 3.5, size: 16)
                 
                 Text("Lợn Xào Sả Ớt")
                     .font(.custom(.customFont, size: 16))
@@ -112,7 +112,7 @@ struct RecipeItemPreview: View {
             .padding(.top, 10)
             
         }
-        .background(Color("RecipeBackground"))
+        .background(Color("WhiteBackground"))
         .frame(width: 250)
         .cornerRadius(20)
         .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
@@ -123,8 +123,14 @@ struct RecipeItemPreview: View {
 
 struct RecipeItemView_Previews: PreviewProvider {
     static var previews: some View {
-        PreviewWrapper {
-            HomeView()
+        Group {
+            PreviewWrapper {
+                HomeView()
+            }
+            PreviewWrapper {
+                HomeView()
+            }
+            .environment(\.colorScheme, .dark)
         }
     }
 }

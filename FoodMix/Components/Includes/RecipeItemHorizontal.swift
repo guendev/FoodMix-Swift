@@ -31,7 +31,7 @@ struct RecipeItemHorizontal: View {
                 StarRating(rating: 3.4, size: 13)
                 
                 Text("It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ")
-                    .font(.custom(.customFont, size: 14))
+                    .font(.subheadline)
                     .lineSpacing(5)
                     .lineLimit(2)
                     .foregroundColor(Color("TextContent"))
@@ -40,6 +40,10 @@ struct RecipeItemHorizontal: View {
             .frame(maxWidth: .infinity, alignment: .topLeading)
             
         }
+        .padding()
+        .background(Color("WhiteBackground"))
+        .cornerRadius(20)
+        .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
         
     }
 }
@@ -69,15 +73,19 @@ struct RecipeItemHorizontalPreview: View {
                 StarRating(rating: 3.4, size: 13)
                 
                 Text("It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ")
-                    .font(.custom(.customFont, size: 14))
+                    .font(.subheadline)
                     .lineSpacing(5)
                     .lineLimit(2)
                     .foregroundColor(Color("TextContent"))
-                
+
             }
             .frame(maxWidth: .infinity, alignment: .topLeading)
             
         }
+        .padding()
+        .background(Color("WhiteBackground"))
+        .cornerRadius(20)
+        .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
         
     }
     

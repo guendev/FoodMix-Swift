@@ -134,16 +134,23 @@ struct AuthView: View {
             }
             
         }
-        .navigationBarHidden(true)
     }
 }
 
 struct AuthView_Previews: PreviewProvider {
     static var previews: some View {
-        PreviewWrapper {
-            
-            AuthView()
-            
+        Group {
+            PreviewWrapper {
+                
+                AuthView()
+                
+            }
+            PreviewWrapper {
+                
+                AuthView()
+                
+            }
+            .environment(\.colorScheme, .dark)
         }
     }
 }

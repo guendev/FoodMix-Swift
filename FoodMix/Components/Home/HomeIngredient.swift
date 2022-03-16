@@ -53,6 +53,31 @@ struct HomeIngredient: View {
                         
                     }
                     
+                    if viewModel.ingredients.isEmpty {
+                        
+                        Group {
+                            
+                            ForEach(0 ..< 5) { item in
+                                VStack(spacing: 15) {
+                                    
+                                    Image("food")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(height: 50)
+                                    
+                                    Text("Hành Lá")
+                                        .font(.caption)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(Color("TextContent"))
+                                    
+                                }
+                            }
+                            
+                        }
+                        .redacted(reason: .placeholder)
+                        
+                    }
+                    
                 }
             }
             
@@ -74,5 +99,6 @@ struct HomeIngredient_Previews: PreviewProvider {
             HomeView()
             
         }
+        .environment(\.colorScheme, .dark)
     }
 }

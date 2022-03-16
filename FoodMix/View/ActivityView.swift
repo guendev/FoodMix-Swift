@@ -29,8 +29,9 @@ struct ActivityView: View {
             
             ActivityListAuthor()
                 .frame(width: getScreenBounds().width)
-                .background(Color.white)
+                .background(Color("WhiteBackground"))
                 .clipShape(CustomSheetShape())
+                .offset(y: 30)
             
             ,alignment: .bottom
             
@@ -43,10 +44,18 @@ struct ActivityView: View {
 
 struct ActivityView_Previews: PreviewProvider {
     static var previews: some View {
-        PreviewWrapper {
-            
-            ActivityView()
-            
+        Group {
+            PreviewWrapper {
+                
+                ActivityView()
+                
+            }
+            PreviewWrapper {
+                
+                ActivityView()
+                
+            }
+            .environment(\.colorScheme,  .dark)
         }
     }
 }

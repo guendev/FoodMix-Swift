@@ -17,6 +17,7 @@ struct ContentView: View {
     
     @State private var isActive: Bool = false
     
+    
     var body: some View {
         NavigationView {
             MainView()
@@ -34,5 +35,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+            .environment(\.colorScheme, .dark)
     }
 }

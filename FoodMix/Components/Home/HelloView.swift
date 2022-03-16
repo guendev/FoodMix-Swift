@@ -29,7 +29,7 @@ struct HelloView: View {
             
             Spacer()
             
-            NavigationLink(destination: Color.red) {
+            NavigationLink(destination: ProfileView(slug: app.user?.slug ?? "")) {
                 Group {
                     if app.auth {
                         RecipeAvatar(avatar: app.user?.avatar)

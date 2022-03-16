@@ -30,11 +30,13 @@ struct CategoriesView: View {
                 } label: {
                     
                     Image(systemName: "arrow.left")
+                        .foregroundColor(Color("TextTitle"))
                     
                 }
                 
                 Text("Phân Nhóm")
-                    .font(.custom(.customFont, size: 22))
+                    .font(.title2)
+                    .foregroundColor(Color("TextTitle"))
                 
                 Spacer()
                 
@@ -144,10 +146,18 @@ struct CategoriesView_Previews: PreviewProvider {
     
     static var previews: some View {
         
-        PreviewWrapper {
-            
-            HomeView()
-            
+        Group {
+            PreviewWrapper {
+                
+                HomeView()
+                
+            }
+            PreviewWrapper {
+                
+                HomeView()
+                
+            }
+            .environment(\.colorScheme, .dark)
         }
         
     }

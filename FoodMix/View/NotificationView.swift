@@ -44,10 +44,8 @@ struct NotificationView: View {
         }
         .padding(.horizontal, 25)
         .background(Color("Background").ignoresSafeArea())
-        .onAppear {
-            
+        .initView {
             viewModel.getNotifies()
-            
         }
     }
 }

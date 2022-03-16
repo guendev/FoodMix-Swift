@@ -100,6 +100,7 @@ struct MainView_Previews: PreviewProvider {
             PreviewWrapper {
                 MainView()
             }
+            .environment(\.colorScheme, .dark)
         }
     }
 }
