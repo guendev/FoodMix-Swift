@@ -31,6 +31,10 @@ class RecipeViewModel: ObservableObject {
     // Sub data
     private var subRecipe: Cancellable?
     
+    // Random
+    @Published var random: [Recipe] = []
+    @Published var loadingRandom: Bool = false
+    
     func getRecipe(_ slug: String, completion: @escaping () -> Void) -> Void {
         
         if loading {
@@ -191,6 +195,45 @@ class RecipeViewModel: ObservableObject {
     func stopListenRecipe() -> Void {
         debugPrint("stop sub recipe")
         subRecipe?.cancel()
+    }
+    
+    func getRandom() -> Void {
+        
+        if !random.isEmpty || loadingRandom { return }
+        loadingRandom = true
+        
+        Network.shared.apollo.fetch(query: GetRandomRecipesQuery(size: 3)) { [weak self] result in
+            
+            guard let self = self else {
+                  return
+            }
+            
+            switch result {
+            case .success(let graphQLResult):
+              
+                if graphQLResult.errors != nil {
+                    break
+                }
+                
+                guard let rawData = graphQLResult.data?.getRandomRecipes else { break }
+                
+                for item in rawData {
+                    guard let item = item else { continue }
+                    guard let jsonData = try? JSONSerialization.data(withJSONObject: item.jsonObject) else { continue }
+                    guard let recipe = try? JSONDecoder().decode(Recipe.self, from: jsonData) else { continue }
+                    
+                    self.random.append(recipe)
+                }
+                
+                self.loadingRandom = false
+                                
+                
+            case .failure(_):
+                break
+            }
+            
+        }
+        
     }
     
 }

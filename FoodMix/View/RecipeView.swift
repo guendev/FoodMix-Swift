@@ -17,7 +17,7 @@ struct RecipeView: View {
         
         ScrollView(showsIndicators: false) {
             
-            VStack(spacing: 0) {
+            LazyVStack(spacing: 0) {
                 
                 RecipeStretchAvatar()
                 
@@ -28,11 +28,13 @@ struct RecipeView: View {
                     
                     RecipeAbout()
                                         
-                    // RecipeIngredientsView()
+                    RecipeIngredientsView()
                     
-                    // RecipeStepperView()
+                    RecipeStepperView()
                     
                     RecipeReviews()
+                    
+                    RecipeRandomView()
                     
                 }
                 .offset(y: -20)

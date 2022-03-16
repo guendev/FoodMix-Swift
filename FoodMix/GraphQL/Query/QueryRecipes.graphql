@@ -118,3 +118,26 @@ subscription SubRecipe($id: String!) {
 	  }
 	
 }
+
+query GetRandomRecipes($size: Int!) {
+  getRandomRecipes(size: $size) {
+	id
+	name
+	slug
+	avatar
+	content
+	totalRating
+	countRating
+	user {
+	  id
+	  name
+	  slug
+	  avatar
+	}
+	category {
+	  id
+	  name
+	  slug
+	}
+  }
+}

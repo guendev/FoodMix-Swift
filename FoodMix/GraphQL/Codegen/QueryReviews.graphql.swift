@@ -46,7 +46,7 @@ public final class GetReviewsQuery: GraphQLQuery {
 
     public static var selections: [GraphQLSelection] {
       return [
-        GraphQLField("getReviews", arguments: ["id": GraphQLVariable("id"), "filter": GraphQLVariable("filter")], type: .list(.object(GetReview.selections))),
+        GraphQLField("getReviews", arguments: ["id": GraphQLVariable("id"), "filter": GraphQLVariable("filter")], type: .nonNull(.list(.object(GetReview.selections)))),
       ]
     }
 
@@ -56,16 +56,16 @@ public final class GetReviewsQuery: GraphQLQuery {
       self.resultMap = unsafeResultMap
     }
 
-    public init(getReviews: [GetReview?]? = nil) {
-      self.init(unsafeResultMap: ["__typename": "Query", "getReviews": getReviews.flatMap { (value: [GetReview?]) -> [ResultMap?] in value.map { (value: GetReview?) -> ResultMap? in value.flatMap { (value: GetReview) -> ResultMap in value.resultMap } } }])
+    public init(getReviews: [GetReview?]) {
+      self.init(unsafeResultMap: ["__typename": "Query", "getReviews": getReviews.map { (value: GetReview?) -> ResultMap? in value.flatMap { (value: GetReview) -> ResultMap in value.resultMap } }])
     }
 
-    public var getReviews: [GetReview?]? {
+    public var getReviews: [GetReview?] {
       get {
-        return (resultMap["getReviews"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [GetReview?] in value.map { (value: ResultMap?) -> GetReview? in value.flatMap { (value: ResultMap) -> GetReview in GetReview(unsafeResultMap: value) } } }
+        return (resultMap["getReviews"] as! [ResultMap?]).map { (value: ResultMap?) -> GetReview? in value.flatMap { (value: ResultMap) -> GetReview in GetReview(unsafeResultMap: value) } }
       }
       set {
-        resultMap.updateValue(newValue.flatMap { (value: [GetReview?]) -> [ResultMap?] in value.map { (value: GetReview?) -> ResultMap? in value.flatMap { (value: GetReview) -> ResultMap in value.resultMap } } }, forKey: "getReviews")
+        resultMap.updateValue(newValue.map { (value: GetReview?) -> ResultMap? in value.flatMap { (value: GetReview) -> ResultMap in value.resultMap } }, forKey: "getReviews")
       }
     }
 

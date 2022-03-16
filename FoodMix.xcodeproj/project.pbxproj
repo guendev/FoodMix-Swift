@@ -38,6 +38,8 @@
 		1C39B58327DD24FA00A346A2 /* BannerFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C39B58227DD24FA00A346A2 /* BannerFormView.swift */; };
 		1C4ABE0827E1F4170015CA42 /* RecipeReviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4ABE0727E1F4170015CA42 /* RecipeReviews.swift */; };
 		1C4ABE0A27E201F70015CA42 /* ReviewItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4ABE0927E201F70015CA42 /* ReviewItemView.swift */; };
+		1C4ABE0C27E205C40015CA42 /* ReviewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4ABE0B27E205C40015CA42 /* ReviewsViewModel.swift */; };
+		1C4ABE0E27E23C920015CA42 /* RecipeRandomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4ABE0D27E23C910015CA42 /* RecipeRandomView.swift */; };
 		1C61E8C227DC4A8200A239CF /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 1C61E8C127DC4A8200A239CF /* Moya */; };
 		1C98D77B27E125B2009CDA2A /* IngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C98D77A27E125B2009CDA2A /* IngredientViewModel.swift */; };
 		1CA41B4D27E03A8400006F71 /* QueryProfile.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 1CA41B4C27E03A8400006F71 /* QueryProfile.graphql */; };
@@ -186,6 +188,8 @@
 		1C39B58227DD24FA00A346A2 /* BannerFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerFormView.swift; sourceTree = "<group>"; };
 		1C4ABE0727E1F4170015CA42 /* RecipeReviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeReviews.swift; sourceTree = "<group>"; };
 		1C4ABE0927E201F70015CA42 /* ReviewItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewItemView.swift; sourceTree = "<group>"; };
+		1C4ABE0B27E205C40015CA42 /* ReviewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsViewModel.swift; sourceTree = "<group>"; };
+		1C4ABE0D27E23C910015CA42 /* RecipeRandomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRandomView.swift; sourceTree = "<group>"; };
 		1C98D77A27E125B2009CDA2A /* IngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientViewModel.swift; sourceTree = "<group>"; };
 		1CA41B4C27E03A8400006F71 /* QueryProfile.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = QueryProfile.graphql; sourceTree = "<group>"; };
 		1CA41B5027E03B1000006F71 /* QueryReviews.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = QueryReviews.graphql; sourceTree = "<group>"; };
@@ -466,6 +470,7 @@
 				1CCC8BC027D4752700B5D3B9 /* RecipeFirstStepper.swift */,
 				1CCC8BC127D4752700B5D3B9 /* RecipeAuthorView.swift */,
 				1C4ABE0727E1F4170015CA42 /* RecipeReviews.swift */,
+				1C4ABE0D27E23C910015CA42 /* RecipeRandomView.swift */,
 			);
 			path = Recipe;
 			sourceTree = "<group>";
@@ -614,12 +619,13 @@
 				1CCC8C3B27D4754D00B5D3B9 /* AuthViewModel.swift */,
 				1CCC8C3927D4754D00B5D3B9 /* CategoryViewModel.swift */,
 				1CCC8C3827D4754D00B5D3B9 /* HomeViewModel.swift */,
+				1C98D77A27E125B2009CDA2A /* IngredientViewModel.swift */,
 				1CCC8C4027D4754D00B5D3B9 /* NotificationViewModel.swift */,
 				1CCC8C4127D4754D00B5D3B9 /* ProfileViewModel.swift */,
 				1CCC8C3727D4754D00B5D3B9 /* RecipeViewModel.swift */,
+				1C4ABE0B27E205C40015CA42 /* ReviewsViewModel.swift */,
 				1CCC8C3C27D4754D00B5D3B9 /* SearchViewModel.swift */,
 				1CCC8C3D27D4754D00B5D3B9 /* WelcomeViewModel.swift */,
-				1C98D77A27E125B2009CDA2A /* IngredientViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -829,6 +835,7 @@
 				1CCC8BEE27D4752700B5D3B9 /* StarRating.swift in Sources */,
 				1CCC8C3327D4754800B5D3B9 /* MainView.swift in Sources */,
 				1CCC8C3127D4754800B5D3B9 /* NotificationView.swift in Sources */,
+				1C4ABE0C27E205C40015CA42 /* ReviewsViewModel.swift in Sources */,
 				1CCC8BA027D474F500B5D3B9 /* Persistence.swift in Sources */,
 				1CB2859A27E0CE2500D66940 /* EmptyContent.swift in Sources */,
 				1C1F368B27D9CB1900957046 /* InfoFormView.swift in Sources */,
@@ -869,6 +876,7 @@
 				1CCC8C6127D4755300B5D3B9 /* Types.graphql.swift in Sources */,
 				1CCC8C4A27D4754D00B5D3B9 /* AppViewModel.swift in Sources */,
 				1CCC8BE427D4752700B5D3B9 /* RecipeStretchAvatar.swift in Sources */,
+				1C4ABE0E27E23C920015CA42 /* RecipeRandomView.swift in Sources */,
 				1CCC8C6027D4755300B5D3B9 /* QueryCategories.graphql.swift in Sources */,
 				1CCC8C1527D4754100B5D3B9 /* Bookmark.swift in Sources */,
 				1CCC8C5E27D4755300B5D3B9 /* Notify.graphql.swift in Sources */,
