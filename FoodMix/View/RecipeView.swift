@@ -28,13 +28,17 @@ struct RecipeView: View {
                     
                     RecipeAbout()
                                         
-                    RecipeIngredientsView()
+                    // RecipeIngredientsView()
                     
-                    RecipeStepperView()
+                    // RecipeStepperView()
                     
-                    RecipeReviews()
+                    if viewModel.reviewRecipe != nil {
+                        
+                        RecipeReviews()
+                        
+                    }
                     
-                    RecipeRandomView()
+                    // RecipeRandomView()
                     
                 }
                 .offset(y: -20)

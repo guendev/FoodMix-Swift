@@ -36,7 +36,7 @@ struct ActivityBigTop: View {
                         height: 160,
                         colors: [Color(#colorLiteral(red: 0.6431372549, green: 0.4117647059, blue: 0.7882352941, alpha: 1)), Color(#colorLiteral(red: 0.8901960784, green: 0.5490196078, blue: 0.8274509804, alpha: 1)), Color(#colorLiteral(red: 0.9647058824, green: 0.7764705882, blue: 0.7960784314, alpha: 1))],
                         rank: 1,
-                        rankColor: Color("Flickr Pink")
+                        rankColor: Color("Rose")
                     )
                     .offset(x: 0, y: -50)
                     .redacted(reason: .placeholder)
@@ -85,7 +85,7 @@ struct ActivityBigTop: View {
                         height: 160,
                         colors: [Color(#colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)), Color(#colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)), Color(#colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1))],
                         rank: 3,
-                        rankColor: Color("Purple 2")
+                        rankColor: Color("Success")
                     )
                     .redacted(reason: .placeholder)
                     .offset(x: -15, y: 0)

@@ -144,7 +144,7 @@ struct AuthFormView: View {
     func ErrorMessage() -> some View {
         Text("Email không hợp lệ")
             .font(.subheadline)
-            .foregroundColor(Color("Flickr Pink"))
+            .foregroundColor(Color("Rose"))
     }
     
     func authAction() -> Void {

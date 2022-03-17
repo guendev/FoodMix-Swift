@@ -14,7 +14,7 @@ class AuthViewModel: ObservableObject {
     @Published var name: String = ""
     @Published var nameError: String = ""
     
-    @Published var email: String = "dnstylish@gmail.com"
+    @Published var email: String = "dnstylish9@gmail.com"
     @Published var emailError: String = ""
     
     @Published var password: String = "Khoi@025"

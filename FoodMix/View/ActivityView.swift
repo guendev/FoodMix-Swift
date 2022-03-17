@@ -15,29 +15,36 @@ struct ActivityView: View {
             
     var body: some View {
         
-        VStack() {
-            ActivityAppBar()
-                .padding(.horizontal, 25)
+        NavigationView {
             
-            ActivityBigTop()
-            
-            Spacer()
-            
+            VStack() {
+                ActivityAppBar()
+                    .padding(.horizontal, 25)
+                
+                ActivityBigTop()
+                
+                Spacer()
+                
+                
+            }
+            .overlay(
+                
+                ActivityListAuthor()
+                    .frame(width: getScreenBounds().width)
+                    .background(Color("WhiteBackground"))
+                    .clipShape(CustomSheetShape())
+                    .offset(y: 30)
+                
+                ,alignment: .bottom
+                
+            )
+            .background(Color("Background").ignoresSafeArea())
+            .environmentObject(viewModel)
+            .introspectNavigationController { navi in
+                navi.navigationBar.isHidden = true
+            }
             
         }
-        .overlay(
-            
-            ActivityListAuthor()
-                .frame(width: getScreenBounds().width)
-                .background(Color("WhiteBackground"))
-                .clipShape(CustomSheetShape())
-                .offset(y: 30)
-            
-            ,alignment: .bottom
-            
-        )
-        .background(Color("Background").ignoresSafeArea())
-        .environmentObject(viewModel)
     }
 
 }

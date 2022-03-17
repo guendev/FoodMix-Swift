@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+import Introspect
 
 struct MainView: View {
     
     @State var currentTab: MainTab = .Home
     
     @Namespace var animation
+    
+    init() {
+        UITabBar.appearance().isHidden = true
+    }
     
     var body: some View {
         
@@ -24,6 +29,7 @@ struct MainView: View {
                 
                 ActivityView()
                     .tag(MainTab.Activity)
+            
                 
                 NotificationView()
                     .tag(MainTab.Notification)
@@ -138,5 +144,12 @@ enum MainTab: String, CaseIterable {
     case Activity = "Activity"
     case Notification = "Notification"
     case Profile = "Profile"
+}
+
+extension UINavigationController {
+    override open func viewDidLoad() {
+        super.viewDidLoad()
+        interactivePopGestureRecognizer?.delegate = nil
+    }
 }
 

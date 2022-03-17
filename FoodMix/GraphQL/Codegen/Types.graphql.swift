@@ -170,6 +170,35 @@ public struct UserUpdatePasswordInput: GraphQLMapConvertible {
   }
 }
 
+public struct AddReviewInput: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  /// - Parameters:
+  ///   - content
+  ///   - totalRating
+  public init(content: String, totalRating: String) {
+    graphQLMap = ["content": content, "totalRating": totalRating]
+  }
+
+  public var content: String {
+    get {
+      return graphQLMap["content"] as! String
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "content")
+    }
+  }
+
+  public var totalRating: String {
+    get {
+      return graphQLMap["totalRating"] as! String
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "totalRating")
+    }
+  }
+}
+
 public struct SortOption: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 

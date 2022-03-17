@@ -16,6 +16,12 @@ private struct CurrentUserKey: EnvironmentKey {
     static let defaultValue: User? = nil
 }
 
+
+// support review sheet
+private struct CurrentRecipeKey: EnvironmentKey {
+    static let defaultValue: Bool = false
+}
+
 // 2. Extend the environment with our property
 extension EnvironmentValues {
     

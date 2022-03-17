@@ -6,25 +6,14 @@
 //
 
 import SwiftUI
-import Introspect
 
 struct ContentView: View {
     
-    // welcome -> mở app lần đầu
-    @AppStorage("welcome") var welcome: Bool = true
-    
-    @StateObject private var viewModel: AppViewModel = AppViewModel()
-    
-    @State private var isActive: Bool = false
-    
-    
+    @ObservedObject private var viewModel: AppViewModel = AppViewModel()
+        
     var body: some View {
-        NavigationView {
-            MainView()
-                .introspectNavigationController { navi in
-                    navi.navigationBar.isHidden = true
-                }
-        }
+        
+        MainView()
         .environmentObject(viewModel)
         .environment(\.authKey, viewModel.auth)
         .environment(\.currentUserKey, viewModel.user)

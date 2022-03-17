@@ -6,52 +6,45 @@
 //
 
 import SwiftUI
+import Introspect
 
 struct NotificationView: View {
     
-    @StateObject var viewModel: NotificationViewModel = NotificationViewModel()
+    @Environment(\.authKey) var auth
     
     var body: some View {
-        VStack {
+        
+        ZStack {
             
-            AppBar(title: "Thông Tin"){
+            if auth {
                 
-            }
-            .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: -5)
-            .foregroundColor(.black.opacity(0.8))
-            
-            
-            ScrollView(.vertical, showsIndicators: false) {
+                NotificationContent()
                 
-                VStack(spacing: 25) {
+            } else {
+                
+                VStack(spacing: 20) {
                     
-                    ForEach(viewModel.noties, id: \.id) { item in
-                        
-                        NotificationItem(notify: item)
+                    EmptyContent()
+                    
+                    PrimaryButtonView(title: "Đăng Nhập", active: .constant(false)) {
                         
                     }
-                    
-                    if viewModel.loading {
-                        NotificationItem.previews()
-                    }
+                    .frame(maxWidth: 250)
                     
                 }
-                .padding(.top, 30)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color("Background").ignoresSafeArea())
                 
             }
-
             
         }
-        .padding(.horizontal, 25)
-        .background(Color("Background").ignoresSafeArea())
-        .initView {
-            viewModel.getNotifies()
-        }
+        
     }
 }
 
 struct NotificationView_Previews: PreviewProvider {
     static var previews: some View {
         NotificationView()
+            .environment(\.colorScheme, .dark)
     }
 }

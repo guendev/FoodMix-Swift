@@ -20,6 +20,8 @@ class AppViewModel: ObservableObject {
     private var subNotify: Cancellable?
     private var subAccount: Cancellable?
     
+    @Published var show: Bool = false
+    
     init() {
         
         

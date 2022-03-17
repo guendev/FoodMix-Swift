@@ -10,8 +10,9 @@ import SwiftUI
 struct RecipeReviews: View {
     
     @EnvironmentObject var viewModel: RecipeViewModel
-    @StateObject var reviewViewModel: ReviewsViewModel = ReviewsViewModel()
-    
+
+    @State var showReviewSheet: Bool = false
+        
     var body: some View {
         
         VStack(alignment: .leading, spacing: 25) {
@@ -24,13 +25,51 @@ struct RecipeReviews: View {
                 
             }
             
+            Button {
+                
+                showReviewSheet = true
+                
+            } label: {
+                
+                HStack {
+                    
+                    Image(systemName: "paperplane")
+                        .renderingMode(.template)
+                        .resizable()
+                        .frame(width: 14, height: 14)
+                    
+                    Text("Thêm đánh giá")
+                        .font(.caption)
+                    
+                    Spacer()
+                    
+                    Image(systemName: "arrow.right")
+                        .renderingMode(.template)
+                        .resizable()
+                        .frame(width: 14, height: 14)
+                    
+                }
+                .padding()
+                .foregroundColor(Color("TextContent"))
+                .background(Color("Background2"))
+                .cornerRadius(25)
+                
+            }
+            .sheet(isPresented: $showReviewSheet) {
+                
+                RecipeAddReviewView(recipe: viewModel.recipe!)
+                
+            }
+
+
+            
             ScrollView(showsIndicators: false) {
                 
                 VStack(spacing: 20) {
                     
                     Group {
                         
-                        ForEach(reviewViewModel.reviews, id: \.id) { review in
+                        ForEach(viewModel.reviews, id: \.id) { review in
                             
                             ReviewItemView(review: review)
                             
@@ -38,13 +77,13 @@ struct RecipeReviews: View {
                         
                     }
                     
-                    if reviewViewModel.loading || viewModel.recipe == nil {
+                    if viewModel.loadingReviews || viewModel.recipe == nil {
                                             
                         ReviewItemView.previews(2)
                         
                     }
                     
-                    if reviewViewModel.empty {
+                    if viewModel.emptyReviews {
                         
                         EmptyContent()
                             .withAlignment(alignment: .center)
@@ -55,37 +94,13 @@ struct RecipeReviews: View {
                 
             }
             
-            HStack {
-                
-                Image(systemName: "paperplane")
-                    .renderingMode(.template)
-                    .resizable()
-                    .frame(width: 14, height: 14)
-                
-                Text("Thêm đánh giá")
-                    .font(.caption)
-                
-                Spacer()
-                
-                Image(systemName: "arrow.right")
-                    .renderingMode(.template)
-                    .resizable()
-                    .frame(width: 14, height: 14)
-                
-            }
-            .padding()
-            .foregroundColor(Color("TextContent"))
-            .background(Color("Background2"))
-            .cornerRadius(25)
-            
         }
-        .onReceive(viewModel.$recipe) { value in
-            
-            if value != nil  {
-                reviewViewModel.recipe = value
-                reviewViewModel.getReviews(limit: 3)
+        .initView {
+            // limit lại
+            viewModel.reviewLimit = 3
+            viewModel.getReviews {
+                viewModel.subNewReviewAction()
             }
-            
         }
         
     }
@@ -101,12 +116,6 @@ struct RecipeReviews_Previews: PreviewProvider {
                 RecipeView(slug: "le-thi-kim-ngan")
                 
             }
-            PreviewWrapper {
-                
-                RecipeView(slug: "le-thi-kim-ngan")
-                
-            }
-            .environment(\.colorScheme, .dark)
         }
         
     }

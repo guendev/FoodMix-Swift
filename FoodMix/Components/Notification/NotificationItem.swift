@@ -17,13 +17,13 @@ struct NotificationItem: View {
         
         HStack(alignment: .top, spacing: 20) {
             
-            RecipeAvatar(avatar: notify.from?.avatar)
+            RecipeAvatar(avatar: notify.sender?.avatar)
                 .scaledToFill()
                 .frame(width: 50, height: 50)
                 .clipShape(Circle())
                 .shadow(color: .black.opacity(0.03), radius: 10, x: 0.0, y: 0.0)
                 .overlay(
-                    Image("Edit")
+                    Image(systemName: notify.icon)
                         .renderingMode(.template)
                         .resizable()
                         .foregroundColor(.white)
@@ -50,7 +50,7 @@ struct NotificationItem: View {
                     
                     HStack {
                         
-                        Text("\(notify.from!.name)")
+                        Text("\(notify.sender!.name)")
                             .fontWeight(.medium)
                             .foregroundColor(Color("TextTitle"))
                             .lineLimit(1)
@@ -72,7 +72,7 @@ struct NotificationItem: View {
                         
                     }
                     
-                    Text("\(notify.content!)")
+                    Text("\(notify.content)")
                         .foregroundColor(Color("TextContent"))
                         .font(.subheadline)
                         .lineSpacing(5)

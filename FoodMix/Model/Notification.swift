@@ -7,16 +7,15 @@
 
 import SwiftUI
 
-struct Notification: Identifiable {
+struct Notification: Identifiable, Codable {
     
     let id: String
-    // người gửi
-    var from: User?
-    var to: User?
-    var group: String?
-    var image: String?
-    var content: String?
-    var createdAt: Float?
+    var user: User?
+    var sender: User?
+    var icon: String
+    var title: String
+    var content: String
+    var createdAt: Float
     var readAt: Float?
     
 }

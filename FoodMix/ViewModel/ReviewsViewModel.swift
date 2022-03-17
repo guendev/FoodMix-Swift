@@ -6,23 +6,24 @@
 //
 
 import SwiftUI
+import Apollo
 
 class ReviewsViewModel: ObservableObject {
     
-    @Published var recipe: Recipe?
-    
+    @Published var reviewRecipe: Recipe?
+    @Published var reviewLimit: Int = 10
+
     @Published var reviews: [Review] = [Review]()
-    @Published var loading: Bool = false
-    @Published var empty: Bool = false
-    @Published var page: Int = 0
+    @Published var loadingReviews: Bool = false
+    @Published var emptyReviews: Bool = false
+    @Published var pageReviews: Int = 0
     
-    func getReviews(limit: Int = 10) -> Void {
-        if recipe == nil || loading { return }
-        
-        loading = true
-        
-        let filter = SortOption(sort: "createdAt", page: "\(page)", limit: "\(limit)")
-        Network.shared.apollo.fetch(query: GetReviewsQuery(id: recipe!.slug, filter: filter)) { [weak self] result in
+    func getReviews(completion: @escaping () -> Void) -> Void {
+        if reviewRecipe == nil || loadingReviews { return }
+                
+        loadingReviews = true
+        let filter = SortOption(sort: "createdAt", page: "\(pageReviews)", limit: "\(reviewLimit)")
+        Network.shared.apollo.fetch(query: GetReviewsQuery(id: reviewRecipe!.slug, filter: filter)) { [weak self] result in
             
             guard let self = self else { return }
             
@@ -44,8 +45,10 @@ class ReviewsViewModel: ObservableObject {
                     self.reviews.append(review)
                 }
                 
-                self.loading = false
-                self.empty = rawData.isEmpty
+                self.loadingReviews = false
+                self.emptyReviews = rawData.isEmpty
+                
+                completion()
                 
                 // sub recipe
             case .failure(_):
@@ -53,6 +56,55 @@ class ReviewsViewModel: ObservableObject {
             }
             
         }
+        
+    }
+    
+    func subNewReviewAction() -> Void {
+        if reviewRecipe == nil { return }
+        Network.shared.apollo.subscribe(subscription: SubNewReviewsSubscription(id: reviewRecipe!.slug)) { [weak self] result in
+            
+            guard let self = self else {
+                  return
+            }
+            
+            switch result {
+            
+            case .success(let graphQLResult):
+                
+                                
+                if graphQLResult.errors != nil {
+                    break
+                }
+                                
+                guard let rawData = graphQLResult.data?.subNewReviews else { break }
+                
+                
+                guard let jsonData = try? JSONSerialization.data(withJSONObject: rawData.jsonObject) else { break }
+                
+                guard let review = try? JSONDecoder().decode(Review.self, from: jsonData) else { break }
+                
+                self.reviews.insert(review, at: 0)
+                
+                self.updateCache()
+                
+            case .failure(_):
+                break
+            
+            }
+            
+        }
+    }
+    
+    func updateCache() -> Void {
+        
+        Network.shared.apollo.store.withinReadWriteTransaction({ transaction in
+            let filter: SortOption = SortOption(sort: "createdAt", page: "0", limit: "\(self.reviewLimit)")
+            let query = GetReviewsQuery(id: self.reviewRecipe!.slug, filter: filter)
+            
+            let data = try? transaction.read(query: query)
+            
+            
+        })
         
     }
     

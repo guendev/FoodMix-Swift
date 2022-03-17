@@ -69,6 +69,7 @@ struct ReviewItemView: View {
                     }
                     
                 }
+                .withAlignment(alignment: .leading)
             
             Text(verbatim: .formatTime(review.createdAt))
                 .font(.subheadline)

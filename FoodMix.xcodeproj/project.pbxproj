@@ -36,6 +36,9 @@
 		1C39B57F27DD1DC300A346A2 /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C39B57E27DD1DC300A346A2 /* CheckBoxView.swift */; };
 		1C39B58127DD245C00A346A2 /* AvatarFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C39B58027DD245C00A346A2 /* AvatarFormView.swift */; };
 		1C39B58327DD24FA00A346A2 /* BannerFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C39B58227DD24FA00A346A2 /* BannerFormView.swift */; };
+		1C3A3AAD27E2B98C004B67F8 /* RecipeAddReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A3AAC27E2B98C004B67F8 /* RecipeAddReviewView.swift */; };
+		1C3A3AAF27E3322A004B67F8 /* RecipeMutation.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 1C3A3AAE27E33229004B67F8 /* RecipeMutation.graphql */; };
+		1C3A3AB127E33299004B67F8 /* RecipeMutation.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A3AB027E33299004B67F8 /* RecipeMutation.graphql.swift */; };
 		1C4ABE0827E1F4170015CA42 /* RecipeReviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4ABE0727E1F4170015CA42 /* RecipeReviews.swift */; };
 		1C4ABE0A27E201F70015CA42 /* ReviewItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4ABE0927E201F70015CA42 /* ReviewItemView.swift */; };
 		1C4ABE0C27E205C40015CA42 /* ReviewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4ABE0B27E205C40015CA42 /* ReviewsViewModel.swift */; };
@@ -153,6 +156,9 @@
 		1CCC8C7827D476AF00B5D3B9 /* ApolloWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 1CCC8C7727D476AF00B5D3B9 /* ApolloWebSocket */; };
 		1CCC8C7B27D4776A00B5D3B9 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 1CCC8C7A27D4776A00B5D3B9 /* Introspect */; };
 		1CCC8C7E27D477A900B5D3B9 /* SwiftValidators in Frameworks */ = {isa = PBXBuildFile; productRef = 1CCC8C7D27D477A900B5D3B9 /* SwiftValidators */; };
+		1CEC935727E38CFD00F3379E /* QueryNotification.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 1CEC935627E38CFD00F3379E /* QueryNotification.graphql */; };
+		1CEC935927E38DE700F3379E /* QueryNotification.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEC935827E38DE700F3379E /* QueryNotification.graphql.swift */; };
+		1CEC935C27E38F1E00F3379E /* NotificationContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEC935B27E38F1E00F3379E /* NotificationContent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -186,6 +192,9 @@
 		1C39B57E27DD1DC300A346A2 /* CheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
 		1C39B58027DD245C00A346A2 /* AvatarFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarFormView.swift; sourceTree = "<group>"; };
 		1C39B58227DD24FA00A346A2 /* BannerFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerFormView.swift; sourceTree = "<group>"; };
+		1C3A3AAC27E2B98C004B67F8 /* RecipeAddReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAddReviewView.swift; sourceTree = "<group>"; };
+		1C3A3AAE27E33229004B67F8 /* RecipeMutation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = RecipeMutation.graphql; sourceTree = "<group>"; };
+		1C3A3AB027E33299004B67F8 /* RecipeMutation.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeMutation.graphql.swift; sourceTree = "<group>"; };
 		1C4ABE0727E1F4170015CA42 /* RecipeReviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeReviews.swift; sourceTree = "<group>"; };
 		1C4ABE0927E201F70015CA42 /* ReviewItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewItemView.swift; sourceTree = "<group>"; };
 		1C4ABE0B27E205C40015CA42 /* ReviewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsViewModel.swift; sourceTree = "<group>"; };
@@ -297,6 +306,9 @@
 		1CCC8C6727D4755800B5D3B9 /* Toastify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toastify.swift; sourceTree = "<group>"; };
 		1CCC8C6827D4755800B5D3B9 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		1CCC8C6C27D4756000B5D3B9 /* SearchHistoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHistoryController.swift; sourceTree = "<group>"; };
+		1CEC935627E38CFD00F3379E /* QueryNotification.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = QueryNotification.graphql; sourceTree = "<group>"; };
+		1CEC935827E38DE700F3379E /* QueryNotification.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryNotification.graphql.swift; sourceTree = "<group>"; };
+		1CEC935B27E38F1E00F3379E /* NotificationContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationContent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -409,6 +421,7 @@
 				1CCC8BB127D4752700B5D3B9 /* Category */,
 				1CCC8BAB27D4752700B5D3B9 /* Home */,
 				1CCC8BC227D4752700B5D3B9 /* Includes */,
+				1CEC935A27E38EFE00F3379E /* Notification */,
 				1CCC8BD227D4752700B5D3B9 /* Profile */,
 				1CCC8BB927D4752700B5D3B9 /* Recipe */,
 				1CCC8BCF27D4752700B5D3B9 /* Search */,
@@ -471,6 +484,7 @@
 				1CCC8BC127D4752700B5D3B9 /* RecipeAuthorView.swift */,
 				1C4ABE0727E1F4170015CA42 /* RecipeReviews.swift */,
 				1C4ABE0D27E23C910015CA42 /* RecipeRandomView.swift */,
+				1C3A3AAC27E2B98C004B67F8 /* RecipeAddReviewView.swift */,
 			);
 			path = Recipe;
 			sourceTree = "<group>";
@@ -481,7 +495,6 @@
 				1CCC8BC527D4752700B5D3B9 /* AppBar.swift */,
 				1C39B57E27DD1DC300A346A2 /* CheckBoxView.swift */,
 				1CCC8BC927D4752700B5D3B9 /* CustomBottomSheet.swift */,
-				1CCC8BCB27D4752700B5D3B9 /* NotificationItem.swift */,
 				1CB3490F27D4A0420061D9CD /* PreviewWrapper.swift */,
 				1CCC8BC727D4752700B5D3B9 /* RecipeAvatar.swift */,
 				1CCC8BCA27D4752700B5D3B9 /* RecipeItemHorizontal.swift */,
@@ -646,6 +659,7 @@
 			children = (
 				1CCC8C4F27D4755300B5D3B9 /* AuthMutation.graphql */,
 				1C0DB79C27D6004D00D6E97D /* BookmarkMutation.graphql */,
+				1C3A3AAE27E33229004B67F8 /* RecipeMutation.graphql */,
 			);
 			path = Mutation;
 			sourceTree = "<group>";
@@ -658,9 +672,11 @@
 				1CCC8C5227D4755300B5D3B9 /* Notify.graphql.swift */,
 				1CB5B1AB27D4CB3D00AEFF30 /* QueryAuth.graphql.swift */,
 				1CCC8C5427D4755300B5D3B9 /* QueryCategories.graphql.swift */,
+				1CEC935827E38DE700F3379E /* QueryNotification.graphql.swift */,
 				1CA41B5227E03BF000006F71 /* QueryProfile.graphql.swift */,
 				1CB5B1B127D4E44800AEFF30 /* QueryRecipes.graphql.swift */,
 				1CA41B5427E03BF800006F71 /* QueryReviews.graphql.swift */,
+				1C3A3AB027E33299004B67F8 /* RecipeMutation.graphql.swift */,
 				1CCC8C5527D4755300B5D3B9 /* Types.graphql.swift */,
 			);
 			path = Codegen;
@@ -682,6 +698,7 @@
 				1CB5B1AF27D4E41300AEFF30 /* QueryRecipes.graphql */,
 				1CA41B4C27E03A8400006F71 /* QueryProfile.graphql */,
 				1CA41B5027E03B1000006F71 /* QueryReviews.graphql */,
+				1CEC935627E38CFD00F3379E /* QueryNotification.graphql */,
 			);
 			path = Query;
 			sourceTree = "<group>";
@@ -703,6 +720,15 @@
 				1CCC8C6C27D4756000B5D3B9 /* SearchHistoryController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1CEC935A27E38EFE00F3379E /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				1CCC8BCB27D4752700B5D3B9 /* NotificationItem.swift */,
+				1CEC935B27E38F1E00F3379E /* NotificationContent.swift */,
+			);
+			path = Notification;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -784,6 +810,7 @@
 				1C0DB79D27D6004D00D6E97D /* BookmarkMutation.graphql in Resources */,
 				1CCC8C6527D4755300B5D3B9 /* QueryCategories.graphql in Resources */,
 				1CB5B1AA27D4CAC100AEFF30 /* schema.json in Resources */,
+				1CEC935727E38CFD00F3379E /* QueryNotification.graphql in Resources */,
 				1C12E9E127D9F193002AC29B /* provinces.json in Resources */,
 				1CA41B5127E03B1000006F71 /* QueryReviews.graphql in Resources */,
 				1CCC8C5C27D4755300B5D3B9 /* AuthMutation.graphql in Resources */,
@@ -792,6 +819,7 @@
 				1CCC8B9E27D474F500B5D3B9 /* Preview Assets.xcassets in Resources */,
 				1CA41B4D27E03A8400006F71 /* QueryProfile.graphql in Resources */,
 				1CCC8B9B27D474F500B5D3B9 /* Assets.xcassets in Resources */,
+				1C3A3AAF27E3322A004B67F8 /* RecipeMutation.graphql in Resources */,
 				1CB5B1A727D4C9A800AEFF30 /* QueryAuth.graphql in Resources */,
 				1CB5B1B027D4E41300AEFF30 /* QueryRecipes.graphql in Resources */,
 				1CB3490927D47FB70061D9CD /* GoogleService-Info.plist in Resources */,
@@ -832,6 +860,7 @@
 				1CCC8C4727D4754D00B5D3B9 /* SearchViewModel.swift in Sources */,
 				1CCC8C4827D4754D00B5D3B9 /* WelcomeViewModel.swift in Sources */,
 				1C0DB79F27D6008500D6E97D /* BookmarkMutation.graphql.swift in Sources */,
+				1C3A3AAD27E2B98C004B67F8 /* RecipeAddReviewView.swift in Sources */,
 				1CCC8BEE27D4752700B5D3B9 /* StarRating.swift in Sources */,
 				1CCC8C3327D4754800B5D3B9 /* MainView.swift in Sources */,
 				1CCC8C3127D4754800B5D3B9 /* NotificationView.swift in Sources */,
@@ -840,6 +869,7 @@
 				1CB2859A27E0CE2500D66940 /* EmptyContent.swift in Sources */,
 				1C1F368B27D9CB1900957046 /* InfoFormView.swift in Sources */,
 				1CCC8BE627D4752700B5D3B9 /* RecipeIngredientsView.swift in Sources */,
+				1CEC935927E38DE700F3379E /* QueryNotification.graphql.swift in Sources */,
 				1CCC8BF127D4752700B5D3B9 /* CustomBottomSheet.swift in Sources */,
 				1CCC8BDC27D4752700B5D3B9 /* HomeIngredient.swift in Sources */,
 				1CCC8BE327D4752700B5D3B9 /* RecipeStepperLine.swift in Sources */,
@@ -873,11 +903,13 @@
 				1CCC8C2D27D4754800B5D3B9 /* HomeView.swift in Sources */,
 				1CA41B5527E03BF800006F71 /* QueryReviews.graphql.swift in Sources */,
 				1C39B57F27DD1DC300A346A2 /* CheckBoxView.swift in Sources */,
+				1C3A3AB127E33299004B67F8 /* RecipeMutation.graphql.swift in Sources */,
 				1CCC8C6127D4755300B5D3B9 /* Types.graphql.swift in Sources */,
 				1CCC8C4A27D4754D00B5D3B9 /* AppViewModel.swift in Sources */,
 				1CCC8BE427D4752700B5D3B9 /* RecipeStretchAvatar.swift in Sources */,
 				1C4ABE0E27E23C920015CA42 /* RecipeRandomView.swift in Sources */,
 				1CCC8C6027D4755300B5D3B9 /* QueryCategories.graphql.swift in Sources */,
+				1CEC935C27E38F1E00F3379E /* NotificationContent.swift in Sources */,
 				1CCC8C1527D4754100B5D3B9 /* Bookmark.swift in Sources */,
 				1CCC8C5E27D4755300B5D3B9 /* Notify.graphql.swift in Sources */,
 				1CA41B5327E03BF000006F71 /* QueryProfile.graphql.swift in Sources */,

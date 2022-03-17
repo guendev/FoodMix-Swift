@@ -8,9 +8,10 @@
 import SwiftUI
 import Apollo
 
-class RecipeViewModel: ObservableObject {
+class RecipeViewModel: ReviewsViewModel {
                 
     @Published var recipe: Recipe?
+    
     @Published var loading: Bool = false
     
     var ready: Bool {
@@ -61,6 +62,7 @@ class RecipeViewModel: ObservableObject {
                 
                 guard let recipe = try? JSONDecoder().decode(Recipe.self, from: jsonData) else { break }
                 
+                self.reviewRecipe = recipe
                 self.recipe = recipe
                 self.loading = false
                 
@@ -75,7 +77,11 @@ class RecipeViewModel: ObservableObject {
     }
     
     func subRecipeAction() -> Void {
-        subRecipe = Network.shared.apollo.subscribe(subscription: SubRecipeSubscription(id: recipe!.slug)) { result in
+        subRecipe = Network.shared.apollo.subscribe(subscription: SubRecipeSubscription(id: recipe!.slug)) { [weak self] result in
+            
+            guard let self = self else {
+                  return
+            }
             
             switch result {
             

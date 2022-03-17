@@ -12,80 +12,44 @@ class NotificationViewModel: ObservableObject {
     @Published var noties: [Notification] = []
     
     @Published var loading: Bool = false
+    @Published var empty: Bool = false
+    @Published var page: Int = 0
     
     func getNotifies() -> Void {
+        if loading { return }
+        loading.toggle()
         
-        noties.append(
+        let filter = SortOption(sort: "createdAt", page: "\(page)", limit: "10")
+        Network.shared.apollo.fetch(query: GetNotificationsQuery(filter: filter)) { [weak self] result in
             
-            Notification(
-                id: "1",
-                from: User(id: "1", name: "Kim Ngân", slug: "", avatar: "https://user-pic.webnovel.com/userheadimg/4307667847-10/200.jpg"),
-                group: "",
-                image: "",
-                content: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
-            )
+            guard let self = self else { return }
             
-        )
-        
-        noties.append(
+            switch result {
+                
+            case .success(let graphQLResult):
+                if graphQLResult.errors != nil {
+                    break
+                }
+                
+                guard let rawData = graphQLResult.data?.getNotifications else { break }
+                
+                for item in rawData {
+                    guard let item = item else { continue }
+                    guard let jsonData = try? JSONSerialization.data(withJSONObject: item.jsonObject) else { continue }
+                    guard let notify = try? JSONDecoder().decode(Notification.self, from: jsonData) else { continue }
+                    
+                    self.noties.append(notify)
+                }
+                
+                self.empty = rawData.isEmpty
+                self.page += 1
+                self.loading = false
+                
+            case .failure(_):
+                break
+                
+            }
             
-            Notification(
-                id: "2",
-                from: User(id: "1", name: "Kim Ngân", slug: "", avatar: "https://user-pic.webnovel.com/userheadimg/4307667847-10/200.jpg"),
-                group: "",
-                image: "",
-                content: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
-            )
-            
-        )
-        
-        noties.append(
-            
-            Notification(
-                id: "3",
-                from: User(id: "1", name: "Kim Ngân", slug: "", avatar: "https://user-pic.webnovel.com/userheadimg/4307667847-10/200.jpg"),
-                group: "",
-                image: "",
-                content: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
-            )
-            
-        )
-        
-        noties.append(
-            
-            Notification(
-                id: "4",
-                from: User(id: "1", name: "Kim Ngân", slug: "", avatar: "https://user-pic.webnovel.com/userheadimg/4307667847-10/200.jpg"),
-                group: "",
-                image: "",
-                content: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
-            )
-            
-        )
-        
-        noties.append(
-            
-            Notification(
-                id: "5",
-                from: User(id: "1", name: "Kim Ngân", slug: "", avatar: "https://user-pic.webnovel.com/userheadimg/4307667847-10/200.jpg"),
-                group: "",
-                image: "",
-                content: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
-            )
-            
-        )
-        
-        noties.append(
-            
-            Notification(
-                id: "6",
-                from: User(id: "1", name: "Kim Ngân", slug: "", avatar: "https://user-pic.webnovel.com/userheadimg/4307667847-10/200.jpg"),
-                group: "",
-                image: "",
-                content: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
-            )
-            
-        )
-        
+        }
     }
 }
