@@ -14,6 +14,8 @@ struct MainView: View {
     
     @Namespace var animation
     
+    @State var showTabBar: Bool = true
+    
     init() {
         UITabBar.appearance().isHidden = true
     }
@@ -88,6 +90,8 @@ struct MainView: View {
                 .background(Color("TabViewBackground"))
                 .clipShape(MainTabShape())
                 .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
+                .offset(y: 100)
+                .animation(.linear)
                 
                 ,alignment: .bottom
                 
