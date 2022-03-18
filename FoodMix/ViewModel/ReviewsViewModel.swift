@@ -85,7 +85,21 @@ class ReviewsViewModel: ObservableObject {
                 
                 self.reviews.insert(review, at: 0)
                 
-                self.updateCache()
+                Network.store.withinReadWriteTransaction { transaction in
+                    
+                    let filter: SortOption = SortOption(sort: "createdAt", page: "0", limit: "\(self.reviewLimit)")
+                    let query = GetReviewsQuery(id: self.reviewRecipe!.slug, filter: filter)
+                
+                    try? transaction.update(query: query) { cache in
+                        
+                        let newCache = try? GetReviewsQuery.Data.GetReview(jsonObject: rawData.jsonObject)
+                        
+                        
+                        cache.getReviews.insert(newCache, at: 0)
+                        
+                    }
+                    
+                }
                 
             case .failure(_):
                 break
@@ -93,19 +107,6 @@ class ReviewsViewModel: ObservableObject {
             }
             
         }
-    }
-    
-    func updateCache() -> Void {
-        
-        Network.shared.apollo.store.withinReadWriteTransaction({ transaction in
-            let filter: SortOption = SortOption(sort: "createdAt", page: "0", limit: "\(self.reviewLimit)")
-            let query = GetReviewsQuery(id: self.reviewRecipe!.slug, filter: filter)
-            
-            let data = try? transaction.read(query: query)
-            
-            
-        })
-        
     }
     
 }

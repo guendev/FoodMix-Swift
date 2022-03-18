@@ -64,9 +64,7 @@ struct UserCenter: View {
                 
                 if authKey {
                     
-                    NavigationLink {
-                        AccountView()
-                    } label: {
+                    NavigationLink( destination: AccountView()) {
                         Text("Sửa")
                             .font(.caption)
                             .foregroundColor(.white)

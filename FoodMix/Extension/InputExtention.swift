@@ -31,7 +31,7 @@ struct PrimaryInput: ViewModifier {
             .padding(.horizontal, 20)
             .frame(maxWidth: .infinity)
             .background(Color("Background2"))
-            .cornerRadius(radius ?? 15)
+            .cornerRadius(CGFloat(radius ?? 15))
             .padding(.top, label != nil ? 30 : 0)
             .overlay(
                 

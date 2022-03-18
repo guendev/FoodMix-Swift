@@ -51,9 +51,7 @@ struct CategoryView: View {
                         
                         ForEach(viewModel.recipes, id:\.id) { item in
                             
-                            NavigationLink {
-                                RecipeView(slug: item.slug)
-                            } label: {
+                            NavigationLink( destination: RecipeView(slug: item.slug)) {
                                 RecipeItemHorizontal(recipe: item)
                             }
 

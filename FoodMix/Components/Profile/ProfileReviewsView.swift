@@ -74,17 +74,11 @@ struct ProfileReviewItem: View {
             
             Divider()
             
-            NavigationLink {
-                
-                RecipeView(slug: review.recipe!.slug)
-                
-            } label: {
-                
+            NavigationLink(destination: RecipeView(slug: review.recipe!.slug)) {
                 RecipeAvatar(avatar: review.recipe?.avatar)
                     .scaledToFit()
                     .clipped()
                     .cornerRadius(10)
-                
             }
 
             

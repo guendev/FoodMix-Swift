@@ -14,7 +14,7 @@ struct PrimaryButtonView: View {
     @Binding var active: Bool
     
     var background: Color = Color("Primary")
-    var height: Double = 45
+    var height: CGFloat = 45
     var action: () -> Void
     
     @State private var animating: Bool = false

@@ -142,14 +142,8 @@ struct IngredientView: View {
                         
                         ForEach(viewModel.recipes) { item in
                             
-                            NavigationLink {
-                                
-                                RecipeView(slug: item.slug)
-                                
-                            } label: {
-                                
+                            NavigationLink( destination: RecipeView(slug: item.slug)) {
                                 RecipeItemHorizontal(recipe: item)
-                                
                             }
 
                             

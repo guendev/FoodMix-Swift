@@ -19,33 +19,21 @@ struct ReviewItemView: View {
             
             HStack(alignment: .top,spacing: 15) {
                 
-                NavigationLink {
-                    
-                    ProfileView(slug: review.user!.slug)
-                    
-                } label: {
-                
+                NavigationLink( destination: ProfileView(slug: review.user!.slug)) {
                     RecipeAvatar(avatar: review.user?.avatar)
                         .scaledToFit()
                         .frame(width: 50, height: 50)
                         .cornerRadius(50)
-                    
                 }
 
                 
                 VStack(alignment: .leading, spacing: 3) {
                     
-                    NavigationLink {
-                        
-                        ProfileView(slug: review.user!.slug)
-                        
-                    } label: {
-                        
+                    NavigationLink( destination: ProfileView(slug: review.user!.slug)) {
                         Text(review.user!.name)
                             .foregroundColor(Color("TextTitle"))
                             .font(.callout)
                             .lineLimit(1)
-                        
                     }
 
                     

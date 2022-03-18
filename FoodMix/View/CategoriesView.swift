@@ -50,13 +50,11 @@ struct CategoriesView: View {
                 LazyVStack(alignment: .leading, spacing: 40) {
                     
                     ForEach((0...categories.count - 1), id: \.self) { index in
-
-                        NavigationLink {
-                            CategoryView(category: categories[index])
-                        } label: {
+                        
+                        NavigationLink( destination: CategoryView(category: categories[index])) {
                             CategoryItemView(item: categories[index], index: index)
+                            
                         }
-
 
                         
                     }

@@ -28,9 +28,7 @@ struct WithAuth: ViewModifier {
                 content
             } else {
                 
-                NavigationLink {
-                    WelcomeView()
-                } label: {
+                NavigationLink( destination: WelcomeView()) {
                     content.disabled(true)
                 }
                 .buttonStyle(PlainButtonStyle())

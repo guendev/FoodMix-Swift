@@ -17,11 +17,7 @@ struct ProfileRecipes: View {
             
             ForEach(viewModel.recipes, id: \.id) { recipe in
                 
-                NavigationLink {
-                    
-                    RecipeView(slug: recipe.slug)
-                    
-                } label: {
+                NavigationLink( destination: RecipeView(slug: recipe.slug)) {
                     RecipeItemHorizontal(recipe: recipe)
                 }
 

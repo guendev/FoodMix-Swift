@@ -13,6 +13,8 @@ import SwiftUI
 class Network {
     
     static let shared = Network()
+    
+    static let store: ApolloStore = shared.apollo.store
 
     private(set) lazy var apollo: ApolloClient = {
     

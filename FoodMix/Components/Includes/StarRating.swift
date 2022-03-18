@@ -22,10 +22,10 @@ struct StarRating: View {
             
             ForEach((1...5), id: \.self) { index in
                 
-                Image(systemName: buildStar(_rating: CGFloat(index)))
+                Image(systemName: buildStar(_rating: Double(index)))
                     .resizable()
                     .scaledToFit()
-                    .foregroundColor(pass(_rating: CGFloat(index)) ? activeColor : disableColor)
+                    .foregroundColor(pass(_rating: Double(CGFloat(Double(index)))) ? activeColor : disableColor)
                     .frame(width: size, height: size)
                 
             }
@@ -34,7 +34,7 @@ struct StarRating: View {
         
     }
     
-    func buildStar(_rating: CGFloat) -> String {
+    func buildStar(_rating: Double) -> String {
         
         if rating >= _rating {
             return "star.fill"
@@ -45,7 +45,7 @@ struct StarRating: View {
         return "star.fill"
     }
     
-    func pass(_rating: CGFloat) -> Bool {
+    func pass(_rating: Double) -> Bool {
         return rating >= _rating || (_rating > rating && rating + 0.5 >= _rating)
     }
 }
