@@ -30,6 +30,7 @@ struct NotificationView: View {
                         
                     }
                     .frame(maxWidth: 250)
+                    .withAuth()
                     
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -44,7 +45,13 @@ struct NotificationView: View {
 
 struct NotificationView_Previews: PreviewProvider {
     static var previews: some View {
-        NotificationView()
-            .environment(\.colorScheme, .dark)
+        
+        PreviewWrapper {
+            
+            NotificationView()
+                .environment(\.colorScheme, .dark)
+            
+        }
+        
     }
 }

@@ -24,7 +24,9 @@ struct NotificationContent: View {
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     
-                    LazyVStack(spacing: 25) {
+                    VStack(spacing: 25) {
+                        
+                        
                         ForEach(viewModel.noties, id: \.id) { item in
                             
                             NotificationItem(notify: item)
@@ -72,9 +74,10 @@ struct NotificationContent_Previews: PreviewProvider {
         
         PreviewWrapper {
             
-            MainView()
+            NotificationView()
             
         }
+        .environment(\.colorScheme, .dark)
         
     }
 }
