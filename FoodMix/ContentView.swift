@@ -8,7 +8,7 @@
 import SwiftUI
 import Introspect
 
-struct ContentView: View { 
+struct ContentView: View {
     
     @ObservedObject private var viewModel: AppViewModel = AppViewModel()
             
