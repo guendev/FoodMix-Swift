@@ -14,55 +14,30 @@ struct NotificationContent: View {
 
     var body: some View {
         
-        NavigationView {
+        VStack(spacing: 25) {
             
-            VStack {
+            
+            ForEach(viewModel.noties, id: \.id) { item in
                 
-                AppBar(title: "Thông Báo") {
-                    
-                }
+                NotificationItem(notify: item)
                 
-                ScrollView(.vertical, showsIndicators: false) {
-                    
-                    VStack(spacing: 25) {
-                        
-                        
-                        ForEach(viewModel.noties, id: \.id) { item in
-                            
-                            NotificationItem(notify: item)
-                            
-                        }
-                        
-                        if viewModel.loading {
-                            NotificationItem.previews()
-                        }
-                        
-                        if viewModel.empty {
-                            
-                            EmptyContent()
-                            
-                        } else {
-                            
-                            PrimaryButtonView(title: "Xem Thêm", active: $viewModel.loading) {
-                                viewModel.getNotifies()
-                            }
-                            
-                        }
-                    }
-                    .padding(.top, 25)
-                    
+            }
+            
+            if viewModel.loading {
+                NotificationItem.previews()
+            }
+            
+            if viewModel.empty {
+                
+                EmptyContent()
+                
+            } else {
+                
+                PrimaryButtonView(title: "Xem Thêm", active: $viewModel.loading) {
+                    viewModel.getNotifies()
                 }
                 
             }
-            .padding(.horizontal, 25)
-            .background(Color("Background").ignoresSafeArea())
-            .initView {
-                viewModel.getNotifies()
-            }
-            .introspectNavigationController { navi in
-                navi.navigationBar.isHidden = true
-            }
-            
         }
         
     }

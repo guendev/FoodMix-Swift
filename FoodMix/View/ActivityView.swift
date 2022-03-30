@@ -10,41 +10,32 @@ import SwiftUI
 struct ActivityView: View {
     
     @StateObject var viewModel: ActivityViewModel = ActivityViewModel()
+    @EnvironmentObject var mainApp: MainViewModel
     
     @State var getFirst: Bool = false
             
     var body: some View {
         
-        NavigationView {
+        VStack(alignment: .leading) {
+            ActivityAppBar()
+                .padding(.horizontal, 25)
             
-            VStack() {
-                ActivityAppBar()
-                    .padding(.horizontal, 25)
-                
-                ActivityBigTop()
-                
-                Spacer()
-                
-                
-            }
-            .overlay(
-                
-                ActivityListAuthor()
-                    .frame(width: getScreenBounds().width)
-                    .background(Color("WhiteBackground"))
-                    .clipShape(CustomSheetShape())
-                    .offset(y: 30)
-                
-                ,alignment: .bottom
-                
-            )
-            .background(Color("Background").ignoresSafeArea())
-            .environmentObject(viewModel)
-            .introspectNavigationController { navi in
-                navi.navigationBar.isHidden = true
-            }
+            ActivityBigTop()
             
         }
+        .frame(maxHeight: .infinity, alignment: .top)
+        .background(Color("Background").ignoresSafeArea())
+        .overlay(
+        
+            ActivityListAuthor()
+                .frame(width: getScreenBounds().width)
+                .background(Color("WhiteBackground").cornerRadius(20))
+                .clipShape(CustomSheetShape())
+                .offset(y: 30)
+            
+            ,alignment: .bottom
+        )
+        .environmentObject(viewModel)
     }
 
 }
@@ -54,12 +45,7 @@ struct ActivityView_Previews: PreviewProvider {
         Group {
             PreviewWrapper {
                 
-                ActivityView()
-                
-            }
-            PreviewWrapper {
-                
-                ActivityView()
+                MainView()
                 
             }
             .environment(\.colorScheme,  .dark)

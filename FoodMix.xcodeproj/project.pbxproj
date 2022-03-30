@@ -156,6 +156,9 @@
 		1CCC8C7827D476AF00B5D3B9 /* ApolloWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 1CCC8C7727D476AF00B5D3B9 /* ApolloWebSocket */; };
 		1CCC8C7B27D4776A00B5D3B9 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 1CCC8C7A27D4776A00B5D3B9 /* Introspect */; };
 		1CCC8C7E27D477A900B5D3B9 /* SwiftValidators in Frameworks */ = {isa = PBXBuildFile; productRef = 1CCC8C7D27D477A900B5D3B9 /* SwiftValidators */; };
+		1CE5324927F42267009FE3B3 /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE5324827F42267009FE3B3 /* HomeTabView.swift */; };
+		1CE5324B27F426F6009FE3B3 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE5324A27F426F6009FE3B3 /* MainViewModel.swift */; };
+		1CE5324D27F43D56009FE3B3 /* NotificationAppBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE5324C27F43D56009FE3B3 /* NotificationAppBar.swift */; };
 		1CEC935727E38CFD00F3379E /* QueryNotification.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 1CEC935627E38CFD00F3379E /* QueryNotification.graphql */; };
 		1CEC935927E38DE700F3379E /* QueryNotification.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEC935827E38DE700F3379E /* QueryNotification.graphql.swift */; };
 		1CEC935C27E38F1E00F3379E /* NotificationContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEC935B27E38F1E00F3379E /* NotificationContent.swift */; };
@@ -306,6 +309,9 @@
 		1CCC8C6727D4755800B5D3B9 /* Toastify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toastify.swift; sourceTree = "<group>"; };
 		1CCC8C6827D4755800B5D3B9 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		1CCC8C6C27D4756000B5D3B9 /* SearchHistoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHistoryController.swift; sourceTree = "<group>"; };
+		1CE5324827F42267009FE3B3 /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
+		1CE5324A27F426F6009FE3B3 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		1CE5324C27F43D56009FE3B3 /* NotificationAppBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAppBar.swift; sourceTree = "<group>"; };
 		1CEC935627E38CFD00F3379E /* QueryNotification.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = QueryNotification.graphql; sourceTree = "<group>"; };
 		1CEC935827E38DE700F3379E /* QueryNotification.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryNotification.graphql.swift; sourceTree = "<group>"; };
 		1CEC935B27E38F1E00F3379E /* NotificationContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationContent.swift; sourceTree = "<group>"; };
@@ -440,6 +446,7 @@
 				1CCC8BAF27D4752700B5D3B9 /* HomeIngredient.swift */,
 				1CCC8BB027D4752700B5D3B9 /* HomeSearch.swift */,
 				1C0DB7A627D661F100D6E97D /* HomeCategoriesList.swift */,
+				1CE5324827F42267009FE3B3 /* HomeTabView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -639,6 +646,7 @@
 				1C4ABE0B27E205C40015CA42 /* ReviewsViewModel.swift */,
 				1CCC8C3C27D4754D00B5D3B9 /* SearchViewModel.swift */,
 				1CCC8C3D27D4754D00B5D3B9 /* WelcomeViewModel.swift */,
+				1CE5324A27F426F6009FE3B3 /* MainViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -727,6 +735,7 @@
 			children = (
 				1CCC8BCB27D4752700B5D3B9 /* NotificationItem.swift */,
 				1CEC935B27E38F1E00F3379E /* NotificationContent.swift */,
+				1CE5324C27F43D56009FE3B3 /* NotificationAppBar.swift */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -860,6 +869,7 @@
 				1CCC8C4727D4754D00B5D3B9 /* SearchViewModel.swift in Sources */,
 				1CCC8C4827D4754D00B5D3B9 /* WelcomeViewModel.swift in Sources */,
 				1C0DB79F27D6008500D6E97D /* BookmarkMutation.graphql.swift in Sources */,
+				1CE5324B27F426F6009FE3B3 /* MainViewModel.swift in Sources */,
 				1C3A3AAD27E2B98C004B67F8 /* RecipeAddReviewView.swift in Sources */,
 				1CCC8BEE27D4752700B5D3B9 /* StarRating.swift in Sources */,
 				1CCC8C3327D4754800B5D3B9 /* MainView.swift in Sources */,
@@ -939,6 +949,7 @@
 				1C12E9E327D9F2F6002AC29B /* JsonExtention.swift in Sources */,
 				1CA41B5727E06B3E00006F71 /* ProfileRecipes.swift in Sources */,
 				1CB3491227D4A6CE0061D9CD /* Firebase.swift in Sources */,
+				1CE5324927F42267009FE3B3 /* HomeTabView.swift in Sources */,
 				1C39B57D27DD069700A346A2 /* GenderFormView.swift in Sources */,
 				1C1BD21D27D55C6C003DC2E4 /* NavigationExtention.swift in Sources */,
 				1CCC8BF227D4752700B5D3B9 /* RecipeItemHorizontal.swift in Sources */,
@@ -971,6 +982,7 @@
 				1C1F368027D86ADF00957046 /* SettingItemView.swift in Sources */,
 				1CCC8BE727D4752700B5D3B9 /* RecipeAbout.swift in Sources */,
 				1CCC8C2A27D4754800B5D3B9 /* SearchView.swift in Sources */,
+				1CE5324D27F43D56009FE3B3 /* NotificationAppBar.swift in Sources */,
 				1CCC8C6D27D4756000B5D3B9 /* SearchHistoryController.swift in Sources */,
 				1CCC8C4427D4754D00B5D3B9 /* CategoryViewModel.swift in Sources */,
 				1CCC8BDB27D4752700B5D3B9 /* HelloView.swift in Sources */,

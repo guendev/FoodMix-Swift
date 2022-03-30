@@ -184,7 +184,6 @@ struct ActivityBigTop: View {
         }
         .frame(maxWidth: .infinity)
         .padding(.top, 100)
-        .padding(.horizontal, 30)
         .overlay(
             
             Image("leaf1")
@@ -220,7 +219,7 @@ struct ActivityBigTop_Previews: PreviewProvider {
     static var previews: some View {
         PreviewWrapper {
             
-            ActivityView()
+            MainView()
             
         }
     }

@@ -10,96 +10,74 @@ import Introspect
 
 struct MainView: View {
     
-    @State var currentTab: MainTab = .Home
+    @StateObject var viewModel: MainViewModel = MainViewModel()
     
-    @Namespace var animation
+    @State var baseOffset: CGFloat = 280
     
-    @State var showTabBar: Bool = true
-    
-    init() {
-        UITabBar.appearance().isHidden = true
-    }
-    
+    @Environment(\.colorScheme) var color
+        
     var body: some View {
         
-        VStack(spacing: 0) {
+        ZStack(alignment: .topLeading) {
             
-            TabView(selection: $currentTab) {
+            ZStack {
                 
-                HomeView()
-                    .tag(MainTab.Home)
-                
-                ActivityView()
-                    .tag(MainTab.Activity)
-            
-                
-                NotificationView()
-                    .tag(MainTab.Notification)
-                
-                SettingView()
-                    .tag(MainTab.Profile)
-                
-                
-            }
-            .overlay(
-                
-                HStack {
+                if viewModel.currentTab == .Home {
                     
-                    ForEach(MainTab.allCases, id: \.self) { value in
-                        
-                        
-                        Button {
-                            
-                            currentTab = value
-                            
-                        } label: {
-                            
-                            Image(value.rawValue)
-                                .renderingMode(.template)
-                                .resizable()
-                                .scaledToFit()
-                                .foregroundColor( currentTab == value ? Color("Primary"): .gray)
-                                .frame(width: 24)
-                            
-                        }
-                        .frame(maxWidth: .infinity)
-                        .overlay(
-                        
-                            Group {
-                                
-                                if currentTab == value {
-                                    
-                                    Circle()
-                                        .fill(Color("Primary"))
-                                        .frame(width: 6, height: 6)
-                                        .offset(x: 0, y: 15)
-                                        .matchedGeometryEffect(id: "MAINTAB", in: animation)
-                                    
-                                }
-                                
-                            }
-                            
-                            ,alignment: .bottom
-                        )
-                        
-                    }
+                    HomeView()
+                    
+                } else if viewModel.currentTab == .Notification {
+                    
+                    NotificationView()
+                    
+                } else if viewModel.currentTab == .Activity {
+                    
+                    ActivityView()
+                    
+                } else {
+                    
+                    SettingView()
                     
                 }
-                .padding(.top)
-                .padding(.bottom, safeInsets()?.bottom ?? 10)
-                .background(Color("TabViewBackground"))
-                .clipShape(MainTabShape())
-                .shadow(color: .black.opacity(0.05), radius: 10, x: 0.0, y: 0.0)
-                .offset(y: 100)
-                .animation(.linear)
                 
-                ,alignment: .bottom
-                
-            )
+            }
+            .padding(.horizontal, viewModel.showMenu ? 10 : 0)
+            .padding(.vertical, viewModel.showMenu ? 20 : 0)
+            .background(Color("Background").cornerRadius(20))
+            .offset(x: viewModel.showMenu ? baseOffset : 0)
+            .scaleEffect(viewModel.showMenu ? 0.9 : 1)
+            .zIndex(1)
+            .disabled(viewModel.showMenu)
+            .onTapGesture {
+                if viewModel.showMenu {
+                    withAnimation(.spring()) {
+                        viewModel.showMenu.toggle()
+                    }
+                }
+            }
             
+            Color.white
+                .cornerRadius(viewModel.showMenu ? 20 : 0)
+                .offset(x: viewModel.showMenu ? baseOffset - 30 : 0)
+                .scaleEffect(viewModel.showMenu ? 0.83 : 1)
+                .opacity(viewModel.showMenu ? 0.7 : 0)
+                .zIndex(0)
             
+            Color.white
+                .cornerRadius(viewModel.showMenu ? 20 : 0)
+                .offset(x: viewModel.showMenu ? baseOffset - 60 : 0)
+                .scaleEffect(viewModel.showMenu ? 0.75 : 1)
+                .opacity(viewModel.showMenu ? 0.7 : 0)
+                .zIndex(0)
+            
+            HomeTabView()
+                .offset(x: viewModel.showMenu ? 0 : -190)
         }
-        .ignoresSafeArea(.all, edges: .bottom)
+        .background(
+            Color("Primary").ignoresSafeArea()
+                .opacity( viewModel.showMenu ? 1 : 0)
+        )
+        .environmentObject(viewModel)
         
     }
 }
@@ -110,7 +88,7 @@ struct MainView_Previews: PreviewProvider {
             PreviewWrapper {
                 MainView()
             }
-            .environment(\.colorScheme, .dark)
+            //.environment(\.colorScheme, .dark)
         }
     }
 }

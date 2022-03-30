@@ -10,22 +10,26 @@ import SwiftUI
 struct HelloView: View {
     
     @EnvironmentObject var app: AppViewModel
+    @EnvironmentObject var mainApp: MainViewModel
     
     @AppStorage("welcome") var welcome: Bool = true
     
     var body: some View {
         HStack {
             
-            VStack(alignment: .leading) {
-                Text("Xin Chào")
-                    .font(.custom(.customFont, size: 14))
+            Button {
+                
+                withAnimation(.spring()) {
+                    mainApp.showMenu.toggle()
+                }
+                
+            } label: {
+                
+                Image(systemName: "text.alignleft")
                     .foregroundColor(Color("TextTitle"))
-                                    
-                Text("\(app.user?.name ?? "Đầu Bếp")")
-                    .font(.custom(.customFont, size: 20))
-                    .foregroundColor(Color("TextTitle"))
-                    .fontWeight(.semibold)
+                
             }
+
             
             Spacer()
             
@@ -53,7 +57,7 @@ struct HelloView_Previews: PreviewProvider {
         
         PreviewWrapper {
             
-            HomeView()
+            MainView()
             
         }
         

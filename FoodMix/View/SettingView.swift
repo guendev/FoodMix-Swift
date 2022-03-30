@@ -17,101 +17,95 @@ struct SettingView: View {
     
     var body: some View {
         
-        NavigationView {
+        VStack {
             
-            VStack {
+            SettingAppBar()
+                .padding(.horizontal, 25)
+            
+            ScrollView(.vertical, showsIndicators: false) {
                 
-                SettingAppBar()
-                
-                ScrollView(.vertical, showsIndicators: false) {
+                VStack(alignment: .leading, spacing: 35) {
                     
-                    VStack(alignment: .leading, spacing: 35) {
+                    UserCenter()
+                        .padding(.horizontal, 25)
+                    
+                    VStack(alignment: .leading) {
                         
-                        UserCenter()
+                        Text("Cài Đặt Chung")
+                            .font(.callout)
+                            .foregroundColor(Color("TextTitle"))
+                            .padding(.bottom, 10)
                             .padding(.horizontal, 25)
                         
-                        VStack(alignment: .leading) {
-                            
-                            Text("Cài Đặt Chung")
-                                .font(.callout)
-                                .foregroundColor(Color("TextTitle"))
-                                .padding(.bottom, 10)
-                                .padding(.horizontal, 25)
-                            
-                            SettingItemView(title: "Thư Viện") {
-                                Image(systemName: "arrow.right")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 12, height: 12)
-                                    .foregroundColor(Color("TextContent"))
-                            }
-                            
-                            SettingItemView(title: "Lịch Sử") {
-                                Image(systemName: "arrow.right")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 12, height: 12)
-                                    .foregroundColor(Color("TextContent"))
-                            }
-        
-                            
+                        SettingItemView(title: "Thư Viện") {
+                            Image(systemName: "arrow.right")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 12, height: 12)
+                                .foregroundColor(Color("TextContent"))
                         }
                         
-                        VStack(alignment: .leading) {
-                            
-                            Text("Cài Đặt Chung")
-                                .font(.callout)
-                                .foregroundColor(Color("TextTitle"))
-                                .padding(.bottom, 10)
-                                .padding(.horizontal, 25)
-                            
-                            SettingColorSchema()
-                            
-                            SettingItemView(title: "Trung Tâm Chính Sách") {
-                                Image(systemName: "arrow.right")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 12, height: 12)
-                                    .foregroundColor(Color("TextContent"))
-                            }
-                            
-                            SettingItemView(title: "Số Phiên Bản") {
-                                Image(systemName: "arrow.right")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 12, height: 12)
-                                    .foregroundColor(Color("TextContent"))
-                            }
-        
-                            
+                        SettingItemView(title: "Lịch Sử") {
+                            Image(systemName: "arrow.right")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 12, height: 12)
+                                .foregroundColor(Color("TextContent"))
                         }
-                        
-                        PrimaryButtonView(
-                            title: authKey ? "Đăng Xuất" : "Đăng Nhập",
-                            active: .constant(false),
-                            background: authKey ? Color("Warning") : Color("Primary")
-                        ) {
-                            
-                            app.onLogout {
-                                
-                            }
-                            
-                        }
-                        .withAuth()
-                        .padding(.horizontal, 25)
+    
                         
                     }
-                    .padding(.top, 25)
+                    
+                    VStack(alignment: .leading) {
+                        
+                        Text("Cài Đặt Chung")
+                            .font(.callout)
+                            .foregroundColor(Color("TextTitle"))
+                            .padding(.bottom, 10)
+                            .padding(.horizontal, 25)
+                        
+                        SettingColorSchema()
+                        
+                        SettingItemView(title: "Trung Tâm Chính Sách") {
+                            Image(systemName: "arrow.right")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 12, height: 12)
+                                .foregroundColor(Color("TextContent"))
+                        }
+                        
+                        SettingItemView(title: "Số Phiên Bản") {
+                            Image(systemName: "arrow.right")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 12, height: 12)
+                                .foregroundColor(Color("TextContent"))
+                        }
+    
+                        
+                    }
+                    
+                    PrimaryButtonView(
+                        title: authKey ? "Đăng Xuất" : "Đăng Nhập",
+                        active: .constant(false),
+                        background: authKey ? Color("Warning") : Color("Primary")
+                    ) {
+                        
+                        app.onLogout {
+                            
+                        }
+                        
+                    }
+                    .withAuth()
+                    .padding(.horizontal, 25)
                     
                 }
+                .padding(.top, 25)
                 
-            }
-            .background(Color("Background").ignoresSafeArea())
-            .introspectNavigationController { navi in
-                navi.navigationBar.isHidden = true
             }
             
         }
+        .background(Color("Background").ignoresSafeArea())
     }
 }
 
@@ -119,7 +113,7 @@ struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
         PreviewWrapper {
             
-            SettingView()
+            MainView()
             
         }
     }

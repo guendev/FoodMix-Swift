@@ -13,45 +13,38 @@ struct HomeView: View {
     
     var body: some View {
         
-        NavigationView {
+        VStack {
             
-            VStack {
+            HelloView()
+            
+            ScrollView(.vertical, showsIndicators: false) {
                 
-                HelloView()
-                
-                ScrollView(.vertical, showsIndicators: false) {
+                VStack(alignment: .leading, spacing: 25) {
                     
-                    VStack(alignment: .leading, spacing: 25) {
-                        
-                        Text("Khám phá ngay")
-                            .font(.custom(.customFont, size: 22))
-                            .fontWeight(.semibold)
-                            .foregroundColor(Color("TextContent"))
-                            .padding(.top, 16)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        
-                        HomeSearch()
-                        
-                        HomeCategories()
-                        
-                        HomeIngredient()
-                        
-                        HomeUpdatedView()
-                        
-                    }
-                    .padding(.bottom, 100)
+                    Text("Khám phá ngay")
+                        .font(.custom(.customFont, size: 22))
+                        .fontWeight(.semibold)
+                        .foregroundColor(Color("TextContent"))
+                        .padding(.top, 16)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    HomeSearch()
+                    
+                    HomeCategories()
+                    
+                    HomeIngredient()
+                    
+                    HomeUpdatedView()
                     
                 }
+                .padding(.bottom, 100)
                 
-            }
-            .environmentObject(viewModel)
-            .padding(.horizontal, 25)
-            .background(Color("Background").ignoresSafeArea())
-            .introspectNavigationController { navi in
-                navi.navigationBar.isHidden = true
             }
             
         }
+        .environmentObject(viewModel)
+        .padding(.horizontal, 25)
+        .background(Color("Background").ignoresSafeArea())
 
         
     }

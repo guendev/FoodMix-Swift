@@ -1,17 +1,18 @@
 //
-//  UserCenterView.swift
+//  NotificationAppBar.swift
 //  FoodMix
 //
-//  Created by Yuan on 27/02/2022.
+//  Created by Yuan on 30/03/2022.
 //
 
 import SwiftUI
 
-struct SettingAppBar: View {
+struct NotificationAppBar: View {
     
     @EnvironmentObject var mainApp: MainViewModel
     
     var body: some View {
+        
         HStack {
             
             Button {
@@ -29,17 +30,17 @@ struct SettingAppBar: View {
             
             Spacer()
             
-            Text("Cài Đặt")
+            Text("Thông Báo")
                 .font(.title2)
                 .foregroundColor(Color("TextTitle"))
-            
-            
+                        
         }
         .padding(.vertical)
+        
     }
 }
 
-struct UserCenterView_Previews: PreviewProvider {
+struct NotificationAppBar_Previews: PreviewProvider {
     static var previews: some View {
         PreviewWrapper {
             

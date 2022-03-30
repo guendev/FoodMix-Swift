@@ -14,31 +14,38 @@ struct NotificationView: View {
     
     var body: some View {
         
-        ZStack {
+        VStack {
             
-            if auth {
+            NotificationAppBar()
+            
+            ScrollView(.vertical, showsIndicators: false) {
                 
-                NotificationContent()
-                
-            } else {
-                
-                VStack(spacing: 20) {
+                if auth {
+                    
+                    NotificationContent()
+                        .padding(.top, 25)
+                    
+                } else {
+                    
                     
                     EmptyContent()
+                        .padding(.top, 100)
                     
                     PrimaryButtonView(title: "Đăng Nhập", active: .constant(false)) {
                         
                     }
+                    .padding(.top)
                     .frame(maxWidth: 250)
                     .withAuth()
                     
+                    
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color("Background").ignoresSafeArea())
                 
             }
             
         }
+        .padding(.horizontal, 25)
+        .background(Color("Background").ignoresSafeArea())
         
     }
 }
@@ -48,8 +55,7 @@ struct NotificationView_Previews: PreviewProvider {
         
         PreviewWrapper {
             
-            NotificationView()
-                .environment(\.colorScheme, .dark)
+            MainView()
             
         }
         

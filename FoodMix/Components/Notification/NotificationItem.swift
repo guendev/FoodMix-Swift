@@ -92,7 +92,7 @@ struct NotificationItem: View {
         
         Group {
             
-            ForEach(0 ..< count) { item in
+            ForEach(0..<count, id: \.self) { item in
                 HStack(alignment: .top, spacing: 20) {
                     
                     Image("food")

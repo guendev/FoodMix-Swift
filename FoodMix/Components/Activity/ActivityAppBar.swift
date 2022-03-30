@@ -8,8 +8,24 @@
 import SwiftUI
 
 struct ActivityAppBar: View {
+    
+    @EnvironmentObject var mainApp: MainViewModel
+    
     var body: some View {
         HStack {
+            
+            Button {
+                
+                withAnimation(.spring()) {
+                    mainApp.showMenu.toggle()
+                }
+                
+            } label: {
+                
+                Image(systemName: "text.alignleft")
+                    .foregroundColor(Color("TextTitle"))
+                
+            }
             
             Spacer()
             
@@ -26,6 +42,10 @@ struct ActivityAppBar: View {
 
 struct ActivityAppBar_Previews: PreviewProvider {
     static var previews: some View {
-        ActivityAppBar()
+        PreviewWrapper {
+            
+            MainView()
+            
+        }
     }
 }

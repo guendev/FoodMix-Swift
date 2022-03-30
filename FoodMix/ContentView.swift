@@ -13,7 +13,9 @@ struct ContentView: View {
         
     var body: some View {
         
-        MainView()
+        NavigationView {
+            MainView()
+        }
         .environmentObject(viewModel)
         .environment(\.authKey, viewModel.auth)
         .environment(\.currentUserKey, viewModel.user)
